@@ -27,8 +27,10 @@ export interface StoredMoney {
 export interface StoredPreview {
   money: { needMan: number | null; proof: StoredMoney | null; fee: StoredMoney | null; health: StoredMoney | null; flightMan: number | null };
   job: { code: string; text: string } | null;
-  wage: { amount: number; currency: string; city: string; derived: boolean } | null; // derived = 월급 ÷ 월 근무 시간으로 구한 시급
-  rent: { amount: number; max: number | null; currency: string; city: string; unit: 'month' | 'week' } | null;
+  /** krw = 원화 환산 시급(100원 단위), 환율이 없거나 이전에 저장된 결과에는 없음 → 외화만 보여 준다 (SPEC 0.3) */
+  wage: { amount: number; currency: string; city: string; derived: boolean; krw?: number | null } | null; // derived = 월급 ÷ 월 근무 시간으로 구한 시급
+  /** krwMan·krwMaxMan = 원화 환산 월세(만 원 단위, 범위면 최댓값도) */
+  rent: { amount: number; max: number | null; currency: string; city: string; unit: 'month' | 'week'; krwMan?: number | null; krwMaxMan?: number | null } | null;
   next: { selection: 'unlimited' | 'first_come' | 'lottery'; quota: number | null; windows: { opensOn: string; closesOn: string | null; note: string | null }[] };
   fxDate: string | null; // 환율 기준일
 }

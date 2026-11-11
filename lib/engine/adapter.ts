@@ -6,7 +6,9 @@ import type { EngineCountry, Level3, LongStay, ScoringConfig, Wage } from './typ
  * 기준값(임금·물가·한국인 수 구간)은 scoring_config.tiers에서 읽는다(없으면 defaults.ts).
  */
 export interface DbRows {
-  countries: { code: string; name_ko: string; region: string; english: 'Y' | 'H' | 'N'; languages: string[]; in_europe: boolean; near_korea: boolean; safety_level: string; safety_note: string | null }[];
+  countries: { code: string; name_ko: string; region: string; english: 'Y' | 'H' | 'N'; languages: string[]; in_europe: boolean; near_korea: boolean; safety_level: string; safety_note: string | null;
+    /** 인천 출발 비행시간(006, 없으면 null·칸이 없어도 됨). 점수에는 쓰지 않고 화면 표시용 */
+    flight_direct?: boolean | null; flight_hours?: number | string | null; flight_city?: string | null; flight_note?: string | null }[];
   programs: { id: number; origin: string; destination: string; kind: string; status: string; age_min: number; age_max: number; selection: EngineCountry['selection']; max_participations: number; stay_months: number; long_stay_months: number | null; annual_quota: number | null }[];
   /** 현재 값만(valid_to 없음) */
   facts: { program_id: number; key: string; value_num: number | null; value_text: string | null; currency: string | null; source_id: number | null; verified_at: string }[];

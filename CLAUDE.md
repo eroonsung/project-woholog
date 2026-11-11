@@ -85,6 +85,7 @@ app/
   r/[id]/story/route.ts       스토리 이미지 PNG
   compare/page.tsx            테스트 없이 비교
   countries/page.tsx          29개국 비교표
+  apps/page.tsx               나라별 필수 앱 목록(D-130, 나라 검색 → /countries/[code]#apps)
   countries/[code]/page.tsx   나라 상세
   checklist/page.tsx          체크리스트 (?c=JP&d=2027-03-01&s=…)
   to-korea/page.tsx           To Korea 대기자 (영어)
@@ -109,6 +110,7 @@ lib/
   server/   ip.ts limits.ts       IP 해시·요청 제한 기준(SPEC 0.8)
   features.ts  준비 중 기능 15개(features_ko.json)·단계·다른 기능 3개   votes.ts  원해요(woholog.votes.v1)·보내기·되돌리기
   guides.ts    가이드 마크다운·{fact_key} 채우기   share/  data.ts image.tsx colors.ts  공유 이미지 값·그리기(OG·스토리, D-125)
+  popular.ts   많이 찾는 나라 먼저 정렬(체크리스트·/apps, D-130)  flight.ts  비행시간 문구(D-130)
   site.ts      오픈 여부(NEXT_PUBLIC_SITE_LIVE)
   storage.ts   브라우저 저장소 (SPEC.md 0.2의 키만)
   quiz/     types.ts config.ts steps.ts state.ts submit.ts validate.ts   질문 순서·이동·저장 (화면 없이 테스트)
@@ -118,8 +120,8 @@ content/
   copy_ko.json  copy_en.json  features_ko.json  partners.json  nav_ko.json  landing_countries.json  landing_example.json
   privacy_ko.json  privacy_en.json  (처리방침 문서, docs/legal/privacy.md → scripts/build_privacy_content.py, D-122)
 supabase/
-  migrations/  001_schema_v2_1.sql  002_feature_votes.sql  003_extension_fact_key.sql  004_proof_amount_with_ticket.sql  005_rate_limit_security.sql
-  seed/seed_v1_1.sql  seed/seed_checklist_v1.sql  seed/seed_engine_v1.sql  seed/seed_proof_ticket_v1.sql  seed/seed_nl_proof_v1.sql  seed/seed_country_apps_v1.sql  seed/seed_local_language_v1.sql  seed/seed_guides_v1.sql
+  migrations/  001_schema_v2_1.sql  002_feature_votes.sql  003_extension_fact_key.sql  004_proof_amount_with_ticket.sql  005_rate_limit_security.sql  006_flight_time.sql
+  seed/seed_v1_1.sql  seed/seed_checklist_v1.sql  seed/seed_engine_v1.sql  seed/seed_proof_ticket_v1.sql  seed/seed_nl_proof_v1.sql  seed/seed_country_apps_v1.sql  seed/seed_country_apps_reading_v1.sql  seed/seed_local_language_v1.sql  seed/seed_guides_v1.sql
 scripts/
   precheck.sh  push 전 확인(build·tsc·eslint·vitest, .env*, 키 패턴) — npm run precheck
   build_guides_seed.py  docs/content/guides_draft_v1.md → supabase/seed/seed_guides_v1.sql (D-128)

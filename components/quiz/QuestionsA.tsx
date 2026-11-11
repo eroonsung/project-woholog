@@ -25,6 +25,12 @@ export interface QProps {
 const EMPTY: CountryAnswer = { none: false, codes: [] };
 const help = (q: number) => (hasCopy(`q${q}.help`) ? t(`q${q}.help`) : undefined);
 
+/** Q4 설명: 두 번 갈 수 있는 나라(programs.max_participations ≥ 2)는 DB 값으로 만든다 — 나라 이름을 문구에 쓰지 않는다(CLAUDE.md 규칙 2, D-130) */
+export function q4Help(countries: Pick<QuizCountry, 'nameKo' | 'engine'>[]): string {
+  const twice = countries.filter((c) => c.engine.twice).map((c) => c.nameKo);
+  return twice.length > 0 ? t('q4.help', { countries: twice.join('·') }) : t('q4.help.once');
+}
+
 /** 나라 고르기 공통 동작: "없어요"를 고르면 나라를 지우고, 나라를 고르면 "없어요"를 푼다. max가 있으면 넘길 때 안내. */
 function useCountryAnswer(value: CountryAnswer | undefined, onChange: (v: CountryAnswer) => void, max?: number) {
   const [notice, setNotice] = useState<string | null>(null);
@@ -54,7 +60,7 @@ export function QuestionCountry({ q, answers, countries, set, next, available }:
   const a = useCountryAnswer(answers[key], (v) => set({ [key]: v }), q === 1 ? MAX_HEART_COUNTRIES : undefined);
   return (
     <>
-      <QuestionHeading q={q} title={t(`q${q}`)} help={help(q)} mode="multi" available={available} />
+      <QuestionHeading q={q} title={t(`q${q}`)} help={q === 4 ? q4Help(countries) : help(q)} mode="multi" available={available} />
       <CountryPicker
         countries={countries} selected={a.cur.codes} max={q === 1 ? MAX_HEART_COUNTRIES : undefined}
         onToggle={a.toggle} onClear={a.clear} notice={a.notice} label={t(`q${q}`)}

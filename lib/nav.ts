@@ -9,8 +9,6 @@ export interface NavItem {
   label: string;
   href: string | null;
   soon?: boolean;
-  /** 나라를 고르는 창이 필요한 항목(예: 나라별 필수 앱). 그 창은 7단계라서 지금은 /countries로 보낸다 */
-  pickCountry?: string;
 }
 export interface NavStage {
   id: string;
@@ -22,9 +20,9 @@ export const STAGES = nav.stages as NavStage[];
 export const COMMUNITY = nav.community as { label: string; href: string; soon: boolean };
 export const SOON_COUNT = features.features.length;
 
-/** 항목이 가는 주소. TODO(7단계): pickCountry 항목은 나라 고르는 창으로 바꾼다. */
+/** 항목이 가는 주소 (나라별 필수 앱은 /apps, D-130) */
 export function hrefOf(item: NavItem): string {
-  return item.href ?? '/countries';
+  return item.href ?? '/';
 }
 
 /** 주소가 같거나 그 아래 주소면 "지금 페이지". `/`는 정확히 같을 때만. */
@@ -33,9 +31,9 @@ export function matches(href: string, pathname: string): boolean {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
-/** 이 항목이 지금 페이지인가. 나라 고르는 창이 필요한 항목은 주소가 겹쳐서 굵게 하지 않는다. */
+/** 이 항목이 지금 페이지인가. */
 export function isCurrentItem(item: NavItem, pathname: string): boolean {
-  return !item.pickCountry && matches(hrefOf(item), pathname);
+  return matches(hrefOf(item), pathname);
 }
 
 /** 지금 페이지가 속한 단계 번호(0~3). 없으면 null. 결과·비교 화면은 "나라 고르기"에 속한다. */

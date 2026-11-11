@@ -1,6 +1,7 @@
 import { buildCompare, checkingCell, workLimitLines, type Cell, type RowId } from '@/lib/compare/build';
 import { adaptRows, type DbRows } from '@/lib/engine';
 import { t } from '@/lib/copy';
+import { flightLine, flightOf } from '@/lib/flight';
 import type { CountryAppRow, SourceLinkRow } from '@/lib/data/queries';
 import { formatNumber } from '@/lib/format';
 import { buildPreview, latestRates } from '@/lib/result/preview';
@@ -40,6 +41,13 @@ export function pickApps(all: CountryAppRow[], code: string): DetailApp[] {
 
 const DAY_MS = 86_400_000;
 const APPLY_FACTS = ['apply_method', 'extension', 'insurance_required', 'medical_check', 'proof_note', 'special_note'] as const;
+
+/** 거리 카드 작은 글씨: "직항 약 2시간 30분 · 도쿄 기준" + 메모(있을 때). 값이 없으면 없음 */
+function flightBody(small: string | null, c: { flight_city?: string | null; flight_note?: string | null }): string | undefined {
+  if (!small) return undefined;
+  const parts = [small, c.flight_city ? t('flight.city', { city: c.flight_city }) : null, c.flight_note ?? null].filter(Boolean);
+  return parts.join(' · ');
+}
 
 export function buildDetail(rows: DbRows, extras: { apps: CountryAppRow[]; sourceLinks: SourceLinkRow[] }, code: string, today: string): CountryDetail | null {
   const program = rows.programs.find((p) => p.origin === 'KR' && p.destination === code && p.kind === 'working_holiday');
@@ -105,7 +113,7 @@ export function buildDetail(rows: DbRows, extras: { apps: CountryAppRow[]; sourc
   const life: DetailCard[] = [
     e?.korean ? { id: 'korean', title: t(`reason.priority.few_koreans.${KOREAN_KEY[e.korean]}`), body: pop !== null ? t('compare.korean.n', { n: formatNumber(pop) }) : undefined, checking: false } : { id: 'korean', title: `${t('compare.row.korean')}: ${checking}`, checking: true },
     e?.price ? { id: 'price', title: t(`reason.priority.low_cost.${PRICE_KEY[e.price]}`), body: price !== null ? t('detail.life.price.n', { n: formatNumber(price) }) : undefined, checking: false } : { id: 'price', title: `${t('detail.life.price')}: ${checking}`, checking: true },
-    e ? { id: 'distance', title: t(e.nearKorea ? 'reason.priority.near_korea.ok' : 'reason.priority.near_korea.no'), checking: false } : { id: 'distance', title: `${t('compare.row.distance')}: ${checking}`, checking: true },
+    e ? { id: 'distance', ...(() => { const fl = flightLine(flightOf(country), e.nearKorea); return { title: fl.main, body: flightBody(fl.small, country) }; })(), checking: false } : { id: 'distance', title: `${t('compare.row.distance')}: ${checking}`, checking: true },
   ];
 
   // 필수 앱

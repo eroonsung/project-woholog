@@ -1,5 +1,6 @@
 import { adaptRows, type DbRows } from '@/lib/engine';
 import { t } from '@/lib/copy';
+import { flightLine, flightOf } from '@/lib/flight';
 import { formatKoDate, formatNumber } from '@/lib/format';
 import { buildPreview, latestRates, nextApply } from '@/lib/result/preview';
 import { nextApplyText, previewRows } from '@/lib/result/previewText';
@@ -89,7 +90,8 @@ export function buildCompare(rows: DbRows, codes: readonly string[], today: stri
     if (preview?.rent) {
       const r = preview.rent;
       const amount = `${r.currency} ${formatNumber(r.amount)}${r.max !== null ? `~${formatNumber(r.max)}` : ''}${r.city ? ` (${r.city})` : ''}`;
-      rent = cell(r.unit === 'month' ? amount : t('preview.rent.week', { rent: amount }));
+      const krwText = r.currency !== 'KRW' && r.krwMan != null ? (r.max !== null && r.krwMaxMan != null ? t('money.krwRange', { min: formatNumber(r.krwMan), max: formatNumber(r.krwMaxMan) }) : t('money.krw', { man: formatNumber(r.krwMan) })) : null;
+      rent = cell(r.unit === 'month' ? amount : t('preview.rent.week', { rent: amount }), krwText ? [krwText] : []);
     }
 
     // 일 제한: 한 고용주 기간 · 총 취업 기간 · 정규직 불가 · 금지 업종. 하나도 없으면 "알려진 제한 없음"
@@ -111,7 +113,8 @@ export function buildCompare(rows: DbRows, codes: readonly string[], today: stri
     const korean = e.korean === null ? checkingCell() : cell(t(`compare.korean.${e.korean}`), popRow ? [t('compare.korean.n', { n: formatNumber(popRow.value) })] : []);
 
     // 거리
-    const distance = cell(t(e.nearKorea ? 'reason.priority.near_korea.ok' : 'reason.priority.near_korea.no'));
+    const fl = flightLine(flightOf(rows.countries.find((c) => c.code === code)), e.nearKorea);
+    const distance = cell(fl.main, fl.small ? [fl.small] : []);
 
     // 출처 확인일
     const { verifiedAt, publishers, stale } = a.provenance;

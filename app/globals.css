@@ -102,6 +102,9 @@ body {
   font-family: var(--font-sans);
   font-size: var(--fs-body);
   line-height: 1.6;
+  /* 한국어는 단어 중간에서 끊지 않고("나라, 나/한테" 방지), 아주 긴 영문·주소는 넘치지 않게 어디서든 줄바꿈 (D-130) */
+  word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 
 :focus-visible {

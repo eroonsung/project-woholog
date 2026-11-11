@@ -19,10 +19,10 @@ describe('메뉴 데이터 (content/nav_ko.json, D-004)', () => {
     expect(slugs.has('community')).toBe(true);
   });
 
-  it('실제 기능 항목은 Soon이 아니고, 나라 고르는 창이 필요한 항목은 지금 /countries로 간다', () => {
+  it('실제 기능 항목은 Soon이 아니고, 나라별 필수 앱은 /apps로 간다', () => {
     const real = allItems.filter((i) => !i.soon);
     expect(real.map((i) => i.label)).toEqual(['나라 추천 테스트', '29개국 비교', '가이드', 'D-day 체크리스트', '나라별 필수 앱']);
-    expect(hrefOf(allItems.find((i) => i.pickCountry)!)).toBe('/countries');
+    expect(hrefOf(allItems.find((i) => i.label === '나라별 필수 앱')!)).toBe('/apps');
   });
 
   it('곧 나올 기능 수는 준비 중 기능 목록과 같다(15)', () => {
@@ -50,9 +50,10 @@ describe('지금 페이지 판단 (SPEC 1장: 현재 페이지 메뉴는 굵게)
     for (const [path, stage] of cases) expect(stageIndexFor(path), path).toBe(stage);
   });
 
-  it('나라 고르는 창이 필요한 항목은 주소가 겹쳐도 굵게 하지 않는다', () => {
-    const apps = allItems.find((i) => i.pickCountry)!;
+  it('나라별 필수 앱은 /apps에서만 굵게 하고 /countries에서는 29개국 비교만 굵게 한다', () => {
+    const apps = allItems.find((i) => i.label === '나라별 필수 앱')!;
     expect(isCurrentItem(apps, '/countries')).toBe(false);
+    expect(isCurrentItem(apps, '/apps')).toBe(true);
     expect(isCurrentItem(allItems.find((i) => i.href === '/countries')!, '/countries')).toBe(true);
   });
 

@@ -181,6 +181,7 @@
 | compare.back.result | 결과로 돌아가기 | 제안(6단계) |
 | compare.back.countries | 29개국 비교표로 | 제안(6단계) |
 | compare.corner | 비교 항목 | 제안(6단계) |
+| compare.scrollHint | 옆으로 밀면 다른 나라도 볼 수 있어요 | 제안(D-130, 표 오른쪽에 나라가 더 있을 때만) |
 | compare.best | 적합도 최고 | 제안(6단계) |
 | compare.fit | 적합도 {pct}% | 제안(6단계) |
 | compare.fit.none | 이 결과에 없는 나라예요 | 제안(6단계) |
@@ -532,6 +533,15 @@
 | guides.fact.yes | 예 | 제안(10단계) |
 | guides.fact.no | 아니요 | 제안(10단계) |
 
+11단계 앞 수정 문구 (제안, 승인 필요)
+| 키 | 문구 | 출처 |
+|---|---|---|
+| money.krwRange | 약 {min}~{max}만 원 | 제안(D-130, 월세 범위의 원화 환산) |
+| result.heart.tie | {country:이/가} 1위 {top:와/과} 같은 점수예요. 마음 가는 대로 가도 좋아요. | 제안(D-130, 마음에 둔 나라가 1위와 같은 %일 때) |
+
+| q4.help | 대부분 나라는 한 번만 갈 수 있어요. {countries:은/는} 두 번까지. | 원본에서 바꿈(D-130) |
+| q4.help.once | 워홀은 나라마다 한 번만 갈 수 있어요. | 제안(D-130) |
+
 ## 15. To Korea 대기자 (English)
 | key | text |
 |---|---|
@@ -635,6 +645,12 @@
 | apps.title | {country} 가면 깔아야 할 앱 |
 | apps.cats | 교통 / 일자리 / 집 / 은행·송금 / 중고거래 / 정부·세금 / 메신저 |
 | apps.empty | 이 나라 앱 목록을 정리하고 있어요 |
+| apps.index.title | 나라별 필수 앱 | 제안(D-130, /apps) |
+| apps.index.sub | 가기 전에 깔아 두면 좋은 앱을 나라별로 모아 뒀어요. | 제안(D-130, /apps) |
+| apps.index.search | 나라 이름으로 찾기 | 제안(D-130, /apps) |
+| apps.index.count | 앱 {n}개 | 제안(D-130, /apps) |
+| apps.index.preparing | 정리 중이에요 | 제안(D-130, /apps) |
+| apps.index.empty | 찾는 나라가 없어요. 다른 이름으로 찾아 보세요. | 제안(D-130, /apps) |
 | partners.title | 추천 준비물 |
 | partners.badge | 광고 |
 | partners.cats | eSIM / 여행자 보험 / 해외 송금 / 항공권 |
@@ -885,6 +901,10 @@
 | reason.priority.local_language.no | 영어권이라 다른 언어를 배울 기회는 적어요. | 제안(D-111) |
 | reason.priority.near_korea.ok | 한국과 가까워요. | 원본(5장) |
 | reason.priority.near_korea.no | 비행기로 오래 가야 해요. | 원본(5장) |
+| flight.direct | 직항 약 {time} | 제안(D-130, 시간은 작은 글씨, 인천 출발 기준) |
+| flight.stopover | 최소 약 {time} | 제안(D-130, 직항이 없을 때 경유 포함 최소) |
+| flight.noDirect | 직항이 없어서 경유해야 해요. | 제안(D-130, 직항 없는 나라의 큰 글씨 문구) |
+| flight.city | {city} 기준 | 제안(D-130, 나라 상세 거리 카드, 인천 출발 기준 도시) |
 | reason.priority.two_years.partial.farm | 2년을 머물려면 지정 지역 농장 등에서 88일 일해야 해요. | 원본(5장) |
 | result.whatIf.change.learn_local_language | {language}로 알바 면접을 볼 수 있게 되면 | 원본(4장 예시) |
 | result.whatIf.change.english_interview | 영어로 알바 면접을 볼 수 있게 되면 | 원본(4장 예시) |

@@ -108,7 +108,7 @@ describe('화면 (/compare)', () => {
   });
   it('모바일: 첫 열(항목 이름)은 고정(sticky), 표만 가로 스크롤(안의 보이지 않는 글자가 페이지를 넓히지 않게 relative)', () => {
     const html = view(['JP', 'CA']);
-    expect(html).toContain('relative overflow-x-auto');
+    expect(html).toContain('overflow-x-auto'); // ScrollFrame 안쪽 상자(바깥이 relative)
     expect(html).toMatch(/<th scope="row" class="sticky left-0/);
     expect(html).toContain('<colgroup>'); // 열 폭을 정해 긴 글이 한 줄로 늘어나지 않게
   });

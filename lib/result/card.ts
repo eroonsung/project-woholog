@@ -27,6 +27,8 @@ export interface CardPlan {
   allLow: boolean;
   top3: StoredRanked[];
   topTitleKey: 'result.next' | 'result.top3';
+  /** 마음에 둔 나라가 엔진 1위가 아닌데 1위와 %가 같다(공동 1위). "0%p 차이" 대신 같은 점수라고 알린다(D-130). 엔진 순서는 그대로 */
+  tie: boolean;
   compare: { codes: [string, string]; labelKey: 'compare.cta' | 'result.compare.other' } | null;
 }
 
@@ -57,7 +59,7 @@ export function pickCard(answers: Answers, result: StoredResult): CardPlan | nul
   } else {
     card = heart;
     const gap = first.pct - heart.pct;
-    kind = heart.code === first.code ? 'top1' : gap < config.closeGapPp ? 'close' : 'far';
+    kind = heart.code === first.code || gap === 0 ? 'top1' : gap < config.closeGapPp ? 'close' : 'far'; // 같은 %면 공동 1위(top1)
   }
 
   const showWhatIf =
@@ -68,12 +70,14 @@ export function pickCard(answers: Answers, result: StoredResult): CardPlan | nul
 
   const heartStyle = kind === 'top1' || kind === 'close' || kind === 'far';
   const headline: CardPlan['headline'] =
-    kind === 'top1' ? { key: 'result.heart.top', params: { country: nameOf(card.code) } }
+    kind === 'top1' && card.code !== first.code ? { key: 'result.heart.tie', params: { country: nameOf(card.code), top: nameOf(first.code) } }
+    : kind === 'top1' ? { key: 'result.heart.top', params: { country: nameOf(card.code) } }
     : kind === 'close' ? { key: 'result.heart.close', params: { country: nameOf(card.code), top: nameOf(first.code), diff: first.pct - card.pct } }
     : kind === 'far' ? { key: 'result.heart.far', params: { country: nameOf(card.code) } }
     : { key: 'result.noHeart.headline', params: { country: nameOf(card.code) } };
 
   const cardIsFirst = card.code === first.code;
+  const tie = !cardIsFirst && card.pct === first.pct && kind === 'top1';
   const top3 = ranked.filter((r) => r.code !== card.code).slice(0, 3);
   const second = ranked[1];
   const compare: CardPlan['compare'] = cardIsFirst
@@ -87,7 +91,8 @@ export function pickCard(answers: Answers, result: StoredResult): CardPlan | nul
     showWhatIf,
     allLow: showWhatIf && (kind === 'noheart' || kind === 'blocked'),
     top3,
-    topTitleKey: cardIsFirst ? 'result.next' : 'result.top3',
+    topTitleKey: cardIsFirst || tie ? 'result.next' : 'result.top3',
+    tie,
     compare,
   };
 }

@@ -174,7 +174,9 @@ describe('현실 미리보기 4줄 (SPEC 4.4)', () => {
     expect(pickJob(rows.jobTypes, 'AU', ['farm'])?.code).toBe('farm');
     expect(pickJob(rows.jobTypes, 'AU', ['office'])?.code).toBe('cafe');
     expect(pickJob(rows.jobTypes, 'DE', ['cafe'])).toBeNull();
-    expect(previewRows(previewOf('DE'), TODAY, undefined)[1]!.value).toBe('대표 일자리 확인 중 / 시급 약 EUR 13.9');
+    const deKrw = previewOf('DE').wage!.krw!;
+    expect(deKrw).toBeGreaterThan(0);
+    expect(previewRows(previewOf('DE'), TODAY, undefined)[1]!.value).toBe(`대표 일자리 확인 중 / 시급 약 EUR 13.9 (약 ${deKrw.toLocaleString('ko-KR')}원)`);
   });
 
   it('최저시급: 나라 값이 없으면 도시 중 가장 높은 값, 시급이 없고 월급만 있으면 월급÷월 근무 시간', () => {
@@ -191,9 +193,28 @@ describe('현실 미리보기 4줄 (SPEC 4.4)', () => {
     expect(w.amount).toBeCloseTo(monthly.value / 173.8, 1);
   });
 
-  it('월세: 월세 값이 있으면 그것, 범위면 a~b, 도시가 있으면 괄호로', () => {
+  it('월세: 월세 값이 있으면 그것, 범위면 a~b, 원화 환산을 같이, 도시가 있으면 "· 도시"', () => {
     const rent = previewRows(previewOf('CA'), TODAY, undefined)[2]!;
-    expect(rent.value).toMatch(/^월세 CAD [\d,]+(~[\d,]+)?(\(.+\))?$/);
+    expect(rent.value).toMatch(/^월세 CAD [\d,]+(~[\d,]+)? \(약 [\d,]+(~[\d,]+)?만 원\)( · .+)?$/);
+  });
+
+  it('외화 값에는 원화를 같이 쓴다(SPEC 0.3): 시급·월세, 환율이 없거나 이전에 저장된 결과는 외화만', () => {
+    const jp = previewOf('JP');
+    expect(jp.wage!.krw).toBeGreaterThan(5000);
+    expect(previewRows(jp, TODAY, undefined)[1]!.value).toContain(`JPY 1,226 (약 ${jp.wage!.krw!.toLocaleString('ko-KR')}원) · 도쿄`);
+    expect(jp.rent!.krwMan).toBeGreaterThan(0);
+    expect(previewRows(jp, TODAY, undefined)[2]!.value).toContain(`(약 ${jp.rent!.krwMan!.toLocaleString('ko-KR')}만 원) · 도쿄`);
+    const ca = previewOf('CA');
+    expect(ca.rent!.max).not.toBeNull();
+    expect(previewRows(ca, TODAY, undefined)[2]!.value).toContain(`약 ${ca.rent!.krwMan!.toLocaleString('ko-KR')}~${ca.rent!.krwMaxMan!.toLocaleString('ko-KR')}만 원`);
+    // 환율 없음 / 예전 결과(krw 칸 없음): 지어내지 않고 외화만
+    const old = { ...jp, wage: { ...jp.wage!, krw: undefined }, rent: { ...jp.rent!, krwMan: undefined, krwMaxMan: undefined } };
+    expect(previewRows(old, TODAY, undefined)[1]!.value).toContain('JPY 1,226 · 도쿄');
+    expect(previewRows(old, TODAY, undefined)[1]!.value).not.toContain('원)');
+    expect(previewRows(old, TODAY, undefined)[2]!.value).not.toContain('만 원');
+    const noRate = buildPreview({ ...rows, rates: rows.rates.filter((x) => x.currency !== 'JPY') }, 'JP', TODAY, data.config, [], null)!;
+    expect(noRate.wage!.krw).toBeNull();
+    expect(previewRows(noRate, TODAY, undefined)[1]!.value).toContain('JPY 1,226 · 도쿄');
   });
 
   it('다음 접수: 오늘 이후 가장 가까운 기간(열려 있는 것 포함) → 상시 → 선착순(연 N명)', () => {

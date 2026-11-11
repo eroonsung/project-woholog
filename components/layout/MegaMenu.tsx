@@ -8,8 +8,8 @@ import { t } from '@/lib/copy';
 import { hrefOf, isCurrentItem, SOON_COUNT, STAGES, type NavItem } from '@/lib/nav';
 
 /** 항목 아래 한 줄 설명. 문구는 copy 파일에 있는 것만 쓴다(없으면 안 보여 줌). */
-const SUB: Record<string, string> = { '/test': 'nav.mobile.test.sub', '/countries': 'nav.mobile.countries.sub', '/checklist': 'nav.mobile.checklist.sub' };
-const subKeyOf = (item: NavItem) => (item.pickCountry ? 'nav.apps.sub' : item.href ? SUB[item.href] : undefined);
+const SUB: Record<string, string> = { '/test': 'nav.mobile.test.sub', '/countries': 'nav.mobile.countries.sub', '/checklist': 'nav.mobile.checklist.sub', '/apps': 'nav.apps.sub' };
+const subKeyOf = (item: NavItem) => (item.href ? SUB[item.href] : undefined);
 
 /**
  * 웹 메가 메뉴: 4단계가 한 패널에 열로 열리고, 연 단계가 강조된다(S11_nav-mega_w).

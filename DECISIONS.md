@@ -524,6 +524,23 @@
   - 덧붙임(글에는 넣지 않음): 기한은 모두 UTC 시각 기준이고, 방문 센터 예약이 없는 등 이용자 잘못이 아닌 이유가 있으면 생체정보 기한 연장을 요청할 수 있다. 글에서 기한 숫자가 바뀌면 `tests/guides_seed.test.tsx`의 기한 문장 검사와 이 기록을 같이 고친다.
 - **시드 운영 적용(허락받음)**: `seed_guides_v1.sql`을 적용. 적용 전 `guides` 0행 → 적용 후 2행: `first-month-money`(id 3, published, `program_id` null), `canada-iec-2027`(id 4, published, `program_id` 22 = 캐나다 프로그램, `{proof_amount}` 포함, 두 줄로 나눈 문장 반영), 둘 다 `needs_review` false, `reviewed_at` 2026-11-11. (id 1·2는 적용 전 시도에서 건너뜀.)
 
+## D-130. 모바일 테스트 수정 11건 + 비행시간 + 나라별 필수 앱 화면 (2026-11-11)
+계기: Yvonne가 운영 주소에서 모바일(375px)로 홈 → 질문 12개 → 결과 → 비교 → 체크리스트를 직접 테스트(결과 id `b9aa04c8-…`, `docs/ops/test_data.md`에 기록).
+- **A1 줄바꿈**: 전역 `word-break: keep-all` + `overflow-wrap: anywhere`(한글은 단어 단위, 긴 값은 넘치지 않게).
+- **A2 질문 이동 시 맨 위**: 질문·보기가 바뀌면 `window.scrollTo(0, 0)`.
+- **A3 동점**: 마음에 둔 나라 %가 1위와 같으면 "0%p 차이"를 쓰지 않고 공동 1위(`result.heart.tie`, 카드는 top1, 아래 제목 "다음으로 잘 맞는 나라"). 엔진 순서·점수는 그대로, 고르는 기준(`pickCard`)만 바뀜.
+- **A4 TOP 3**: 이름 없는 ✓✗ 한 줄 → "조건 N개 중 M개 ✓" 글자 한 줄. 이유: 좁은 칸에서 조건 이름 칩은 줄이 길어지고, 글자는 스크린리더에도 읽힌다. 항목별 내역은 비교 화면에 있다.
+- **A5 원화 병기**: 현실 미리보기의 시급·월세에 SPEC 0.3대로 원화를 같이 쓴다("약 N원", 월세는 "약 a~b만 원"). 옛 결과·환율 없음은 외화만. 비교표 월세도 같은 줄 추가.
+- **A6 Q4 설명**: "캐나다·일본은 두 번까지" 문구 하드코딩 제거. `max_participations` ≥ 2인 나라 이름으로 만들고(`q4.help {countries}`), 없으면 `q4.help.once`.
+- **A7 일본 다음 접수**: 2026년 4분기(1·4·7·10월 셋째·둘째 주 월~금) 값은 DB에 있고 모두 지났다. 2027년 일정은 아직 공개 전(2026년 일정은 2025-12-24 공지). **지어서 넣지 않는다.** 공개되면 `application_windows`에 4행(opens_on·closes_on·note "2027년 N분기"·source_id 30·verified_at) 추가 → 운영자 확인 후 적용.
+- **A8 체크리스트 나라 순서**: 많이 찾는 나라(`content/landing_countries.json`) 먼저, 그다음 가나다순(`lib/popular.ts`, /apps도 공유).
+- **A9 모바일 비교 표 힌트**: 오른쪽에 나라가 더 있으면 그림자 + 안내 한 줄(`ScrollFrame`), 끝까지 밀면 사라짐.
+- **A10 앱 이름 한글 읽기**: 일본어·중국어 이름 앱 6개의 `note_ko` 앞에 한글 읽기를 붙임(시드·`country_apps_v1.md`, 이미 들어간 행은 `seed_country_apps_reading_v1.sql`의 UPDATE로). **한글 읽기는 Yvonne 확인 필요**(중국어는 중국어 발음 기준 표기). 운영 적용은 허락 후.
+- **A11 단일 선택 표시**: 하나만 고르는 질문의 ">" 대신 오른쪽 원형 선택 표시(선택하면 채우고 체크). 색만이 아니라 체크 모양으로도 구분.
+- **B 비행시간**: 마이그레이션 `006_flight_time.sql`(countries에 `flight_direct`·`flight_hours`·`flight_note`·`flight_source_id`·`flight_verified_at`, 짝·범위·확인일 제약). 인천 출발 기준, 직항이면 직항 시간·없으면 경유 포함 최소 시간. 결과 조건 줄("한국과 가까운 곳", 값은 결과 저장 때 params에 담음), 비교 "거리" 줄, 나라 상세 생활 정보에 작은 글씨로 표시. 값이 없거나 칸이 없는 DB에서는 기존 문구만(읽기 쿼리가 칸 없음 오류 시 기존 칸만 다시 읽음). 엔진·점수 불변. 숫자는 Yvonne가 준 `docs/content/flight_v1.md` + `supabase/seed/seed_flight_v1.sql`(칸 `flight_city`·`flight_needs_check` 추가로 맞춤, ⚠ 16곳은 오픈 전 재확인)로 넣는다. 구조 대안: 나중에 출발지가 늘면(To Korea) `flights(origin, destination, …)` 표로 옮긴다 — 지금은 한 방향이라 칸 추가가 가장 단순.
+- **C 나라별 필수 앱 `/apps`**: 메뉴 링크를 `/countries` → `/apps`로, 나라 검색 + 국기 카드(앱 개수), 카드 → `/countries/[코드]#apps`. `nav_ko.json`의 `pickCountry` 항목 구조 제거(`href: "/apps"`). SPEC 7.5.
+- 새로 만든 문구는 모두 `copy_ko.md`에 "제안"으로 표시. 운영 DB 적용(마이그레이션 006, A10 UPDATE)과 push는 허락 대기.
+
 ---
 
 ## 열린 질문 (정해지면 위로 옮긴다)

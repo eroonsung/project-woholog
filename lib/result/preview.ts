@@ -50,20 +50,25 @@ export function buildPreview(rows: DbRows, code: string, asOf: string, config: S
     return [...list].sort((a, b) => b.value * (krwPer(b.currency) ?? 0) - a.value * (krwPer(a.currency) ?? 0))[0];
   };
 
+  // 외화 값의 원화 환산(SPEC 0.3: 외화는 원화를 같이 쓴다). 환율이 없으면 null
+  const won = (amount: number, currency: string | null) => { const per = krwPer(currency); return per === undefined ? null : amount * per; };
+  const krwWage = (amount: number, currency: string | null) => { const v = won(amount, currency); return v === null ? null : Math.round(v / 100) * 100; };
+  const krwMan = (amount: number, currency: string | null) => { const v = won(amount, currency); return v === null ? null : Math.round(v / 10_000); };
+
   const hourly = best(stat('min_wage_hourly'));
   const monthly = best(stat('min_wage_monthly'));
   const hours = config.tiers.wage_krw_per_hour.monthly_hours;
   const wage = hourly
-    ? { amount: hourly.value, currency: hourly.currency ?? 'KRW', city: hourly.city, derived: false }
+    ? { amount: hourly.value, currency: hourly.currency ?? 'KRW', city: hourly.city, derived: false, krw: krwWage(hourly.value, hourly.currency) }
     : monthly
-      ? { amount: Math.round((monthly.value / hours) * 100) / 100, currency: monthly.currency ?? 'KRW', city: monthly.city, derived: true }
+      ? { amount: Math.round((monthly.value / hours) * 100) / 100, currency: monthly.currency ?? 'KRW', city: monthly.city, derived: true, krw: krwWage(monthly.value / hours, monthly.currency) }
       : null;
 
   const rentMonth = best(stat('rent_month'));
   const rentWeek = best(stat('rent_week'));
   const rentRow = rentMonth ?? rentWeek;
   const rent = rentRow
-    ? { amount: rentRow.value, max: rentRow.value_max, currency: rentRow.currency ?? 'KRW', city: rentRow.city, unit: (rentMonth ? 'month' : 'week') as 'month' | 'week' }
+    ? { amount: rentRow.value, max: rentRow.value_max, currency: rentRow.currency ?? 'KRW', city: rentRow.city, unit: (rentMonth ? 'month' : 'week') as 'month' | 'week', krwMan: krwMan(rentRow.value, rentRow.currency), krwMaxMan: rentRow.value_max !== null ? krwMan(rentRow.value_max, rentRow.currency) : null }
     : null;
 
   return {

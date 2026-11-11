@@ -59,7 +59,8 @@ export function previewRows(preview: StoredPreview | undefined, today: string, w
   };
 
   // 대표 일자리 + 시급
-  const wage = preview.wage ? `${preview.wage.currency} ${formatNumber(preview.wage.amount)}${place(preview.wage.city)}` : null;
+  const w = preview.wage;
+  const wage = w ? `${w.currency} ${formatNumber(w.amount)}${w.krw && w.currency !== 'KRW' ? ` (${t('compare.wage.krw', { krw: formatNumber(w.krw) })})` : ''}${w.city ? ` · ${w.city}` : ''}` : null;
   const jobRow: PreviewRow = {
     id: 'job', label: label('job'),
     value: !preview.job && !wage ? checking : t('preview.job', { job: preview.job?.text ?? checking, wage: wage ?? checking }),
@@ -67,7 +68,8 @@ export function previewRows(preview: StoredPreview | undefined, today: string, w
 
   // 월세(월세 값이 없고 주당 값만 있으면 주당)
   const r = preview.rent;
-  const rentText = r ? `${r.currency} ${formatNumber(r.amount)}${r.max !== null ? `~${formatNumber(r.max)}` : ''}${place(r.city)}` : null;
+  const rentKrw = r && r.currency !== 'KRW' && r.krwMan != null ? ` (${r.max !== null && r.krwMaxMan != null ? t('money.krwRange', { min: formatNumber(r.krwMan), max: formatNumber(r.krwMaxMan) }) : t('money.krw', { man: formatNumber(r.krwMan) })})` : '';
+  const rentText = r ? `${r.currency} ${formatNumber(r.amount)}${r.max !== null ? `~${formatNumber(r.max)}` : ''}${rentKrw}${r.city ? ` · ${r.city}` : ''}` : null;
   const rentRow: PreviewRow = {
     id: 'rent', label: label('rent'),
     value: !r || !rentText ? checking : r.unit === 'month' ? t('preview.rent', { rent: rentText }) : t('preview.rent.week', { rent: rentText }),

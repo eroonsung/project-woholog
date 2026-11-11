@@ -9,6 +9,15 @@ async function rows<T>(table: string, columns: string): Promise<T[]> {
   return (data ?? []) as unknown as T[];
 }
 
+const COUNTRY_COLUMNS = 'code,name_ko,region,english,languages,in_europe,near_korea,safety_level,safety_note';
+
+/** 나라 목록 + 비행시간 칸(마이그레이션 006). 칸이 아직 없는 DB에서는 기존 칸만 읽어서 화면이 깨지지 않게 한다 */
+async function countriesWithFlight(): Promise<DbRows['countries']> {
+  const { data, error } = await getPublicClient().from('countries').select(`${COUNTRY_COLUMNS},flight_direct,flight_hours,flight_city,flight_note`).limit(5000);
+  if (!error) return (data ?? []) as unknown as DbRows['countries'];
+  return rows<DbRows['countries'][number]>('countries', COUNTRY_COLUMNS);
+}
+
 /** 공유 링크로 결과 하나 읽기 (get_quiz_result 함수만 쓴다: 전체 목록 조회는 막혀 있음). 없거나 지워졌으면 null */
 export async function fetchQuizResult(id: string) {
   const { data, error } = await getPublicClient().rpc('get_quiz_result', { result_id: id });
@@ -27,7 +36,7 @@ export async function fetchAdapterRows(): Promise<DbRows> {
     return (data ?? []) as unknown as T[];
   };
   const [countries, programs, facts, stats, rates, flights, windows, jobTypes, sources, config] = await Promise.all([
-    rows<DbRows['countries'][number]>('countries', 'code,name_ko,region,english,languages,in_europe,near_korea,safety_level,safety_note'),
+    countriesWithFlight(),
     rows<DbRows['programs'][number]>('programs', 'id,origin,destination,kind,status,age_min,age_max,selection,max_participations,stay_months,long_stay_months,annual_quota'),
     current<DbRows['facts'][number]>('program_facts', 'program_id,key,value_num,value_text,currency,source_id,verified_at'),
     current<DbRows['stats'][number]>('country_stats', 'country,city,metric,value,value_max,currency,as_of,verified_at,source_id'),

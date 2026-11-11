@@ -1,7 +1,7 @@
 import { FitMark } from '@/components/ui/FitMark';
 import { t } from '@/lib/copy';
 import type { ItemId, ReasonLine } from '@/lib/engine';
-import { itemLabel, reasonText } from '@/lib/result/text';
+import { itemLabel, reasonSmall, reasonText } from '@/lib/result/text';
 
 /** 조건 줄: ✗ → △ → ✓ 순서(저장된 순서 그대로), 각 줄은 모양 + 항목 이름 + 이유 한 문장 (SPEC 4.3). 확인 중인 조건은 맨 아래에 회색 "확인 중" 뱃지로. */
 export function ConditionList({ lines, unknown, countryName }: { lines: ReasonLine[]; unknown: ItemId[]; countryName: string }) {
@@ -12,7 +12,10 @@ export function ConditionList({ lines, unknown, countryName }: { lines: ReasonLi
           <FitMark mark={line.mark} text={t(`mark.${line.mark}`)} />
           <div className="min-w-0 flex-1">
             <p className="text-caption font-extrabold text-navy">{itemLabel(line)}</p>
-            <p className="text-body text-navy">{reasonText(line, { country: countryName })}</p>
+            <p className="text-body text-navy">
+              {reasonText(line, { country: countryName })}
+              {reasonSmall(line) ? <span className="ml-1 text-caption text-text2">· {reasonSmall(line)}</span> : null}
+            </p>
           </div>
         </li>
       ))}

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { X } from 'lucide-react';
+import { ScrollFrame } from '@/components/compare/ScrollFrame';
 import { CountryBadges } from '@/components/result/Badges';
 import { FitMark } from '@/components/ui/FitMark';
 import { Flag } from '@/components/ui/Flag';
@@ -36,7 +37,7 @@ export function CompareTable({ countries, fit, removeHref }: { countries: Compar
   };
 
   return (
-    <div className="relative overflow-x-auto rounded-card-lg border border-line bg-white" data-compare-scroll>
+    <ScrollFrame hint={t('compare.scrollHint')}>
       <table className="w-max table-fixed border-collapse lg:w-full">
         <caption className="sr-only">{t('compare.title')}</caption>
         <colgroup>
@@ -110,6 +111,6 @@ export function CompareTable({ countries, fit, removeHref }: { countries: Compar
           ))}
         </tbody>
       </table>
-    </div>
+    </ScrollFrame>
   );
 }

@@ -3,6 +3,7 @@ import type { Partner } from '@/components/countries/DetailExtras';
 import partnersJson from '@/content/partners.json';
 import { buildEntries, hasCountryContent } from '@/lib/checklist';
 import { pickApps } from '@/lib/countries/detail';
+import { popularFirst } from '@/lib/popular';
 import { fetchAdapterRows, fetchChecklistRows, fetchDetailExtras } from '@/lib/data/queries';
 
 // D-day 체크리스트 (SPEC 10장). 나라·항목은 서버에서 읽고(읽기만), 체크·날짜는 브라우저 저장소에 둔다(D-022). 주소(?c=&d=&s=)마다 달라서 요청마다 그린다.
@@ -16,9 +17,8 @@ export default async function ChecklistPage({ searchParams }: { searchParams: Pr
   const [rows, rowsCl, extras] = await Promise.all([fetchAdapterRows(), fetchChecklistRows(), fetchDetailExtras()]);
 
   const programs = rows.programs.filter((p) => p.origin === 'KR' && p.kind === 'working_holiday');
-  const options = programs
-    .map((p) => ({ code: p.destination, nameKo: rows.countries.find((c) => c.code === p.destination)?.name_ko ?? p.destination }))
-    .sort((a, b) => a.nameKo.localeCompare(b.nameKo, 'ko'));
+  // 많이 찾는 나라 먼저, 그다음 가나다순 (D-130)
+  const options = popularFirst(programs.map((p) => ({ code: p.destination, nameKo: rows.countries.find((c) => c.code === p.destination)?.name_ko ?? p.destination })));
 
   const code = (one(sp.c) ?? '').toUpperCase();
   const program = programs.find((p) => p.destination === code) ?? null;

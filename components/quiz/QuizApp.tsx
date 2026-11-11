@@ -78,6 +78,9 @@ export function QuizApp({ countries, minAge, config }: { countries: QuizCountry[
     else if (isSkipped(q, state.answers, ctx)) router.replace(url(nextQuestion(q, state.answers, ctx) === 'submit' ? q - 1 : (nextQuestion(q, state.answers, ctx) as number)));
   }, [state, q, view, ctx, maxAge, params, router]);
 
+  // 질문이 바뀌면(다음·이전·화면 전환) 맨 위로: 긴 질문(Q4) 뒤에 Q5의 헤더가 잘려 보이지 않게 (D-130)
+  useEffect(() => { window.scrollTo(0, 0); }, [q, view]);
+
   // 답과 현재 질문 번호를 저장 (저장소가 막혀 있어도 화면은 그대로)
   useEffect(() => { if (state && q) saveQuiz({ answers: state.answers, q }); }, [state, q]);
 

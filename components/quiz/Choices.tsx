@@ -1,6 +1,6 @@
 'use client';
 
-import { Check, ChevronRight } from 'lucide-react';
+import { Check } from 'lucide-react';
 import type { ReactNode } from 'react';
 
 /** 번호 + 제목 + 설명 카드 목록(Q5·Q7·Q10·Q11). 고르는 즉시 넘어가지 않는다 — "다음"을 눌러야 한다(SPEC 3.2). */
@@ -27,7 +27,10 @@ export function ChoiceCards<T extends string | number>({ options, value, onChang
               <span className="block text-body-l font-extrabold text-navy">{o.title}</span>
               {o.sub ? <span className={`block text-body ${selected ? 'text-aqua-dark' : 'text-text2'}`}>{o.sub}</span> : null}
             </span>
-            {selected ? <Check aria-hidden="true" className="size-5 text-aqua-dark" /> : <ChevronRight aria-hidden="true" className="size-4 text-text3" />}
+            {/* 오른쪽은 "눌러서 넘어가는 화살표"가 아니라 선택 표시(라디오 모양): 고르면 체크 원, 아니면 빈 원 (D-130) */}
+            <span aria-hidden="true" className={`flex size-6 shrink-0 items-center justify-center rounded-full border-thin ${selected ? 'border-aqua-dark bg-aqua-dark text-white' : 'border-line bg-white'}`}>
+              {selected ? <Check className="size-4" /> : null}
+            </span>
           </button>
         );
       })}

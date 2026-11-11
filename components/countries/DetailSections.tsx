@@ -112,7 +112,7 @@ export function Life({ d }: { d: CountryDetail }) {
       {d.life.map((c) => (
         <li key={c.id} className={box}>
           {c.checking ? <span className={pill}>{c.title}</span> : <p className="text-body-l font-extrabold text-navy">{c.title}</p>}
-          {c.body ? <p className="mt-1 text-body text-text2">{c.body}</p> : null}
+          {c.body ? <p className={`mt-1 text-text2 ${c.id === 'distance' ? 'text-caption' : 'text-body'}`}>{c.body}</p> : null}
         </li>
       ))}
     </ul>

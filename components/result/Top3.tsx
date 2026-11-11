@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { Flag } from '@/components/ui/Flag';
-import { FitMark } from '@/components/ui/FitMark';
 import { CountryBadges } from './Badges';
 import { t } from '@/lib/copy';
 import type { ReasonLine } from '@/lib/engine';
@@ -33,9 +32,7 @@ export function Top3({ rows, countries, titleKey }: { rows: StoredRanked[]; coun
                 <span className="ml-auto text-h3 font-black text-aqua-dark">{row.pct}%</span>
               </div>
               {line ? <p className="mt-2 text-body text-text2">{reasonText(line, { country: c?.nameKo ?? row.code })}</p> : null}
-              <ul aria-hidden="true" className="mt-2 flex gap-1">
-                {row.items.map((item, k) => <li key={`${item.id}-${k}`}><FitMark mark={item.mark} text="" small /></li>)}
-              </ul>
+              <p className="mt-1 text-caption font-extrabold text-text2">{t('result.score', { ok: row.okCount, total: row.itemCount })}</p>
             </li>
           );
         })}

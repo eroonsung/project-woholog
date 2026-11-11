@@ -29,8 +29,7 @@
         },
         {
           "label": "나라별 필수 앱",
-          "href": null,
-          "pickCountry": "/countries/[code]#apps"
+          "href": "/apps"
         },
         {
           "label": "초기 비용 계산기",
