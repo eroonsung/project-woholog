@@ -93,7 +93,7 @@ describe('비교표 화면', () => {
     expect(html).toContain('href="/countries/FI"');
   });
   it('핀란드: 흐리게 + "곧 열려요", 개수 안내 "총 29개국 중 28개국"', () => {
-    expect(html).toContain('opacity-60');
+    expect(html).toContain('bg-subtle');
     expect(text(html)).toContain('곧 열려요');
     expect(text(html)).toContain('총 29개국 중 28개국');
   });

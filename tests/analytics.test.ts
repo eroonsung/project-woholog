@@ -40,7 +40,7 @@ describe('측정 이벤트 (SPEC 0.7, D-133)', () => {
     const { readFileSync, readdirSync, statSync } = await import('node:fs');
     const { join } = await import('node:path');
     const files: string[] = [];
-    const walk = (d: string) => { for (const f of readdirSync(d)) { const p = join(d, f); if (f === 'node_modules' || f === '.next') continue; statSync(p).isDirectory() ? walk(p) : /\.tsx?$/.test(f) && files.push(p); } };
+    const walk = (d: string) => { for (const f of readdirSync(d)) { const p = join(d, f); if (f === 'node_modules' || f === '.next') continue; if (statSync(p).isDirectory()) walk(p); else if (/\.tsx?$/.test(f)) files.push(p); } };
     ['components', 'lib'].forEach((d) => walk(d));
     const names = new Set<string>();
     for (const f of files) for (const m of readFileSync(f, 'utf-8').matchAll(/track(?:Event|Once|Session)\('([a-z_]+)'(?:, \{([^}]*)\})?/g)) {
