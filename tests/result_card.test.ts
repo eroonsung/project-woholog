@@ -104,12 +104,26 @@ describe('조건 줄 문구 (reason.* 키 → 글자)', () => {
       const { result } = build(c.id);
       for (const r of result.ranked) {
         for (const line of r.lines) {
-          const text = reasonText(line);
+          const text = reasonText(line, { country: result.countries[r.code]!.nameKo });
           expect(text, `${c.id} ${r.code} ${line.key}`).not.toMatch(/\{\w+\}|reason\.|undefined|null|NaN/);
           expect(itemLabel(line)).not.toMatch(/item\.|q12\./);
         }
       }
     }
+  });
+
+  it('영어가 "일부"인 나라 문구는 나라 이름을 넣어 읽는다(홍콩 고정이 아님)', () => {
+    const line = { mark: 'partial', kind: 'core', itemId: 'language', key: 'reason.language.partial.mixed', params: {} } as const;
+    expect(reasonText(line, { country: '홍콩' })).toBe('홍콩은 영어로 일할 곳이 일부만 있어요.');
+    expect(reasonText(line, { country: '캐나다' })).toBe('캐나다는 영어로 일할 곳이 일부만 있어요.');
+    expect(reasonText(line, { country: '영국' })).toBe('영국은 영어로 일할 곳이 일부만 있어요.');
+    // 실제 데이터: 영어가 일부(H)인 나라(지금은 홍콩)의 조건 줄에서 그 나라 이름이 쓰인다
+    const found = RESULT_CASES.flatMap((c) => {
+      const { result } = build(c.id);
+      return result.ranked.flatMap((r) => r.lines.filter((l) => l.key === 'reason.language.partial.mixed').map((l) => ({ code: r.code, name: result.countries[r.code]!.nameKo, line: l })));
+    });
+    expect(found.length, '영어가 일부인 나라가 나오는 답 세트').toBeGreaterThan(0);
+    for (const f of found) expect(reasonText(f.line, { country: f.name })).toBe(`${f.name}${f.name === '홍콩' ? '은' : ''} 영어로 일할 곳이 일부만 있어요.`);
   });
 
   it('값이 비면 대체 문구(대표 일자리·한 고용주 기간)를 쓴다', () => {

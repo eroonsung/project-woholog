@@ -7,8 +7,9 @@ import type { HeartBlock } from './card';
 
 const NUMERIC = new Set(['budget', 'need', 'gap', 'months', 'plan', 'long']);
 
-export function reasonText(line: ReasonLine): string {
-  const vars: Record<string, string | number> = {};
+/** `extra.country`: 문구의 {country}에 넣을 나라 이름(영어가 "일부"인 나라 문구처럼 나라 이름이 들어가는 문장용) */
+export function reasonText(line: ReasonLine, extra: { country?: string } = {}): string {
+  const vars: Record<string, string | number> = extra.country ? { country: extra.country } : {};
   let missing = false;
   for (const [name, value] of Object.entries(line.params)) {
     if (value === null || value === undefined) { missing = true; continue; }

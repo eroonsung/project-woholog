@@ -63,7 +63,7 @@ export function ResultCard({ plan, result, answers }: { plan: CardPlan; result: 
       ) : null}
       {hard ? <p className="mt-2 text-caption text-text2">{t('badge.hardToLive.tip', { cap: result.config.workFailCapPct ?? 59 })}</p> : null}
 
-      <div className="mt-4"><ConditionList lines={card.lines} unknown={card.unknown ?? []} /></div>
+      <div className="mt-4"><ConditionList lines={card.lines} unknown={card.unknown ?? []} countryName={name} /></div>
 
       {plan.showWhatIf ? <WhatIfBox rows={result.whatIf[card.code] ?? []} countries={result.countries} allLow={plan.allLow} /> : null}
 

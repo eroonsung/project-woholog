@@ -32,7 +32,7 @@ export function Top3({ rows, countries, titleKey }: { rows: StoredRanked[]; coun
                 <CountryBadges badges={row.badges} safety={!!c && c.safetyLevel !== 'normal'} />
                 <span className="ml-auto text-h3 font-black text-aqua-dark">{row.pct}%</span>
               </div>
-              {line ? <p className="mt-2 text-body text-text2">{reasonText(line)}</p> : null}
+              {line ? <p className="mt-2 text-body text-text2">{reasonText(line, { country: c?.nameKo ?? row.code })}</p> : null}
               <ul aria-hidden="true" className="mt-2 flex gap-1">
                 {row.items.map((item, k) => <li key={`${item.id}-${k}`}><FitMark mark={item.mark} text="" small /></li>)}
               </ul>

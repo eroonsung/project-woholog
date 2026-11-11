@@ -539,9 +539,9 @@
 | result.compare.other | 다른 나라와 나란히 비교 | SPEC 4.5 |
 | result.dataChanged | 저장한 뒤에 나라 정보가 바뀌었어요 | SPEC 4.1 |
 | result.recalc | 지금 정보로 다시 계산 | SPEC 4.1 |
-| result.recalcing | 다시 계산하는 중… | 제안 |
+| result.recalcing | 다시 계산하는 중… | 승인(2026-11-11) |
 | result.blocked.inactive | 모집 중단 | SPEC 4.5 |
-| result.blocked.companionVisited | 같이 가는 사람이 이미 다녀온 나라(한 번만 가능) | 제안 |
+| result.blocked.companionVisited | 같이 가는 사람이 이미 다녀온 나라(한 번만 가능) | 승인(2026-11-11) |
 | badge.soon | 곧 열려요 | SPEC 4.5 |
 | badge.hardToLive | 일하며 지내기 어려움 | 원본(5장) |
 | badge.hardToLive.tip | 생활비를 벌어야 한다면 이 나라는 점수를 {cap}%까지만 줘요. | 원본(5장) |
@@ -557,14 +557,14 @@
 | money.foreign | {currency} {amount} ({krw}) | SPEC 0.3 |
 | preview.part.proof | 잔고 증명 {value} | 원본(5장 상세) |
 | preview.part.fee | 비자 비용 {value} | 원본(5장 상세) |
-| preview.part.health | 보건부담금 {value} | 제안 |
+| preview.part.health | 보건부담금 {value} | 승인(2026-11-11) |
 | preview.part.flight | 항공권 약 {value} | 원본(5장 상세) |
-| preview.rent.week | 주당 {rent} | 제안 |
+| preview.rent.week | 주당 {rent} | 승인(2026-11-11) |
 | preview.next.always | 상시 | SPEC 4.4 |
 | preview.next.firstCome | 선착순 (연 {n}명) | SPEC 4.4 |
-| preview.next.firstComeNoQuota | 선착순 | 제안 |
-| preview.next.lottery | 추첨 (연 {n}명) | 제안 |
-| preview.next.lotteryNoQuota | 추첨 | 제안 |
+| preview.next.firstComeNoQuota | 선착순 | 승인(2026-11-11) |
+| preview.next.lottery | 추첨 (연 {n}명) | 승인(2026-11-11) |
+| preview.next.lotteryNoQuota | 추첨 | 승인(2026-11-11) |
 | preview.next.late | 원하는 시기보다 접수가 늦어요 | SPEC 4.4 |
 | reason.obstacle.localLanguage | 현지어가 필요해요 | 원본(5장) |
 | reason.obstacle.noFulltime | 정규직이 안 돼요 | 원본(5장) |
@@ -577,11 +577,11 @@
 | reason.language.ok.local | {language}로 면접을 볼 수 있어 유리해요. | 원본(5장) |
 | reason.language.partial.englishWeak | 영어가 약해도 갈 수 있지만, 처음엔 고를 수 있는 일이 적어요. | 원본(5장) |
 | reason.language.partial.englishWork | 영어로 일할 곳도 있지만 {language:을/를} 쓰는 일자리가 훨씬 많아요. | 원본(5장) |
-| reason.language.partial.mixed | 홍콩은 영어로 일할 곳이 일부만 있어요. | 원본(5장) |
+| reason.language.partial.mixed | {country:은/는} 영어로 일할 곳이 일부만 있어요. | 원본(5장 "홍콩은…"을 {country}로 바꿈: 영어가 "일부"인 나라 전체에 쓰임, 승인 2026-11-11) |
 | reason.language.no.localRequired | 인포센터가 {language:이/가} 필요하다고 안내해요. | 원본(5장) |
 | reason.language.no.generic | {language:을/를} 못 하면 일자리 구하기가 어려워요. | 원본(5장) |
 | reason.work.ok | {job}처럼 하고 싶은 일을 찾을 수 있어요. | 원본(5장) |
-| reason.work.ok.noValue | 하고 싶은 일을 찾을 수 있어요. | 제안(대표 일자리 값이 없을 때) |
+| reason.work.ok.noValue | 하고 싶은 일을 찾을 수 있어요. | 승인(2026-11-11) |
 | reason.work.partial.noFulltime | 정규직으로 일할 수 없어 사무직은 구하기 어려워요. | 원본(5장) |
 | reason.work.partial.employerLimit | 한 고용주와 {months}개월까지만 일할 수 있어요. | 원본(5장) |
 | reason.work.partial.employerLimit.noValue | 한 고용주와 일할 수 있는 기간이 짧아요. | 원본(장애 요소 문구) |
@@ -630,9 +630,9 @@
 | result.whatIf.change.english_interview | 영어로 알바 면접을 볼 수 있게 되면 | 원본(4장 예시) |
 | result.whatIf.change.save_gap | {gap}만 원을 더 모으면 | 원본(4장 예시) |
 | result.whatIf.change.earn_partly | 생활비를 일부만 벌어도 되면 | 원본(4장 예시) |
-| mark.ok | 맞아요 | 제안(스크린리더용) |
-| mark.partial | 조금 아쉬워요 | 제안(스크린리더용) |
-| mark.no | 어려워요 | 제안(스크린리더용) |
+| mark.ok | 맞아요 | 승인(2026-11-11) |
+| mark.partial | 조금 아쉬워요 | 승인(2026-11-11) |
+| mark.no | 어려워요 | 승인(2026-11-11) |
 | result.rank | {n}위 | Figma |
 | money.man | {man}만 원 | SPEC 0.3 |
-| result.shareSlot | 공유 기능은 곧 열려요 | 제안(공유 버튼 자리, 10단계) |
+| result.shareSlot | 공유 기능은 곧 열려요 | 승인(2026-11-11) |

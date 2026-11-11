@@ -4,7 +4,7 @@ import type { ItemId, ReasonLine } from '@/lib/engine';
 import { itemLabel, reasonText } from '@/lib/result/text';
 
 /** 조건 줄: ✗ → △ → ✓ 순서(저장된 순서 그대로), 각 줄은 모양 + 항목 이름 + 이유 한 문장 (SPEC 4.3). 확인 중인 조건은 맨 아래에 회색 "확인 중" 뱃지로. */
-export function ConditionList({ lines, unknown }: { lines: ReasonLine[]; unknown: ItemId[] }) {
+export function ConditionList({ lines, unknown, countryName }: { lines: ReasonLine[]; unknown: ItemId[]; countryName: string }) {
   return (
     <ul className="flex flex-col gap-2">
       {lines.map((line, i) => (
@@ -12,7 +12,7 @@ export function ConditionList({ lines, unknown }: { lines: ReasonLine[]; unknown
           <FitMark mark={line.mark} text={t(`mark.${line.mark}`)} />
           <div className="min-w-0 flex-1">
             <p className="text-caption font-extrabold text-navy">{itemLabel(line)}</p>
-            <p className="text-body text-navy">{reasonText(line)}</p>
+            <p className="text-body text-navy">{reasonText(line, { country: countryName })}</p>
           </div>
         </li>
       ))}

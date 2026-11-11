@@ -411,7 +411,7 @@
   "reason.language.ok.local": "{language}로 면접을 볼 수 있어 유리해요.",
   "reason.language.partial.englishWeak": "영어가 약해도 갈 수 있지만, 처음엔 고를 수 있는 일이 적어요.",
   "reason.language.partial.englishWork": "영어로 일할 곳도 있지만 {language:을/를} 쓰는 일자리가 훨씬 많아요.",
-  "reason.language.partial.mixed": "홍콩은 영어로 일할 곳이 일부만 있어요.",
+  "reason.language.partial.mixed": "{country:은/는} 영어로 일할 곳이 일부만 있어요.",
   "reason.language.no.localRequired": "인포센터가 {language:이/가} 필요하다고 안내해요.",
   "reason.language.no.generic": "{language:을/를} 못 하면 일자리 구하기가 어려워요.",
   "reason.work.ok": "{job}처럼 하고 싶은 일을 찾을 수 있어요.",
