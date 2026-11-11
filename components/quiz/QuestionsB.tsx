@@ -5,9 +5,9 @@ import type { EarnNeed, EnglishSkill, JobId, PriorityId } from '@/lib/engine';
 import quizOptions from '@/content/quiz_options.json';
 import { t, hasCopy } from '@/lib/copy';
 import { formatNumber } from '@/lib/format';
-import { BUDGET, MAX_PRIORITIES } from '@/lib/quiz/config';
+import { BUDGET, HEART_IDS, MAX_PRIORITIES } from '@/lib/quiz/config';
 import { languageChips, priorityChips, type QuizContext } from '@/lib/quiz/steps';
-import type { HeartReasonId, StudyId, WhenId } from '@/lib/quiz/types';
+import type { StudyId, WhenId } from '@/lib/quiz/types';
 import { ChipToggle, ChoiceCards, NoneToggle, type ChoiceOption } from './Choices';
 import { QuestionHeading, QuizActions, InlineNotice } from './Shell';
 import type { QProps } from './QuestionsA';
@@ -111,8 +111,6 @@ export function QuestionJob({ answers, set, next, available }: QProps) {
   );
 }
 
-const HEARTS: HeartReasonId[] = ['culture', 'learn_language', 'know_someone'];
-
 /** Q12 중요한 것(최대 3). 후보가 모두 같은 표시인 칩은 숨긴다. Q1에서 나라를 골랐을 때만 "마음 이유"를 보여 준다. */
 export function QuestionPriority({ answers, ctx, set, next, available }: QProps & { ctx: QuizContext }) {
   const chips = priorityChips(answers, ctx);
@@ -148,7 +146,7 @@ export function QuestionPriority({ answers, ctx, set, next, available }: QProps 
           <h2 className="text-body font-extrabold text-navy">{t('q12.heartLabel')}</h2>
           <p className="mb-3 text-caption text-text2">{t('q12.heartLabel.help')}</p>
           <div className="flex flex-wrap gap-2">
-            {HEARTS.map((h) => (
+            {HEART_IDS.map((h) => (
               <ChipToggle key={h} selected={cur.hearts.includes(h)} onClick={() => set({ q12: { ...cur, hearts: toggle(cur.hearts, h) } })}>
                 {t(`q12.heart.${h}`)}
               </ChipToggle>

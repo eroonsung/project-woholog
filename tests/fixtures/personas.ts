@@ -20,7 +20,7 @@ interface RawPersona {
 const EARN: Record<string, EarnNeed> = { 꼭: 'must', 일부: 'partly', 안: 'none' };
 const JOB: Record<string, JobId> = { 사무: 'office', 호텔: 'hotel', 카페: 'cafe', 농장: 'farm', 리테일: 'retail' };
 export const PRIORITY_KO: Record<PriorityId, string> = {
-  money: '돈', easy_job: '일자리', english: '영어', career: '커리어', two_years: '2년', europe: '유럽',
+  money: '돈', easy_job: '일자리', english: '영어', career: '커리어', two_years: '2년', europe: '유럽', local_language: '현지언어',
   low_cost: '생활비', sure_pick: '확실', few_koreans: '한국인적은', many_koreans: '한국인많은', near_korea: '가까운',
 };
 const PRIORITY = Object.fromEntries(Object.entries(PRIORITY_KO).map(([id, ko]) => [ko, id])) as Record<string, PriorityId>;

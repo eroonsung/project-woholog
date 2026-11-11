@@ -2,7 +2,7 @@ import {
   candidateLanguages, DEFAULT_CONFIG, splitCandidates, visiblePriorities,
   type EngineCountry, type Profile, type ScoringConfig,
 } from '@/lib/engine';
-import { QUESTION_COUNT, STUDY_MONTHS } from './config';
+import { HEART_IDS, QUESTION_COUNT, STUDY_MONTHS } from './config';
 import type { Answers } from './types';
 
 /**
@@ -106,7 +106,7 @@ export function pruneAnswers(a: Answers, ctx: QuizContext): Answers {
   }
   if (next.q12) {
     const allowed = new Set(priorityChips(next, ctx));
-    const hearts = filled(next.q1) && !next.q1?.none ? next.q12.hearts : [];
+    const hearts = filled(next.q1) && !next.q1?.none ? next.q12.hearts.filter((h) => (HEART_IDS as readonly string[]).includes(h)) : [];
     next.q12 = { ...next.q12, priorities: next.q12.priorities.filter((p) => allowed.has(p)), hearts };
   }
   return next;

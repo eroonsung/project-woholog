@@ -14,7 +14,7 @@ const ctx: ValidationContext = {
   countries: data.active.map((a) => a.engine), config: data.config, minAge: data.minAge!, maxAge: data.maxAge!,
 };
 
-describe('저장하는 결과 = Python 기대값 (가상 사용자 6명, Yvonne = A)', () => {
+describe('저장하는 결과 = Python 기대값 (가상 사용자 7명, Yvonne = A)', () => {
   PERSONA_ANSWERS.forEach(({ name, answers }, i) => {
     it(name, () => {
       const checked = validateAnswers(answers, ctx);

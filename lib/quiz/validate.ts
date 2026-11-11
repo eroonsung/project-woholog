@@ -1,5 +1,5 @@
 import type { EarnNeed, EnglishSkill, JobId, PriorityId, ScoringConfig } from '@/lib/engine';
-import { AGE_MAX, BUDGET, MAX_HEART_COUNTRIES, MAX_PRIORITIES } from './config';
+import { AGE_MAX, BUDGET, HEART_IDS, MAX_HEART_COUNTRIES, MAX_PRIORITIES } from './config';
 import { firstUnanswered, languageChips, pruneAnswers, type QuizContext } from './steps';
 import type { Answers, CountryAnswer, HeartReasonId, StudyId, WhenId } from './types';
 
@@ -22,7 +22,7 @@ const WHEN: readonly WhenId[] = ['m3', 'm6', 'y1', 'unknown'];
 const EARN: readonly EarnNeed[] = ['must', 'partly', 'none'];
 const STUDY: readonly StudyId[] = ['none', 'm3', 'm6', 'over6'];
 const JOBS: readonly JobId[] = ['cafe', 'retail', 'hotel', 'farm', 'office', 'care'];
-const HEARTS: readonly HeartReasonId[] = ['culture', 'learn_language', 'know_someone'];
+const LEGACY_HEARTS: readonly string[] = ['learn_language']; // D-111: 예전에 고른 값은 오류 없이 버린다
 
 const isObj = (v: unknown): v is Record<string, unknown> => typeof v === 'object' && v !== null && !Array.isArray(v);
 const isInt = (v: unknown): v is number => typeof v === 'number' && Number.isInteger(v);
@@ -109,8 +109,8 @@ export function validateAnswers(input: unknown, ctx: ValidationContext): Validat
   if (!priorities || priorities.length > MAX_PRIORITIES || new Set(priorities).size !== priorities.length) return fail(12, 'invalid');
   if (!priorities.every((p): p is PriorityId => (ctx.config.priority_chips as string[]).includes(p))) return fail(12, 'invalid');
   if (q12.unknown === (priorities.length > 0)) return fail(12, 'invalid');
-  const hearts = strings(q12.hearts) ?? [];
-  if (!hearts.every((h): h is HeartReasonId => oneOf(HEARTS, h))) return fail(12, 'invalid');
+  const hearts = (strings(q12.hearts) ?? []).filter((h) => !LEGACY_HEARTS.includes(h));
+  if (!hearts.every((h): h is HeartReasonId => oneOf(HEART_IDS, h))) return fail(12, 'invalid');
   out.q12 = { unknown: q12.unknown, priorities: priorities as PriorityId[], hearts: hearts as HeartReasonId[] };
 
   // 앞 질문 답과 맞지 않게 된 보기는 지우고(마음 이유 등), 그래도 빈 질문이 있으면 그 질문으로 보낸다

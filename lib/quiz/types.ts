@@ -8,7 +8,7 @@ export interface CountryAnswer {
 
 export type WhenId = 'm3' | 'm6' | 'y1' | 'unknown'; // Q5. 점수에는 쓰지 않는다
 export type StudyId = 'none' | 'm3' | 'm6' | 'over6'; // Q11
-export type HeartReasonId = 'culture' | 'learn_language' | 'know_someone'; // Q12 마음 이유 (점수 없음)
+export type HeartReasonId = 'culture' | 'know_someone'; // Q12 마음 이유 (점수 없음). 'learn_language'는 D-111에서 뺐다(이전 저장 결과에는 남아 있을 수 있다)
 
 export interface Answers {
   q1?: CountryAnswer;

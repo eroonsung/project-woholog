@@ -5420,5 +5420,1084 @@
     ]
    }
   ]
+ },
+ {
+  "persona": "G 24세 일본 고민(영어 주문 정도, 현지 언어 배우기·생활비·가까운)",
+  "input": {
+   "age": 24,
+   "visited": [],
+   "budget": 600,
+   "eng": 1,
+   "langs": [],
+   "jobs": [
+    "카페"
+   ],
+   "earn": "꼭",
+   "study": 0,
+   "prio": [
+    "현지언어",
+    "생활비",
+    "가까운"
+   ]
+  },
+  "expected": [
+   {
+    "country": "일본",
+    "pct": 61,
+    "ok_count": 3,
+    "item_count": 6,
+    "flag": "",
+    "items": [
+     {
+      "item": "돈",
+      "weight": 3,
+      "mark": "ok"
+     },
+     {
+      "item": "언어",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "일",
+      "weight": 3,
+      "mark": "partial"
+     },
+     {
+      "item": "현지언어",
+      "weight": 1.5,
+      "mark": "ok"
+     },
+     {
+      "item": "생활비",
+      "weight": 1.5,
+      "mark": "partial"
+     },
+     {
+      "item": "가까운",
+      "weight": 1.5,
+      "mark": "ok"
+     }
+    ]
+   },
+   {
+    "country": "대만",
+    "pct": 56,
+    "ok_count": 4,
+    "item_count": 6,
+    "flag": "일하며 지내기 어려움",
+    "items": [
+     {
+      "item": "돈",
+      "weight": 3,
+      "mark": "ok"
+     },
+     {
+      "item": "언어",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "일",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "현지언어",
+      "weight": 1.5,
+      "mark": "ok"
+     },
+     {
+      "item": "생활비",
+      "weight": 1.5,
+      "mark": "ok"
+     },
+     {
+      "item": "가까운",
+      "weight": 1.5,
+      "mark": "ok"
+     }
+    ]
+   },
+   {
+    "country": "브라질",
+    "pct": 56,
+    "ok_count": 3,
+    "item_count": 6,
+    "flag": "",
+    "items": [
+     {
+      "item": "돈",
+      "weight": 3,
+      "mark": "ok"
+     },
+     {
+      "item": "언어",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "일",
+      "weight": 3,
+      "mark": "partial"
+     },
+     {
+      "item": "현지언어",
+      "weight": 1.5,
+      "mark": "ok"
+     },
+     {
+      "item": "생활비",
+      "weight": 1.5,
+      "mark": "ok"
+     },
+     {
+      "item": "가까운",
+      "weight": 1.5,
+      "mark": "no"
+     }
+    ]
+   },
+   {
+    "country": "독일",
+    "pct": 50,
+    "ok_count": 2,
+    "item_count": 6,
+    "flag": "",
+    "items": [
+     {
+      "item": "돈",
+      "weight": 3,
+      "mark": "ok"
+     },
+     {
+      "item": "언어",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "일",
+      "weight": 3,
+      "mark": "partial"
+     },
+     {
+      "item": "현지언어",
+      "weight": 1.5,
+      "mark": "ok"
+     },
+     {
+      "item": "생활비",
+      "weight": 1.5,
+      "mark": "partial"
+     },
+     {
+      "item": "가까운",
+      "weight": 1.5,
+      "mark": "no"
+     }
+    ]
+   },
+   {
+    "country": "캐나다",
+    "pct": 50,
+    "ok_count": 1,
+    "item_count": 6,
+    "flag": "추첨",
+    "items": [
+     {
+      "item": "돈",
+      "weight": 3,
+      "mark": "ok"
+     },
+     {
+      "item": "언어",
+      "weight": 3,
+      "mark": "partial"
+     },
+     {
+      "item": "일",
+      "weight": 3,
+      "mark": "partial"
+     },
+     {
+      "item": "현지언어",
+      "weight": 1.5,
+      "mark": "partial"
+     },
+     {
+      "item": "생활비",
+      "weight": 1.5,
+      "mark": "no"
+     },
+     {
+      "item": "가까운",
+      "weight": 1.5,
+      "mark": "no"
+     }
+    ]
+   },
+   {
+    "country": "라트비아",
+    "pct": 44,
+    "ok_count": 3,
+    "item_count": 6,
+    "flag": "일하며 지내기 어려움",
+    "items": [
+     {
+      "item": "돈",
+      "weight": 3,
+      "mark": "ok"
+     },
+     {
+      "item": "언어",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "일",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "현지언어",
+      "weight": 1.5,
+      "mark": "ok"
+     },
+     {
+      "item": "생활비",
+      "weight": 1.5,
+      "mark": "ok"
+     },
+     {
+      "item": "가까운",
+      "weight": 1.5,
+      "mark": "no"
+     }
+    ]
+   },
+   {
+    "country": "아르헨티나",
+    "pct": 44,
+    "ok_count": 3,
+    "item_count": 6,
+    "flag": "일하며 지내기 어려움",
+    "items": [
+     {
+      "item": "돈",
+      "weight": 3,
+      "mark": "ok"
+     },
+     {
+      "item": "언어",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "일",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "현지언어",
+      "weight": 1.5,
+      "mark": "ok"
+     },
+     {
+      "item": "생활비",
+      "weight": 1.5,
+      "mark": "ok"
+     },
+     {
+      "item": "가까운",
+      "weight": 1.5,
+      "mark": "no"
+     }
+    ]
+   },
+   {
+    "country": "헝가리",
+    "pct": 44,
+    "ok_count": 3,
+    "item_count": 6,
+    "flag": "일하며 지내기 어려움",
+    "items": [
+     {
+      "item": "돈",
+      "weight": 3,
+      "mark": "ok"
+     },
+     {
+      "item": "언어",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "일",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "현지언어",
+      "weight": 1.5,
+      "mark": "ok"
+     },
+     {
+      "item": "생활비",
+      "weight": 1.5,
+      "mark": "ok"
+     },
+     {
+      "item": "가까운",
+      "weight": 1.5,
+      "mark": "no"
+     }
+    ]
+   },
+   {
+    "country": "홍콩",
+    "pct": 44,
+    "ok_count": 2,
+    "item_count": 6,
+    "flag": "일하며 지내기 어려움",
+    "items": [
+     {
+      "item": "돈",
+      "weight": 3,
+      "mark": "ok"
+     },
+     {
+      "item": "언어",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "일",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "현지언어",
+      "weight": 1.5,
+      "mark": "partial"
+     },
+     {
+      "item": "생활비",
+      "weight": 1.5,
+      "mark": "partial"
+     },
+     {
+      "item": "가까운",
+      "weight": 1.5,
+      "mark": "ok"
+     }
+    ]
+   },
+   {
+    "country": "뉴질랜드",
+    "pct": 44,
+    "ok_count": 1,
+    "item_count": 6,
+    "flag": "",
+    "items": [
+     {
+      "item": "돈",
+      "weight": 3,
+      "mark": "ok"
+     },
+     {
+      "item": "언어",
+      "weight": 3,
+      "mark": "partial"
+     },
+     {
+      "item": "일",
+      "weight": 3,
+      "mark": "partial"
+     },
+     {
+      "item": "현지언어",
+      "weight": 1.5,
+      "mark": "no"
+     },
+     {
+      "item": "생활비",
+      "weight": 1.5,
+      "mark": "no"
+     },
+     {
+      "item": "가까운",
+      "weight": 1.5,
+      "mark": "no"
+     }
+    ]
+   },
+   {
+    "country": "네덜란드",
+    "pct": 39,
+    "ok_count": 2,
+    "item_count": 6,
+    "flag": "일하며 지내기 어려움",
+    "items": [
+     {
+      "item": "돈",
+      "weight": 3,
+      "mark": "ok"
+     },
+     {
+      "item": "언어",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "일",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "현지언어",
+      "weight": 1.5,
+      "mark": "ok"
+     },
+     {
+      "item": "생활비",
+      "weight": 1.5,
+      "mark": "partial"
+     },
+     {
+      "item": "가까운",
+      "weight": 1.5,
+      "mark": "no"
+     }
+    ]
+   },
+   {
+    "country": "벨기에",
+    "pct": 39,
+    "ok_count": 2,
+    "item_count": 6,
+    "flag": "일하며 지내기 어려움",
+    "items": [
+     {
+      "item": "돈",
+      "weight": 3,
+      "mark": "ok"
+     },
+     {
+      "item": "언어",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "일",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "현지언어",
+      "weight": 1.5,
+      "mark": "ok"
+     },
+     {
+      "item": "생활비",
+      "weight": 1.5,
+      "mark": "partial"
+     },
+     {
+      "item": "가까운",
+      "weight": 1.5,
+      "mark": "no"
+     }
+    ]
+   },
+   {
+    "country": "프랑스",
+    "pct": 39,
+    "ok_count": 2,
+    "item_count": 6,
+    "flag": "일하며 지내기 어려움",
+    "items": [
+     {
+      "item": "돈",
+      "weight": 3,
+      "mark": "ok"
+     },
+     {
+      "item": "언어",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "일",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "현지언어",
+      "weight": 1.5,
+      "mark": "ok"
+     },
+     {
+      "item": "생활비",
+      "weight": 1.5,
+      "mark": "partial"
+     },
+     {
+      "item": "가까운",
+      "weight": 1.5,
+      "mark": "no"
+     }
+    ]
+   },
+   {
+    "country": "덴마크",
+    "pct": 33,
+    "ok_count": 2,
+    "item_count": 6,
+    "flag": "일하며 지내기 어려움",
+    "items": [
+     {
+      "item": "돈",
+      "weight": 3,
+      "mark": "ok"
+     },
+     {
+      "item": "언어",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "일",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "현지언어",
+      "weight": 1.5,
+      "mark": "ok"
+     },
+     {
+      "item": "생활비",
+      "weight": 1.5,
+      "mark": "no"
+     },
+     {
+      "item": "가까운",
+      "weight": 1.5,
+      "mark": "no"
+     }
+    ]
+   },
+   {
+    "country": "룩셈부르크",
+    "pct": 33,
+    "ok_count": 2,
+    "item_count": 6,
+    "flag": "일하며 지내기 어려움",
+    "items": [
+     {
+      "item": "돈",
+      "weight": 3,
+      "mark": "ok"
+     },
+     {
+      "item": "언어",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "일",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "현지언어",
+      "weight": 1.5,
+      "mark": "ok"
+     },
+     {
+      "item": "생활비",
+      "weight": 1.5,
+      "mark": "no"
+     },
+     {
+      "item": "가까운",
+      "weight": 1.5,
+      "mark": "no"
+     }
+    ]
+   },
+   {
+    "country": "스웨덴",
+    "pct": 33,
+    "ok_count": 2,
+    "item_count": 6,
+    "flag": "일하며 지내기 어려움",
+    "items": [
+     {
+      "item": "돈",
+      "weight": 3,
+      "mark": "ok"
+     },
+     {
+      "item": "언어",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "일",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "현지언어",
+      "weight": 1.5,
+      "mark": "ok"
+     },
+     {
+      "item": "생활비",
+      "weight": 1.5,
+      "mark": "no"
+     },
+     {
+      "item": "가까운",
+      "weight": 1.5,
+      "mark": "no"
+     }
+    ]
+   },
+   {
+    "country": "칠레",
+    "pct": 33,
+    "ok_count": 2,
+    "item_count": 6,
+    "flag": "일하며 지내기 어려움",
+    "items": [
+     {
+      "item": "돈",
+      "weight": 3,
+      "mark": "partial"
+     },
+     {
+      "item": "언어",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "일",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "현지언어",
+      "weight": 1.5,
+      "mark": "ok"
+     },
+     {
+      "item": "생활비",
+      "weight": 1.5,
+      "mark": "ok"
+     },
+     {
+      "item": "가까운",
+      "weight": 1.5,
+      "mark": "no"
+     }
+    ]
+   },
+   {
+    "country": "호주",
+    "pct": 33,
+    "ok_count": 0,
+    "item_count": 6,
+    "flag": "",
+    "items": [
+     {
+      "item": "돈",
+      "weight": 3,
+      "mark": "partial"
+     },
+     {
+      "item": "언어",
+      "weight": 3,
+      "mark": "partial"
+     },
+     {
+      "item": "일",
+      "weight": 3,
+      "mark": "partial"
+     },
+     {
+      "item": "현지언어",
+      "weight": 1.5,
+      "mark": "no"
+     },
+     {
+      "item": "생활비",
+      "weight": 1.5,
+      "mark": "no"
+     },
+     {
+      "item": "가까운",
+      "weight": 1.5,
+      "mark": "no"
+     }
+    ]
+   },
+   {
+    "country": "포르투갈",
+    "pct": 29,
+    "ok_count": 2,
+    "item_count": 5,
+    "flag": "일하며 지내기 어려움",
+    "items": [
+     {
+      "item": "언어",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "일",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "현지언어",
+      "weight": 1.5,
+      "mark": "ok"
+     },
+     {
+      "item": "생활비",
+      "weight": 1.5,
+      "mark": "ok"
+     },
+     {
+      "item": "가까운",
+      "weight": 1.5,
+      "mark": "no"
+     }
+    ]
+   },
+   {
+    "country": "폴란드",
+    "pct": 29,
+    "ok_count": 2,
+    "item_count": 5,
+    "flag": "일하며 지내기 어려움",
+    "items": [
+     {
+      "item": "언어",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "일",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "현지언어",
+      "weight": 1.5,
+      "mark": "ok"
+     },
+     {
+      "item": "생활비",
+      "weight": 1.5,
+      "mark": "ok"
+     },
+     {
+      "item": "가까운",
+      "weight": 1.5,
+      "mark": "no"
+     }
+    ]
+   },
+   {
+    "country": "아일랜드",
+    "pct": 29,
+    "ok_count": 0,
+    "item_count": 5,
+    "flag": "추첨",
+    "items": [
+     {
+      "item": "언어",
+      "weight": 3,
+      "mark": "partial"
+     },
+     {
+      "item": "일",
+      "weight": 3,
+      "mark": "partial"
+     },
+     {
+      "item": "현지언어",
+      "weight": 1.5,
+      "mark": "no"
+     },
+     {
+      "item": "생활비",
+      "weight": 1.5,
+      "mark": "no"
+     },
+     {
+      "item": "가까운",
+      "weight": 1.5,
+      "mark": "no"
+     }
+    ]
+   },
+   {
+    "country": "안도라",
+    "pct": 25,
+    "ok_count": 1,
+    "item_count": 5,
+    "flag": "일하며 지내기 어려움",
+    "items": [
+     {
+      "item": "돈",
+      "weight": 3,
+      "mark": "partial"
+     },
+     {
+      "item": "언어",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "일",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "현지언어",
+      "weight": 1.5,
+      "mark": "ok"
+     },
+     {
+      "item": "가까운",
+      "weight": 1.5,
+      "mark": "no"
+     }
+    ]
+   },
+   {
+    "country": "체코",
+    "pct": 22,
+    "ok_count": 2,
+    "item_count": 6,
+    "flag": "일하며 지내기 어려움",
+    "items": [
+     {
+      "item": "돈",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "언어",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "일",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "현지언어",
+      "weight": 1.5,
+      "mark": "ok"
+     },
+     {
+      "item": "생활비",
+      "weight": 1.5,
+      "mark": "ok"
+     },
+     {
+      "item": "가까운",
+      "weight": 1.5,
+      "mark": "no"
+     }
+    ]
+   },
+   {
+    "country": "영국",
+    "pct": 22,
+    "ok_count": 0,
+    "item_count": 6,
+    "flag": "",
+    "items": [
+     {
+      "item": "돈",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "언어",
+      "weight": 3,
+      "mark": "partial"
+     },
+     {
+      "item": "일",
+      "weight": 3,
+      "mark": "partial"
+     },
+     {
+      "item": "현지언어",
+      "weight": 1.5,
+      "mark": "no"
+     },
+     {
+      "item": "생활비",
+      "weight": 1.5,
+      "mark": "no"
+     },
+     {
+      "item": "가까운",
+      "weight": 1.5,
+      "mark": "no"
+     }
+    ]
+   },
+   {
+    "country": "스페인",
+    "pct": 21,
+    "ok_count": 1,
+    "item_count": 5,
+    "flag": "일하며 지내기 어려움",
+    "items": [
+     {
+      "item": "언어",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "일",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "현지언어",
+      "weight": 1.5,
+      "mark": "ok"
+     },
+     {
+      "item": "생활비",
+      "weight": 1.5,
+      "mark": "partial"
+     },
+     {
+      "item": "가까운",
+      "weight": 1.5,
+      "mark": "no"
+     }
+    ]
+   },
+   {
+    "country": "오스트리아",
+    "pct": 21,
+    "ok_count": 1,
+    "item_count": 5,
+    "flag": "일하며 지내기 어려움",
+    "items": [
+     {
+      "item": "언어",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "일",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "현지언어",
+      "weight": 1.5,
+      "mark": "ok"
+     },
+     {
+      "item": "생활비",
+      "weight": 1.5,
+      "mark": "partial"
+     },
+     {
+      "item": "가까운",
+      "weight": 1.5,
+      "mark": "no"
+     }
+    ]
+   },
+   {
+    "country": "이탈리아",
+    "pct": 17,
+    "ok_count": 1,
+    "item_count": 6,
+    "flag": "일하며 지내기 어려움",
+    "items": [
+     {
+      "item": "돈",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "언어",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "일",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "현지언어",
+      "weight": 1.5,
+      "mark": "ok"
+     },
+     {
+      "item": "생활비",
+      "weight": 1.5,
+      "mark": "partial"
+     },
+     {
+      "item": "가까운",
+      "weight": 1.5,
+      "mark": "no"
+     }
+    ]
+   },
+   {
+    "country": "이스라엘",
+    "pct": 14,
+    "ok_count": 1,
+    "item_count": 5,
+    "flag": "일하며 지내기 어려움",
+    "items": [
+     {
+      "item": "언어",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "일",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "현지언어",
+      "weight": 1.5,
+      "mark": "ok"
+     },
+     {
+      "item": "생활비",
+      "weight": 1.5,
+      "mark": "no"
+     },
+     {
+      "item": "가까운",
+      "weight": 1.5,
+      "mark": "no"
+     }
+    ]
+   }
+  ]
  }
 ]

@@ -53,6 +53,10 @@ export function priorityMark(id: PriorityId, c: EngineCountry, p: Profile, lang:
     }
     case 'english':
       return c.english === 'Y' ? 'ok' : c.english === 'H' ? 'partial' : 'no';
+    case 'local_language':
+      // D-111: 일자리에서 현지 언어를 주로 쓰면 ✓, 영어와 같이 쓰거나(H) 영어권이라도 현지 언어가 있으면 △, 영어만 쓰면 ✗
+      if (c.english === 'N') return 'ok';
+      return c.english === 'H' || c.languages.length > 0 ? 'partial' : 'no';
     case 'career':
       if (lang !== 'ok') return 'no';
       return c.noFulltime ? 'partial' : 'ok';

@@ -44,6 +44,7 @@ P={
  'D 33세 커리어(영어 업무, 1500만, 커리어·영어·유럽)':dict(age=33,visited=set(),budget=1500,eng=3,langs=[],jobs=['사무'],earn='일부',study=0,prio=['커리어','영어','유럽']),
  'E 29세 영어 거의 못함(300만, 한국인많은·생활비·확실)':dict(age=29,visited=set(),budget=300,eng=0,langs=[],jobs=['카페','리테일'],earn='꼭',study=0,prio=['한국인많은','생활비','확실']),
  'F 25세 스페인어 가능(유럽·생활비·한국인적은)':dict(age=25,visited=set(),budget=500,eng=1,langs=['스페인어'],jobs=['호텔'],earn='일부',study=0,prio=['유럽','생활비','한국인적은']),
+ 'G 24세 일본 고민(영어 주문 정도, 현지 언어 배우기·생활비·가까운)':dict(age=24,visited=set(),budget=600,eng=1,langs=[],jobs=['카페'],earn='꼭',study=0,prio=['현지언어','생활비','가까운']),
 }
 
 EMP3={'이스라엘'}  # 한 고용주 3개월만 실제 제한으로 계산 (6개월 제한은 표시만)
@@ -74,6 +75,7 @@ def score(p):
             elif pr=='일자리':
                 f=(lang!=1)+(noft or emp)+hard; m=1 if f==0 else .5 if f==1 else 0
             elif pr=='영어': m=1 if eng=='Y' else .5 if eng=='H' else 0
+            elif pr=='현지언어': m=1 if eng=='N' else .5 if (eng=='H' or langs) else 0  # D-111: 영어권(Y)이라도 현지 언어(langs)가 있으면 △
             elif pr=='커리어': m=0 if lang!=1 else .5 if noft else 1
             elif pr=='2년':
                 m=V[long2]

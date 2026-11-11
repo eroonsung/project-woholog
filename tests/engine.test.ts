@@ -10,9 +10,9 @@ import { ITEM_KO, PERSONAS } from './fixtures/personas';
 const BADGE_KO: Record<Badge, string> = { hard_to_live: '일하며 지내기 어려움', lottery: '추첨' };
 const MARK_BY_NAME = Object.fromEntries(COUNTRIES.map((c) => [c.code, c.nameKo]));
 
-describe('엔진 회귀: 가상 사용자 6명 × 모든 나라 (Python 원본 = 정답)', () => {
-  it('가상 사용자는 6명, 나라는 28개', () => {
-    expect(PERSONAS).toHaveLength(6);
+describe('엔진 회귀: 가상 사용자 7명 × 모든 나라 (Python 원본 = 정답)', () => {
+  it('가상 사용자는 7명(A~F 기존 + G 새 칩), 나라는 28개', () => {
+    expect(PERSONAS).toHaveLength(7);
     expect(COUNTRIES).toHaveLength(28);
   });
 

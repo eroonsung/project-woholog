@@ -49,7 +49,7 @@ export type JobId = 'cafe' | 'retail' | 'hotel' | 'farm' | 'office' | 'care'; //
 export type EarnNeed = 'must' | 'partly' | 'none'; // Q10
 export type PriorityId =
   | 'money' | 'easy_job' | 'english' | 'career' | 'two_years' | 'europe'
-  | 'low_cost' | 'sure_pick' | 'few_koreans' | 'many_koreans' | 'near_korea'; // scoring_config.priority_chips
+  | 'local_language' | 'low_cost' | 'sure_pick' | 'few_koreans' | 'many_koreans' | 'near_korea'; // scoring_config.priority_chips
 
 /** 질문 12개의 답 중 엔진이 쓰는 것. 출국 시기(Q5)와 마음 이유는 점수에 쓰지 않는다. */
 export interface Profile {

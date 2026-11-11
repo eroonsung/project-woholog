@@ -12,7 +12,7 @@ export const DEFAULT_CONFIG: ScoringConfig = {
   low_result_pct: 60,
   mark_values: { ok: 1, partial: 0.5, no: 0 },
   priority_chips: [
-    'money', 'easy_job', 'english', 'career', 'two_years', 'europe',
+    'money', 'easy_job', 'english', 'career', 'two_years', 'europe', 'local_language',
     'low_cost', 'sure_pick', 'few_koreans', 'many_koreans', 'near_korea',
   ],
   english_levels: { interview: 2, work: 3, basic_max: 1 }, // Q7 답 번호: 알바 면접 / 업무 / 주문 정도
