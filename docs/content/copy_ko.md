@@ -542,7 +542,6 @@
 | result.recalcing | 다시 계산하는 중… | 제안 |
 | result.blocked.inactive | 모집 중단 | SPEC 4.5 |
 | result.blocked.companionVisited | 같이 가는 사람이 이미 다녀온 나라(한 번만 가능) | 제안 |
-| result.asOf | 결과를 만든 날 {date} | 제안 |
 | badge.soon | 곧 열려요 | SPEC 4.5 |
 | badge.hardToLive | 일하며 지내기 어려움 | 원본(5장) |
 | badge.hardToLive.tip | 생활비를 벌어야 한다면 이 나라는 점수를 {cap}%까지만 줘요. | 원본(5장) |
@@ -637,4 +636,3 @@
 | result.rank | {n}위 | Figma |
 | money.man | {man}만 원 | SPEC 0.3 |
 | result.shareSlot | 공유 기능은 곧 열려요 | 제안(공유 버튼 자리, 10단계) |
-| result.backToTop | 결과 맨 위로 | 제안 |

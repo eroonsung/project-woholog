@@ -376,7 +376,6 @@
   "result.recalcing": "다시 계산하는 중…",
   "result.blocked.inactive": "모집 중단",
   "result.blocked.companionVisited": "같이 가는 사람이 이미 다녀온 나라(한 번만 가능)",
-  "result.asOf": "결과를 만든 날 {date}",
   "badge.soon": "곧 열려요",
   "badge.hardToLive": "일하며 지내기 어려움",
   "badge.hardToLive.tip": "생활비를 벌어야 한다면 이 나라는 점수를 {cap}%까지만 줘요.",
@@ -470,6 +469,5 @@
   "mark.no": "어려워요",
   "result.rank": "{n}위",
   "money.man": "{man}만 원",
-  "result.shareSlot": "공유 기능은 곧 열려요",
-  "result.backToTop": "결과 맨 위로"
+  "result.shareSlot": "공유 기능은 곧 열려요"
 }
