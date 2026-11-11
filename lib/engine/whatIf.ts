@@ -32,8 +32,9 @@ export function whatIf(
   if (language) scenarios.push({ change: 'learn_local_language', params: { language }, next: { ...p, languages: [...p.languages, language] } });
   if (p.english < cfg.english_levels.interview)
     scenarios.push({ change: 'english_interview', params: {}, next: { ...p, english: cfg.english_levels.interview as Profile['english'] } });
-  const gap = target.needMan - p.budgetMan;
-  if (gap > 0) scenarios.push({ change: 'save_gap', params: { gap }, next: { ...p, budgetMan: target.needMan } });
+  const need = target.needMan;
+  const gap = need === null ? 0 : need - p.budgetMan;
+  if (need !== null && gap > 0) scenarios.push({ change: 'save_gap', params: { gap }, next: { ...p, budgetMan: need } });
   if (p.earn === 'must') scenarios.push({ change: 'earn_partly', params: {}, next: { ...p, earn: 'partly' } });
 
   return scenarios

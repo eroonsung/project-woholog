@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState, useSyncExternalStore } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { maxAgeOf } from '@/lib/engine';
+import { maxAgeOf, type ScoringConfig } from '@/lib/engine';
 import type { QuizCountry } from '@/lib/data/quizCountries';
 import { MAX_HEART_COUNTRIES, QUESTION_COUNT } from '@/lib/quiz/config';
 import { clearQuiz, loadQuiz, saveQuiz } from '@/lib/quiz/state';
@@ -24,7 +24,7 @@ const url = (q: number) => `/test?q=${q}`;
  * 질문 화면 전체: 주소(?q=, ?pre=, ?stop=age, ?loading=1) ↔ 답 ↔ sessionStorage를 이어 준다. (SPEC.md 3장)
  * 질문 순서·건너뛰기·답 정리 규칙은 lib/quiz/steps.ts에 있다.
  */
-export function QuizApp({ countries, minAge }: { countries: QuizCountry[]; minAge: number }) {
+export function QuizApp({ countries, minAge, config }: { countries: QuizCountry[]; minAge: number; config: ScoringConfig }) {
   const router = useRouter();
   const params = useSearchParams();
   const [state, setState] = useState<QuizState | null>(null);
@@ -35,7 +35,7 @@ export function QuizApp({ countries, minAge }: { countries: QuizCountry[]; minAg
   // 서버에서는 false, 브라우저에서는 true (저장소를 읽어도 되는 때)
   const mounted = useSyncExternalStore(() => () => {}, () => true, () => false);
 
-  const ctx: QuizContext = useMemo(() => ({ countries: countries.map((c) => c.engine) }), [countries]);
+  const ctx: QuizContext = useMemo(() => ({ countries: countries.map((c) => c.engine), config }), [countries, config]);
   const maxAge = useMemo(() => maxAgeOf(ctx.countries), [ctx]);
 
   const qParam = Number(params.get('q'));

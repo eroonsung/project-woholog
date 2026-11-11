@@ -11,7 +11,7 @@ import type { Answers } from './types';
  */
 export interface QuizContext {
   countries: readonly EngineCountry[];
-  /** TODO(3단계): DB scoring_config를 읽어 넘긴다. 지금은 기본값. */
+  /** DB scoring_config(adapter가 만든 설정). 없으면 defaults.ts 기본값 */
   config?: ScoringConfig;
 }
 

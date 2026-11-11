@@ -22,7 +22,8 @@ export function scoreCountry(c: EngineCountry, p: Profile, cfg: ScoringConfig): 
   const items: ScoreItem[] = [];
   const core = (id: CoreItemId, weight: number, mark: Mark) => items.push({ kind: 'core', id, weight, mark });
 
-  core('money', cfg.weights.money, moneyMark(c, p, cfg));
+  const money = moneyMark(c, p, cfg);
+  if (money !== null) core('money', cfg.weights.money, money);
   const lang = languageMark(c, p, cfg);
   core('language', cfg.weights.language, lang);
 

@@ -189,7 +189,7 @@ describe('이렇게 바꾸면 (whatIf)', () => {
     const changes = (p: Profile) => whatIf(COUNTRIES, p, cfg, lowCode).map((r) => r.change);
     // 영어 면접 가능, 현지어 가능, 돈 충분, 생활비 안 벌어도 됨 → 모두 이미 만족
     const satisfied: Profile = {
-      ...persona, english: 2, languages: target.languages, budgetMan: target.needMan, earn: 'partly',
+      ...persona, english: 2, languages: target.languages, budgetMan: target.needMan ?? 0, earn: 'partly',
     };
     const result = changes(satisfied);
     expect(result).not.toContain('english_interview');
@@ -199,7 +199,7 @@ describe('이렇게 바꾸면 (whatIf)', () => {
     // 하나씩 따로 봐도 같다
     expect(changes({ ...persona, english: 3 })).not.toContain('english_interview');
     expect(changes({ ...persona, languages: target.languages })).not.toContain('learn_local_language');
-    expect(changes({ ...persona, budgetMan: target.needMan })).not.toContain('save_gap');
+    expect(changes({ ...persona, budgetMan: target.needMan ?? 0 })).not.toContain('save_gap');
     expect(changes({ ...persona, earn: 'none' })).not.toContain('earn_partly');
   });
 
