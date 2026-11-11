@@ -3,7 +3,7 @@ Pretendard 가변 글꼴(fonts_src/PretendardVariable.woff2, 2MB)에서 쓰는 �
   app/fonts/PretendardCore.woff2   코드·문구·DB 시드에 실제로 쓰인 글자 + 영문·숫자·기호. 모든 화면이 이 파일만으로 그려진다(preload).
   app/fonts/PretendardExtra.woff2  나머지 한글 KS X 1001 2,350자 등. 위 파일에 없는 글자가 나올 때만 내려받는다(preload 안 함).
 굵기는 400~900만 남긴다. 실행: python3 -I scripts/make_font_subset.py   (pip install fonttools brotli 필요, 프로젝트 의존성 아님)
-글자가 늘어나는 문구·DB 값을 넣은 뒤에는 다시 실행한다. 끝에 "글꼴에 없는 글자"가 나오면 알려 준다.
+글자가 늘어나는 문구·DB 값을 넣은 뒤에는 다시 실행한다(npm run precheck가 경고해 준다). 끝에 "글꼴에 없는 글자"가 나오면 알려 준다.
 """
 import io, os
 from fontTools import subset
@@ -52,4 +52,8 @@ c2 = build(extra, f'{OUT}/PretendardExtra.woff2')
 for name in ('PretendardCore', 'PretendardExtra'):
     print(name, os.path.getsize(f'{OUT}/{name}.woff2') // 1024, 'KB')
 print('쓰인 글자', len(used), '개 중 Core에 없는 글자:', ''.join(chr(c) for c in sorted(used - c1))[:80] or '없음')
+# precheck(scripts/check_font_chars.mjs)가 읽는 글자 목록
+with open(f'{OUT}/PretendardCore.chars.txt', 'w', encoding='utf-8') as fh:
+    fh.write('core: ' + ''.join(chr(c) for c in sorted(c1)) + '\n')
+    fh.write('none: ' + ''.join(chr(c) for c in sorted(used - c1 - c2)) + '\n')  # 원본 글꼴에도 없는 글자(알고 있음)
 print('Core·Extra 어디에도 없는 글자(원본 글꼴에 없음):', ''.join(chr(c) for c in sorted(used - c1 - c2))[:80] or '없음')

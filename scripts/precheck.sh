@@ -25,6 +25,9 @@ shape=$(git diff --cached -U0 | grep -E '^\+' | grep -cE 'sb_(secret|publishable
 role=$(git diff --cached -U0 -- . ':(exclude)*.md' ':(exclude)*.sql' ':(exclude)scripts/precheck.sh' | grep -E '^\+' | grep -c 'service_role' || true)
 if [ "$shape" = "0" ] && [ "$role" = "0" ]; then echo "  ✓ 0건"; else echo "  ✗ 실제 키 형태 ${shape}건, 코드의 service_role ${role}건"; fail=1; fi
 
+step "참고: 글꼴 글자 확인 (경고만, push를 막지 않음)"
+node scripts/check_font_chars.mjs || echo "  (확인 스크립트 오류)"
+
 printf '\n'
 if [ "$fail" = "0" ]; then echo "precheck 통과 → push 가능"; else echo "precheck 실패 → push 금지"; fi
 exit $fail

@@ -397,6 +397,11 @@
 - 문구·DB 값에 새 글자가 늘면 스크립트를 다시 돌린다(없는 글자는 Extra → 시스템 글꼴 순으로 대신 그려져 □로 보이지 않는다). 원본 글꼴에도 없는 글자는 `▾` 하나(소스 주석)뿐이다.
 - **Lighthouse 모바일(3회)**: 성능 75 → **97~99**, LCP 12.5초 → 2.3~2.6초, 글꼴 전송량 2,010KB → 105KB. 접근성 96은 그대로(11단계 예정, D-109·D-110).
 
+## D-113. 5.1·5.2 승인과 운영 반영 (2026-11-12)
+- **문구 승인**: `q12.opt.local_language`, `reason.priority.local_language.ok·partial·no` 4개 모두 승인(제안 표시 해제). 가상 사용자 G의 가정(예산 600만, 카페, 돈 꼭, 어학원 안 다님 = B와 같게)도 승인.
+- **운영 DB 시드 적용**(push 배포 성공 뒤): `seed_local_language_v1.sql`로 `scoring_config` 두 줄 변경. 적용 전 `priority_chips`에는 `local_language`가 없었고 `heart_reason_chips`는 `["culture","learn_language","know_someone"]`였다. 적용 후 `priority_chips`는 `europe` 다음에 `local_language`가 들어갔고 `heart_reason_chips`는 `["culture","know_someone"]`이다.
+- **글꼴 글자 경고**: `npm run precheck` 맨 끝에서 `scripts/check_font_chars.mjs`가 문구·코드·DB 시드의 글자를 `app/fonts/PretendardCore.chars.txt`와 비교해, Core에 없는 글자와 그 파일을 경고한다(push를 막지는 않음). 경고가 나오면 `scripts/make_font_subset.py`로 Core를 다시 만들고 글꼴 파일·글자 목록을 같이 커밋한다. 원본 글꼴에도 없는 글자(`▾`)는 목록에 "알고 있음"으로 적혀 경고하지 않는다.
+
 ---
 
 ## 열린 질문 (정해지면 위로 옮긴다)

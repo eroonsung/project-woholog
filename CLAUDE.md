@@ -76,7 +76,7 @@
 ```
 CLAUDE.md  SPEC.md  DECISIONS.md  README.md  (기준 문서 3개와 README만 대문자, 나머지 규칙은 아래)
 app/
-  fonts/  PretendardCore.woff2  PretendardExtra.woff2  (원본 2MB는 fonts_src/)
+  fonts/  PretendardCore.woff2  PretendardExtra.woff2  PretendardCore.chars.txt  (원본 2MB는 fonts_src/)
   page.tsx                    첫 화면
   test/page.tsx               질문 12개 (?q=1..12, ?pre=JP)
   r/[id]/page.tsx             결과
@@ -116,6 +116,7 @@ supabase/
 scripts/
   precheck.sh  push 전 확인(build·tsc·eslint·vitest, .env*, 키 패턴) — npm run precheck
   make_font_subset.py  Pretendard 서브셋(Core·Extra) 만들기, 글자가 늘면 다시 실행(D-112)
+  check_font_chars.mjs  Core에 없는 글자 경고(precheck가 호출, D-113)
 tests/
   engine.test.ts  adapter.test.ts  checklist.test.ts  storage.test.ts
   fixtures/personas_expected.json  countries_v1.ts  personas.ts  db_rows_v1.json(DB 스냅샷)
