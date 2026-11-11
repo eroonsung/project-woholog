@@ -33,9 +33,9 @@ DB에는 `supabase/seed/seed_country_apps_v1.sql`로 넣는다. 둘을 같이 �
 | 앱 | 분류 | 설명 | 링크 |
 |---|---|---|---|
 | LINE | 생활 | 현지 연락은 대부분 LINE으로 해요 | https://line.me |
-| Yahoo!乗換案内 | 교통 | 야후 노리카에안나이 · 전철 환승·시간표 검색 | https://transit.yahoo.co.jp |
+| Yahoo!乗換案内 | 교통 | 야후 환승안내 · 전철 환승·시간표 검색 | https://transit.yahoo.co.jp |
 | Mobile Suica | 교통 | 휴대폰 교통카드(아이폰은 지갑 앱) | https://www.jreast.co.jp/mobilesuica/ ⚠ 직접 확인 필요 |
-| タウンワーク | 일자리 | 타운워크 · 아르바이트 구인 | https://townwork.net ⚠ 직접 확인 필요 |
+| タウンワーク | 일자리 | 타운워크(아르바이트 구인) | https://townwork.net ⚠ 직접 확인 필요 |
 | SUUMO | 집 | 방 구하기 | https://suumo.jp |
 | PayPay | 은행·송금 | 가장 널리 쓰이는 간편결제 | https://paypay.ne.jp |
 | 해외안전여행 | 안전 | 외교부 앱. 여행경보·대사관 연락처·영사콜센터를 한곳에서 봐요 | https://www.0404.go.kr |
@@ -222,10 +222,10 @@ DB에는 `supabase/seed/seed_country_apps_v1.sql`로 넣는다. 둘을 같이 �
 | 앱 | 분류 | 설명 | 링크 |
 |---|---|---|---|
 | LINE | 생활 | 현지 연락은 대부분 LINE으로 해요 | https://line.me |
-| 悠遊卡 EasyCard | 교통 | 요우요우카 · 교통카드 (편의점 결제도 돼요) | https://www.easycard.com.tw |
-| 台灣高鐵 T Express | 교통 | 타이완 가오톄 · 고속철도 예매 | https://www.thsrc.com.tw |
-| 591租屋網 | 집 | 591 쭈우왕 · 방 구하기 | https://www.591.com.tw |
-| 104人力銀行 | 일자리 | 104 런리인항 · 대만 구인 사이트 | https://www.104.com.tw ⚠ 직접 확인 필요 |
+| 悠遊卡 EasyCard | 교통 | 이지카드(유유카) · 교통카드 (편의점 결제도 돼요) | https://www.easycard.com.tw |
+| 台灣高鐵 T Express | 교통 | 대만 고속철도 · 고속철도 예매 | https://www.thsrc.com.tw |
+| 591租屋網 | 집 | 591 방 구하기 사이트 | https://www.591.com.tw |
+| 104人力銀行 | 일자리 | 104 구인 사이트 | https://www.104.com.tw ⚠ 직접 확인 필요 |
 | 해외안전여행 | 안전 | 외교부 앱. 여행경보·대사관 연락처·영사콜센터를 한곳에서 봐요 | https://www.0404.go.kr |
 
 ## 홍콩 (HK)

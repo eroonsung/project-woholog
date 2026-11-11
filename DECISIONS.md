@@ -535,11 +535,14 @@
 - **A7 일본 다음 접수**: 2026년 4분기(1·4·7·10월 셋째·둘째 주 월~금) 값은 DB에 있고 모두 지났다. 2027년 일정은 아직 공개 전(2026년 일정은 2025-12-24 공지). **지어서 넣지 않는다.** 공개되면 `application_windows`에 4행(opens_on·closes_on·note "2027년 N분기"·source_id 30·verified_at) 추가 → 운영자 확인 후 적용.
 - **A8 체크리스트 나라 순서**: 많이 찾는 나라(`content/landing_countries.json`) 먼저, 그다음 가나다순(`lib/popular.ts`, /apps도 공유).
 - **A9 모바일 비교 표 힌트**: 오른쪽에 나라가 더 있으면 그림자 + 안내 한 줄(`ScrollFrame`), 끝까지 밀면 사라짐.
-- **A10 앱 이름 한글 읽기**: 일본어·중국어 이름 앱 6개의 `note_ko` 앞에 한글 읽기를 붙임(시드·`country_apps_v1.md`, 이미 들어간 행은 `seed_country_apps_reading_v1.sql`의 UPDATE로). **한글 읽기는 Yvonne 확인 필요**(중국어는 중국어 발음 기준 표기). 운영 적용은 허락 후.
+- **A10 앱 이름 한글 표기(승인 답 반영)**: 발음 대신 뜻이 보이게. 야후 환승안내 · 타운워크(아르바이트 구인) · 이지카드(유유카) · 대만 고속철도 · 591 방 구하기 사이트 · 104 구인 사이트(앞에 붙이거나 중복되는 설명은 대체, 값은 `seed_country_apps_reading_v1.sql`에 통째로 지정).
 - **A11 단일 선택 표시**: 하나만 고르는 질문의 ">" 대신 오른쪽 원형 선택 표시(선택하면 채우고 체크). 색만이 아니라 체크 모양으로도 구분.
 - **B 비행시간**: 마이그레이션 `006_flight_time.sql`(countries에 `flight_direct`·`flight_hours`·`flight_note`·`flight_source_id`·`flight_verified_at`, 짝·범위·확인일 제약). 인천 출발 기준, 직항이면 직항 시간·없으면 경유 포함 최소 시간. 결과 조건 줄("한국과 가까운 곳", 값은 결과 저장 때 params에 담음), 비교 "거리" 줄, 나라 상세 생활 정보에 작은 글씨로 표시. 값이 없거나 칸이 없는 DB에서는 기존 문구만(읽기 쿼리가 칸 없음 오류 시 기존 칸만 다시 읽음). 엔진·점수 불변. 숫자는 Yvonne가 준 `docs/content/flight_v1.md` + `supabase/seed/seed_flight_v1.sql`(칸 `flight_city`·`flight_needs_check` 추가로 맞춤, ⚠ 16곳은 오픈 전 재확인)로 넣는다. 구조 대안: 나중에 출발지가 늘면(To Korea) `flights(origin, destination, …)` 표로 옮긴다 — 지금은 한 방향이라 칸 추가가 가장 단순.
 - **C 나라별 필수 앱 `/apps`**: 메뉴 링크를 `/countries` → `/apps`로, 나라 검색 + 국기 카드(앱 개수), 카드 → `/countries/[코드]#apps`. `nav_ko.json`의 `pickCountry` 항목 구조 제거(`href: "/apps"`). SPEC 7.5.
-- 새로 만든 문구는 모두 `copy_ko.md`에 "제안"으로 표시. 운영 DB 적용(마이그레이션 006, A10 UPDATE)과 push는 허락 대기.
+- 새 문구(flight.*, compare.scrollHint, apps.index.*, q4.help.once, result.heart.tie, money.krwRange) 승인. 출처는 "제안"으로 두고 오픈 전 전체 문구 검토 때 다시 본다.
+- 일본 2027 접수: 날짜를 만들어 넣지 않은 것 승인. `launch_checklist.md`에 "12월 말 공지 확인 → `application_windows` 4행 추가(허락 후)".
+- 비행 정보: `flight_needs_check`는 화면에 표시하지 않는 안 승인. ⚠는 16곳(18곳이 아님). `launch_checklist.md`에 항공사 시간표 재확인 추가.
+- 운영 DB 적용(허락받음): 006 → `seed_flight_v1.sql` → `seed_country_apps_reading_v1.sql` 순서로 적용 후 push. 적용 결과는 아래 "운영 적용 기록".
 
 ---
 
