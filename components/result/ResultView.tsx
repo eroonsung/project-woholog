@@ -1,7 +1,7 @@
 import { BlockedList } from './BlockedList';
 import { PreviewPanel } from './PreviewPanel';
 import { RecalcBanner } from './RecalcBanner';
-import { CompareButton, ResultButtons, ResultTopBar, StickyActions } from './ResultActions';
+import { CompareButton, ResultButtons, ResultTopBar, StickyActions, TryCard } from './ResultActions';
 import { StoryDownload } from '@/components/result/StoryDownload';
 import { ResultCard } from './ResultCard';
 import { Top3 } from './Top3';
@@ -39,6 +39,7 @@ export function ResultView({ id, answers, result, dataChanged, today }: {
       <div className="mt-4 grid gap-6 lg:grid-cols-3">
         <div className="flex flex-col gap-6 lg:col-span-2 lg:row-start-1">
           <ResultCard plan={plan} result={result} answers={answers} />
+          <TryCard plan={plan} id={id} />
           <PreviewPanel rows={rows} fxDate={hasForeign ? country?.preview?.fxDate ?? null : null} />
           <CompareButton plan={plan} id={id} />
           <StoryDownload id={id} className="lg:hidden" />

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { ArrowLeft, ArrowRightLeft, Rocket } from 'lucide-react';
 import { t } from '@/lib/copy';
+import { MineAware } from '@/components/result/MineAware';
 import { ShareButton } from '@/components/result/ShareButton';
 import { StoryDownload } from '@/components/result/StoryDownload';
 import type { CardPlan } from '@/lib/result/card';
@@ -53,9 +54,34 @@ export function StickyActions({ plan, id, shareTitle, shareText }: { plan: CardP
   return (
     <div className="sticky bottom-0 -mx-5 mt-8 flex items-center gap-3 border-t border-line bg-white px-5 py-3 lg:hidden">
       <div className="w-20 shrink-0"><ShareButton id={id} title={shareTitle} text={shareText} compact /></div>
-      <Link href={`/checklist?c=${plan.card.code}`} className={cta}>
-        {t('result.startChecklist')}
-      </Link>
+      <MineAware
+        id={id}
+        mine={<Link href={`/checklist?c=${plan.card.code}`} className={cta}>{t('result.startChecklist')}</Link>}
+        other={<Link href="/test" className={cta}>{t('result.try.cta')}</Link>}
+      />
     </div>
+  );
+}
+
+/**
+ * 남의 결과(링크로 들어온 사람)에게만 보이는 카드: 결과 카드 바로 아래 "나도 해보기" (SPEC 4.6, D-132).
+ * 모바일은 하단 줄이 "나도 해보기"로 바뀌므로 "이 나라로 준비 시작"을 이 카드 아래에 둔다(웹은 옆 묶음에 이미 있음).
+ */
+export function TryCard({ plan, id }: { plan: CardPlan; id: string }) {
+  return (
+    <MineAware
+      id={id}
+      mine={null}
+      other={
+        <section aria-labelledby="try-title" className="rounded-card-lg bg-aqua-50 p-5">
+          <h2 id="try-title" className="text-h3 text-navy">{t('result.try.title')}</h2>
+          <p className="mt-1 text-body text-text2">{t('result.try.sub')}</p>
+          <Link href="/test" className={`${cta} mt-4`}>{t('result.try.cta')}</Link>
+          <Link href={`/checklist?c=${plan.card.code}`} className="mt-1 inline-flex min-h-11 items-center text-body font-extrabold text-navy underline underline-offset-4 lg:hidden">
+            {t('result.startChecklist')}
+          </Link>
+        </section>
+      }
+    />
   );
 }

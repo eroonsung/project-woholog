@@ -12,6 +12,7 @@ import {
 import { submitQuiz, SubmitError } from '@/lib/quiz/submit';
 import { EMPTY_STATE, type Answers, type QuizState } from '@/lib/quiz/types';
 import { t } from '@/lib/copy';
+import { markMine } from '@/lib/mine';
 import { ConfirmDialog } from './ConfirmDialog';
 import { QuestionAge, QuestionCompanion, QuestionCountry, type QProps } from './QuestionsA';
 import { QuestionBudget, QuestionChoice, QuestionJob, QuestionLanguage, QuestionPriority } from './QuestionsB';
@@ -99,6 +100,7 @@ export function QuizApp({ countries, minAge, config }: { countries: QuizCountry[
         if (wait > 0) await new Promise((resolve) => setTimeout(resolve, wait));
         if (!live) return;
         clearQuiz();
+        markMine(id); // 이 브라우저에서 만든 결과 표시(D-132). 저장소가 막혀도 이동은 계속
         router.replace(`/r/${id}`);
       })
       .catch((error: unknown) => {

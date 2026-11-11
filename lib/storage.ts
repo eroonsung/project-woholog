@@ -10,6 +10,7 @@ export const STORAGE_KEYS = {
   compare: { key: 'woholog.compare.v1', kind: 'local' },
   votes: { key: 'woholog.votes.v1', kind: 'local' },
   events: { key: 'woholog.events.v1', kind: 'local' },
+  mine: { key: 'woholog.mine.v1', kind: 'local' },
 } as const;
 
 export type StorageName = keyof typeof STORAGE_KEYS;

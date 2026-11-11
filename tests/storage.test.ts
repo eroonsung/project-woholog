@@ -26,7 +26,7 @@ describe('lib/storage', () => {
     writeStorage('quiz', ['x']);
     expect(local.data.has('woholog.compare.v1')).toBe(true);
     expect(session.data.has('woholog.quiz.v1')).toBe(true);
-    expect(Object.keys(STORAGE_KEYS).sort()).toEqual(['checklist', 'compare', 'events', 'quiz', 'votes']);
+    expect(Object.keys(STORAGE_KEYS).sort()).toEqual(['checklist', 'compare', 'events', 'mine', 'quiz', 'votes']);
   });
 
   it('쓴 값을 그대로 읽는다', () => {

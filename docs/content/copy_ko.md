@@ -784,6 +784,9 @@
 | quiz.error.rateLimited | 잠시 후 다시 시도해 주세요 | SPEC 0.8 |
 | result.notFound | 결과가 없거나 1년이 지나 지워졌어요 | SPEC 4.1 |
 | result.again | 다시 하기 | SPEC 4.6 |
+| result.try.title | 나도 내 나라 확인해 볼까요? | 제안(D-132, 남의 결과에만 보임) |
+| result.try.sub | 질문 12개, 약 2분 | 제안(D-132, 남의 결과에만 보임) |
+| result.try.cta | 나도 해보기 | 제안(D-132, 남의 결과에만 보임) |
 | age.calc.toggle | 생년월일로 만 나이 자동 계산하기 | Figma |
 | age.calc.title | 생년월일 입력 | Figma |
 | age.calc.year | 년 | Figma |
