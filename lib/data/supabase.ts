@@ -11,7 +11,7 @@ export function getPublicClient(): SupabaseClient {
   if (client) return client;
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-  if (!url || !key) throw new Error('NEXT_PUBLIC_SUPABASE_URL / NEXT_PUBLIC_SUPABASE_ANON_KEY가 .env.local에 없어요');
+  if (!url || !key) throw new Error('NEXT_PUBLIC_SUPABASE_URL / NEXT_PUBLIC_SUPABASE_ANON_KEY가 없어요 (로컬은 .env.local, Vercel은 Settings > Environment Variables의 Production·Preview)');
   client = createClient(url, key, { auth: { persistSession: false } });
   return client;
 }
