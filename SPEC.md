@@ -83,6 +83,7 @@
 ## 1. 헤더·메뉴·푸터 (S11)
 
 ### 웹 헤더
+- 로고(logo-v4 확정): `public/brand/woholog-logo.svg`(글자 포함 가로 로고) 높이 모바일 32px·웹 36px, 대체 글 "워홀로그 홈"(`brand.logoAlt`). 화면 폭 360px 미만은 `woholog-badge.svg`(글자 없는 배지 36px). 누르면 첫 화면. 탭 아이콘은 `app/favicon.ico`·`icon.png`·`apple-icon.png`, 공유 이미지(OG·스토리)는 같은 로고 파일을 읽어 넣는다(D-134).
 - 순서: 로고 | From Korea / To Korea 전환 | 나라 고르기 ▾ | 준비하기 ▾ | 현지 생활 ▾ | 귀국 ▾ | 커뮤니티 Soon | 로그인 · 시작하기.
 - 메뉴 항목과 주소는 `content/nav_ko.json` 하나에서 읽는다(scope_ia.md 2번).
 - 메가 메뉴: 마우스를 올리거나 클릭하면 열리고, Esc·바깥 클릭·다른 메뉴로 이동하면 닫힌다. 키보드 Enter/Space로 열고 화살표로 이동한다.

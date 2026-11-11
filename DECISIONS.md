@@ -570,6 +570,14 @@
 - **Playwright**: `playwright.config.ts`(모바일 375·웹 1280) + `tests/e2e/flow.spec.ts` 5개 시나리오(첫 화면→질문 12개→결과→비교→상세→체크리스트, 404들, 없는 결과, 남의 결과 "나도 해보기", 측정 이벤트). 저장 요청은 가짜 응답으로 막고 하나라도 나가면 실패(D-106). `npm run test:e2e`.
 - 새 문구(`error.*`, `meta.*`)는 "제안".
 
+## D-134. 확정 로고(logo-v4) 적용 (2026-11-11)
+- 파일: `public/brand/*`(zip이 `public/flags/brand/`에 풀려 있어 `public/brand/`로 옮김), `app/favicon.ico`·`icon.png`·`apple-icon.png`.
+- 헤더·모바일 메뉴: 글자 로고 대신 `woholog-logo.svg`(모바일 32px·웹 36px), 360px 미만은 `woholog-badge.svg`. 대체 글은 `brand.logoAlt`("워홀로그 홈", 제안). 로고가 길어져 375px에서 가로로 넘쳐서(29px) 헤더 좌우 여백·간격과 From/To 버튼 안쪽 여백을 모바일에서만 줄임.
+- 탭 아이콘: `app/` 파일 규칙만 쓴다. 겹치는 예전 아이콘 파일이나 `metadata.icons` 설정은 없었다(지울 것 없음). manifest는 만들지 않았다(예전에도 없었음, 필요하면 `icon-192/512.png`로 추가).
+- 공유 이미지(OG·스토리): 왼쪽 위 글자 "워홀로그"를 `woholog-logo.svg` 이미지로, 결과가 없는 기본 카드의 큰 자리는 `woholog-badge.png`로. `public/brand/**`를 이미지 라우트 번들에 포함(`next.config.ts`). 글자가 잘리지 않는 것을 이미지로 확인.
+- 색: 로고 색(남색 #1D3366·하늘색 #9FE6F3·흰색)이 기존 토큰과 같아 brand 토큰은 추가하지 않았다.
+- 예전 로고 파일: 코드 안에서 만든 "W" 상자와 글자뿐이라 지울 파일이 없다. `woholog-logo-white.svg` 등 지금 쓰는 곳이 없는 파일은 (푸터가 흰 배경이라) 보관만 한다.
+
 ---
 
 ## 열린 질문 (정해지면 위로 옮긴다)

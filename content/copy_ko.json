@@ -433,6 +433,7 @@
   "age.calc.note": "입력한 생년월일은 저장하지 않아요.",
   "age.calc.applyDay": "신청하는 날 기준 만 나이라서, 신청일이 오늘과 다르면 나이가 달라질 수 있어요.",
   "brand.name": "워홀로그",
+  "brand.logoAlt": "워홀로그 홈",
   "placeholder.title": "준비 중이에요",
   "placeholder.home": "처음으로",
   "a11y.skip": "본문으로 건너뛰기",

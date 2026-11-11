@@ -78,6 +78,7 @@ CLAUDE.md  SPEC.md  DECISIONS.md  README.md  proxy.ts(소문자 나라 코드 �
 app/
   fonts/  PretendardCore.woff2  PretendardExtra.woff2  PretendardCore.chars.txt  share/PretendardShare-500·800.ttf(공유 이미지용)  (원본 2MB는 fonts_src/)
   page.tsx                    첫 화면
+  favicon.ico  icon.png  apple-icon.png   탭 아이콘(logo-v4, 파일 이름 규칙만 쓴다. metadata.icons 설정 없음)
   test/page.tsx               질문 12개 (?q=1..12, ?pre=JP)
   r/[id]/page.tsx             결과
   r/[id]/compare/page.tsx     결과에서 비교 (?c=JP,CA)
@@ -134,6 +135,8 @@ tests/
   engine.test.ts  adapter.test.ts  checklist.test.tsx  storage.test.ts
   fixtures/personas_expected.json  countries_v1.ts  personas.ts  db_rows_v1.json(DB 스냅샷)
   e2e/flow.spec.ts  (playwright.config.ts: 모바일 375·웹 1280, 저장 요청은 가짜 응답, D-133)
+public/
+  brand/  로고 svg·png(logo-v4, D-134)  flags/  국기 svg
 docs/
   engine/fit_engine_v1.py
   db/db_test_v2.sql  db/db_test_v2_live.sql (Supabase에서 실행하는 버전)

@@ -21,6 +21,14 @@ const font = (weight: 500 | 800) => {
   return fontCache.get(weight)!;
 };
 
+/** public/brand/{파일} → data URL (satori는 이미지를 data URL로만 받는다, 글자가 들어간 가로 로고는 글꼴 없이 그려진다). 없으면 null */
+async function brand(file: 'woholog-logo.svg' | 'woholog-badge.png'): Promise<string | null> {
+  try {
+    const buf = await readFile(join(process.cwd(), 'public/brand', file));
+    return `data:${file.endsWith('.svg') ? 'image/svg+xml' : 'image/png'};base64,${buf.toString('base64')}`;
+  } catch { return null; }
+}
+
 /** public/flags/{코드}.svg → data URL (satori는 SVG를 data URL로만 받는다). 없으면 null */
 async function flag(code: string): Promise<string | null> {
   if (!/^[A-Za-z]{2}$/.test(code)) return null;
@@ -33,11 +41,11 @@ async function flag(code: string): Promise<string | null> {
 const row = { display: 'flex', alignItems: 'center' } as const;
 const col = { display: 'flex', flexDirection: 'column' } as const;
 
-function Story({ d, flagSrc }: { d: ShareData | null; flagSrc: string | null }) {
+function Story({ d, flagSrc, logo, badge }: { d: ShareData | null; flagSrc: string | null; logo: string | null; badge: string | null }) {
   return (
     <div style={{ ...col, width: 1080, height: 1920, background: C.aqua, padding: 72, fontFamily: 'Pretendard', color: C.navy }}>
       <div style={{ ...row, justifyContent: 'space-between' }}>
-        <div style={{ display: 'flex', fontSize: 60, fontWeight: 800 }}>{t('share.img.brand')}</div>
+        {logo ? <img src={logo} width={297} height={64} alt="" /> : <div style={{ display: 'flex', fontSize: 60, fontWeight: 800 }}>{t('share.img.brand')}</div>}
         <div style={{ ...row, justifyContent: 'center', width: 210, height: 210, borderRadius: 105, background: C.lime, fontSize: 34, fontWeight: 800, textAlign: 'center', padding: 8, whiteSpace: 'nowrap' }}>{t('share.img.sticker')}</div>
       </div>
       {d ? (
@@ -76,17 +84,17 @@ function Story({ d, flagSrc }: { d: ShareData | null; flagSrc: string | null }) 
   );
 }
 
-function Og({ d, flagSrc }: { d: ShareData | null; flagSrc: string | null }) {
+function Og({ d, flagSrc, logo, badge }: { d: ShareData | null; flagSrc: string | null; logo: string | null; badge: string | null }) {
   return (
     <div style={{ display: 'flex', width: 1200, height: 630, background: C.white, fontFamily: 'Pretendard', color: C.navy }}>
       <div style={{ ...col, width: 720, height: 630, background: C.aqua, padding: '56px 64px', justifyContent: 'space-between' }}>
         <div style={{ ...row }}>
-          <div style={{ display: 'flex', fontSize: 40, fontWeight: 800 }}>{t('share.img.brand')}</div>
+          {logo ? <img src={logo} width={186} height={40} alt="" /> : <div style={{ display: 'flex', fontSize: 40, fontWeight: 800 }}>{t('share.img.brand')}</div>}
           <div style={{ display: 'flex', fontSize: 26, fontWeight: 500, color: C.navy80, marginLeft: 20 }}>{t('share.img.tag')}</div>
         </div>
         <div style={{ ...col }}>
           <div style={{ display: 'flex', fontSize: d ? 76 : 66, fontWeight: 800, lineHeight: 1.2, wordBreak: 'keep-all' }}>{d ? t('share.img.og', { country: d.name, pct: d.pct }) : t('share.img.brand')}</div>
-          <div style={{ display: 'flex', fontSize: 32, fontWeight: 500, color: C.navy80, marginTop: 20, lineHeight: 1.4, wordBreak: 'keep-all' }}>{d ? d.headline : t('share.ogDesc')}</div>
+          <div style={{ display: 'flex', fontSize: d ? 32 : 30, fontWeight: 500, color: C.navy80, marginTop: 20, lineHeight: 1.4, wordBreak: 'keep-all' }}>{d ? d.headline : t('share.ogDesc')}</div>
         </div>
         <div style={{ display: 'flex', fontSize: 30, fontWeight: 800 }}>{t('share.img.cta')}</div>
       </div>
@@ -111,7 +119,7 @@ function Og({ d, flagSrc }: { d: ShareData | null; flagSrc: string | null }) {
               ))}
             </div>
           </div>
-        ) : <div style={{ display: 'flex', fontSize: 40, fontWeight: 800, textAlign: 'center' }}>{t('share.img.brand')}</div>}
+        ) : badge ? <img src={badge} width={300} height={300} alt="" /> : <div style={{ display: 'flex', fontSize: 40, fontWeight: 800, textAlign: 'center' }}>{t('share.img.brand')}</div>}
       </div>
     </div>
   );
@@ -119,11 +127,11 @@ function Og({ d, flagSrc }: { d: ShareData | null; flagSrc: string | null }) {
 
 /** 이미지 만들기. data가 없으면(없는 결과 id) 워홀로그 기본 카드. 결과는 저장된 값이 바뀌지 않으므로 오래 캐시한다. */
 export async function renderShareImage(kind: ShareKind, data: ShareData | null, init: { download?: boolean } = {}): Promise<ImageResponse> {
-  const [f500, f800, flagSrc] = await Promise.all([font(500), font(800), data ? flag(data.code) : Promise.resolve(null)]);
+  const [f500, f800, flagSrc, logo, badge] = await Promise.all([font(500), font(800), data ? flag(data.code) : Promise.resolve(null), brand('woholog-logo.svg'), data ? Promise.resolve(null) : brand('woholog-badge.png')]);
   const size = SIZES[kind];
   const headers: Record<string, string> = { 'Cache-Control': data ? 'public, max-age=31536000, immutable' : 'public, max-age=3600' };
   if (init.download) headers['Content-Disposition'] = 'attachment; filename="woholog-result.png"';
-  return new ImageResponse(kind === 'og' ? <Og d={data} flagSrc={flagSrc} /> : <Story d={data} flagSrc={flagSrc} />, {
+  return new ImageResponse(kind === 'og' ? <Og d={data} flagSrc={flagSrc} logo={logo} badge={badge} /> : <Story d={data} flagSrc={flagSrc} logo={logo} badge={badge} />, {
     ...size,
     fonts: [{ name: 'Pretendard', data: f500, weight: 500, style: 'normal' }, { name: 'Pretendard', data: f800, weight: 800, style: 'normal' }],
     headers,

@@ -11,6 +11,10 @@
 - 대비: 네이비 on 아쿠아 8.8:1, 네이비 on 코랄 약 4.9:1, 진한 아쿠아 on 흰색 6.2:1(Aqua 100 위 5.4:1). 흰 글씨 on 코랄·연한 아쿠아 글씨는 금지
 - 배민 민트(#2AC1BC)와 겹치지 않게 민트 대신 아쿠아 채택. 누런 오프화이트는 사용자 비선호
 
+## 로고 (logo-v4 확정, D-134)
+- 파일: `public/brand/` — `woholog-logo.svg`(헤더·메뉴), `woholog-logo-white.svg`(어두운 배경용, 지금 쓰는 곳 없음), `woholog-badge.svg`(좁은 화면·공유 이미지), `woholog-badge-small.svg`(24px 미만), `woholog-mark(-white).svg`, `woholog-app-icon.svg`, `woholog-stamp.*`, `icon-192/512.png`. 탭 아이콘은 `app/favicon.ico`·`icon.png`·`apple-icon.png`.
+- 색은 남색 #1D3366, 하늘색 #9FE6F3, 흰색 #FFFFFF로 기존 토큰(navy·aqua·white)과 같다. 파일 안의 색은 그림 자산이라 따로 토큰을 만들지 않았다.
+
 ## 폰트
 - Pretendard 단일 (무료, SIL OFL). 굵기 400/500/700/800/900. 대체: SUIT, Noto Sans KR
 

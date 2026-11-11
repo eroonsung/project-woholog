@@ -73,7 +73,7 @@ export function Header() {
       onMouseLeave={scheduleClose} onMouseEnter={cancelClose}
       className="relative z-40 border-b border-line bg-white"
     >
-      <div className="mx-auto flex h-16 max-w-content items-center gap-2 px-4 lg:gap-3 lg:px-6 xl:px-10">
+      <div className="mx-auto flex h-16 max-w-content items-center gap-1.5 px-3 sm:gap-2 sm:px-4 lg:gap-3 lg:px-6 xl:px-10">
         <Logo />
         <RegionSwitch pathname={pathname} />
 
