@@ -457,6 +457,12 @@
 - **8.5단계 점검 목록**: `docs/ops/device_check.md`(기기·환경 4곳, 흐름 6단계, 볼 것, 지인 테스트 칸, 결과 표, 테스트 결과 id 칸).
 - **필수 앱 v1**: Yvonne가 `supabase/seed/seed_country_apps_v1.sql`(29개국 171행, `on conflict (country, name) do nothing`)과 `docs/content/country_apps_v1.md`를 넣었다. 형식 확인: 컬럼·분류 값(transport·housing·safety·job·life·bank·telecom)이 `country_apps` 스키마와 맞고, 나라 29곳 전부, 중복 없음. **운영 적용 전에 url을 모두 확인했다**: 고유 url 136개를 `curl` GET(리다이렉트 따라가기, 10초 제한)으로 확인 → 정상(200~399) 80개, **확실히 죽은 링크 0개**, 나머지 56개는 봇 차단·접속 막힘으로 보이는 응답(403 48·429 2·401 1·405 1·503 1·연결 실패 3)이라 이 환경에서는 확인할 수 없다. 봇 차단을 우회하는 방법(브라우저인 척하는 요청 등)은 쓰지 않았다. 확인할 수 없는 링크는 죽은 증거가 없어 그대로 두고 오픈 전에 브라우저로 직접 확인한다. 주소를 고친 곳 1개: 이탈리아 `IO`(`io.italia.it` → `ioapp.it`로 이동하는 것을 확인해 새 주소로 바꿈). 시드와 md를 같이 고쳤다.
 
+## D-120. 필수 앱 v1 운영 적용 (2026-11-11)
+- 운영 DB `country_apps`에 `seed_country_apps_v1.sql`을 적용했다(IO 주소를 고친 로컬 파일 그대로). 적용 전 0행 → 적용 후 **171행, 나라 29곳 전부**(AD 3·AR 6·AT 5·AU 6·BE 6·BR 7·CA 5·CL 6·CZ 5·DE 7·DK 6·ES 5·FI 6·FR 7·GB 7·HK 6·HU 5·IE 6·IL 6·IT 6·JP 7·LU 5·LV 5·NL 7·NZ 6·PL 6·PT 6·SE 7·TW 6), IO는 `https://ioapp.it`.
+- 순서: 시드 적용 → precheck → push(`7ab9b33`) → 배포 → 확인. 나라 상세는 ISR이라 시드가 들어간 뒤 배포해서 바로 보인다. 운영 `/countries/JP`(앱 7개)·`/IL`(6개)·`/AD`(3개)에서 "정리하는 중" 카드 대신 앱 목록이 나오는 것을 확인했다.
+- **확인 불가 링크 56개는 그대로 두기로 승인**. `launch_checklist.md`에 "오픈 전 직접 확인"을 넣고 `country_apps_v1.md`에 "⚠ 직접 확인 필요"를 표시했다.
+- 앱 이름의 일본어 한자(乗換案内)·중국어 한자(人力銀行 등)는 Pretendard에 없어 시스템 글꼴로 대신 그려진다(□가 되지는 않음). `PretendardCore.chars.txt`에 "원본 글꼴에도 없는 글자"로 기록해 두었고, Core 글꼴은 이 글자들에 맞춰 다시 만들었다(아직 push 전, 로컬 커밋 `e64048c`).
+
 ---
 
 ## 열린 질문 (정해지면 위로 옮긴다)

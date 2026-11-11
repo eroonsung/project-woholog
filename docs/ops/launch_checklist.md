@@ -7,7 +7,8 @@
 - [ ] `launch_subscribers`·`user_reports`·`feature_votes`에 테스트 데이터가 있으면 같이 정리
 - [ ] 체크리스트·서류의 `needs_review = true` 항목 확인 후 false로 (D-036, `docs/content/checklist_v1.md` 4장). **번역·아포스티유 필요 여부도 같이 확인**(서류 35개가 모두 `translation_required`·`apostille_required` = false, D-119)
 - [ ] 빈 값 채우기 (DECISIONS.md Q-6): 잔고 증명 금액 — 1순위 아일랜드·스페인·포르투갈, 2순위 폴란드·오스트리아·이스라엘
-- [ ] **필수 앱 채우기**(`country_apps`가 비어 있음, D-116): 나라별 앱 이름·분류·링크·설명을 정해 시드로 넣기. 그 전에는 29개국 모두 "정리하는 중" 카드
+- [x] **필수 앱 v1 적용됨**(`country_apps` 171행, 29개국, 2026-11-11, D-120). **오픈 전 링크 재확인** — 아래 항목과 같이 본다
+- [ ] **오픈 전 확인 불가 링크 56개를 브라우저로 직접 확인**(목록은 `docs/content/country_apps_v1.md`에 "⚠ 직접 확인 필요"로 표시). 죽었으면 주소를 고치거나 `url`을 비운다(시드와 DB 같이)
 - [ ] **추천 준비물 제휴 링크**(`content/partners.json`이 비어 있음): 링크를 넣을 때 "광고" 표시·수수료 안내가 나오는지 확인
 - [ ] 시드의 "재확인"·"공식 재확인 필요" 메모가 붙은 값을 원문으로 확인
 - [ ] 환율(`exchange_rates.source = 'assumed'` 가정값)을 실제 값으로 (Q-3)
