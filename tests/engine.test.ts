@@ -183,6 +183,26 @@ describe('이렇게 바꾸면 (whatIf)', () => {
     expect(result.map((r) => r.to)).toEqual([...result.map((r) => r.to)].sort((a, b) => b - a));
   });
 
+  it('이미 만족하는 조건은 제안에 나오지 않는다', () => {
+    const lowCode = scoreAll(COUNTRIES, persona, cfg).ranked.filter((r) => r.pct < cfg.low_result_pct)[0]!.code;
+    const target = COUNTRIES.find((c) => c.code === lowCode)!;
+    const changes = (p: Profile) => whatIf(COUNTRIES, p, cfg, lowCode).map((r) => r.change);
+    // 영어 면접 가능, 현지어 가능, 돈 충분, 생활비 안 벌어도 됨 → 모두 이미 만족
+    const satisfied: Profile = {
+      ...persona, english: 2, languages: target.languages, budgetMan: target.needMan, earn: 'partly',
+    };
+    const result = changes(satisfied);
+    expect(result).not.toContain('english_interview');
+    expect(result).not.toContain('learn_local_language');
+    expect(result).not.toContain('save_gap');
+    expect(result).not.toContain('earn_partly');
+    // 하나씩 따로 봐도 같다
+    expect(changes({ ...persona, english: 3 })).not.toContain('english_interview');
+    expect(changes({ ...persona, languages: target.languages })).not.toContain('learn_local_language');
+    expect(changes({ ...persona, budgetMan: target.needMan })).not.toContain('save_gap');
+    expect(changes({ ...persona, earn: 'none' })).not.toContain('earn_partly');
+  });
+
   it('없는 나라·갈 수 없는 나라는 빈 배열', () => {
     expect(whatIf(COUNTRIES, persona, cfg, 'XX')).toEqual([]);
     expect(whatIf(COUNTRIES, { ...persona, age: 34 }, cfg, 'JP')).toEqual([]); // 일본은 30세까지

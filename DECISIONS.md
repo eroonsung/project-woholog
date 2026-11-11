@@ -192,22 +192,22 @@
 
 ## 1단계: 엔진 (2026-11-11)
 
-### D-076 엔진 값 이름은 영어 코드 (제안)
+### D-076 엔진 값 이름은 영어 코드 (확정)
 - 결정: Python의 한글 값을 영어 코드로 옮겼다(상/중/하=high/mid/low, 무제한/선착순/추첨=unlimited/first_come/lottery, 질문 답 `earn`·`jobs`·중요한 것 칩 id 등). 중요한 것 칩 id는 DB `scoring_config.priority_chips`와 같다. 동작은 Python과 같고 이름만 다르다.
 - 영향: `adapter.ts`(3단계)는 이 코드를 만든다. CLAUDE.md 6장 표의 "상/중/하" 등은 이 코드로 읽는다.
 
-### D-077 scoring_config는 DB 모양 + 모자란 key는 기본값 (제안)
+### D-077 scoring_config는 DB 모양 + 모자란 key는 기본값 (확정)
 - 결정: `ScoringConfig`는 `seed_v1_1.sql`의 key를 그대로 따른다. 시드에 없는 기준값(`english_levels`, `close_gap_pp`(10%p), `study_unlimited_months`(99), `what_if_max_rows`(3))은 `lib/engine/defaults.ts`가 값을 주고 `resolveConfig()`가 DB 값 위에 얹는다.
-- 영향: 3단계에서 위 4개를 시드(새 마이그레이션이 아니라 데이터 추가)에 넣을지 정한다.
+- 확정(2026-11-11): 위 4개는 3단계에서 `scoring_config` 시드에 넣는다. `defaults.ts`는 예비값으로만 둔다.
 
 ### D-078 Python의 동작 중 눈에 띄는 3가지를 그대로 옮김 (확정, D-011)
 - 반올림은 Python `round()`(정확히 .5면 짝수 쪽). 동점 순서의 "필수 3항목 점수"에 중요한 것 칩 `돈`도 들어간다(원본이 이름이 '돈'인 줄을 모두 세기 때문). 한 고용주 제한(`employerLimit`)은 표의 6번째 값이 아니라 이스라엘만 true로 계산한 값을 쓴다(CLAUDE.md 6장의 ≤3개월과 같다).
-- 영향: 결과가 이상해 보여도 고치지 않고 보고만 한다.
+- 영향: 결과가 이상해 보여도 고치지 않고 보고만 한다. 2026-11-11 "Python 그대로 유지"로 재확인.
 
-### D-079 나라별 예외는 입력 값으로 (제안)
-- 결정: 원본의 `n=='호주'`(2년 칩에서 농장을 안 고르면 △)는 나라 이름 대신 `farmForExtension` 값으로 받는다. 테스트 데이터에서는 호주만 true. DB에서 이 값을 어떻게 만들지는 3단계 질문이다(CLAUDE.md 6장 표에 없음).
+### D-079 나라별 예외는 입력 값으로 (확정)
+- 결정: 원본의 `n=='호주'`(2년 칩에서 농장을 안 고르면 △)는 나라 이름 대신 `farmForExtension` 값으로 받는다. 테스트 데이터에서는 호주만 true. DB에서는 `program_facts`의 `extension_by_regional_work` 키(1 = 지정 지역 근무로 연장 가능)로 만든다. 지금은 호주만 1. 3단계에서 `fact_keys`·시드에 추가하고 CLAUDE.md 6장 표에 한 줄 추가한다.
 
-### D-080 후보 나라·조건 문구 키·이렇게 바꾸면는 Python에 없어 새로 설계 (제안)
+### D-080 후보 나라·조건 문구 키·이렇게 바꾸면는 Python에 없어 새로 설계 (확정)
 - 결정: 후보 나라(`candidates.ts`)는 SPEC 3.2, 조건 문구 키(`reasons.ts`, `reason.<항목>.<ok|partial|no>[.<경우>]`)는 `copy_ko.md` 5장, 이렇게 바꾸면(`whatIf.ts`)는 SPEC 4.2에서 도출했다. 이렇게 바꾸면은 답을 하나만 바꿔 같은 점수 함수를 다시 돌리고 %가 오르는 것만 돌려준다.
 - 영향: 이 세 모듈은 Python이 정답을 주지 않으므로 기대값 대신 규칙 테스트로 확인한다. 5단계에서 문구 키를 copy 파일에 넣는다.
 
