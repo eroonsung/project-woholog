@@ -69,6 +69,41 @@ describe('adapter: DB → 엔진 입력', () => {
   });
 });
 
+describe('필요한 돈 규칙 (D-085)', () => {
+  const need = (r: ReturnType<typeof adaptRows>, code: string) => r.active.find((a) => a.code === code)!.engine.needMan;
+  const progId = (code: string) => rows.programs.find((p) => p.destination === code && p.origin === 'KR')!.id;
+
+  it('영국은 보건부담금을 포함한다', () => {
+    const without = adaptRows({ ...rows, facts: rows.facts.filter((f) => f.key !== 'health_surcharge') }, { asOf: '2026-11-11' });
+    expect(need(result, 'GB')! - need(without, 'GB')!).toBeGreaterThan(280);
+  });
+
+  it('항공권 증빙 시 감액된 잔고 증명이 있으면 그 값을 쓴다(독일·덴마크)', () => {
+    const without = adaptRows({ ...rows, facts: rows.facts.filter((f) => f.key !== 'proof_amount_with_ticket') }, { asOf: '2026-11-11' });
+    expect(need(without, 'DE')! - need(result, 'DE')!).toBe(150); // €1,000
+    expect(need(without, 'DK')! - need(result, 'DK')!).toBe(100); // DKK 5,000
+  });
+
+  it('잔고 증명이 숫자 없이 메모뿐인 나라는 0이 아니라 null(확인 중)', () => {
+    const unknown = result.active.filter((a) => a.engine.needMan === null).map((a) => a.code).sort();
+    expect(unknown).toEqual(['AT', 'ES', 'IE', 'IL', 'NL', 'PL', 'PT']);
+  });
+
+  it('잔고 증명이 0으로 입력된(필요 없음으로 확인된) 나라만 0으로 계산한다', () => {
+    const zero = [...rows.facts, { program_id: progId('PL'), key: 'proof_amount', value_num: 0, value_text: null, currency: 'KRW', source_id: null, verified_at: '2026-11-11' }];
+    const r = adaptRows({ ...rows, facts: zero }, { asOf: '2026-11-11' });
+    expect(need(r, 'PL')).not.toBeNull(); // 비자 비용 + 항공권만
+    expect(need(r, 'PL')).toBeLessThan(250);
+  });
+
+  it('돈이 확인 중이어도 나머지 조건으로 점수를 낸다(어학원 확인 중과 같은 처리)', () => {
+    const p = PERSONAS[1]!.profile;
+    const row = scoreAll(result.active.map((a) => a.engine), p, result.config).ranked.find((x) => x.code === 'PL')!;
+    expect(row.items.some((i) => i.kind === 'core' && i.id === 'money')).toBe(false);
+    expect(row.pct).toBeGreaterThan(0);
+  });
+});
+
 describe('adapter 데이터로 돌린 가상 사용자 6명 = Python 나라 표로 돌린 결과', () => {
   const adapted = result.active.map((a) => a.engine);
   for (const persona of PERSONAS) {

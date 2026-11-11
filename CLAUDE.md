@@ -67,6 +67,7 @@
 14. 파일 하나는 300줄을 넘기지 않는다.
 15. **제휴 링크에는 "광고" 표시와 수수료 안내 문구를 반드시 붙인다.** 링크가 없으면 준비 중 카드만 보여 준다.
 16. **준비 중 기능은 템플릿 1개 + `features_ko.json`으로만.** "예정"은 항상 "목표"로 쓴다.
+17. **작업을 지우거나 되돌리는 명령은 실행 전에 이유와 영향을 말하고 허락을 받는다.** `git checkout -- .`, `git reset --hard`, `git clean -f`, `git push --force`, 브랜치 강제 삭제(`git branch -D`, 원격 삭제 포함)가 해당한다. **운영 DB에 쓰는 명령**(`db push`, 쓰기가 들어간 `db query` 등)도 같다. 사용자가 그 작업을 이미 직접 요청한 경우에는 무엇을 적용하는지 먼저 말한 뒤 실행한다.
 
 ## 5. 폴더 구조
 ```
@@ -100,8 +101,8 @@ lib/
 content/
   copy_ko.json  copy_en.json  features_ko.json  partners.json  nav_ko.json  landing_countries.json
 supabase/
-  migrations/  001_schema_v2_1.sql  002_feature_votes.sql  003_extension_fact_key.sql  (004_rate_limit.sql은 4단계에서)
-  seed/seed_v1_1.sql  seed/seed_checklist_v1.sql  seed/seed_engine_v1.sql
+  migrations/  001_schema_v2_1.sql  002_feature_votes.sql  003_extension_fact_key.sql  004_proof_amount_with_ticket.sql  (005_rate_limit.sql은 4단계에서)
+  seed/seed_v1_1.sql  seed/seed_checklist_v1.sql  seed/seed_engine_v1.sql  seed/seed_proof_ticket_v1.sql
 tests/
   engine.test.ts  adapter.test.ts  checklist.test.ts  storage.test.ts
   fixtures/personas_expected.json  countries_v1.ts  personas.ts  db_rows_v1.json(DB 스냅샷)
@@ -147,7 +148,7 @@ docs/
 | europe / near | `countries.in_europe` / `near_korea` |
 | select | `programs.selection` (unlimited / first_come / lottery) |
 | farmForExtension | `program_facts`의 `extension_by_regional_work` 값이 1이면 true (지정 지역 근무로 체류 연장 가능. 지금은 호주만. 3단계에서 `fact_keys`·시드에 추가) |
-| need (만 원) | 잔고 증명(없으면 0) + 비자 비용 + `flight_estimates` → 오늘 환율로 원화 → 만 원 반올림 |
+| need (만 원) | 잔고 증명 + 비자 비용 + 보건부담금(있는 나라만) + `flight_estimates` → 오늘 환율로 원화 → 만 원 반올림. 잔고 증명은 `proof_amount_with_ticket`(항공권을 낼 때 감액된 금액)이 있으면 그 값, 없으면 `proof_amount`. **둘 다 숫자가 없으면 0이 아니라 null(확인 중)**이고, 0은 `proof_amount`가 0으로 입력된(필요 없음으로 확인된) 나라만. null이면 돈 조건을 점수에서 뺀다 |
 | 두 번 가능 | `max_participations` ≥ 2 |
 
 - `active`가 아닌 프로그램은 후보에서 빼고 "곧 열려요"로만 보여 준다.
@@ -173,7 +174,7 @@ docs/
 | 1 엔진 옮기기 | `fit_engine_v1.py` → `lib/engine` (후보 나라 계산 포함) | 3.2 마지막 줄 | `engine.test.ts`: 6명 × 모든 나라의 %, ✓△✗, 뱃지, 순서가 100% 같음 |
 | 2 질문 화면 | 12개 질문, 진행 막대, 주소 `?q=`, 이전·처음부터, 건너뛰기, 나이 안내, 저장 | 3장 | Figma 프레임(S01~S06)과 차이 목록 0개, 키보드만으로 끝까지, 17장 테스트 줄 통과 |
 | 3 Supabase | 마이그레이션·시드를 지금 프로젝트 하나(서울 리전)에 바로 적용(로컬 Docker 안 씀. 오픈 후 개발용 프로젝트를 따로 만든다, D-066), `queries.ts`, `adapter.ts` | 0.3 | `adapter.test.ts` 통과, `db_test_v2.sql` 통과, 익명 키로 쓰기·관리 표 읽기 막힘 |
-| 4 엔진 연결 | 답변 → `api/result` → 저장 → `/r/[id]`, 요청 제한(마이그레이션 `004_rate_limit.sql`: Supabase 표 + 함수, IP 해시만 저장·24시간 뒤 삭제, D-065) | 3.3, 0.8 | Yvonne 예시 답 결과가 기대값과 같음, 새 창에서도 같은 결과, 실패 후 다시 시도 |
+| 4 엔진 연결 | 답변 → `api/result` → 저장 → `/r/[id]`, 요청 제한(마이그레이션 `005_rate_limit.sql`: Supabase 표 + 함수, IP 해시만 저장·24시간 뒤 삭제, D-065) | 3.3, 0.8 | Yvonne 예시 답 결과가 기대값과 같음, 새 창에서도 같은 결과, 실패 후 다시 시도 |
 | 5 결과 화면 | 카드 5가지 경우, 조건 줄, 이렇게 바꾸면, 현실 미리보기, TOP 3, 갈 수 없는 나라 | 4장 | 17장 결과 줄 통과, 문구가 모두 copy 파일에서 옴 |
 | 6 비교 | 비교 화면, 비교에 담기 | 6장 | 17장 비교 줄 통과 |
 | 7 비교표·상세 | 정렬·필터·주소, 상세 섹션·목차·여행경보 배너 | 7·8·9장 | 17장 비교표·나라 상세 줄 통과, 상세 숫자가 DB와 같음 |

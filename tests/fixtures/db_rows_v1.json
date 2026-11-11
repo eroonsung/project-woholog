@@ -2027,6 +2027,24 @@
    "currency": null,
    "source_id": 27,
    "verified_at": "2026-11-11"
+  },
+  {
+   "program_id": 5,
+   "key": "proof_amount_with_ticket",
+   "value_num": 2500,
+   "value_text": null,
+   "currency": "EUR",
+   "source_id": 5,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 4,
+   "key": "proof_amount_with_ticket",
+   "value_num": 15000,
+   "value_text": null,
+   "currency": "DKK",
+   "source_id": 4,
+   "verified_at": "2026-11-05"
   }
  ],
  "stats": [

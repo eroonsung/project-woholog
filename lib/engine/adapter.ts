@@ -82,18 +82,24 @@ export function adaptRows(rows: DbRows, opts: { asOf: string; staleDays?: number
       return amount * per;
     };
 
-    // need(만 원) = 잔고 증명(없으면 0) + 비자 비용 + 항공권 → 만 원 반올림. 환율이 없으면 null(확인 중)
-    const proof = facts.get('proof_amount');
+    // need(만 원) = 잔고 증명 + 비자 비용 + 보건부담금(있는 나라만) + 항공권 → 만 원 반올림. 환율이 없거나 잔고 증명이 숫자 없이 메모뿐이면 null(확인 중)
+    // 항공권이 들어가므로 항공권 증빙 시 감액된 잔고 증명(proof_amount_with_ticket)이 있으면 그 값을 쓴다 (D-085)
+    const proof = facts.get('proof_amount_with_ticket') ?? facts.get('proof_amount');
     const fee = facts.get('visa_fee');
+    const health = facts.get('health_surcharge');
+    const proofKrw = proof?.value_num != null ? toKrw(proof.value_num, proof.currency, '잔고 증명') : null;
+    if (proof?.value_num == null) warnings.push(`잔고 증명 금액이 숫자로 없어요(확인 중): ${c.code}`);
+    const flightKrw = flight.get(c.region) ?? null;
+    if (flightKrw === null) warnings.push(`항공권 추정이 없어요: ${c.region}`);
     const parts = [
-      proof?.value_num != null ? toKrw(proof.value_num, proof.currency, '잔고 증명') : 0,
+      proofKrw,
       fee?.value_num != null ? toKrw(fee.value_num, fee.currency, '비자 비용') : 0,
-      flight.get(c.region) ?? null,
+      health?.value_num != null ? toKrw(health.value_num, health.currency, '보건부담금') : 0,
+      flightKrw,
     ];
-    if (parts[2] === null) warnings.push(`항공권 추정이 없어요: ${c.region}`);
     const needMan = parts.some((x) => x === null) ? null : Math.round((parts as number[]).reduce((a, b) => a + b, 0) / 10_000);
 
-    const used = [proof, fee, facts.get('study_max_months'), facts.get('employer_limit_months'), facts.get('no_fulltime'), facts.get('job_hard_note'), facts.get('job_language_required')]
+    const used = [proof, fee, health, facts.get('study_max_months'), facts.get('employer_limit_months'), facts.get('no_fulltime'), facts.get('job_hard_note'), facts.get('job_language_required')]
       .filter((f): f is NonNullable<typeof f> => !!f);
     const dates = used.map((f) => f.verified_at).sort();
     const oldest = dates[0] ?? null;
