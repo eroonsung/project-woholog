@@ -101,7 +101,7 @@ lib/
   storage.ts   브라우저 저장소 (SPEC.md 0.2의 키만)
   quiz/     types.ts config.ts steps.ts state.ts submit.ts validate.ts   질문 순서·이동·저장 (화면 없이 테스트)
   checklist.ts 항목 + 출국일 → 단계·날짜, 링크 상태 줄이기·풀기
-  copy.ts  format.ts  analytics.ts  rateLimit.ts
+  copy.ts  format.ts  age.ts(생년월일 → 만 나이)  analytics.ts  rateLimit.ts
 content/
   copy_ko.json  copy_en.json  features_ko.json  partners.json  nav_ko.json  landing_countries.json
 supabase/

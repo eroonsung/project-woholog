@@ -509,3 +509,13 @@
 | quiz.error.rateLimited | 잠시 후 다시 시도해 주세요 | SPEC 0.8 |
 | result.notFound | 결과가 없거나 1년이 지나 지워졌어요 | SPEC 4.1 |
 | result.again | 다시 하기 | SPEC 4.6 |
+| age.calc.toggle | 생년월일로 만 나이 자동 계산하기 | Figma |
+| age.calc.title | 생년월일 입력 | Figma |
+| age.calc.year | 년 | Figma |
+| age.calc.month | 월 | Figma |
+| age.calc.day | 일 | Figma |
+| age.calc.hint | 생년월일을 입력하면 만 나이가 자동으로 반영돼요. | 제안(Figma 변형) |
+| age.calc.result | 오늘 기준 만 {age}세예요. 위 나이에 반영했어요. | 제안 |
+| age.calc.invalid | 없는 날짜예요. 다시 확인해 주세요. | 제안 |
+| age.calc.future | 오늘 이후의 날짜는 입력할 수 없어요. | 제안 |
+| age.calc.note | 입력한 생년월일은 저장하지 않아요. | 제안 |

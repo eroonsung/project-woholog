@@ -6,10 +6,12 @@ import { AGE_MAX } from '@/lib/quiz/config';
 import { t } from '@/lib/copy';
 
 /** 만 나이 입력(Q2·동행자). 숫자 입력 + −/+ 버튼. 범위 안의 숫자만 값으로 돌려주고, 아니면 undefined. */
-export function AgeField({ value, onChange, label, minAge, size = 'lg' }: {
+export function AgeField({ value, onChange, label, minAge, size = 'lg', initialText }: {
   value: number | undefined; onChange: (v: number | undefined) => void; label: string; minAge: number; size?: 'lg' | 'sm';
+  /** 계산기가 넣어 준 나이(범위 밖이어도 그대로 보여 준다). 바꿀 때는 key를 바꿔 다시 그린다. */
+  initialText?: string;
 }) {
-  const [text, setText] = useState(value === undefined ? '' : String(value));
+  const [text, setText] = useState(initialText ?? (value === undefined ? '' : String(value)));
   const num = text === '' ? undefined : Number(text);
   const tooYoung = num !== undefined && Number.isInteger(num) && num < minAge;
 

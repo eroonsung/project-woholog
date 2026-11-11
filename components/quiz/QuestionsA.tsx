@@ -4,8 +4,9 @@ import { useEffect, useState } from 'react';
 import { Users, User, Check } from 'lucide-react';
 import { t, hasCopy } from '@/lib/copy';
 import type { QuizCountry } from '@/lib/data/quizCountries';
-import { MAX_HEART_COUNTRIES } from '@/lib/quiz/config';
+import { AGE_MAX, MAX_HEART_COUNTRIES } from '@/lib/quiz/config';
 import type { Answers, CountryAnswer } from '@/lib/quiz/types';
+import { AgeCalculator } from './AgeCalculator';
 import { AgeField } from './AgeField';
 import { NoneToggle } from './Choices';
 import { CountryPicker } from './CountryPicker';
@@ -68,10 +69,20 @@ export function QuestionCountry({ q, answers, countries, set, next, available }:
 
 /** Q2 만 나이. 17 이하는 안내만 띄우고 막는다. 최대 나이 초과(나이 초과 화면)는 QuizApp이 처리한다. */
 export function QuestionAge({ answers, set, next, minAge }: QProps) {
+  // 계산기가 나이를 넣으면 나이 칸을 새 값으로 다시 그린다(key). 범위 밖이면 값은 비우고 글자만 보여 준다.
+  const [applied, setApplied] = useState<{ nonce: number; text: string } | null>(null);
+  const apply = (age: number) => {
+    set({ q2: age >= minAge && age <= AGE_MAX ? age : undefined });
+    setApplied((prev) => ({ nonce: (prev?.nonce ?? 0) + 1, text: String(age) }));
+  };
   return (
     <>
       <QuestionHeading q={2} title={t('q2')} help={help(2)} />
-      <AgeField value={answers.q2} onChange={(v) => set({ q2: v })} label={t('q2')} minAge={minAge} />
+      <AgeField
+        key={applied?.nonce ?? 0} initialText={applied?.text} value={answers.q2}
+        onChange={(v) => set({ q2: v })} label={t('q2')} minAge={minAge}
+      />
+      <AgeCalculator onApply={apply} />
       <QuizActions nextDisabled={answers.q2 === undefined} onNext={next} />
     </>
   );
