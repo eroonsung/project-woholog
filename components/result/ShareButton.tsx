@@ -1,33 +1,21 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
-import { Download, Link2, Share2 } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Link2, Share2 } from 'lucide-react';
 import { Modal } from '@/components/modal/Modal';
 import { trackEvent } from '@/lib/analytics';
 import { t } from '@/lib/copy';
+import { buildSharePayload } from '@/lib/share/web';
 
 /**
- * 공유 버튼 (SPEC 5장). 모바일에서 Web Share API가 되면 시스템 공유 창(링크 + 제목, 파일 공유가 되면 스토리 이미지도 같이).
- * 안 되면 선택 창: "링크 복사" · "스토리 이미지 저장". 카카오 공유는 넣지 않는다(DECISIONS 열린 질문 Q-1).
- * 시스템 공유 창은 버튼을 누른 직후에만 열 수 있어서, 스토리 이미지는 화면이 열릴 때 미리 받아 둔다.
+ * 공유 버튼 (SPEC 5장, D-131). 모바일에서 Web Share API가 되면 시스템 공유 창에 제목·문구·링크만 넘긴다(파일 없음: 카카오톡 등에서 이미지만 가고 링크가 빠지기 때문).
+ * 안 되면 선택 창(링크 복사). 스토리 이미지 저장은 StoryDownload 버튼이 따로 맡는다. 카카오 공유는 넣지 않는다(DECISIONS 열린 질문 Q-1).
  */
-export function ShareButton({ id, title, compact = false }: { id: string; title: string; compact?: boolean }) {
+export function ShareButton({ id, title, text, compact = false }: { id: string; title: string; text: string; compact?: boolean }) {
   const [open, setOpen] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
-  const fileRef = useRef<File | null>(null);
 
   const coarse = () => typeof window !== 'undefined' && typeof navigator.share === 'function' && window.matchMedia('(pointer: coarse)').matches;
-
-  useEffect(() => {
-    if (!coarse() || typeof navigator.canShare !== 'function') return;
-    let alive = true;
-    fetch(`/r/${id}/story`).then((r) => (r.ok ? r.blob() : null)).then((blob) => {
-      if (!alive || !blob) return;
-      const file = new File([blob], 'woholog-result.png', { type: 'image/png' });
-      if (navigator.canShare({ files: [file] })) fileRef.current = file;
-    }).catch(() => {});
-    return () => { alive = false; };
-  }, [id]);
 
   useEffect(() => {
     if (!toast) return;
@@ -40,7 +28,7 @@ export function ShareButton({ id, title, compact = false }: { id: string; title:
   async function onClick() {
     if (coarse()) {
       try {
-        await navigator.share({ title, text: t('share.ogDesc'), url: url(), ...(fileRef.current ? { files: [fileRef.current] } : {}) });
+        await navigator.share(buildSharePayload(title, text, url()));
         trackEvent('share', { type: 'native' });
         return;
       } catch (e) {
@@ -73,9 +61,6 @@ export function ShareButton({ id, title, compact = false }: { id: string; title:
         <h2 className="pr-10 text-h3 text-navy">{t('share.cta')}</h2>
         <div className="mt-4 flex flex-col gap-3">
           <button type="button" data-autofocus onClick={copy} className={`${btn} w-full justify-start`}><Link2 aria-hidden="true" className="size-5" />{t('share.sheet.copy')}</button>
-          <a href={`/r/${id}/story?download=1`} download="woholog-result.png" onClick={() => { trackEvent('share', { type: 'story' }); setOpen(false); }} className={`${btn} w-full justify-start`}>
-            <Download aria-hidden="true" className="size-5" />{t('share.sheet.image')}
-          </a>
         </div>
       </Modal>
       {toast ? <p role="status" className="fixed inset-x-5 bottom-24 z-50 mx-auto w-fit max-w-full rounded-pill bg-navy px-5 py-3 text-body font-extrabold text-white shadow-float">{toast}</p> : null}

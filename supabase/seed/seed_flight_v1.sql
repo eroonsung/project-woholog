@@ -35,5 +35,5 @@ update countries set flight_city = '텔아비브', flight_direct = false, flight
 update countries set flight_city = '상파울루', flight_direct = false, flight_hours = 25, flight_note = '미국·중동·유럽에서 갈아타요', flight_source_id = null, flight_verified_at = '2026-11-11', flight_needs_check = true where code = 'BR';
 update countries set flight_city = '산티아고', flight_direct = false, flight_hours = 27, flight_note = '미국 등에서 갈아타요', flight_source_id = null, flight_verified_at = '2026-11-11', flight_needs_check = true where code = 'CL';
 update countries set flight_city = '부에노스아이레스', flight_direct = false, flight_hours = 28, flight_note = '미국·중동·유럽에서 갈아타요', flight_source_id = null, flight_verified_at = '2026-11-11', flight_needs_check = true where code = 'AR';
-update countries set flight_city = '안도라', flight_direct = false, flight_hours = 17, flight_note = '공항이 없어요. 바르셀로나까지 비행기 후 버스로 약 3시간', flight_source_id = null, flight_verified_at = '2026-11-11', flight_needs_check = true where code = 'AD';
+update countries set flight_city = '바르셀로나', flight_direct = false, flight_hours = 17, flight_note = '공항이 없어요. 바르셀로나까지 비행기 후 버스로 약 3시간', flight_source_id = null, flight_verified_at = '2026-11-11', flight_needs_check = true where code = 'AD';
 commit;

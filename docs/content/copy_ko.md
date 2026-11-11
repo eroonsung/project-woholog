@@ -233,6 +233,8 @@
 | share.copied | 링크를 복사했어요 |
 | share.ogTitle | 나는 {country} {pct}%! 내 워홀 나라 적합도 |
 | share.ogDesc | 질문 12개로 29개 나라 적합도를 확인해 보세요. |
+| share.text | 나는 {country} {pct}%! 내 워홀 나라 적합도 확인해 봐 | 제안(D-131, 공유 창 본문) |
+| share.story.iosHint | 이미지가 새 탭에서 열리면 길게 눌러 "사진에 저장"을 골라 주세요. | 제안(D-131, 아이폰만) |
 | share.old | 이 결과는 {date} 정보로 계산했어요. 지금 정보로 다시 계산해 볼까요? |
 
 ## 9. Coming soon·이메일 신청

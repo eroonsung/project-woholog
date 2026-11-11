@@ -2,6 +2,7 @@ import { BlockedList } from './BlockedList';
 import { PreviewPanel } from './PreviewPanel';
 import { RecalcBanner } from './RecalcBanner';
 import { CompareButton, ResultButtons, ResultTopBar, StickyActions } from './ResultActions';
+import { StoryDownload } from '@/components/result/StoryDownload';
 import { ResultCard } from './ResultCard';
 import { Top3 } from './Top3';
 import { ReportLink } from '@/components/report/ReportLink';
@@ -24,6 +25,7 @@ export function ResultView({ id, answers, result, dataChanged, today }: {
   if (!plan) return null;
   const country = result.countries[plan.card.code];
   const shareTitle = t('share.ogTitle', { country: country?.nameKo ?? plan.card.code, pct: plan.card.pct });
+  const shareText = t('share.text', { country: country?.nameKo ?? plan.card.code, pct: plan.card.pct });
   const rows = previewRows(country?.preview, today, answers.q5);
   const hasForeign = !!country?.preview && [country.preview.money.proof, country.preview.money.fee, country.preview.money.health].some((m) => m && m.currency !== 'KRW');
   const verified = country?.provenance.verifiedAt;
@@ -32,18 +34,19 @@ export function ResultView({ id, answers, result, dataChanged, today }: {
   return (
     <main className="mx-auto w-full max-w-content px-5 pb-6 pt-4 lg:px-10 lg:pb-12">
       {dataChanged ? <RecalcBanner answers={answers} /> : null}
-      <ResultTopBar id={id} shareTitle={shareTitle} />
+      <ResultTopBar id={id} shareTitle={shareTitle} shareText={shareText} />
 
       <div className="mt-4 grid gap-6 lg:grid-cols-3">
         <div className="flex flex-col gap-6 lg:col-span-2 lg:row-start-1">
           <ResultCard plan={plan} result={result} answers={answers} />
           <PreviewPanel rows={rows} fxDate={hasForeign ? country?.preview?.fxDate ?? null : null} />
           <CompareButton plan={plan} id={id} />
+          <StoryDownload id={id} className="lg:hidden" />
         </div>
 
         <div className="lg:col-start-3 lg:row-span-2 lg:row-start-1">
           <Top3 rows={plan.top3} countries={result.countries} titleKey={plan.topTitleKey} />
-          <ResultButtons plan={plan} id={id} shareTitle={shareTitle} />
+          <ResultButtons plan={plan} id={id} shareTitle={shareTitle} shareText={shareText} />
         </div>
 
         <div className="lg:col-span-2 lg:row-start-2"><BlockedList result={result} /></div>
@@ -56,7 +59,7 @@ export function ResultView({ id, answers, result, dataChanged, today }: {
         </p>
         <p>{t('disclaimer.result')}</p>
       </div>
-      <StickyActions plan={plan} id={id} shareTitle={shareTitle} />
+      <StickyActions plan={plan} id={id} shareTitle={shareTitle} shareText={shareText} />
     </main>
   );
 }

@@ -544,6 +544,14 @@
 - 비행 정보: `flight_needs_check`는 화면에 표시하지 않는 안 승인. ⚠는 16곳(18곳이 아님). `launch_checklist.md`에 항공사 시간표 재확인 추가.
 - 운영 DB 적용(허락받음): 006 → `seed_flight_v1.sql` → `seed_country_apps_reading_v1.sql` 순서로 적용 후 push. 적용 결과는 아래 "운영 적용 기록".
 
+## D-131. 공유 동작: 링크가 빠지지 않게 (2026-11-11)
+- 문제: 휴대폰에서 공유하면 Web Share에 파일(스토리 이미지)과 링크를 같이 넘겨서 카카오톡 등에서는 이미지만 가고 링크가 빠졌다. 받은 사람이 사이트로 들어올 수 없다.
+- **공유하기**: `navigator.share({ title, text, url })`만. 파일 없음(스토리 이미지를 미리 받아 두던 코드도 뺌). Web Share가 없으면 선택 창(링크 복사). 문구 `share.text`("나는 {나라} {%}! 내 워홀 나라 적합도 확인해 봐", 제안).
+- **스토리 이미지 저장**은 별도 버튼(`StoryDownload`): `/r/[id]/story?download=1`. iOS는 새 탭 + 길게 눌러 저장 안내(`share.story.iosHint`, 제안). 판별·값은 `lib/share/web.ts`(순수 함수, 테스트).
+- 안도라 `flight_city`를 "바르셀로나"로(시드·`flight_v1.md`, 운영 적용은 허락 후).
+- near_korea와 직항 4시간 기준 비교 결과 승인: 그대로 둔다.
+- 확인한 것: `/r/[id]`의 og:title·og:description·og:image(1200×630, 운영에서는 절대 주소), twitter 카드가 들어간다. 받은 사람용 "나도 해보기" 버튼은 아직 없음 → 제안만(아래 보고).
+
 ---
 
 ## 열린 질문 (정해지면 위로 옮긴다)
