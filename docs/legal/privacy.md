@@ -84,6 +84,7 @@
 - 결과 저장·정보 제보·오픈 알림 신청처럼 서버로 보내는 요청에는 이용 횟수를 제한하기 위해 IP 주소를 서버에만 있는 비밀 값을 섞어 복원할 수 없는 해시 값으로 바꿔요. 이 해시 값은 24시간이 지나면 삭제하고, 원래 IP 주소는 저장하지 않아요.
 - 방문 통계는 [Vercel Web Analytics]로 확인하며, 개인을 알아볼 수 있는 쿠키를 쓰지 않아요.
 - 테스트 진행 중 답변은 이용자의 브라우저(세션 저장소)에만 임시로 저장되고, 결과를 볼 때 서버로 보내요.
+- 질문 2의 "만 나이 계산기"에 넣는 생년월일은 이용자의 브라우저 화면 안에서만 계산하고, 저장하거나 서버로 보내지 않아요. 계산한 만 나이만 테스트 답변으로 쓰여요.
 - 준비 중 기능의 "원해요"는 어떤 기능을 눌렀는지와 시각만 저장하고, 누가 눌렀는지는 저장하지 않아요. 같은 브라우저에서 중복으로 누르지 않도록 브라우저(로컬 저장소)에 표시만 남겨요.
 - 체크리스트의 나라·출국 예정일·체크 상태는 이용자의 브라우저(로컬 저장소)에만 저장되고 서버로 보내지 않아요. 브라우저 데이터를 지우면 사라져요.
 
@@ -120,6 +121,7 @@ woholog is run by [Operator]. We collect as little as possible.
 - **Report message**: to fix wrong information. We do not ask for contact details. Deleted within 1 year after we resolve it.
 - **Quiz answers and results**: to calculate your result and let you share a link. Not linked to your name or contact details. Deleted after 1 year.
 - **Server logs** (IP address, browser, time): kept by our hosting provider for security.
+- **Birth date** (age calculator in the quiz): used only inside your browser to work out your age. It is never stored or sent to us; only the resulting age is used as a quiz answer.
 - **Request-rate limiting**: to prevent abuse we store only a one-way hash of your IP address, made with a secret value kept on our server (we do not store the IP address itself). Deleted after 24 hours.
 
 **Who processes it**: Supabase Inc. (database, stored in [Seoul, Korea]), Vercel Inc. (hosting, USA), [Email provider] (sending the launch email, [country]). We do not sell or share your data with anyone else.

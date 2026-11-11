@@ -5,9 +5,9 @@ import { isToKorea } from '@/lib/nav';
 /** 로고: 아쿠아 "W" 마크 + 서비스 이름 + 코랄 점 (S11). 누르면 첫 화면. */
 export function Logo({ onClick }: { onClick?: () => void }) {
   return (
-    <Link href="/" onClick={onClick} className="inline-flex min-h-11 shrink-0 items-center gap-1.5 whitespace-nowrap lg:gap-2">
+    <Link href="/" onClick={onClick} aria-label={t('brand.name')} className="inline-flex min-h-11 shrink-0 items-center gap-1.5 whitespace-nowrap lg:gap-2">
       <span aria-hidden="true" className="flex size-8 items-center justify-center rounded-button bg-aqua text-body font-black text-navy">W</span>
-      <span className="text-body-l font-black text-navy lg:text-h3">{t('brand.name')}</span>
+      <span className="text-body-l font-black text-navy max-xs:hidden lg:text-h3">{t('brand.name')}</span>
       <span aria-hidden="true" className="hidden size-1.5 rounded-full bg-coral lg:block" />
     </Link>
   );

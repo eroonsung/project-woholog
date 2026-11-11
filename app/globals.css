@@ -38,6 +38,7 @@
 
   --container-content: 1120px; /* 웹 콘텐츠 최대 폭 */
   --container-quiz: 656px; /* 질문 화면 본문 폭(와이어프레임 S01~S06) */
+  --breakpoint-xs: 360px; /* 이보다 좁은 화면에서는 헤더 로고 옆 글자를 숨긴다(max-xs) */
 
   --font-sans: var(--font-pretendard), system-ui, sans-serif;
 }

@@ -336,6 +336,14 @@
 - 임시 "준비 중이에요" 화면(`components/shared/ComingSoonPage.tsx`) 연결: `/countries`, `/compare`, `/checklist`, `/guides`, `/soon`, `/soon/[slug]`(15개 slug만, 없는 slug는 404), `/to-korea`, `/privacy`, `/report`. 11단계에서 남은 곳이 없는지 확인한다.
 - 문구(copy): `brand.name`, `placeholder.title`(요청 문구), `placeholder.home`(SPEC 0.4 "처음으로")과 제안 문구 6개(`a11y.skip`, `nav.main/open/close/switch/stageOf` — 스크린리더용)가 승인 필요.
 
+### D-106 운영 DB 보호와 4.5 확인 후 답 (확정, 2026-11-11)
+- **운영 DB 보호(CLAUDE.md 규칙 17에 추가)**: 자동 테스트·확인 스크립트는 운영 DB에 쓰지 않는다. 저장이 필요한 확인은 가짜 응답으로 한다. 로컬 DB가 없고 로컬 서버도 운영 DB에 연결되므로 "로컬 서버로 확인"하다 저장이 일어나도 운영 쓰기다. 운영 저장 확인이 꼭 필요하면 먼저 허락받고 `docs/ops/test_data.md`에 기록한다. 계기: 4.5 확인 중 질문 12개 자동 입력 스크립트가 운영 DB에 2행을 저장했다.
+- **테스트 id**: `d105cfc9-fbd4-45cb-9d65-df771cbc4390`은 Yvonne의 직접 테스트로 확정("추정" 삭제).
+- **문구 승인**: `placeholder.title`, `placeholder.home`, `a11y.skip`, `nav.main`·`nav.open`·`nav.close`·`nav.switch`·`nav.stageOf` 모두 승인.
+- **만 나이 계산기 개인정보 확인(D-102)**: 브라우저에서 생년월일을 넣는 동안 서버로 나간 요청 0건(GET 포함), `sessionStorage`·`localStorage`·쿠키·IndexedDB·Cache Storage·주소에 생년월일 없음(저장된 것은 만 나이 `q2`뿐), 새로고침·새 탭에서 생년월일 칸이 비어 있음, "결과 보기" 요청 본문에도 없음. 코드에서 생년월일은 `AgeCalculator`의 지역 상태와 `lib/age.ts`에만 있다. 그래서 고칠 것은 없고, SPEC 3.2와 처리방침(한·영)에 "생년월일은 저장하지 않음" 한 줄을 넣었다.
+- **헤더**: 1024~1279px에서 단계 메뉴 화살표(▾) 숨김은 지금 안 그대로. 360px 미만에서는 로고 옆 글자만 숨기고 기호(W)는 남긴다(`max-xs`, 로고 링크는 `aria-label`로 이름 유지).
+- **와이어프레임 차이**: 영문 "STAGE" 라벨, 단계별 팁 카드, 큰 푸터는 제외 그대로(D-105).
+
 ---
 
 ## 열린 질문 (정해지면 위로 옮긴다)

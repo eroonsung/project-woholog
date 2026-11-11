@@ -521,11 +521,11 @@
 | age.calc.note | 입력한 생년월일은 저장하지 않아요. | 제안 |
 | age.calc.applyDay | 신청하는 날 기준 만 나이라서, 신청일이 오늘과 다르면 나이가 달라질 수 있어요. | 승인(2026-11-11 요청) |
 | brand.name | 워홀로그 | 원본(로고) |
-| placeholder.title | 준비 중이에요 | 승인(2026-11-11 요청) |
-| placeholder.home | 처음으로 | SPEC 0.4 |
-| a11y.skip | 본문으로 건너뛰기 | 제안 |
-| nav.main | 주 메뉴 | 제안(스크린리더용) |
-| nav.open | 메뉴 열기 | 제안(스크린리더용) |
-| nav.close | 메뉴 닫기 | 제안(스크린리더용) |
-| nav.switch | 서비스 구역 전환 | 제안(스크린리더용) |
-| nav.stageOf | {stage} 메뉴 | 제안(스크린리더용) |
+| placeholder.title | 준비 중이에요 | 승인(2026-11-11) |
+| placeholder.home | 처음으로 | 승인(2026-11-11) |
+| a11y.skip | 본문으로 건너뛰기 | 승인(2026-11-11) |
+| nav.main | 주 메뉴 | 승인(2026-11-11) |
+| nav.open | 메뉴 열기 | 승인(2026-11-11) |
+| nav.close | 메뉴 닫기 | 승인(2026-11-11) |
+| nav.switch | 서비스 구역 전환 | 승인(2026-11-11) |
+| nav.stageOf | {stage} 메뉴 | 승인(2026-11-11) |
