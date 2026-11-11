@@ -91,7 +91,7 @@ app/
 components/
   ui/  layout/  quiz/  result/  countries/  checklist/  soon/  shared/
 lib/
-  engine/   types.ts score.ts adapter.ts reasons.ts whatIf.ts candidates.ts defaults.ts
+  engine/   types.ts score.ts marks.ts adapter.ts reasons.ts whatIf.ts candidates.ts defaults.ts index.ts
   data/     supabase.ts queries.ts (화면에서 직접 쿼리 금지)
   storage.ts   브라우저 저장소 (SPEC.md 0.2의 키만)
   checklist.ts 항목 + 출국일 → 단계·날짜, 링크 상태 줄이기·풀기
@@ -103,7 +103,7 @@ supabase/
   seed/seed_v1_1.sql  seed/seed_checklist_v1.sql
 tests/
   engine.test.ts  adapter.test.ts  checklist.test.ts  storage.test.ts
-  fixtures/personas_expected.json
+  fixtures/personas_expected.json  countries_v1.ts  personas.ts
   e2e/flow.spec.ts
 docs/
   engine/fit_engine_v1.py

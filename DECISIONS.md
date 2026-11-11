@@ -180,6 +180,37 @@
 - 결정: TypeScript는 7.0.2 대신 6.x 최신 안정판(6.0.3)으로 고정하고 7은 오픈 후 검토. Node는 Vercel이 지원하는 26.x(기본값)에 맞춰 `.nvmrc`·`engines`를 26으로 둔다(Node 20은 2026-10-01 지원 종료 예정).
 - 영향: `pretendard`·`postcss`는 스택 이름에 없지만 허락받아 설치(D-068).
 
+### D-073 npm audit 1건(eslint → minimatch)은 보류 (확정)
+- 결정: 개발 도구(eslint 10 → minimatch, moderate)에만 해당하고 실행 코드와 무관해서 `--force`로 eslint를 내리지 않는다. eslint 쪽 업데이트가 나오면 올린다.
+
+### D-074 Next.js telemetry 끔 (확정)
+- 결정: `npx next telemetry disable`로 이 컴퓨터에서 끈다.
+
+### D-075 카드 모서리는 2단계에서 확정 (확정)
+- 결정: 디자인 가이드의 20px(본문)와 22px/18px(색 적용 규칙표)이 달라 지금은 토큰 `--radius-card` 20px로 둔다. 질문 화면(S01~S06) Figma를 읽는 2단계에서 정한다.
+- 영향: 0단계의 `pretendard` 패키지는 지웠다(글꼴 파일 `app/fonts/PretendardVariable.woff2`는 유지).
+
+## 1단계: 엔진 (2026-11-11)
+
+### D-076 엔진 값 이름은 영어 코드 (제안)
+- 결정: Python의 한글 값을 영어 코드로 옮겼다(상/중/하=high/mid/low, 무제한/선착순/추첨=unlimited/first_come/lottery, 질문 답 `earn`·`jobs`·중요한 것 칩 id 등). 중요한 것 칩 id는 DB `scoring_config.priority_chips`와 같다. 동작은 Python과 같고 이름만 다르다.
+- 영향: `adapter.ts`(3단계)는 이 코드를 만든다. CLAUDE.md 6장 표의 "상/중/하" 등은 이 코드로 읽는다.
+
+### D-077 scoring_config는 DB 모양 + 모자란 key는 기본값 (제안)
+- 결정: `ScoringConfig`는 `seed_v1_1.sql`의 key를 그대로 따른다. 시드에 없는 기준값(`english_levels`, `close_gap_pp`(10%p), `study_unlimited_months`(99), `what_if_max_rows`(3))은 `lib/engine/defaults.ts`가 값을 주고 `resolveConfig()`가 DB 값 위에 얹는다.
+- 영향: 3단계에서 위 4개를 시드(새 마이그레이션이 아니라 데이터 추가)에 넣을지 정한다.
+
+### D-078 Python의 동작 중 눈에 띄는 3가지를 그대로 옮김 (확정, D-011)
+- 반올림은 Python `round()`(정확히 .5면 짝수 쪽). 동점 순서의 "필수 3항목 점수"에 중요한 것 칩 `돈`도 들어간다(원본이 이름이 '돈'인 줄을 모두 세기 때문). 한 고용주 제한(`employerLimit`)은 표의 6번째 값이 아니라 이스라엘만 true로 계산한 값을 쓴다(CLAUDE.md 6장의 ≤3개월과 같다).
+- 영향: 결과가 이상해 보여도 고치지 않고 보고만 한다.
+
+### D-079 나라별 예외는 입력 값으로 (제안)
+- 결정: 원본의 `n=='호주'`(2년 칩에서 농장을 안 고르면 △)는 나라 이름 대신 `farmForExtension` 값으로 받는다. 테스트 데이터에서는 호주만 true. DB에서 이 값을 어떻게 만들지는 3단계 질문이다(CLAUDE.md 6장 표에 없음).
+
+### D-080 후보 나라·조건 문구 키·이렇게 바꾸면는 Python에 없어 새로 설계 (제안)
+- 결정: 후보 나라(`candidates.ts`)는 SPEC 3.2, 조건 문구 키(`reasons.ts`, `reason.<항목>.<ok|partial|no>[.<경우>]`)는 `copy_ko.md` 5장, 이렇게 바꾸면(`whatIf.ts`)는 SPEC 4.2에서 도출했다. 이렇게 바꾸면은 답을 하나만 바꿔 같은 점수 함수를 다시 돌리고 %가 오르는 것만 돌려준다.
+- 영향: 이 세 모듈은 Python이 정답을 주지 않으므로 기대값 대신 규칙 테스트로 확인한다. 5단계에서 문구 키를 copy 파일에 넣는다.
+
 ---
 
 ## 열린 질문 (정해지면 위로 옮긴다)
