@@ -7,6 +7,7 @@ DB에는 `supabase/seed/seed_country_apps_v1.sql`로 넣는다. 둘을 같이 �
 - 안도라는 정보가 적어 통신사·메신저만 넣었다. 핀란드는 협정 발효 전이지만 미리 넣었다.
 - 전체 171행. **운영 DB 적용됨**(2026-11-11, 171행·29개국).
 - **링크 확인(적용 전, curl GET·리다이렉트 따라가기·10초)**: 고유 url 136개 중 80개 정상, 죽은 링크 0개, 56개는 봇 차단·접속 막힘 응답이라 확인 불가. 확인 불가 링크에는 `⚠ 직접 확인 필요`를 붙였다. 오픈 전에 브라우저로 직접 열어 보고, 죽었으면 주소를 고치거나 `url`을 비운다(시드와 DB를 같이).
+- **2026-11-11 브라우저 확인(운영 페이지 안에서 45개 요청)**: 32개 응답 받음(서버 살아 있음, curl의 403은 봇 차단), 12개는 브라우저 보안 정책으로 응답 내용을 못 봄(SEEK 호주·뉴질랜드, Revolut, RATP, ameli, Indeed Italia, Idealista Portugal, SNCB, BKK, Pracuj.pl, Jobsdb HK, HSL), 1개(Profession.hu)는 15초 안에 응답 없음. **링크는 그대로 두고**, 12개 + Profession.hu 13개는 Yvonne가 휴대폰으로 확인한다(안 열리는 것만 `url`을 비움). 근거는 `data_research_v1.md` 4장.
 - 이탈리아 IO는 `io.italia.it`이 `ioapp.it`으로 이동해서 새 주소로 바꿨다. 룩셈부르크 jobs.lu(영어판으로 이동)·덴마크 Rejseplanen(`rejseplan.dk`로 이동)은 정상 이동이라 그대로 뒀다.
 
 ## 호주 (AU)

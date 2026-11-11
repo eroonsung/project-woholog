@@ -6,12 +6,12 @@
 - [ ] **오픈 전 테스트 데이터 일괄 삭제(허락 받고 실행)** — `docs/ops/test_data.md`에 적어 둔 id만 지운다: `quiz_results`(결과), `launch_subscribers`(이메일 신청, 현재 id 7·9), `user_reports`(제보, 현재 id 3), `feature_votes`(현재 id 1). 지운 뒤 세 표에 테스트 행이 남지 않았는지 확인(`quiz_results` 0행, 나머지는 테스트 이메일·문구가 0건)
 - [ ] `launch_subscribers`·`user_reports`·`feature_votes`에 테스트 데이터가 있으면 같이 정리
 - [ ] 체크리스트·서류의 `needs_review = true` 항목 확인 후 false로 (D-036, `docs/content/checklist_v1.md` 4장). **번역·아포스티유 필요 여부도 같이 확인**(서류 35개가 모두 `translation_required`·`apostille_required` = false, D-119)
-- [ ] 빈 값 채우기 (DECISIONS.md Q-6): 잔고 증명 금액 — 1순위 아일랜드·스페인·포르투갈, 2순위 폴란드·오스트리아·이스라엘
+- [ ] 빈 값 채우기 (DECISIONS.md Q-6): 잔고 증명 금액 — 조사 결과를 `seed_data_research_v1.sql`로 반영(D-136, **운영 적용은 허락 후**). 적용 뒤에도 **아일랜드(2024 모집 기준)·오스트리아(2026년 기준이 더 높을 수 있음) 금액은 `needs_check = true`라 오픈 전 재확인**, 포르투갈은 공식 금액이 없어 숫자 없이 메모만
 - [x] **필수 앱 v1 적용됨**(`country_apps` 171행, 29개국, 2026-11-11, D-120). **오픈 전 링크 재확인** — 아래 항목과 같이 본다
 - [ ] **오픈 전 확인 불가 링크 56개를 브라우저로 직접 확인**(목록은 `docs/content/country_apps_v1.md`에 "⚠ 직접 확인 필요"로 표시). 죽었으면 주소를 고치거나 `url`을 비운다(시드와 DB 같이)
 - [ ] **추천 준비물 제휴 링크**(`content/partners.json`이 비어 있음): 링크를 넣을 때 "광고" 표시·수수료 안내가 나오는지 확인
 - [ ] 시드의 "재확인"·"공식 재확인 필요" 메모가 붙은 값을 원문으로 확인
-- [ ] 환율(`exchange_rates.source = 'assumed'` 가정값)을 실제 값으로 (Q-3)
+- [ ] 환율: x-rates.com 2026-11-11 값으로 교체(`seed_data_research_v1.sql`, 운영 적용은 허락 후). **12월 말 오픈 직전에 한 번 더 갱신**(Q-3)
 
 ## 배포·설정
 - [ ] Vercel Production에 `NEXT_PUBLIC_SITE_LIVE=true`로 바꾸고 **다시 배포** (D-092). 그 뒤 `/robots.txt`가 `Allow`인지, 메타에서 noindex가 빠졌는지 확인 (`/r/[id]`는 계속 noindex)
@@ -35,7 +35,7 @@
 
 - [x] **가이드 글 2개 올리기**(`first-month-money`, `canada-iec-2027`): 운영 DB 적용됨(2026-11-11, D-129). 글을 고칠 때는 `docs/content/guides_draft_v1.md`를 고치고 `python3 -I scripts/build_guides_seed.py`로 시드를 다시 만들어 적용한다(`reviewed_at`도 바꾼다). **오픈 직전에 다시 확인**: 캐나다 IEC 2027 시즌 날짜·기한(10일·20일·30일), 글 속 규칙·링크
 - [ ] **12월 말 일본 2027 접수 공지 확인** → `application_windows`에 4행 추가(허락 후). 그 전에는 "다음 접수"가 선착순 안내로만 보인다(D-130)
-- [ ] **비행 정보 ⚠ 16곳 재확인**: 항공사 시간표·항공권 검색으로 확인(`docs/content/flight_v1.md`, 시드 `flight_needs_check = true`인 나라). 확인하면 시드와 이 표를 같이 고치고 `flight_needs_check`를 false로(D-130)
+- [ ] **비행 정보 재확인**: 조사 반영 뒤 ⚠는 **헝가리(시간 추정)·핀란드(운항 여부 미확인) 2곳**만 남는다(`docs/content/flight_v1.md`). 이스라엘은 2027-03 엘알 직항 시작 뒤 재확인. 확인하면 시드와 표를 같이 고치고 `flight_needs_check`를 false로(D-130·D-136)
 - [ ] **공유 이미지**: 결과 화면의 공유 → 카카오톡·인스타에서 미리보기·스토리 이미지가 잘리지 않는지 실제 확인(8.5 점검). 로고 확정 뒤 이미지의 글자 로고("워홀로그")를 로고로 교체, 이미지 안 주소 글자는 도메인 확정 뒤 결정
 - [ ] **원해요 테스트 표**: 8.5 점검 등으로 운영에서 누른 원해요(`feature_votes`)를 `test_data.md`에 적고 삭제 목록에 포함(지금 id 1 기록됨)
 
