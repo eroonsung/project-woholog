@@ -40,7 +40,8 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko" className={`${pretendard.variable} ${pretendardExtra.variable}`}>
-      <body className="flex min-h-dvh flex-col">
+      {/* ColorZilla 같은 브라우저 확장이 <body>에 cz-shortcut-listen 속성을 붙여서 생기는 하이드레이션 경고를 막는다(body 속성 하나에만 적용, 자식에는 영향 없음) */}
+      <body suppressHydrationWarning className="flex min-h-dvh flex-col">
         <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-button focus:bg-navy focus:px-4 focus:py-3 focus:text-white">
           {t('a11y.skip')}
         </a>
