@@ -391,6 +391,12 @@
 - **Python 원본 기준**: `fit_engine_v1.py`에 `현지언어` 항목과 가상 사용자 G를 추가(G: 24세, 예산 600만, 영어 주문 정도, 카페, 돈 꼭, 현지언어·생활비·가까운). 기존 6명의 Python 출력은 칩 추가 전후 완전히 같다. G(일본 고민)의 예산·직군·돈 조건은 B와 같게 가정했다.
 - **DB 반영**: `supabase/seed/seed_local_language_v1.sql`(`scoring_config`의 `priority_chips`·`heart_reason_chips` 두 줄 변경, 스키마 변경 없음). **적용 전에는 운영 화면에 새 칩이 보이지 않는다**(칩 목록을 DB 값에서 읽음). 적용은 push 허락 때 함께 묻는다(규칙 17). 테스트용 스냅샷 `db_rows_v1.json`은 적용 후 상태로 고쳐 두었다.
 
+## D-112. 5.2단계: 글꼴 용량 줄이기 (2026-11-12)
+- 원본 가변 글꼴(2MB)을 `fonts_src/PretendardVariable.woff2`로 옮겨 두고(번들되지 않음), `scripts/make_font_subset.py`로 굵기 400~900만 남긴 두 파일을 만든다: **Core 105KB**(코드·문구·DB 시드에 실제로 쓰인 글자 731종 + 영문·숫자·기호, `preload`)와 **Extra 253KB**(나머지 한글 KS X 1001 2,350자 등, `preload: false`). `next/font/local` 둘, `font-display: swap`, 글꼴 목록 `Core → Extra → system-ui`.
+- Extra는 Core에 없는 글자가 나올 때만 내려받는다. 새 npm 패키지는 쓰지 않았다(서브셋 도구 fonttools·brotli는 파이썬 도구라 프로젝트 의존성이 아니다).
+- 문구·DB 값에 새 글자가 늘면 스크립트를 다시 돌린다(없는 글자는 Extra → 시스템 글꼴 순으로 대신 그려져 □로 보이지 않는다). 원본 글꼴에도 없는 글자는 `▾` 하나(소스 주석)뿐이다.
+- **Lighthouse 모바일(3회)**: 성능 75 → **97~99**, LCP 12.5초 → 2.3~2.6초, 글꼴 전송량 2,010KB → 105KB. 접근성 96은 그대로(11단계 예정, D-109·D-110).
+
 ---
 
 ## 열린 질문 (정해지면 위로 옮긴다)

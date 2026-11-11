@@ -44,7 +44,7 @@
 - Supabase(Postgres, RLS), `@supabase/supabase-js`
 - Vercel 배포, Vercel Web Analytics(쿠키 없음)
 - Vitest(엔진·변환·유틸), Playwright(핵심 흐름)
-- 폰트 Pretendard(자체 호스팅), 아이콘 lucide-react
+- 폰트 Pretendard(자체 호스팅, 서브셋 Core·Extra, D-112), 아이콘 lucide-react
 - **새 라이브러리는 이유를 말하고 허락받는다.** 상태 관리 라이브러리, UI 키트, ORM은 쓰지 않는다.
 
 ## 4. 절대 규칙
@@ -76,6 +76,7 @@
 ```
 CLAUDE.md  SPEC.md  DECISIONS.md  README.md  (기준 문서 3개와 README만 대문자, 나머지 규칙은 아래)
 app/
+  fonts/  PretendardCore.woff2  PretendardExtra.woff2  (원본 2MB는 fonts_src/)
   page.tsx                    첫 화면
   test/page.tsx               질문 12개 (?q=1..12, ?pre=JP)
   r/[id]/page.tsx             결과
@@ -114,6 +115,7 @@ supabase/
   seed/seed_v1_1.sql  seed/seed_checklist_v1.sql  seed/seed_engine_v1.sql  seed/seed_proof_ticket_v1.sql  seed/seed_nl_proof_v1.sql
 scripts/
   precheck.sh  push 전 확인(build·tsc·eslint·vitest, .env*, 키 패턴) — npm run precheck
+  make_font_subset.py  Pretendard 서브셋(Core·Extra) 만들기, 글자가 늘면 다시 실행(D-112)
 tests/
   engine.test.ts  adapter.test.ts  checklist.test.ts  storage.test.ts
   fixtures/personas_expected.json  countries_v1.ts  personas.ts  db_rows_v1.json(DB 스냅샷)
