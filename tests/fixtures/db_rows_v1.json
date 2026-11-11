@@ -409,7 +409,8 @@
    "selection": "first_come",
    "max_participations": 1,
    "stay_months": 12,
-   "long_stay_months": null
+   "long_stay_months": null,
+   "annual_quota": 200
   },
   {
    "id": 2,
@@ -422,7 +423,8 @@
    "selection": "first_come",
    "max_participations": 1,
    "stay_months": 12,
-   "long_stay_months": 15
+   "long_stay_months": 15,
+   "annual_quota": 3000
   },
   {
    "id": 3,
@@ -435,7 +437,8 @@
    "selection": "first_come",
    "max_participations": 1,
    "stay_months": 6,
-   "long_stay_months": 12
+   "long_stay_months": 12,
+   "annual_quota": 800
   },
   {
    "id": 4,
@@ -448,7 +451,8 @@
    "selection": "unlimited",
    "max_participations": 1,
    "stay_months": 12,
-   "long_stay_months": null
+   "long_stay_months": null,
+   "annual_quota": null
   },
   {
    "id": 5,
@@ -461,7 +465,8 @@
    "selection": "unlimited",
    "max_participations": 1,
    "stay_months": 12,
-   "long_stay_months": null
+   "long_stay_months": null,
+   "annual_quota": null
   },
   {
    "id": 6,
@@ -474,7 +479,8 @@
    "selection": "first_come",
    "max_participations": 1,
    "stay_months": 12,
-   "long_stay_months": null
+   "long_stay_months": null,
+   "annual_quota": 100
   },
   {
    "id": 7,
@@ -487,7 +493,8 @@
    "selection": "first_come",
    "max_participations": 1,
    "stay_months": 12,
-   "long_stay_months": null
+   "long_stay_months": null,
+   "annual_quota": 100
   },
   {
    "id": 8,
@@ -500,7 +507,8 @@
    "selection": "first_come",
    "max_participations": 1,
    "stay_months": 12,
-   "long_stay_months": null
+   "long_stay_months": null,
+   "annual_quota": 200
   },
   {
    "id": 9,
@@ -513,7 +521,8 @@
    "selection": "first_come",
    "max_participations": 1,
    "stay_months": 12,
-   "long_stay_months": null
+   "long_stay_months": null,
+   "annual_quota": 300
   },
   {
    "id": 10,
@@ -526,7 +535,8 @@
    "selection": "unlimited",
    "max_participations": 1,
    "stay_months": 12,
-   "long_stay_months": null
+   "long_stay_months": null,
+   "annual_quota": null
   },
   {
    "id": 11,
@@ -539,7 +549,8 @@
    "selection": "first_come",
    "max_participations": 1,
    "stay_months": 12,
-   "long_stay_months": null
+   "long_stay_months": null,
+   "annual_quota": 1000
   },
   {
    "id": 12,
@@ -552,7 +563,8 @@
    "selection": "first_come",
    "max_participations": 1,
    "stay_months": 12,
-   "long_stay_months": null
+   "long_stay_months": null,
+   "annual_quota": 200
   },
   {
    "id": 13,
@@ -565,7 +577,8 @@
    "selection": "lottery",
    "max_participations": 1,
    "stay_months": 12,
-   "long_stay_months": null
+   "long_stay_months": null,
+   "annual_quota": 800
   },
   {
    "id": 14,
@@ -578,7 +591,8 @@
    "selection": "first_come",
    "max_participations": 1,
    "stay_months": 12,
-   "long_stay_months": null
+   "long_stay_months": null,
+   "annual_quota": 50
   },
   {
    "id": 15,
@@ -591,7 +605,8 @@
    "selection": "first_come",
    "max_participations": 1,
    "stay_months": 24,
-   "long_stay_months": null
+   "long_stay_months": null,
+   "annual_quota": 5000
   },
   {
    "id": 16,
@@ -604,7 +619,8 @@
    "selection": "first_come",
    "max_participations": 1,
    "stay_months": 12,
-   "long_stay_months": null
+   "long_stay_months": null,
+   "annual_quota": 300
   },
   {
    "id": 17,
@@ -617,7 +633,8 @@
    "selection": "first_come",
    "max_participations": 1,
    "stay_months": 12,
-   "long_stay_months": null
+   "long_stay_months": null,
+   "annual_quota": 200
   },
   {
    "id": 18,
@@ -630,7 +647,8 @@
    "selection": "first_come",
    "max_participations": 1,
    "stay_months": 12,
-   "long_stay_months": null
+   "long_stay_months": null,
+   "annual_quota": 500
   },
   {
    "id": 19,
@@ -643,7 +661,8 @@
    "selection": "first_come",
    "max_participations": 2,
    "stay_months": 12,
-   "long_stay_months": 24
+   "long_stay_months": 24,
+   "annual_quota": 10000
   },
   {
    "id": 20,
@@ -656,7 +675,8 @@
    "selection": "first_come",
    "max_participations": 1,
    "stay_months": 12,
-   "long_stay_months": null
+   "long_stay_months": null,
+   "annual_quota": 300
   },
   {
    "id": 21,
@@ -669,7 +689,8 @@
    "selection": "unlimited",
    "max_participations": 1,
    "stay_months": 12,
-   "long_stay_months": null
+   "long_stay_months": null,
+   "annual_quota": null
   },
   {
    "id": 22,
@@ -682,7 +703,8 @@
    "selection": "lottery",
    "max_participations": 2,
    "stay_months": 24,
-   "long_stay_months": 48
+   "long_stay_months": 48,
+   "annual_quota": 10239
   },
   {
    "id": 23,
@@ -695,7 +717,8 @@
    "selection": "first_come",
    "max_participations": 1,
    "stay_months": 12,
-   "long_stay_months": null
+   "long_stay_months": null,
+   "annual_quota": 200
   },
   {
    "id": 24,
@@ -708,7 +731,8 @@
    "selection": "first_come",
    "max_participations": 1,
    "stay_months": 12,
-   "long_stay_months": null
+   "long_stay_months": null,
+   "annual_quota": 200
   },
   {
    "id": 25,
@@ -721,7 +745,8 @@
    "selection": "first_come",
    "max_participations": 1,
    "stay_months": 12,
-   "long_stay_months": null
+   "long_stay_months": null,
+   "annual_quota": 2000
   },
   {
    "id": 26,
@@ -734,7 +759,8 @@
    "selection": "first_come",
    "max_participations": 1,
    "stay_months": 12,
-   "long_stay_months": null
+   "long_stay_months": null,
+   "annual_quota": null
   },
   {
    "id": 27,
@@ -747,7 +773,8 @@
    "selection": "first_come",
    "max_participations": 1,
    "stay_months": 12,
-   "long_stay_months": null
+   "long_stay_months": null,
+   "annual_quota": 100
   },
   {
    "id": 28,
@@ -760,7 +787,8 @@
    "selection": "unlimited",
    "max_participations": 1,
    "stay_months": 12,
-   "long_stay_months": 36
+   "long_stay_months": 36,
+   "annual_quota": null
   },
   {
    "id": 29,
@@ -773,7 +801,8 @@
    "selection": "first_come",
    "max_participations": 1,
    "stay_months": 12,
-   "long_stay_months": null
+   "long_stay_months": null,
+   "annual_quota": 1000
   }
  ],
  "facts": [
@@ -2062,672 +2091,960 @@
    "city": "",
    "metric": "min_wage_monthly",
    "value": 2704,
-   "currency": "EUR"
+   "value_max": null,
+   "currency": "EUR",
+   "as_of": "2026-01-01",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "IE",
    "city": "",
    "metric": "min_wage_monthly",
    "value": 2391,
-   "currency": "EUR"
+   "value_max": null,
+   "currency": "EUR",
+   "as_of": "2026-01-01",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "DE",
    "city": "",
    "metric": "min_wage_monthly",
    "value": 2343,
-   "currency": "EUR"
+   "value_max": null,
+   "currency": "EUR",
+   "as_of": "2026-01-01",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "NL",
    "city": "",
    "metric": "min_wage_monthly",
    "value": 2295,
-   "currency": "EUR"
+   "value_max": null,
+   "currency": "EUR",
+   "as_of": "2026-01-01",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "BE",
    "city": "",
    "metric": "min_wage_monthly",
    "value": 2112,
-   "currency": "EUR"
+   "value_max": null,
+   "currency": "EUR",
+   "as_of": "2026-01-01",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "FR",
    "city": "",
    "metric": "min_wage_monthly",
    "value": 1823,
-   "currency": "EUR"
+   "value_max": null,
+   "currency": "EUR",
+   "as_of": "2026-01-01",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "ES",
    "city": "",
    "metric": "min_wage_monthly",
    "value": 1381,
-   "currency": "EUR"
+   "value_max": null,
+   "currency": "EUR",
+   "as_of": "2026-01-01",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "PL",
    "city": "",
    "metric": "min_wage_monthly",
    "value": 1139,
-   "currency": "EUR"
+   "value_max": null,
+   "currency": "EUR",
+   "as_of": "2026-01-01",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "PT",
    "city": "",
    "metric": "min_wage_monthly",
    "value": 1073,
-   "currency": "EUR"
+   "value_max": null,
+   "currency": "EUR",
+   "as_of": "2026-01-01",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "CZ",
    "city": "",
    "metric": "min_wage_monthly",
    "value": 924,
-   "currency": "EUR"
+   "value_max": null,
+   "currency": "EUR",
+   "as_of": "2026-01-01",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "HU",
    "city": "",
    "metric": "min_wage_monthly",
    "value": 838,
-   "currency": "EUR"
+   "value_max": null,
+   "currency": "EUR",
+   "as_of": "2026-01-01",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "LV",
    "city": "",
    "metric": "min_wage_monthly",
    "value": 780,
-   "currency": "EUR"
+   "value_max": null,
+   "currency": "EUR",
+   "as_of": "2026-01-01",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "AU",
    "city": "",
    "metric": "min_wage_hourly",
    "value": 26.44,
-   "currency": "AUD"
+   "value_max": null,
+   "currency": "AUD",
+   "as_of": "2026-07-01",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "NZ",
    "city": "",
    "metric": "min_wage_hourly",
    "value": 23.95,
-   "currency": "NZD"
+   "value_max": null,
+   "currency": "NZD",
+   "as_of": "2026-04-01",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "GB",
    "city": "",
    "metric": "min_wage_hourly",
    "value": 12.71,
-   "currency": "GBP"
+   "value_max": null,
+   "currency": "GBP",
+   "as_of": "2026-04-01",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "IE",
    "city": "",
    "metric": "min_wage_hourly",
    "value": 14.15,
-   "currency": "EUR"
+   "value_max": null,
+   "currency": "EUR",
+   "as_of": "2026-01-01",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "DE",
    "city": "",
    "metric": "min_wage_hourly",
    "value": 13.9,
-   "currency": "EUR"
+   "value_max": null,
+   "currency": "EUR",
+   "as_of": "2026-01-01",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "FR",
    "city": "",
    "metric": "min_wage_hourly",
    "value": 12.31,
-   "currency": "EUR"
+   "value_max": null,
+   "currency": "EUR",
+   "as_of": "2026-01-01",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "CA",
    "city": "",
    "metric": "min_wage_hourly",
    "value": 18.15,
-   "currency": "CAD"
+   "value_max": null,
+   "currency": "CAD",
+   "as_of": "2026-04-01",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "CA",
    "city": "브리티시컬럼비아",
    "metric": "min_wage_hourly",
    "value": 18.25,
-   "currency": "CAD"
+   "value_max": null,
+   "currency": "CAD",
+   "as_of": "2026-06-01",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "CA",
    "city": "온타리오",
    "metric": "min_wage_hourly",
    "value": 17.6,
-   "currency": "CAD"
+   "value_max": null,
+   "currency": "CAD",
+   "as_of": "2025-10-01",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "CA",
    "city": "퀘벡",
    "metric": "min_wage_hourly",
    "value": 16.6,
-   "currency": "CAD"
+   "value_max": null,
+   "currency": "CAD",
+   "as_of": "2026-05-01",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "CA",
    "city": "앨버타",
    "metric": "min_wage_hourly",
    "value": 15,
-   "currency": "CAD"
+   "value_max": null,
+   "currency": "CAD",
+   "as_of": "2018-10-01",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "JP",
    "city": "도쿄",
    "metric": "min_wage_hourly",
    "value": 1226,
-   "currency": "JPY"
+   "value_max": null,
+   "currency": "JPY",
+   "as_of": "2026-01-01",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "JP",
    "city": "오사카",
    "metric": "min_wage_hourly",
    "value": 1114,
-   "currency": "JPY"
+   "value_max": null,
+   "currency": "JPY",
+   "as_of": "2026-01-01",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "JP",
    "city": "교토",
    "metric": "min_wage_hourly",
    "value": 1058,
-   "currency": "JPY"
+   "value_max": null,
+   "currency": "JPY",
+   "as_of": "2026-01-01",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "IL",
    "city": "",
    "metric": "min_wage_hourly",
    "value": 35.4,
-   "currency": "ILS"
+   "value_max": null,
+   "currency": "ILS",
+   "as_of": "2026-04-01",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "AD",
    "city": "",
    "metric": "min_wage_hourly",
    "value": 7.7,
-   "currency": "EUR"
+   "value_max": null,
+   "currency": "EUR",
+   "as_of": "2023-01-01",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "HK",
    "city": "",
    "metric": "min_wage_hourly",
    "value": 43.1,
-   "currency": "HKD"
+   "value_max": null,
+   "currency": "HKD",
+   "as_of": "2026-05-01",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "TW",
    "city": "",
    "metric": "min_wage_hourly",
    "value": 196,
-   "currency": "TWD"
+   "value_max": null,
+   "currency": "TWD",
+   "as_of": "2026-01-01",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "CL",
    "city": "",
    "metric": "min_wage_monthly",
    "value": 529000,
-   "currency": "CLP"
+   "value_max": null,
+   "currency": "CLP",
+   "as_of": "2025-05-01",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "BR",
    "city": "",
    "metric": "min_wage_monthly",
    "value": 1621,
-   "currency": "BRL"
+   "value_max": null,
+   "currency": "BRL",
+   "as_of": "2026-01-01",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "AR",
    "city": "",
    "metric": "min_wage_monthly",
    "value": 391200,
-   "currency": "ARS"
+   "value_max": null,
+   "currency": "ARS",
+   "as_of": "2026-10-01",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "IL",
    "city": "",
    "metric": "price_level_kr100",
    "value": 159,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2024-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "AU",
    "city": "",
    "metric": "price_level_kr100",
    "value": 152,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2024-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "LU",
    "city": "",
    "metric": "price_level_kr100",
    "value": 150,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2024-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "NZ",
    "city": "",
    "metric": "price_level_kr100",
    "value": 149,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2024-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "DK",
    "city": "",
    "metric": "price_level_kr100",
    "value": 148,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2024-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "GB",
    "city": "",
    "metric": "price_level_kr100",
    "value": 142,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2024-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "CA",
    "city": "",
    "metric": "price_level_kr100",
    "value": 141,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2024-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "IE",
    "city": "",
    "metric": "price_level_kr100",
    "value": 135,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2024-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "SE",
    "city": "",
    "metric": "price_level_kr100",
    "value": 135,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2024-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "NL",
    "city": "",
    "metric": "price_level_kr100",
    "value": 134,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2024-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "AT",
    "city": "",
    "metric": "price_level_kr100",
    "value": 130,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2024-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "DE",
    "city": "",
    "metric": "price_level_kr100",
    "value": 128,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2024-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "BE",
    "city": "",
    "metric": "price_level_kr100",
    "value": 128,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2024-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "FR",
    "city": "",
    "metric": "price_level_kr100",
    "value": 124,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2024-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "HK",
    "city": "",
    "metric": "price_level_kr100",
    "value": 121,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2024-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "IT",
    "city": "",
    "metric": "price_level_kr100",
    "value": 110,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2024-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "JP",
    "city": "",
    "metric": "price_level_kr100",
    "value": 105,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2024-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "ES",
    "city": "",
    "metric": "price_level_kr100",
    "value": 103,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2024-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "PT",
    "city": "",
    "metric": "price_level_kr100",
    "value": 95,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2024-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "CZ",
    "city": "",
    "metric": "price_level_kr100",
    "value": 93,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2024-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "LV",
    "city": "",
    "metric": "price_level_kr100",
    "value": 91,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2024-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "PL",
    "city": "",
    "metric": "price_level_kr100",
    "value": 82,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2024-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "HU",
    "city": "",
    "metric": "price_level_kr100",
    "value": 81,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2024-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "CL",
    "city": "",
    "metric": "price_level_kr100",
    "value": 78,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2024-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "BR",
    "city": "",
    "metric": "price_level_kr100",
    "value": 77,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2024-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "AR",
    "city": "",
    "metric": "price_level_kr100",
    "value": 77,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2024-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "JP",
    "city": "",
    "metric": "korean_population",
    "value": 960970,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2024-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "CA",
    "city": "",
    "metric": "korean_population",
    "value": 263153,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2024-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "AU",
    "city": "",
    "metric": "korean_population",
    "value": 170215,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2024-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "DE",
    "city": "",
    "metric": "korean_population",
    "value": 52588,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2024-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "BR",
    "city": "",
    "metric": "korean_population",
    "value": 51640,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2024-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "NZ",
    "city": "",
    "metric": "korean_population",
    "value": 39155,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2024-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "AR",
    "city": "",
    "metric": "korean_population",
    "value": 23208,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2024-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "HK",
    "city": "",
    "metric": "korean_population",
    "value": 18604,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2024-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "SE",
    "city": "",
    "metric": "korean_population",
    "value": 11767,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2024-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "NL",
    "city": "",
    "metric": "korean_population",
    "value": 10807,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2024-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "DK",
    "city": "",
    "metric": "korean_population",
    "value": 9008,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2024-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "TW",
    "city": "",
    "metric": "korean_population",
    "value": 5319,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2024-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "BE",
    "city": "",
    "metric": "korean_population",
    "value": 5283,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2024-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "CL",
    "city": "",
    "metric": "korean_population",
    "value": 2348,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2024-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "LU",
    "city": "",
    "metric": "korean_population",
    "value": 915,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2024-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "LV",
    "city": "",
    "metric": "korean_population",
    "value": 68,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2024-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "GB",
    "city": "",
    "metric": "korean_population",
    "value": 39097,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2022-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "FR",
    "city": "",
    "metric": "korean_population",
    "value": 27055,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2022-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "HU",
    "city": "",
    "metric": "korean_population",
    "value": 6352,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2022-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "ES",
    "city": "",
    "metric": "korean_population",
    "value": 4774,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2022-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "IT",
    "city": "",
    "metric": "korean_population",
    "value": 4499,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2022-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "PL",
    "city": "",
    "metric": "korean_population",
    "value": 4386,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2022-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "CZ",
    "city": "",
    "metric": "korean_population",
    "value": 2824,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2022-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "AT",
    "city": "",
    "metric": "korean_population",
    "value": 2681,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2022-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "IE",
    "city": "",
    "metric": "korean_population",
    "value": 1176,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2022-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "PT",
    "city": "",
    "metric": "korean_population",
    "value": 314,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2022-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "AD",
    "city": "",
    "metric": "korean_population",
    "value": 5,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2022-12-31",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "AU",
    "city": "",
    "metric": "rent_week",
    "value": 200,
-   "currency": "AUD"
+   "value_max": 400,
+   "currency": "AUD",
+   "as_of": "2026-11-01",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "JP",
    "city": "도쿄",
    "metric": "rent_month",
    "value": 78090,
-   "currency": "JPY"
+   "value_max": null,
+   "currency": "JPY",
+   "as_of": "2026-05-01",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "JP",
    "city": "오사카",
    "metric": "rent_month",
    "value": 59660,
-   "currency": "JPY"
+   "value_max": null,
+   "currency": "JPY",
+   "as_of": "2026-05-01",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "GB",
    "city": "런던",
    "metric": "rent_week",
    "value": 180,
-   "currency": "GBP"
+   "value_max": 250,
+   "currency": "GBP",
+   "as_of": "2026-11-01",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "CA",
    "city": "",
    "metric": "rent_month",
    "value": 400,
-   "currency": "CAD"
+   "value_max": 1500,
+   "currency": "CAD",
+   "as_of": "2026-11-01",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "AR",
    "city": "부에노스아이레스",
    "metric": "rent_month",
    "value": 500,
-   "currency": "USD"
+   "value_max": 1000,
+   "currency": "USD",
+   "as_of": "2026-11-01",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "NZ",
    "city": "",
    "metric": "rent_week",
    "value": 620,
-   "currency": "NZD"
+   "value_max": null,
+   "currency": "NZD",
+   "as_of": "2026-09-30",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "NZ",
    "city": "오클랜드",
    "metric": "rent_week",
    "value": 660,
-   "currency": "NZD"
+   "value_max": null,
+   "currency": "NZD",
+   "as_of": "2026-09-30",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "NZ",
    "city": "웰링턴",
    "metric": "rent_week",
    "value": 600,
-   "currency": "NZD"
+   "value_max": null,
+   "currency": "NZD",
+   "as_of": "2026-09-30",
+   "verified_at": "2026-11-09"
   },
   {
    "country": "TW",
    "city": "",
    "metric": "price_level_kr100",
    "value": 69,
-   "currency": null
+   "value_max": null,
+   "currency": null,
+   "as_of": "2026-11-01",
+   "verified_at": "2026-11-09"
   }
  ],
  "rates": [
@@ -2851,6 +3168,125 @@
   {
    "region": "middle_east",
    "krw": 1500000
+  }
+ ],
+ "windows": [
+  {
+   "program_id": 19,
+   "opens_on": "2026-01-19",
+   "closes_on": "2026-01-23",
+   "note": "2026년 1분기",
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 19,
+   "opens_on": "2026-04-13",
+   "closes_on": "2026-04-17",
+   "note": "2026년 2분기",
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 19,
+   "opens_on": "2026-07-13",
+   "closes_on": "2026-07-17",
+   "note": "2026년 3분기",
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 19,
+   "opens_on": "2026-10-12",
+   "closes_on": "2026-10-16",
+   "note": "2026년 4분기",
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 1,
+   "opens_on": "2026-01-01",
+   "closes_on": null,
+   "note": "200명 소진 시까지",
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 13,
+   "opens_on": "2026-11-01",
+   "closes_on": "2026-11-07",
+   "note": "2026 하반기 추첨 접수",
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 2,
+   "opens_on": "2026-05-14",
+   "closes_on": "2026-05-14",
+   "note": "하루만 선착순",
+   "verified_at": "2026-11-09"
+  }
+ ],
+ "jobTypes": [
+  {
+   "country": "AU",
+   "job_code": "cafe",
+   "description_ko": "영어가 되면 카페·레스토랑 서빙, 영어가 약하면 주방 보조",
+   "language": "영어"
+  },
+  {
+   "country": "AU",
+   "job_code": "farm",
+   "description_ko": "2·3차 비자용 농장·목축·어업·광업·건설 (지정 지역)",
+   "language": "영어 약해도 가능"
+  },
+  {
+   "country": "JP",
+   "job_code": "cafe",
+   "description_ko": "음식점·서점 등 서비스업",
+   "language": "일본어"
+  },
+  {
+   "country": "JP",
+   "job_code": "hotel",
+   "description_ko": "호텔·글로벌 기업 서비스업",
+   "language": "일본어·영어"
+  },
+  {
+   "country": "JP",
+   "job_code": "care",
+   "description_ko": "요양·장애인 복지시설",
+   "language": "일본어"
+  },
+  {
+   "country": "CA",
+   "job_code": "retail",
+   "description_ko": "식당·상점·마트 단순 아르바이트 (게시판 구인)",
+   "language": "영어"
+  },
+  {
+   "country": "CA",
+   "job_code": "cafe",
+   "description_ko": "식당·카페, 한인 업소",
+   "language": "영어·한국어"
+  },
+  {
+   "country": "GB",
+   "job_code": "retail",
+   "description_ko": "Gumtree 단기 아르바이트, 한인 업소·동포신문 구인",
+   "language": "영어"
+  },
+  {
+   "country": "GB",
+   "job_code": "office",
+   "description_ko": "Indeed·Reed·LinkedIn 경력직",
+   "language": "영어"
+  },
+  {
+   "country": "NZ",
+   "job_code": "cafe",
+   "description_ko": "영어가 되면 카페·레스토랑 서빙",
+   "language": "영어"
+  },
+  {
+   "country": "NZ",
+   "job_code": "farm",
+   "description_ko": "원예·포도재배 (3개월 하면 3개월 연장)",
+   "language": "영어 약해도 가능"
   }
  ],
  "sources": [

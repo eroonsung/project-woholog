@@ -69,7 +69,7 @@ export default function TokensPage() {
       <Section title="✓△✗ (모양 + 글자)">
         <div className="flex items-center gap-4">
           <FitMark mark="ok" text="맞아요" />
-          <FitMark mark="warn" text="조금 아쉬워요" />
+          <FitMark mark="partial" text="조금 아쉬워요" />
           <FitMark mark="no" text="어려워요" />
         </div>
       </Section>

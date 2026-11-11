@@ -1,4 +1,5 @@
 import copyKo from '@/content/copy_ko.json';
+import { josa, type JosaPair } from './josa';
 
 type Vars = Record<string, string | number>;
 const messages = copyKo as Record<string, string>;
@@ -14,9 +15,12 @@ export function t(key: string, vars?: Vars): string {
     return key;
   }
   if (!vars) return template;
-  return template.replace(/\{(\w+)\}/g, (match, name: string) => {
+  // `{name}`은 값 그대로, `{name:이/가}`는 값 뒤에 받침에 맞는 조사를 붙인다
+  return template.replace(/\{(\w+)(?::([^}]+))?\}/g, (match, name: string, pair?: string) => {
     const value = vars[name];
-    return value === undefined ? match : String(value);
+    if (value === undefined) return match;
+    const text = String(value);
+    return pair ? `${text}${josa(text, pair as JosaPair)}` : text;
   });
 }
 

@@ -73,9 +73,9 @@
 |---|---|---|
 | result.score | 항상 | 조건 {total}개 중 {ok}개 ✓ |
 | result.heart.top | 마음에 둔 나라가 1위 | {country}, 잘 맞아요. 마음 가는 대로 가도 좋아요. |
-| result.heart.close | 1위와 10%p 미만 차이 | {country}도 충분히 잘 맞아요. 1위 {top}와 {diff}%p 차이예요. |
+| result.heart.close | 1위와 10%p 미만 차이 | {country}도 충분히 잘 맞아요. 1위 {top:와/과} {diff}%p 차이예요. |
 | result.heart.far | 1위와 10%p 이상 차이 | {country}에 가려면 이것부터 해결해요. |
-| result.heart.blocked | 나이·다녀온 나라 때문에 불가 | {country}는 지금 조건으로는 갈 수 없어요. ({reason}) |
+| result.heart.blocked | 나이·다녀온 나라 때문에 불가 | {country:은/는} 지금 조건으로는 갈 수 없어요. ({reason}) |
 | result.heartReason | 마음 이유를 골랐을 때 | 마음 이유: {reasons} |
 | result.noHeart.title | 마음에 둔 나라가 없을 때 | 나에게 가장 잘 맞는 나라 |
 | result.top3 | | 나에게 더 잘 맞는 나라 TOP 3 |
@@ -85,9 +85,9 @@
 | result.blocked.companion | | 같이 가는 사람의 나이 조건 |
 | result.allLow | 1위도 60% 미만 | 지금 조건으로는 딱 맞는 나라가 없어요. 아래처럼 바꾸면 달라져요. |
 | result.whatIf.title | | 이렇게 바꾸면 |
-| result.whatIf.row | | {change}면 → {country} {from}% → {to}% |
+| result.whatIf.row | | {change} → {country} {from}% → {to}% |
 
-이렇게 바꾸면 `{change}` 예시: 일본어로 알바 면접을 볼 수 있게 되면 / 영어로 알바 면접을 볼 수 있게 되면 / {gap}만 원을 더 모으면 / 생활비를 일부만 벌어도 되면
+이렇게 바꾸면 `{change}`(문장 끝이 이미 "면"이라 `result.whatIf.row`에서 "면"을 또 붙이지 않는다) 예시: 일본어로 알바 면접을 볼 수 있게 되면 / 영어로 알바 면접을 볼 수 있게 되면 / {gap}만 원을 더 모으면 / 생활비를 일부만 벌어도 되면
 
 ## 5. 조건별 이유 문장 (✓ / △ / ✗)
 엔진이 돌려준 `item`과 `mark`, 그리고 `reasonCode`로 고른다. 한 칸에 문장 1개만.
@@ -529,3 +529,112 @@
 | nav.close | 메뉴 닫기 | 승인(2026-11-11) |
 | nav.switch | 서비스 구역 전환 | 승인(2026-11-11) |
 | nav.stageOf | {stage} 메뉴 | 승인(2026-11-11) |
+| result.chip.heart | 마음에 둔 나라 | Figma |
+| result.noHeart.headline | {country:이/가} 가장 잘 맞아요 | Figma(조사 처리) |
+| result.otherHearts | 마음에 둔 다른 나라 | SPEC 4.2 |
+| result.confirming | 확인 중: 잔고 증명 금액을 확인하고 있어요 | 승인(2026-11-11) |
+| result.partialChecking | 일부 조건 확인 중 | 승인(2026-11-11) |
+| result.next | 다음으로 잘 맞는 나라 | Figma |
+| result.share | 공유 | Figma(자리만, 10단계) |
+| result.compare.other | 다른 나라와 나란히 비교 | SPEC 4.5 |
+| result.dataChanged | 저장한 뒤에 나라 정보가 바뀌었어요 | SPEC 4.1 |
+| result.recalc | 지금 정보로 다시 계산 | SPEC 4.1 |
+| result.recalcing | 다시 계산하는 중… | 제안 |
+| result.blocked.inactive | 모집 중단 | SPEC 4.5 |
+| result.blocked.companionVisited | 같이 가는 사람이 이미 다녀온 나라(한 번만 가능) | 제안 |
+| result.asOf | 결과를 만든 날 {date} | 제안 |
+| badge.soon | 곧 열려요 | SPEC 4.5 |
+| badge.hardToLive | 일하며 지내기 어려움 | 원본(5장) |
+| badge.hardToLive.tip | 생활비를 벌어야 한다면 이 나라는 점수를 {cap}%까지만 줘요. | 원본(5장) |
+| item.money | 돈 | 원본(5장) |
+| item.language | 언어 | 원본(5장) |
+| item.work | 일 | 원본(5장) |
+| item.study | 어학원 | 원본(5장) |
+| preview.label.money | 초기 예상 비용 | Figma |
+| preview.label.job | 현지 일자리 및 시급 | Figma |
+| preview.label.rent | 주거 비용 | Figma |
+| preview.label.next | 비자 신청 일정 | Figma |
+| money.krw | 약 {man}만 원 | SPEC 0.3 |
+| money.foreign | {currency} {amount} ({krw}) | SPEC 0.3 |
+| preview.part.proof | 잔고 증명 {value} | 원본(5장 상세) |
+| preview.part.fee | 비자 비용 {value} | 원본(5장 상세) |
+| preview.part.health | 보건부담금 {value} | 제안 |
+| preview.part.flight | 항공권 약 {value} | 원본(5장 상세) |
+| preview.rent.week | 주당 {rent} | 제안 |
+| preview.next.always | 상시 | SPEC 4.4 |
+| preview.next.firstCome | 선착순 (연 {n}명) | SPEC 4.4 |
+| preview.next.firstComeNoQuota | 선착순 | 제안 |
+| preview.next.lottery | 추첨 (연 {n}명) | 제안 |
+| preview.next.lotteryNoQuota | 추첨 | 제안 |
+| preview.next.late | 원하는 시기보다 접수가 늦어요 | SPEC 4.4 |
+| reason.obstacle.localLanguage | 현지어가 필요해요 | 원본(5장) |
+| reason.obstacle.noFulltime | 정규직이 안 돼요 | 원본(5장) |
+| reason.obstacle.employerLimit | 한 고용주와 일할 수 있는 기간이 짧아요 | 원본(5장) |
+| reason.obstacle.hardCompetition | 구직 경쟁이 치열해요 | 원본(5장) |
+| reason.money.ok | 준비한 {budget}만 원이면 필요한 돈 약 {need}만 원을 넘어요. | 원본(5장) |
+| reason.money.partial | 필요한 돈 약 {need}만 원보다 {gap}만 원 부족해요. 출발 전까지 조금만 더 모으면 돼요. | 원본(5장) |
+| reason.money.no | 필요한 돈 약 {need}만 원보다 {gap}만 원 부족해요. | 원본(5장) |
+| reason.language.ok.english | 영어로 알바 면접을 볼 수 있으면 충분해요. | 원본(5장) |
+| reason.language.ok.local | {language}로 면접을 볼 수 있어 유리해요. | 원본(5장) |
+| reason.language.partial.englishWeak | 영어가 약해도 갈 수 있지만, 처음엔 고를 수 있는 일이 적어요. | 원본(5장) |
+| reason.language.partial.englishWork | 영어로 일할 곳도 있지만 {language:을/를} 쓰는 일자리가 훨씬 많아요. | 원본(5장) |
+| reason.language.partial.mixed | 홍콩은 영어로 일할 곳이 일부만 있어요. | 원본(5장) |
+| reason.language.no.localRequired | 인포센터가 {language:이/가} 필요하다고 안내해요. | 원본(5장) |
+| reason.language.no.generic | {language:을/를} 못 하면 일자리 구하기가 어려워요. | 원본(5장) |
+| reason.work.ok | {job}처럼 하고 싶은 일을 찾을 수 있어요. | 원본(5장) |
+| reason.work.ok.noValue | 하고 싶은 일을 찾을 수 있어요. | 제안(대표 일자리 값이 없을 때) |
+| reason.work.partial.noFulltime | 정규직으로 일할 수 없어 사무직은 구하기 어려워요. | 원본(5장) |
+| reason.work.partial.employerLimit | 한 고용주와 {months}개월까지만 일할 수 있어요. | 원본(5장) |
+| reason.work.partial.employerLimit.noValue | 한 고용주와 일할 수 있는 기간이 짧아요. | 원본(장애 요소 문구) |
+| reason.work.partial.hardNote | {hardNote} | 원본(5장) |
+| reason.work.partial.hardNote.noValue | 구직 경쟁이 치열해요. | 원본(장애 요소 문구) |
+| reason.work.partial.language | 언어 때문에 고를 수 있는 일이 줄어요. | 원본(5장) |
+| reason.work.partial.korean | 한인 업소에서 일을 구할 수는 있지만 선택지가 좁아요. | 원본(5장) |
+| reason.work.no | 지금 언어로는 일하며 지내기 어려워요. | 원본(5장) |
+| reason.study.ok | 어학원을 {months}개월까지 다닐 수 있어요. | 원본(5장) |
+| reason.study.ok.unlimited | 기간 제한 없이 다닐 수 있어요. | 원본(5장) |
+| reason.study.no | 어학원은 {months}개월까지만 다닐 수 있어요. 계획({plan}개월)보다 짧아요. | 원본(5장) |
+| reason.study.no.none | 워홀 비자로는 어학원을 다닐 수 없어요. | 원본(5장) |
+| reason.priority.money.ok | 최저 시급이 높고 일하는 데 제한이 적어요. | 원본(5장) |
+| reason.priority.money.partial | 시급이 중간이거나 일하는 데 제한이 있어요. | 원본(5장) |
+| reason.priority.money.no | 시급이 낮아 돈을 모으기 어려워요. | 원본(5장) |
+| reason.priority.easy_job.ok | 언어·근무 제한·경쟁 모두 걸림돌이 없어요. | 원본(5장) |
+| reason.priority.easy_job.partial | 걸림돌이 하나 있어요: {obstacle} | 원본(5장) |
+| reason.priority.easy_job.no | 걸림돌이 여러 개예요: {obstacles} | 원본(5장) |
+| reason.priority.english.ok | 영어를 쓰는 나라예요. | 원본(5장) |
+| reason.priority.english.partial | 영어를 일부 쓰는 곳이에요. | 원본(5장) |
+| reason.priority.english.no | 영어를 쓰지 않는 나라예요. | 원본(5장) |
+| reason.priority.career.ok | 언어가 되고 정규직 제한이 없어 경력을 쌓기 좋아요. | 원본(5장) |
+| reason.priority.career.partial | 정규직으로는 일할 수 없어요. | 원본(5장) |
+| reason.priority.career.no | 언어가 안 되면 경력을 쌓기 어려워요. | 원본(5장) |
+| reason.priority.two_years.ok | 최대 {long}개월까지 머물 수 있어요. | 원본(5장) |
+| reason.priority.two_years.partial | 조건을 채우면 조금 더 머물 수 있어요. | 원본(5장) |
+| reason.priority.two_years.no | 1년만 머물 수 있어요. | 원본(5장) |
+| reason.priority.europe.ok | 유럽 안에 있어 주변 나라 여행이 쉬워요. | 원본(5장) |
+| reason.priority.europe.no | 유럽 밖에 있어요. | 원본(5장) |
+| reason.priority.low_cost.ok | 물가가 한국보다 낮아요. | 원본(5장) |
+| reason.priority.low_cost.partial | 물가가 한국과 비슷해요. | 원본(5장) |
+| reason.priority.low_cost.no | 물가가 한국보다 높아요. | 원본(5장) |
+| reason.priority.sure_pick.ok | 인원 제한이 없어요. | 원본(5장) |
+| reason.priority.sure_pick.partial | 선착순이라 접수 날 빨리 신청해야 해요. | 원본(5장) |
+| reason.priority.sure_pick.no | 추첨이라 운이 필요해요. | 원본(5장) |
+| reason.priority.few_koreans.ok | 한국인이 적어요. | 원본(5장) |
+| reason.priority.few_koreans.partial | 한국인이 적당히 있어요. | 원본(5장) |
+| reason.priority.few_koreans.no | 한국인이 많아요. | 원본(5장) |
+| reason.priority.many_koreans.ok | 한국인이 많아 도움받기 쉬워요. | 원본(5장) |
+| reason.priority.many_koreans.partial | 한국인이 적당히 있어요. | 원본(5장) |
+| reason.priority.many_koreans.no | 한국인이 적어요. | 원본(5장) |
+| reason.priority.near_korea.ok | 한국과 가까워요. | 원본(5장) |
+| reason.priority.near_korea.no | 비행기로 오래 가야 해요. | 원본(5장) |
+| reason.priority.two_years.partial.farm | 2년을 머물려면 지정 지역 농장 등에서 88일 일해야 해요. | 원본(5장) |
+| result.whatIf.change.learn_local_language | {language}로 알바 면접을 볼 수 있게 되면 | 원본(4장 예시) |
+| result.whatIf.change.english_interview | 영어로 알바 면접을 볼 수 있게 되면 | 원본(4장 예시) |
+| result.whatIf.change.save_gap | {gap}만 원을 더 모으면 | 원본(4장 예시) |
+| result.whatIf.change.earn_partly | 생활비를 일부만 벌어도 되면 | 원본(4장 예시) |
+| mark.ok | 맞아요 | 제안(스크린리더용) |
+| mark.partial | 조금 아쉬워요 | 제안(스크린리더용) |
+| mark.no | 어려워요 | 제안(스크린리더용) |
+| result.rank | {n}위 | Figma |
+| money.man | {man}만 원 | SPEC 0.3 |
+| result.shareSlot | 공유 기능은 곧 열려요 | 제안(공유 버튼 자리, 10단계) |
+| result.backToTop | 결과 맨 위로 | 제안 |

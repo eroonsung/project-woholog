@@ -20,10 +20,12 @@ const ESSENTIAL: ReadonlySet<ItemId> = new Set<ItemId>(['money', 'language', 'wo
 /** 후보 나라 1곳의 점수. fit_engine_v1.py score()의 안쪽 반복 1회분. */
 export function scoreCountry(c: EngineCountry, p: Profile, cfg: ScoringConfig): ScoreRow {
   const items: ScoreItem[] = [];
+  const unknown: ItemId[] = [];
   const core = (id: CoreItemId, weight: number, mark: Mark) => items.push({ kind: 'core', id, weight, mark });
 
   const money = moneyMark(c, p, cfg);
   if (money !== null) core('money', cfg.weights.money, money);
+  else unknown.push('money');
   const lang = languageMark(c, p, cfg);
   core('language', cfg.weights.language, lang);
 
@@ -33,10 +35,12 @@ export function scoreCountry(c: EngineCountry, p: Profile, cfg: ScoringConfig): 
 
   const study = studyMark(c, p);
   if (study !== null) core('study', cfg.weights.study, study);
+  else if (p.studyMonths > 0) unknown.push('study'); // 어학원을 다닐 계획인데 나라 값이 없을 때만
 
   for (const id of p.priorities) {
     const mark = priorityMark(id, c, p, lang);
     if (mark !== null) items.push({ kind: 'priority', id, weight: cfg.weights.priority_each, mark });
+    else unknown.push(id);
   }
 
   const value = (m: Mark) => cfg.mark_values[m];
@@ -59,6 +63,7 @@ export function scoreCountry(c: EngineCountry, p: Profile, cfg: ScoringConfig): 
     essential: items.reduce((sum, i) => (ESSENTIAL.has(i.id) ? sum + i.weight * value(i.mark) : sum), 0),
     items,
     badges,
+    unknown,
   };
 }
 

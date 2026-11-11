@@ -26,15 +26,17 @@ export async function fetchAdapterRows(): Promise<DbRows> {
     if (error) throw new Error(`${table} 읽기 실패: ${error.message}`);
     return (data ?? []) as unknown as T[];
   };
-  const [countries, programs, facts, stats, rates, flights, sources, config] = await Promise.all([
+  const [countries, programs, facts, stats, rates, flights, windows, jobTypes, sources, config] = await Promise.all([
     rows<DbRows['countries'][number]>('countries', 'code,name_ko,region,english,languages,in_europe,near_korea,safety_level,safety_note'),
-    rows<DbRows['programs'][number]>('programs', 'id,origin,destination,kind,status,age_min,age_max,selection,max_participations,stay_months,long_stay_months'),
+    rows<DbRows['programs'][number]>('programs', 'id,origin,destination,kind,status,age_min,age_max,selection,max_participations,stay_months,long_stay_months,annual_quota'),
     current<DbRows['facts'][number]>('program_facts', 'program_id,key,value_num,value_text,currency,source_id,verified_at'),
-    current<DbRows['stats'][number]>('country_stats', 'country,city,metric,value,currency'),
+    current<DbRows['stats'][number]>('country_stats', 'country,city,metric,value,value_max,currency,as_of,verified_at'),
     rows<DbRows['rates'][number]>('exchange_rates', 'currency,krw_per_unit,rate_date'),
     rows<DbRows['flights'][number]>('flight_estimates', 'region,krw'),
+    rows<DbRows['windows'][number]>('application_windows', 'program_id,opens_on,closes_on,note,verified_at'),
+    rows<DbRows['jobTypes'][number]>('job_types', 'country,job_code,description_ko,language'),
     rows<DbRows['sources'][number]>('sources', 'id,publisher'),
     rows<DbRows['config'][number]>('scoring_config', 'key,value'),
   ]);
-  return { countries, programs, facts, stats, rates, flights, sources, config };
+  return { countries, programs, facts, stats, rates, flights, windows, jobTypes, sources, config };
 }

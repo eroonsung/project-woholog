@@ -8,7 +8,7 @@ const isObj = (v: unknown): v is Record<string, unknown> => typeof v === 'object
 const isStrings = (v: unknown): v is string[] => Array.isArray(v) && v.every((x) => typeof x === 'string');
 const isCountryAnswer = (v: unknown) => isObj(v) && typeof v.none === 'boolean' && isStrings(v.codes);
 
-function isAnswers(v: unknown): v is Answers {
+export function isAnswers(v: unknown): v is Answers {
   if (!isObj(v)) return false;
   const num = (x: unknown) => x === undefined || typeof x === 'number';
   const opt = (x: unknown, ok: (y: unknown) => boolean) => x === undefined || ok(x);

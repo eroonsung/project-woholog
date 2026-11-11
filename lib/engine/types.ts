@@ -107,6 +107,8 @@ export interface ScoreRow {
   essential: number; // 동점 순서용(돈·언어·일 가중 점수)
   items: ScoreItem[];
   badges: Badge[];
+  /** 값이 없어 점수에서 뺀("확인 중") 조건. 결과 화면이 "확인 중" 줄과 "일부 조건 확인 중"을 보여 주는 데 쓴다 (SPEC 4.3) */
+  unknown: ItemId[];
 }
 
 export type BlockReason =

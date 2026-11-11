@@ -7,12 +7,15 @@ import type { EngineCountry, Level3, LongStay, ScoringConfig, Wage } from './typ
  */
 export interface DbRows {
   countries: { code: string; name_ko: string; region: string; english: 'Y' | 'H' | 'N'; languages: string[]; in_europe: boolean; near_korea: boolean; safety_level: string; safety_note: string | null }[];
-  programs: { id: number; origin: string; destination: string; kind: string; status: string; age_min: number; age_max: number; selection: EngineCountry['selection']; max_participations: number; stay_months: number; long_stay_months: number | null }[];
+  programs: { id: number; origin: string; destination: string; kind: string; status: string; age_min: number; age_max: number; selection: EngineCountry['selection']; max_participations: number; stay_months: number; long_stay_months: number | null; annual_quota: number | null }[];
   /** 현재 값만(valid_to 없음) */
   facts: { program_id: number; key: string; value_num: number | null; value_text: string | null; currency: string | null; source_id: number | null; verified_at: string }[];
-  stats: { country: string; city: string; metric: string; value: number; currency: string | null }[];
+  stats: { country: string; city: string; metric: string; value: number; value_max: number | null; currency: string | null; as_of: string; verified_at: string }[];
   rates: { currency: string; krw_per_unit: number; rate_date: string }[];
   flights: { region: string; krw: number }[];
+  /** 접수 기간·대표 일자리: 결과의 "현실 미리보기"용(점수에는 쓰지 않음) */
+  windows: { program_id: number; opens_on: string; closes_on: string | null; note: string | null; verified_at: string }[];
+  jobTypes: { country: string; job_code: string; description_ko: string; language: string | null }[];
   sources: { id: number; publisher: string }[];
   config: { key: string; value: unknown }[];
 }

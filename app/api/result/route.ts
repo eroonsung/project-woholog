@@ -33,7 +33,8 @@ export async function POST(request: Request) {
 
     // 3) 검증 (형식·범위·나이). 잘못되면 400 + 어느 질문인지
     const asOf = todayKst();
-    const data = adaptRows(await fetchAdapterRows(), { asOf });
+    const rows = await fetchAdapterRows();
+    const data = adaptRows(rows, { asOf });
     if (data.minAge === null || data.maxAge === null) throw new Error('active 프로그램이 없어요');
     const checked = validateAnswers(input, {
       countries: data.active.map((a) => a.engine), config: data.config, minAge: data.minAge, maxAge: data.maxAge,
@@ -41,7 +42,7 @@ export async function POST(request: Request) {
     if (!checked.ok) return json({ error: 'invalid_answers', question: checked.question, reason: checked.reason }, 400);
 
     // 4) 엔진 다시 계산 + 저장
-    const id = await saveQuizResult(checked.answers, computeResult(checked.answers, data, asOf));
+    const id = await saveQuizResult(checked.answers, computeResult(checked.answers, data, asOf, rows));
     return json({ id });
   } catch (error) {
     console.error('[api/result]', error instanceof Error ? error.message : 'unknown'); // 답변 값은 로그에 남기지 않는다
