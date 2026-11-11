@@ -484,6 +484,10 @@
 - **To Korea에서 근거 없는 숫자·주장(1,240+ travelers, officially partnering, 25+ partner nations)을 뺀 것 승인.** 새 문구(한국어 46개·영어 26개)는 오픈 전 전체 문구 검토 때 다시 본다.
 - **운영 확인 허락**: push 배포 성공 후 신청 1번(`woholog-test+1@example.com`, from_korea), To Korea 신청 1번(`woholog-test+2@example.com`), 제보 1번("테스트 제보입니다. 오픈 전 삭제")과 같은 이메일 재신청("이미 신청" 응답)을 확인하고, 만든 행은 `docs/ops/test_data.md`에 기록한다(결과는 아래 D-124).
 
+## D-124. 9단계 운영 확인 결과 (2026-11-11)
+- push(`fd87055`) 배포 성공 후 운영 주소에서 허락받은 4건을 보냈다: 신청 `woholog-test+1@example.com`(`launch`) → `{status:'ok'}`, **저장 확인**(id 7, section `from_korea`, 언어 ko, `consent_version` `launch-v1`); 같은 이메일(대문자·뒤 공백 포함)로 다시 → `{status:'exists'}` 200(행 추가 없음, "이미 신청" 확인); To Korea `woholog-test+2@example.com` → `ok`, **저장 확인**(id 9, `to_korea`, 언어 en); 제보 "테스트 제보입니다. 오픈 전 삭제" → `ok`, **저장 확인**(id 3, page `other /`, 나라 없음, status `new`).
+- 만든 행은 `docs/ops/test_data.md`에 기록하고 삭제 SQL도 적었다. `launch_checklist.md`의 "테스트 데이터 일괄 삭제"에 `launch_subscribers`·`user_reports`(·`feature_votes`)를 명시했다.
+
 ---
 
 ## 열린 질문 (정해지면 위로 옮긴다)

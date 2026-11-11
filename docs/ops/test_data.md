@@ -19,7 +19,18 @@
 
 ## 그 밖의 표
 - `rate_limits`: 요청 제한 기록(IP 해시). 24시간이 지나면 다음 요청 때 자동으로 지워져서 따로 기록하지 않는다.
-- `launch_subscribers`, `user_reports`, `feature_votes`: 테스트로 넣은 것이 있으면 여기에 적는다(지금은 없음).
+- `feature_votes`: 테스트로 넣은 것이 있으면 여기에 적는다(지금은 없음).
+
+## launch_subscribers (이메일 신청 확인, 9단계)
+| 날짜(KST) | id | 이메일 | section(DB) | 언어 | 내용 |
+|---|---|---|---|---|---|
+| 2026-11-11 | 7 | `woholog-test+1@example.com` | from_korea | ko | 9단계 운영 확인(Yvonne 허락): 오픈 알림 신청. 같은 이메일로 한 번 더 보내 `exists` 응답 확인(저장 안 됨, id 8은 중복으로 건너뜀) |
+| 2026-11-11 | 9 | `woholog-test+2@example.com` | to_korea | en | 9단계 운영 확인(Yvonne 허락): To Korea 신청 |
+
+## user_reports (정보 제보 확인, 9단계)
+| 날짜(KST) | id | 나라 | page | 내용 |
+|---|---|---|---|---|
+| 2026-11-11 | 3 | (없음) | `other /` | 9단계 운영 확인(Yvonne 허락): "테스트 제보입니다. 오픈 전 삭제" |
 
 ## 삭제 방법(오픈 전, 허락 받고 실행)
 ```sql
@@ -34,4 +45,10 @@ delete from quiz_results where id in (
   '9120b3cb-a188-445d-9ae5-d44b447e1574', -- 사용자 직접 테스트(본인 확인)
   'd105cfc9-fbd4-45cb-9d65-df771cbc4390'
 );
+```
+
+```sql
+-- 이메일 신청·제보 테스트 행 (id를 확인한 뒤)
+delete from launch_subscribers where id in (7, 9) and email like 'woholog-test+%@example.com';
+delete from user_reports where id = 3 and message = '테스트 제보입니다. 오픈 전 삭제';
 ```
