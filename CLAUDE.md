@@ -95,6 +95,7 @@ app/
   report/page.tsx             정보 제보 임시 화면(9단계에 모달로 교체)
   dev/result/page.tsx         결과 카드 경우 확인용(개발 서버만, 운영 404)
   dev/compare/page.tsx        비교에 담기 버튼·막대 확인용(개발 서버만, 운영 404)
+  dev/guides/page.tsx         가이드 시드 글 미리보기(DB에 안 넣고 그려 봄, 개발 서버만, 운영 404)
   api/result/route.ts  api/subscribe/route.ts  api/report/route.ts  api/vote/route.ts
 components/
   ui/  layout/  home/  compare/  countries/  quiz/  result/  countries/  checklist/  soon/  shared/
@@ -118,9 +119,10 @@ content/
   privacy_ko.json  privacy_en.json  (처리방침 문서, docs/legal/privacy.md → scripts/build_privacy_content.py, D-122)
 supabase/
   migrations/  001_schema_v2_1.sql  002_feature_votes.sql  003_extension_fact_key.sql  004_proof_amount_with_ticket.sql  005_rate_limit_security.sql
-  seed/seed_v1_1.sql  seed/seed_checklist_v1.sql  seed/seed_engine_v1.sql  seed/seed_proof_ticket_v1.sql  seed/seed_nl_proof_v1.sql
+  seed/seed_v1_1.sql  seed/seed_checklist_v1.sql  seed/seed_engine_v1.sql  seed/seed_proof_ticket_v1.sql  seed/seed_nl_proof_v1.sql  seed/seed_country_apps_v1.sql  seed/seed_local_language_v1.sql  seed/seed_guides_v1.sql
 scripts/
   precheck.sh  push 전 확인(build·tsc·eslint·vitest, .env*, 키 패턴) — npm run precheck
+  build_guides_seed.py  docs/content/guides_draft_v1.md → supabase/seed/seed_guides_v1.sql (D-128)
   make_share_fonts.py  공유 이미지용 정적 글꼴(app/fonts/share/*.ttf) 만들기(D-125)
   build_privacy_content.py  privacy.md → content/privacy_*.json (D-122)
   make_font_subset.py  Pretendard 서브셋(Core·Extra) 만들기, 글자가 늘면 다시 실행(D-112)

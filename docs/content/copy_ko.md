@@ -627,7 +627,7 @@
 | guides.empty.title | 첫 글을 준비하고 있어요 |
 | guides.empty.planned | 곧 올라올 글 |
 | guides.notify | 새 글이 올라오면 알림 |
-| guides.planned | 캐나다 IEC 2027 준비법 / 워홀 첫 달 필요한 돈 계산법 |  <!-- 오픈 전에 올릴 글만 남김(2026-11-11, D-127). 글을 올리면 그 제목을 지운다 -->
+| guides.planned |  |  <!-- 비어 있음(D-128): 두 글(first-month-money·canada-iec-2027)을 올려서 제목을 지웠다. 글이 0개가 되는 경우 "곧 올라올 글"로 보여 줄 제목을 ` / `로 구분해 넣는다 -->
 
 ## 19. 필수 앱·추천 준비물
 | 키 | 문구 |

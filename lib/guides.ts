@@ -6,7 +6,8 @@ import { moneyText } from '@/lib/result/previewText';
 
 /**
  * 가이드 글 (SPEC 15장): 마크다운 + `{fact_key}` 자리표시자. 자리표시자는 DB의 현재 값으로 채우고, 값이 없으면 "확인 중"으로 둔다(지어내지 않음).
- * 마크다운은 제목(##·###)·목록(-)·문단·**굵게**·[글자](https 링크)만 읽고, HTML은 그대로 글자로 보여 준다(화면에서 HTML로 풀지 않는다).
+ * 마크다운은 제목(##·###)·목록(`- `, `1. `)·문단·**굵게**·[글자](링크)만 읽고, HTML은 그대로 글자로 보여 준다(화면에서 HTML로 풀지 않는다).
+ * 링크는 두 가지만 된다: 외부 `https://…`(새 탭) · 사이트 안 `/…`(같은 탭, `//`로 시작하는 주소·`javascript:` 같은 것은 안 됨).
  */
 const PLACEHOLDER = /\{([a-z][a-z0-9_]*)\}/g;
 
@@ -29,15 +30,23 @@ export function formatFact(key: string, ctx: GuideFactContext, asOf: string): st
 
 export const fillFacts = (body: string, ctx: GuideFactContext, asOf: string): string => body.replace(PLACEHOLDER, (_m, key: string) => formatFact(key, ctx, asOf));
 
-export type Inline = { t: 'text'; text: string } | { t: 'bold'; text: string } | { t: 'link'; text: string; href: string };
-export type Block = { t: 'h2' | 'h3' | 'p'; inline: Inline[] } | { t: 'ul'; items: Inline[][] };
+export type Inline = { t: 'text'; text: string } | { t: 'bold'; text: string } | { t: 'link'; text: string; href: string; internal: boolean };
+export type Block = { t: 'h2' | 'h3' | 'p'; inline: Inline[] } | { t: 'ul'; items: Inline[][] } | { t: 'ol'; items: Inline[][] };
+
+/** 사이트 안 링크: `/`로 시작하고 한 글자 더 이어지거나 `/` 하나뿐(`//…`는 다른 사이트로 가는 주소라 막는다). 주소에 쓰는 글자만 허용 */
+export const isInternalHref = (href: string): boolean => /^\/(?!\/)[A-Za-z0-9\-._~/?=&%#:+,@]*$/.test(href) && !href.includes('..');
+const LINK_TARGET = 'https?:\\/\\/[^)\\s]+|\\/[^)\\s]*';
 
 export function parseInline(text: string): Inline[] {
   const out: Inline[] = [];
-  for (const part of text.split(/(\*\*[^*]+\*\*|\[[^\]]+\]\(https?:\/\/[^)\s]+\))/)) {
+  for (const part of text.split(new RegExp(`(\\*\\*[^*]+\\*\\*|\\[[^\\]]+\\]\\((?:${LINK_TARGET})\\))`))) {
     if (!part) continue;
-    const link = /^\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)$/.exec(part);
-    if (link) out.push({ t: 'link', text: link[1]!, href: link[2]! });
+    const link = new RegExp(`^\\[([^\\]]+)\\]\\((${LINK_TARGET})\\)$`).exec(part);
+    if (link) {
+      const href = link[2]!;
+      if (href.startsWith('/')) out.push(isInternalHref(href) ? { t: 'link', text: link[1]!, href, internal: true } : { t: 'text', text: part }); // 이상한 사이트 안 주소는 글자로만
+      else out.push({ t: 'link', text: link[1]!, href, internal: false });
+    }
     else if (/^\*\*[^*]+\*\*$/.test(part)) out.push({ t: 'bold', text: part.slice(2, -2) });
     else out.push({ t: 'text', text: part });
   }
@@ -49,9 +58,10 @@ export function parseMarkdown(md: string): Block[] {
   const lines = md.replace(/\r\n/g, '\n').split('\n');
   let para: string[] = [];
   let list: Inline[][] = [];
+  let kind: 'ul' | 'ol' = 'ul';
   const flush = () => {
     if (para.length) blocks.push({ t: 'p', inline: parseInline(para.join(' ')) });
-    if (list.length) blocks.push({ t: 'ul', items: list });
+    if (list.length) blocks.push({ t: kind, items: list });
     para = []; list = [];
   };
   for (const raw of lines) {
@@ -59,8 +69,15 @@ export function parseMarkdown(md: string): Block[] {
     if (!line) { flush(); continue; }
     const h = /^(#{1,3})\s+(.+)$/.exec(line);
     if (h) { flush(); blocks.push({ t: h[1]!.length >= 3 ? 'h3' : 'h2', inline: parseInline(h[2]!) }); continue; }
-    const li = /^[-*]\s+(.+)$/.exec(line);
-    if (li) { if (para.length) flush(); list.push(parseInline(li[1]!)); continue; }
+    const item = /^[-*]\s+(.+)$/.exec(line);
+    const numbered = /^\d+\.\s+(.+)$/.exec(line);
+    if (item || numbered) {
+      const next = numbered ? 'ol' : 'ul';
+      if (para.length || (list.length && next !== kind)) flush();
+      kind = next;
+      list.push(parseInline((item ?? numbered)![1]!));
+      continue;
+    }
     if (list.length) flush();
     para.push(line);
   }

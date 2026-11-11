@@ -20,8 +20,8 @@
 ## 2. 본문 형식
 마크다운 중 아래만 읽는다. 그 밖의 것(HTML, 이미지, 표)은 글자 그대로 보인다.
 - `## 제목`, `### 소제목`
-- 문단(빈 줄로 구분), 목록(`- 항목`)
-- `**굵게**`, `[글자](https://주소)` — 링크는 `https://`(또는 `http://`)만 되고 새 탭으로 열린다.
+- 문단(빈 줄로 구분), 목록(`- 항목`), 번호 목록(`1. 항목`)
+- `**굵게**`, `[글자](링크)` — 링크는 두 가지만 된다: 외부 `https://주소`(새 탭으로 열림), 사이트 안 `/countries`·`/test?pre=CA`처럼 `/`로 시작하는 주소(같은 탭). `//`로 시작하는 주소, `javascript:` 같은 것은 링크가 안 되고 글자로만 보인다.
 
 ## 3. `{fact_key}`: DB 값을 글에 끼워 넣기
 본문에 `{visa_fee}`처럼 쓰면 화면이 **그 글의 `program_id` 나라의 현재 값**으로 바꿔 보여 준다. 값이 바뀌어도 글을 고치지 않아도 된다.
@@ -47,7 +47,7 @@ on conflict (slug) do update set
   body_ko = excluded.body_ko, status = excluded.status, reviewed_at = excluded.reviewed_at, needs_review = false;
 commit;
 ```
-- 본문 문자열은 `E'…'`로 쓰고 줄바꿈은 `\n`. 글 안에 작은따옴표(`'`)를 쓰면 `''`로 겹쳐 쓴다.
+- 본문 문자열은 `E'…'`로 쓰고 줄바꿈은 `\n`(작은따옴표는 `''`). **긴 글은 `$guide$ … $guide$`로 감싸면 줄바꿈·따옴표를 그대로 쓸 수 있다.** 실제 시드는 `docs/content/guides_draft_v1.md`를 원본으로 `python3 -I scripts/build_guides_seed.py`가 만든다(글을 고칠 때는 draft md를 고치고 다시 실행).
 - 링크는 운영 주소 그대로 적는다(도메인이 정해지면 한 번에 바꾼다).
 
 ## 5. 올리는 순서

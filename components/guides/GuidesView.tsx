@@ -11,8 +11,7 @@ export interface GuideItem { slug: string; title: string; summary: string; date:
  * 가이드 목록 (S20, SPEC 15장): 발행된 글만 최신순. 0개면 빈 상태 = "곧 올라올 글"(제목만, 누를 수 없음) + 알림 신청.
  * "곧 올라올 글"은 문구 파일의 목록이다(제안, 오픈 전 전체 문구 검토 때 확정).
  */
-export function GuidesView({ guides }: { guides: GuideItem[] }) {
-  const planned = t('guides.planned').split(' / ');
+export function GuidesView({ guides, planned = t('guides.planned').split(' / ').filter(Boolean) }: { guides: GuideItem[]; planned?: string[] }) {
   return (
     <main className="w-full">
       <section className="bg-aqua">
@@ -27,6 +26,7 @@ export function GuidesView({ guides }: { guides: GuideItem[] }) {
             <span className="inline-flex size-20 items-center justify-center rounded-full bg-aqua text-navy"><BookOpen aria-hidden="true" className="size-9" /></span>
             <h2 className="mt-5 text-h2 text-navy">{t('guides.empty.title')}</h2>
             <p className="mt-2 text-body-l text-text2">{t('guides.empty.sub')}</p>
+            {planned.length > 0 ? (
             <section aria-labelledby="planned-title" className="mt-8 w-full rounded-card-lg bg-aqua-50 p-5 text-left">
               <div className="flex items-center justify-between gap-3">
                 <h3 id="planned-title" className="flex items-center gap-2 text-h3 text-navy"><Hourglass aria-hidden="true" className="size-5" />{t('guides.empty.planned')}</h3>
@@ -40,6 +40,7 @@ export function GuidesView({ guides }: { guides: GuideItem[] }) {
                 ))}
               </ul>
             </section>
+            ) : null}
           </div>
         ) : (
           <ul className="flex flex-col gap-4">

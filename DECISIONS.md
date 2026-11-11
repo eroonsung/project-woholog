@@ -509,6 +509,12 @@
 - 오픈 전에 실제로 올릴 글만 남긴다: **"캐나다 IEC 2027 준비법"**(`program_id` = 캐나다), **"워홀 첫 달 필요한 돈 계산법"**. `guides.planned`(`content/copy_ko.json`)와 `docs/content/copy_ko.md`를 고쳤다. "35세에도 갈 수 있는 워홀 나라"·"일본 워홀 분기 접수 완벽 정리"는 뺐다. 글을 올리면 그 제목을 목록에서 지운다.
 - **`{fact_key}`는 글 한 편에 `program_id` 한 개의 값만** 가져온다. 계산된 값("필요한 돈")은 쓸 수 없고 재료(`proof_amount`·`visa_fee`·`health_surcharge`)만 쓸 수 있다. 그래서 "첫 달 필요한 돈 계산법"은 방법 글(숫자는 나라 상세·비교표 링크로 안내) 또는 나라별 글(글마다 `program_id`)로 쓴다. `guides_howto.md` 7장에 적었다. `{JP.visa_fee}` 같은 한 글 안 여러 나라 값은 마이그레이션이 필요해서 지금은 지원하지 않는다.
 
+## D-128. 가이드 글 2개 시드와 사이트 안 링크 (2026-11-11)
+- **글 2개**: `first-month-money`("워홀 첫 달 필요한 돈 계산법", 방법 글, `program_id` 없음, `{fact_key}` 없음), `canada-iec-2027`("캐나다 IEC 2027 준비법", `program_id` = 캐나다, `{proof_amount}`·`{visa_fee}`). 둘 다 `published`, `reviewed_at` 2026-11-11. 원본은 `docs/content/guides_draft_v1.md` 하나이고 `python3 -I scripts/build_guides_seed.py`가 `supabase/seed/seed_guides_v1.sql`을 만든다(본문은 `$guide$…$guide$`, `on conflict (slug) do update`). 초안의 정보 블록 "참고(2026-11 기준 확인)" 줄은 메모라서 시드에 넣지 않는다(테스트가 확인). **운영 적용은 승인 대기**.
+- **가이드 링크**: 마크다운이 이제 외부 `https://…`(새 탭, `rel=noopener noreferrer nofollow`)와 사이트 안 `/…`(같은 탭)를 읽는다. `//…`·`javascript:`·`data:`·`mailto:`·`..`·공백이 든 주소는 링크가 아니라 글자로만 보인다(`isInternalHref`, 테스트). 번호 목록(`1. `)도 읽는다(초안의 신청 순서가 한 문단으로 뭉치는 것을 막으려고 추가).
+- **"곧 올라올 글"**: 두 글을 올리므로 `guides.planned`를 비웠다. 비어 있으면 빈 상태에서도 그 상자를 숨긴다. 글이 0개가 되는 경우를 대비해 필요하면 ` / `로 구분해 다시 넣는다.
+- **미리보기**: `/dev/guides?slug=…`(개발 서버만, 운영 404)가 시드의 글을 DB에 넣지 않고 그린다. `{fact_key}`는 운영 DB의 현재 값을 읽어서(읽기만) 채운다. 확인 결과: 캐나다 글에서 잔고 증명 "CAD 2,500 (약 250만 원)", 비자 비용 "CAD 279.75 (약 28만 원)", "확인 중" 없음, 사이트 안 링크 5개가 같은 탭에서 열림(200), 외부 링크 2개는 새 탭, 번호 목록 7줄·소제목 정상.
+
 ---
 
 ## 열린 질문 (정해지면 위로 옮긴다)
