@@ -30,3 +30,6 @@ npm-debug.log*
 # Python 캐시
 __pycache__/
 *.pyc
+
+# Vercel 연결 정보(vercel link)
+.vercel
