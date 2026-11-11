@@ -94,6 +94,7 @@ lib/
   engine/   types.ts score.ts marks.ts adapter.ts reasons.ts whatIf.ts candidates.ts defaults.ts index.ts
   data/     supabase.ts queries.ts (화면에서 직접 쿼리 금지)
   storage.ts   브라우저 저장소 (SPEC.md 0.2의 키만)
+  quiz/     types.ts config.ts steps.ts state.ts submit.ts   질문 순서·이동·저장 (화면 없이 테스트)
   checklist.ts 항목 + 출국일 → 단계·날짜, 링크 상태 줄이기·풀기
   copy.ts  format.ts  analytics.ts  rateLimit.ts
 content/

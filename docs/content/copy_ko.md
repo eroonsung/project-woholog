@@ -398,3 +398,95 @@
 | share.sheet.copy | 링크 복사 |
 | share.sheet.image | 이미지로 저장 (인스타 스토리) |
 | share.sheet.kakao | 카카오톡 |
+
+## 21. 질문 화면 (2단계에서 추가)
+
+출처: 원본 = 이 문서 위쪽 보기 목록·SPEC 인용, Figma = 와이어프레임 글자(승인 필요), 제안 = 원본에 없어 임시로 쓴 문장(승인 필요)
+
+| 키 | 문구 | 출처 |
+|---|---|---|
+| btn.next | 다음 | 원본 |
+| btn.prev | 이전 | 원본 |
+| btn.restart | 처음부터 | 원본 |
+| btn.none | 없어요 | 원본 |
+| btn.seeResult | 결과 보기 | 원본 |
+| quiz.progress | Q{n} of {total} | SPEC 3.1 |
+| quiz.restart.confirm | 지금까지 고른 답이 지워져요 | SPEC 3.1 |
+| quiz.restart.yes | 처음부터 다시 하기 | 제안 |
+| quiz.restart.no | 취소 | 제안 |
+| q1.none | 아직 없어요 | SPEC 3.2 |
+| quiz.search | 나라 이름 검색 | Figma |
+| quiz.selected | {n}개 선택됨 | Figma |
+| quiz.selectedMax | (최대 {max}개) | Figma |
+| quiz.selectedMulti | (여러 개 가능) | Figma |
+| quiz.clear | 전체 해제 | Figma |
+| quiz.maxCountries | {max}개까지 고를 수 있어요 | SPEC 3.2 |
+| quiz.noResult | 검색 결과가 없어요 | 제안 |
+| region.north_america | 북미 | Figma |
+| region.asia | 아시아 | Figma |
+| region.oceania | 오세아니아 | Figma |
+| region.europe | 유럽 | Figma |
+| region.south_america | 남미 | Figma |
+| region.middle_east | 중동 | Figma |
+| q2.unit | 세 | Figma |
+| q2.dec | 나이 줄이기 | 제안 |
+| q2.inc | 나이 늘리기 | 제안 |
+| q2.tooYoung | 지원할 수 있는 나이가 아니에요. 만 나이를 다시 확인해 주세요. | 제안 |
+| q3.opt.solo | 혼자 | 원본 |
+| q3.opt.solo.sub | 나에게 맞는 나라만 계산해요 | 원본 |
+| q3.opt.together | 친구·연인과 함께 | 원본 |
+| q3.opt.together.sub | 둘 다 갈 수 있는 나라로 계산해요 | 원본 |
+| q5.opt.m3 | 3개월 안에 | 원본 |
+| q5.opt.m6 | 6개월 안에 | 원본 |
+| q5.opt.y1 | 1년 안에 | 원본 |
+| q5.opt.unknown | 아직 몰라요 | 원본 |
+| q6.value | {budget}만 원 | 원본 |
+| q6.valueMax | {budget}만 원 이상 | SPEC 3.2 |
+| q6.hint | 나라마다 비자에 필요한 잔고 증명 금액이 달라요. 결과에서 나라별로 알려 줄게요. | 원본 |
+| q6.slider | 준비한 돈 | 제안 |
+| q7.opt.0 | 거의 못 해요 | 원본 |
+| q7.opt.0.sub | 인사, 숫자 정도 | 원본 |
+| q7.opt.1 | 주문·길 묻기 정도 | 원본 |
+| q7.opt.1.sub | 카페에서 주문하고 길을 물어볼 수 있어요 | 원본 |
+| q7.opt.2 | 알바 면접을 볼 수 있어요 | 원본 |
+| q7.opt.2.sub | 자기소개하고 간단한 질문에 답할 수 있어요 | 원본 |
+| q7.opt.3 | 회의·이메일로 일할 수 있어요 | 원본 |
+| q7.opt.3.sub | 업무 대화와 이메일을 영어로 해요 | 원본 |
+| q9.opt.cafe | 카페·식당 | 원본 |
+| q9.opt.retail | 판매·마트 | 원본 |
+| q9.opt.hotel | 호텔·관광 | 원본 |
+| q9.opt.farm | 농장·공장 | 원본 |
+| q9.opt.office | 사무직 | 원본 |
+| q9.opt.care | 돌봄 | 원본 |
+| q9.opt.unknown | 아직 몰라요 | 원본 |
+| q10.opt.must | 꼭 벌어야 해요 | 원본 |
+| q10.opt.must.sub | 생활비 대부분 | 원본 |
+| q10.opt.partly | 일부만 벌면 돼요 | 원본 |
+| q10.opt.partly.sub | 용돈 정도 | 원본 |
+| q10.opt.none | 안 벌어도 돼요 | 원본 |
+| q10.opt.none.sub | 모아 둔 돈으로 지내요 | 원본 |
+| q11.opt.none | 안 다닐래요 | 원본 |
+| q11.opt.m3 | 3개월쯤 | 원본 |
+| q11.opt.m6 | 6개월쯤 | 원본 |
+| q11.opt.over6 | 6개월 넘게 | 원본 |
+| q12.opt.money | 돈 모으기 | 원본 |
+| q12.opt.easy_job | 일자리 구하기 쉬운 곳 | 원본 |
+| q12.opt.english | 영어 실력 | 원본 |
+| q12.opt.career | 커리어 | 원본 |
+| q12.opt.two_years | 2년 이상 머물기 | 원본 |
+| q12.opt.europe | 유럽 여행 | 원본 |
+| q12.opt.low_cost | 생활비 적게 | 원본 |
+| q12.opt.sure_pick | 확실하게 뽑히기 | 원본 |
+| q12.opt.few_koreans | 한국인 적은 곳 | 원본 |
+| q12.opt.many_koreans | 한국인 많은 곳 | 원본 |
+| q12.opt.near_korea | 한국과 가까운 곳 | 원본 |
+| q12.opt.unknown | 잘 모르겠어요 | 원본 |
+| q12.heart.culture | 문화가 좋아서 | 원본 |
+| q12.heart.learn_language | 그 나라 언어를 배우고 싶어서 | 원본 |
+| q12.heart.know_someone | 아는 사람이 있어서 | 원본 |
+| loading.step1 | 나이 조건 확인 중… | 원본 |
+| loading.step2 | 필요한 돈 계산 중… | 원본 |
+| loading.step3 | 일 규칙 확인 중… | 원본 |
+| quiz.error.retry | 다시 시도 | SPEC 3.3 |
+| quiz.error.back | 질문으로 돌아가기 | SPEC 3.3 |
+| quiz.stop.compare | 29개국 비교 보기 | SPEC 3.4 |

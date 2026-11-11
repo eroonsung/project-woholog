@@ -37,6 +37,7 @@
   --shadow-coral: 0 6px 14px rgb(255 126 95 / 0.35);
 
   --container-content: 1120px; /* 웹 콘텐츠 최대 폭 */
+  --container-quiz: 656px; /* 질문 화면 본문 폭(와이어프레임 S01~S06) */
 
   --font-sans: var(--font-pretendard), system-ui, sans-serif;
 }

@@ -19,3 +19,8 @@ export function t(key: string, vars?: Vars): string {
     return value === undefined ? match : String(value);
   });
 }
+
+/** 문구 키가 있는지(없으면 그 줄을 숨길 때 쓴다). */
+export function hasCopy(key: string): boolean {
+  return messages[key] !== undefined;
+}
