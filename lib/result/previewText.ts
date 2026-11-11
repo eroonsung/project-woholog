@@ -21,8 +21,6 @@ export function moneyText(m: StoredMoney): string {
   return m.man === null ? base : t('money.foreign', { currency: m.currency, amount: formatNumber(m.amount), krw: man(m.man) });
 }
 
-const place = (city: string) => (city ? `(${city})` : '');
-
 /** 다음 접수 글자(앞에 "다음 접수"를 붙이지 않은 값). unknown이면 빈 글자 */
 export function nextApplyText(apply: NextApply): string {
   switch (apply.kind) {
