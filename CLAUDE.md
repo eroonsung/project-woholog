@@ -78,6 +78,7 @@ CLAUDE.md  SPEC.md  DECISIONS.md  README.md  proxy.ts(소문자 나라 코드 �
 app/
   fonts/  PretendardCore.woff2  PretendardExtra.woff2  PretendardCore.chars.txt  share/PretendardShare-500·800.ttf(공유 이미지용)  (원본 2MB는 fonts_src/)
   page.tsx                    첫 화면
+  manifest.ts  웹 앱 매니페스트(D-134)
   favicon.ico  icon.png  apple-icon.png   탭 아이콘(logo-v4, 파일 이름 규칙만 쓴다. metadata.icons 설정 없음)
   test/page.tsx               질문 12개 (?q=1..12, ?pre=JP)
   r/[id]/page.tsx             결과
