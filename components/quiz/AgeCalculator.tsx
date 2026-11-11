@@ -64,6 +64,7 @@ export function AgeCalculator({ onApply }: { onApply: (age: number) => void }) {
               : check.reason === 'future' ? t('age.calc.future')
               : t('age.calc.hint')}
           </p>
+          {check.ok ? <p className="mt-1 text-caption text-text2">{t('age.calc.applyDay')}</p> : null}
           <p className="mt-1 text-caption text-text3">{t('age.calc.note')}</p>
         </section>
       ) : null}

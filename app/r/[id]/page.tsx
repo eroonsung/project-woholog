@@ -15,7 +15,7 @@ export default async function ResultPage({ params }: { params: Promise<{ id: str
   const row = await fetchQuizResult(id);
   if (!row) notFound();
   return (
-    <main className="mx-auto max-w-content px-5 py-8 lg:px-10">
+    <main className="mx-auto w-full max-w-content px-5 py-8 lg:px-10">
       <pre className="overflow-x-auto text-caption text-navy">
         {JSON.stringify({ id, dataChanged: row.dataChanged, createdAt: row.createdAt, answers: row.answers, result: row.result }, null, 2)}
       </pre>

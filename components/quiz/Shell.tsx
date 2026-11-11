@@ -11,8 +11,8 @@ export function QuizShell({ q, onBack, onRestart, children }: {
   q: number; onBack: () => void; onRestart: () => void; children: ReactNode;
 }) {
   return (
-    <div className="flex min-h-dvh flex-col bg-white">
-      <header className="mx-auto flex h-16 w-full max-w-quiz items-center justify-between px-5 lg:px-0">
+    <div className="flex flex-1 flex-col bg-white">
+      <div className="mx-auto flex h-16 w-full max-w-quiz items-center justify-between px-5 lg:px-0">
         <button type="button" onClick={onBack} className="inline-flex min-h-11 items-center gap-1 pr-3 text-body font-bold text-navy">
           <ArrowLeft aria-hidden="true" className="size-4" />
           {t('btn.prev')}
@@ -23,7 +23,7 @@ export function QuizShell({ q, onBack, onRestart, children }: {
         <button type="button" onClick={onRestart} className="min-h-11 pl-3 text-body font-bold text-navy underline underline-offset-4">
           {t('btn.restart')}
         </button>
-      </header>
+      </div>
       <div
         role="progressbar" aria-valuemin={1} aria-valuemax={QUESTION_COUNT} aria-valuenow={q}
         aria-label={t('quiz.progress', { n: q, total: QUESTION_COUNT })} className="h-1 w-full bg-aqua-50"

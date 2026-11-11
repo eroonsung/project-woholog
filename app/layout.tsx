@@ -1,5 +1,8 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
+import { Footer } from '@/components/layout/Footer';
+import { Header } from '@/components/layout/Header';
+import { t } from '@/lib/copy';
 import { isSiteLive } from '@/lib/site';
 import './globals.css';
 
@@ -20,7 +23,14 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko" className={pretendard.variable}>
-      <body>{children}</body>
+      <body className="flex min-h-dvh flex-col">
+        <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-button focus:bg-navy focus:px-4 focus:py-3 focus:text-white">
+          {t('a11y.skip')}
+        </a>
+        <Header />
+        <div id="main" tabIndex={-1} className="flex flex-1 flex-col outline-none">{children}</div>
+        <Footer />
+      </body>
     </html>
   );
 }

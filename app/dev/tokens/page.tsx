@@ -36,7 +36,7 @@ export default function TokensPage() {
   if (process.env.NODE_ENV === 'production') notFound();
 
   return (
-    <main className="mx-auto max-w-content px-5 py-12 lg:px-10">
+    <main className="mx-auto w-full max-w-content px-5 py-12 lg:px-10">
       <h1 className="mb-8 text-h1">/dev/tokens</h1>
 
       <Section title="색">

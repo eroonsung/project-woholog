@@ -12,7 +12,7 @@ export function StopAge({ maxAge, onRetry }: { maxAge: number; onRetry: () => vo
   const ref = useRef<HTMLHeadingElement>(null);
   useEffect(() => ref.current?.focus({ preventScroll: true }), []);
   return (
-    <main className="mx-auto flex min-h-dvh max-w-quiz flex-col items-center justify-center gap-6 px-5 text-center">
+    <main className="mx-auto flex w-full max-w-quiz flex-1 flex-col items-center justify-center py-16 gap-6 px-5 text-center">
       <h1 ref={ref} tabIndex={-1} className="text-h1 text-navy outline-none">{t('stop.title', { maxAge })}</h1>
       <p className="text-body-l text-text2">{t('stop.body', { maxAge })}</p>
       <div className="flex flex-wrap items-center justify-center gap-4">
@@ -39,7 +39,7 @@ export function Loading({ failed, rateLimited = false, onRetry, onBack }: {
   }, [failed]);
 
   return (
-    <main className="mx-auto flex min-h-dvh max-w-quiz flex-col items-center justify-center gap-8 px-5 text-center">
+    <main className="mx-auto flex w-full max-w-quiz flex-1 flex-col items-center justify-center py-16 gap-8 px-5 text-center">
       {failed ? (
         <>
           <h1 className="text-h2 text-navy">{t(rateLimited ? 'quiz.error.rateLimited' : 'error.generic')}</h1>
@@ -70,7 +70,7 @@ export function Loading({ failed, rateLimited = false, onRetry, onBack }: {
 /** 질문 불러오는 동안 보여 주는 회색 막대 (SPEC 0.4) */
 export function QuizSkeleton() {
   return (
-    <div aria-hidden="true" className="mx-auto flex min-h-dvh max-w-quiz flex-col gap-4 px-5 pt-24">
+    <div aria-hidden="true" className="mx-auto flex w-full max-w-quiz flex-1 flex-col gap-4 px-5 pt-24">
       <div className="h-10 w-3/4 animate-pulse rounded-card bg-subtle" />
       <div className="h-6 w-1/2 animate-pulse rounded-card bg-subtle" />
       <div className="mt-6 h-40 animate-pulse rounded-card-lg bg-subtle" />
