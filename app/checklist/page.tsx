@@ -1,4 +1,5 @@
 import { ChecklistApp } from '@/components/checklist/ChecklistApp';
+import { pageMeta } from '@/lib/meta';
 import type { Partner } from '@/components/countries/DetailExtras';
 import partnersJson from '@/content/partners.json';
 import { buildEntries, hasCountryContent } from '@/lib/checklist';
@@ -11,6 +12,8 @@ export const dynamic = 'force-dynamic';
 
 type Params = Record<string, string | string[] | undefined>;
 const one = (v: string | string[] | undefined) => (Array.isArray(v) ? v[0] : v) ?? null;
+
+export const metadata = pageMeta('meta.checklist.title', 'meta.checklist.desc');
 
 export default async function ChecklistPage({ searchParams }: { searchParams: Promise<Params> }) {
   const sp = await searchParams;

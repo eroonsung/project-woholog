@@ -12,6 +12,7 @@ import {
 import { submitQuiz, SubmitError } from '@/lib/quiz/submit';
 import { EMPTY_STATE, type Answers, type QuizState } from '@/lib/quiz/types';
 import { t } from '@/lib/copy';
+import { trackEvent, trackSession } from '@/lib/analytics';
 import { markMine } from '@/lib/mine';
 import { ConfirmDialog } from './ConfirmDialog';
 import { QuestionAge, QuestionCompanion, QuestionCountry, type QProps } from './QuestionsA';
@@ -79,6 +80,9 @@ export function QuizApp({ countries, minAge, config }: { countries: QuizCountry[
     else if (isSkipped(q, state.answers, ctx)) router.replace(url(nextQuestion(q, state.answers, ctx) === 'submit' ? q - 1 : (nextQuestion(q, state.answers, ctx) as number)));
   }, [state, q, view, ctx, maxAge, params, router]);
 
+  // Q1 화면에 처음 들어오면 한 번만 측정(SPEC 0.7)
+  useEffect(() => { if (q === 1 && view === 'question') trackSession('quiz_start'); }, [q, view]);
+
   // 질문이 바뀌면(다음·이전·화면 전환) 맨 위로: 긴 질문(Q4) 뒤에 Q5의 헤더가 잘려 보이지 않게 (D-130)
   useEffect(() => { window.scrollTo(0, 0); }, [q, view]);
 
@@ -101,6 +105,7 @@ export function QuizApp({ countries, minAge, config }: { countries: QuizCountry[
         if (!live) return;
         clearQuiz();
         markMine(id); // 이 브라우저에서 만든 결과 표시(D-132). 저장소가 막혀도 이동은 계속
+        trackEvent('quiz_complete', { heart: (state.answers.q1?.codes.length ?? 0) > 0 ? '있음' : '없음' }); // 답 값은 보내지 않는다(SPEC 0.7)
         router.replace(`/r/${id}`);
       })
       .catch((error: unknown) => {

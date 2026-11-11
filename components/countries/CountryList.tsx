@@ -43,7 +43,7 @@ export function CountryList({ rows }: { rows: ListRow[] }) {
           </thead>
           <tbody className="divide-y divide-line">
             {rows.map((r) => (
-              <tr key={r.code} className={r.comingSoon ? 'opacity-60' : ''}>
+              <tr key={r.code} className={r.comingSoon ? 'bg-subtle' : ''}>
                 <td className="px-3 py-3 align-top">{r.comingSoon ? null : <CompareToggle code={r.code} nameKo={r.nameKo} compact />}</td>
                 <th scope="row" className="px-3 py-3 text-left align-top font-normal"><Name r={r} /></th>
                 <td className="px-3 py-3 align-top text-body text-navy"><Val cell={r.cells.age} /></td>
@@ -61,7 +61,7 @@ export function CountryList({ rows }: { rows: ListRow[] }) {
 
       <ul className="flex flex-col gap-3 lg:hidden">
         {rows.map((r) => (
-          <li key={r.code} className={`rounded-card-lg border border-line bg-white p-4 ${r.comingSoon ? 'opacity-60' : ''}`}>
+          <li key={r.code} className={`rounded-card-lg border border-line bg-white p-4 ${r.comingSoon ? 'bg-subtle' : ''}`}>
             <div className="flex items-start justify-between gap-2">
               <Name r={r} />
               {r.comingSoon ? null : <CompareToggle code={r.code} nameKo={r.nameKo} compact />}

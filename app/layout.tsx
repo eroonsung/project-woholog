@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/next';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import { CompareBar } from '@/components/compare/CompareBar';
@@ -23,11 +24,16 @@ const pretendardExtra = localFont({
   weight: '400 900',
   display: 'swap',
   preload: false,
+  // Extra가 가진 글자(한글 KS X 1001 + 기호) 범위일 때만 내려받는다. 일본어·중국어 앱 이름처럼 두 글꼴에 모두 없는 글자는 Extra를 내려받지 않고 시스템 글꼴로 보인다(D-133).
+  declarations: [{ prop: 'unicode-range', value: 'U+AC00-D7A3,U+3131-318E,U+2190-21FF,U+2460-24FF,U+25A0-25FF,U+2700-27BF,U+FF00-FFEF' }],
 });
 
 // 오픈 전에는 검색 결과에 나오지 않게 noindex·nofollow (D-092)
 export const metadata: Metadata = {
-  title: '워홀로그',
+  title: t('meta.site.title'),
+  description: t('meta.site.desc'),
+  openGraph: { title: t('meta.site.title'), description: t('meta.site.desc'), siteName: t('meta.brand'), locale: 'ko_KR', type: 'website' },
+  twitter: { card: 'summary_large_image', title: t('meta.site.title'), description: t('meta.site.desc') },
   robots: isSiteLive() ? undefined : { index: false, follow: false },
 };
 
@@ -44,6 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Footer />
           <CompareBar />
         </ModalHost>
+        <Analytics />
       </body>
     </html>
   );

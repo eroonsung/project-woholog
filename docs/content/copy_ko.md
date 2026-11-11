@@ -266,6 +266,23 @@
 | error.404 | 페이지를 찾을 수 없어요. |
 | error.result404 | 결과를 찾을 수 없어요. 링크를 다시 확인하거나 테스트를 새로 해 보세요. |
 | error.generic | 잠시 문제가 생겼어요. 새로고침해 주세요. |
+| meta.brand | 워홀로그 | 제안(D-133, 링크 미리보기·탭 제목) |
+| meta.site.title | 워홀로그 · 내 워홀 나라 적합도 | 제안(D-133, 링크 미리보기·탭 제목) |
+| meta.site.desc | 질문 12개로 29개 나라 중 나한테 맞는 워킹홀리데이 나라를 확인해 보세요. | 제안(D-133, 링크 미리보기·탭 제목) |
+| meta.test.title | 나라 추천 테스트 | 제안(D-133, 링크 미리보기·탭 제목) |
+| meta.checklist.title | D-day 체크리스트 | 제안(D-133, 링크 미리보기·탭 제목) |
+| meta.compare.desc | 나라별 나이·비용·시급·접수 시기를 나란히 비교해 보세요. | 제안(D-133, 링크 미리보기·탭 제목) |
+| meta.countries.desc | 29개 워킹홀리데이 협정국의 조건을 한눈에 비교해 보세요. | 제안(D-133, 링크 미리보기·탭 제목) |
+| meta.apps.desc | 워킹홀리데이 가기 전에 깔아 두면 좋은 앱을 나라별로 모아 뒀어요. | 제안(D-133, 링크 미리보기·탭 제목) |
+| meta.checklist.desc | 출국일을 정하면 해야 할 일을 날짜별로 정리해 드려요. | 제안(D-133, 링크 미리보기·탭 제목) |
+| error.title | 잠깐 문제가 생겼어요 | 제안(D-133, SPEC 0.4) |
+| error.body | 잠시 뒤에 다시 시도해 주세요. | 제안(D-133, SPEC 0.4) |
+| error.retry | 다시 시도 | 제안(D-133, SPEC 0.4) |
+| error.home | 처음으로 | 제안(D-133, SPEC 0.4) |
+| error.notfound.title | 찾는 페이지가 없어요 | 제안(D-133, SPEC 0.4) |
+| error.notfound.body | 주소가 바뀌었거나 없어진 페이지예요. | 제안(D-133, SPEC 0.4) |
+| error.notfound.test | 나라 추천 테스트 | 제안(D-133, SPEC 0.4) |
+| error.notfound.countries | 29개국 비교 | 제안(D-133, SPEC 0.4) |
 | report.title | 정보 제보하기 |
 | report.body | 틀린 정보나 바뀐 규칙을 알려 주세요. 확인 후 고칠게요. |
 | report.done | 제보 고마워요! 확인해서 반영할게요. |

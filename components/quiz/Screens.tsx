@@ -72,9 +72,10 @@ export function Loading({ failed, rateLimited = false, onRetry, onBack }: {
 }
 
 /** 질문 불러오는 동안 보여 주는 회색 막대 (SPEC 0.4) */
+// min-h-dvh: 질문이 그려질 때 푸터가 아래로 밀리는 레이아웃 이동(CLS)을 막으려고, 헤더 아래 한 화면 높이를 채워 푸터를 화면 밖에 둔다(D-133)
 export function QuizSkeleton() {
   return (
-    <div aria-hidden="true" className="mx-auto flex w-full max-w-quiz flex-1 flex-col gap-4 px-5 pt-24">
+    <div aria-hidden="true" className="mx-auto flex min-h-dvh w-full max-w-quiz flex-1 flex-col gap-4 px-5 pt-24">
       <div className="h-10 w-3/4 animate-pulse rounded-card bg-subtle" />
       <div className="h-6 w-1/2 animate-pulse rounded-card bg-subtle" />
       <div className="mt-6 h-40 animate-pulse rounded-card-lg bg-subtle" />

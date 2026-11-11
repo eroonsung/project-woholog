@@ -92,7 +92,7 @@ app/
   guides/page.tsx, guides/[slug]/page.tsx
   soon/page.tsx, soon/[slug]/page.tsx
   privacy/page.tsx            (?lang=en)
-  not-found.tsx, error.tsx, robots.ts(오픈 전 전체 Disallow, D-092)
+  not-found.tsx, error.tsx, global-error.tsx, opengraph-image.tsx(사이트 기본), robots.ts(오픈 전 전체 Disallow, D-092)
   report/page.tsx             정보 제보 임시 화면(9단계에 모달로 교체)
   dev/result/page.tsx         결과 카드 경우 확인용(개발 서버만, 운영 404)
   dev/compare/page.tsx        비교에 담기 버튼·막대 확인용(개발 서버만, 운영 404)
@@ -110,7 +110,7 @@ lib/
   server/   ip.ts limits.ts       IP 해시·요청 제한 기준(SPEC 0.8)
   features.ts  준비 중 기능 15개(features_ko.json)·단계·다른 기능 3개   votes.ts  원해요(woholog.votes.v1)·보내기·되돌리기
   guides.ts    가이드 마크다운·{fact_key} 채우기   share/  data.ts image.tsx colors.ts  공유 이미지 값·그리기(OG·스토리, D-125)
-  popular.ts   많이 찾는 나라 먼저 정렬(체크리스트·/apps, D-130)  flight.ts  비행시간 문구(D-130)
+  meta.ts  화면별 제목·설명(D-133)  popular.ts   많이 찾는 나라 먼저 정렬(체크리스트·/apps, D-130)  flight.ts  비행시간 문구(D-130)
   share/web.ts 공유 창에 넘길 값·iOS 판별(D-131)  mine.ts  내 결과 표시(woholog.mine.v1, D-132)
   site.ts      오픈 여부(NEXT_PUBLIC_SITE_LIVE)
   storage.ts   브라우저 저장소 (SPEC.md 0.2의 키만)
@@ -133,7 +133,7 @@ scripts/
 tests/
   engine.test.ts  adapter.test.ts  checklist.test.tsx  storage.test.ts
   fixtures/personas_expected.json  countries_v1.ts  personas.ts  db_rows_v1.json(DB 스냅샷)
-  e2e/flow.spec.ts
+  e2e/flow.spec.ts  (playwright.config.ts: 모바일 375·웹 1280, 저장 요청은 가짜 응답, D-133)
 docs/
   engine/fit_engine_v1.py
   db/db_test_v2.sql  db/db_test_v2_live.sql (Supabase에서 실행하는 버전)

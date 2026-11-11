@@ -10,7 +10,7 @@
   --color-aqua: #9fe6f3;
   --color-aqua-50: #eaf9fc;
   --color-aqua-100: #d6f5fb;
-  --color-aqua-dark: #0a7a8f;
+  --color-aqua-dark: #086a7d; /* 11단계: 아쿠아 100 위 글씨 대비 4.4→5.4 (D-133) */
   --color-coral: #ff7e5f;
   --color-coral-hover: #f26a4a;
   --color-coral-50: #ffe6df;
@@ -21,7 +21,7 @@
   --color-lime-50: #eef9dc;
   --color-lime-dark: #4c7514;
   --color-text2: #5a6684;
-  --color-text3: #8a93a8;
+  --color-text3: #65708c; /* 11단계: 흰색 위 대비 3.1→4.9 (D-133) */
   --color-line: #e6e9ef;
   --color-subtle: #f6f8fa;
   --color-error: #e5484d;

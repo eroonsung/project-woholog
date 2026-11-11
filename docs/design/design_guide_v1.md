@@ -3,12 +3,12 @@
 방향: 연한 아쿠아 + 코랄(보색). 흰 배경 기반. 목업은 항상 웹 + 모바일 둘 다.
 
 ## 컬러
-- Aqua #9FE6F3 (메인 배경 블록·히어로) / Aqua 50 #EAF9FC / Aqua 100 #D6F5FB / Aqua Dark #0A7A8F (링크·강조 글씨)
+- Aqua #9FE6F3 (메인 배경 블록·히어로) / Aqua 50 #EAF9FC / Aqua 100 #D6F5FB / Aqua Dark #086A7D (링크·강조 글씨, 11단계에서 #0A7A8F → #086A7D, D-133)
 - Coral #FF7E5F (화면당 주요 행동 버튼 1개, 글씨는 네이비) / Hover #F26A4A / Coral 50 #FFE6DF / Coral Dark #B9432A
 - Navy #1D3366 (글씨·로고·보조 버튼)
 - Lime #ABE54C (스티커·뱃지·공유 카드에서만) / Lime 50 #EEF9DC / Lime Dark #4C7514
-- Gray: Text2 #5A6684, Text3 #8A93A8, Line #E6E9EF, BG Subtle #F6F8FA, White #FFFFFF, Error #E5484D
-- 대비: 네이비 on 아쿠아 8.8:1, 네이비 on 코랄 약 4.9:1, 진한 아쿠아 on 흰색 5.0:1. 흰 글씨 on 코랄·연한 아쿠아 글씨는 금지
+- Gray: Text2 #5A6684, Text3 #65708C(11단계에서 #8A93A8 → #65708C, 흰색 위 4.9:1),  Line #E6E9EF, BG Subtle #F6F8FA, White #FFFFFF, Error #E5484D
+- 대비: 네이비 on 아쿠아 8.8:1, 네이비 on 코랄 약 4.9:1, 진한 아쿠아 on 흰색 6.2:1(Aqua 100 위 5.4:1). 흰 글씨 on 코랄·연한 아쿠아 글씨는 금지
 - 배민 민트(#2AC1BC)와 겹치지 않게 민트 대신 아쿠아 채택. 누런 오프화이트는 사용자 비선호
 
 ## 폰트

@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
     '/r/[id]/opengraph-image': ['./app/fonts/share/**', './public/flags/**'],
     '/r/[id]/story': ['./app/fonts/share/**', './public/flags/**'],
+    '/opengraph-image': ['./app/fonts/share/**'],
   },
 };
 

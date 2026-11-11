@@ -559,6 +559,17 @@
 - 문구 `result.try.*`, `share.text`, `share.story.iosHint`는 "제안". 코드: `lib/mine.ts`, `MineAware`, `TryCard`. 테스트: 내 결과·남의 결과·저장소 막힘 3경우(`tests/mine.test.tsx`) + 375/1280 실제 화면 확인.
 - 안도라 `flight_city` = 바르셀로나 운영 적용 완료, D-131 push·배포 확인 완료(`7d01b39`).
 
+## D-133. 11단계: 마무리 (2026-11-11)
+범위: CLAUDE.md 9장 11단계(404·오류 화면, Playwright, Lighthouse, 메타 태그, 이벤트, 임시 화면 확인) + 접근성 감점(아쿠아 태그 글씨 대비) + Analytics 이벤트 실제 전송.
+- **404·오류 화면(SPEC 0.4)**: `app/not-found.tsx`("찾는 페이지가 없어요" + 나라 추천 테스트 + 29개국 비교), `app/error.tsx`("잠깐 문제가 생겼어요" + 다시 시도 + 처음으로), `app/global-error.tsx`. 결과 id 404는 기존 전용 안내 유지. 이전에는 Next 기본 화면이 나왔다.
+- **임시 "준비 중이에요" 화면 제거**: `ComingSoonPage`는 쓰는 곳이 없어서 삭제, `placeholder.*` 문구도 삭제(남은 임시 화면 0개).
+- **Analytics 전송 연결**: `<Analytics />`를 `app/layout.tsx`에 추가(그 전에는 이벤트가 어디로도 안 갔다). 자식 효과가 먼저 실행되어 첫 이벤트가 버려지는 문제를 `window.va` 대기줄로 막음. `quiz_start`(탭당 1번), `quiz_complete`(`heart` 있음/없음만) 추가. SPEC 0.7의 7개 이벤트가 모두 연결됨. 테스트: 이벤트 이름·속성 이름이 SPEC 표 안에 있는지 코드를 훑어 확인.
+- **접근성 감점**: Lighthouse 접근성 96~97의 원인은 글씨 대비 두 가지였다. ① `aqua-dark` #0A7A8F 글씨가 `aqua-100` 배경 위에서 4.36:1 → 토큰 값을 #086A7D로(5.4:1) ② `text3` #8A93A8이 흰색 위에서 3.07:1 → #65708C로(4.9:1). 값 하나를 바꾸면 전체에 적용된다(디자인 토큰 변경, 디자인 가이드 갱신). ③ "곧 열려요" 나라 행의 `opacity-60`(대비 2.4)을 회색 배경으로, ④ 로고 링크의 `aria-label`이 보이는 글자와 달라서 생긴 경고는 aria-label을 빼고 좁은 화면에서는 글자를 `sr-only`로.
+- **성능**: 일본어·중국어 앱 이름(두 글꼴 모두에 없는 글자) 때문에 `/countries/JP`가 Extra 글꼴(247KB)을 내려받아 성능 84였다. Extra에 `unicode-range`(한글 KS X 1001·기호 범위)를 지정해 그 글자는 시스템 글꼴로 보이게 하고 Extra는 받지 않게 함. `/test?q=1`의 레이아웃 이동(CLS 0.15, 푸터가 밀림)은 스켈레톤 높이를 한 화면으로 키워 푸터를 화면 밖에 둠.
+- **메타 태그**: 사이트 기본 title·description·og·twitter, 기본 OG 이미지(`app/opengraph-image.tsx`, 워홀로그 카드), 화면별 제목·설명(`lib/meta.ts`: 첫 화면 기본값, `/test`, `/compare`, `/countries`, `/checklist`, `/apps`). 오픈 전 noindex·robots 전체 막기는 그대로(D-092).
+- **Playwright**: `playwright.config.ts`(모바일 375·웹 1280) + `tests/e2e/flow.spec.ts` 5개 시나리오(첫 화면→질문 12개→결과→비교→상세→체크리스트, 404들, 없는 결과, 남의 결과 "나도 해보기", 측정 이벤트). 저장 요청은 가짜 응답으로 막고 하나라도 나가면 실패(D-106). `npm run test:e2e`.
+- 새 문구(`error.*`, `meta.*`)는 "제안".
+
 ---
 
 ## 열린 질문 (정해지면 위로 옮긴다)
