@@ -26,3 +26,14 @@ export function addMonthsIso(iso: string, months: number): string {
   const last = new Date(Date.UTC(target.getUTCFullYear(), target.getUTCMonth() + 1, 0)).getUTCDate();
   return `${target.getUTCFullYear()}-${String(target.getUTCMonth() + 1).padStart(2, '0')}-${String(Math.min(d, last)).padStart(2, '0')}`;
 }
+
+/** YYYY-MM-DD에 일 수를 더한다(음수면 뺀다) */
+export function addDaysIso(iso: string, days: number): string {
+  const [y, m, d] = iso.split('-').map(Number) as [number, number, number];
+  return new Date(Date.UTC(y, m - 1, d + days)).toISOString().slice(0, 10);
+}
+
+/** 두 날짜 사이 일 수(to - from) */
+export function daysBetween(from: string, to: string): number {
+  return Math.round((Date.parse(to) - Date.parse(from)) / 86_400_000);
+}

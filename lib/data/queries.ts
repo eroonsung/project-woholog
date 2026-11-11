@@ -55,3 +55,25 @@ export async function fetchDetailExtras(): Promise<{ apps: CountryAppRow[]; sour
   if (links.error) throw new Error(`sources 읽기 실패: ${links.error.message}`);
   return { apps: (apps.data ?? []) as CountryAppRow[], sourceLinks: (links.data ?? []) as SourceLinkRow[] };
 }
+
+/** 체크리스트(8단계)에 쓰는 값: 항목(공통 + 나라)과 비자 서류. 사용 중(active)인 항목만 읽는다. */
+export interface ChecklistItemRow {
+  id: number; program_id: number | null; phase: string; days_offset: number | null; sort_order: number;
+  title_ko: string; body_ko: string | null; source_id: number | null; verified_at: string; needs_review: boolean;
+}
+export interface RequiredDocRow {
+  id: number; program_id: number; sort_order: number; title_ko: string; body_ko: string | null; issuer: string | null;
+  max_age_days: number | null; translation_required: boolean; apostille_required: boolean; source_id: number | null; verified_at: string; needs_review: boolean;
+}
+export interface ChecklistRows { items: ChecklistItemRow[]; docs: RequiredDocRow[] }
+
+export async function fetchChecklistRows(): Promise<ChecklistRows> {
+  const db = getPublicClient();
+  const [items, docs] = await Promise.all([
+    db.from('checklist_items').select('id,program_id,phase,days_offset,sort_order,title_ko,body_ko,source_id,verified_at,needs_review').eq('active', true).limit(5000),
+    db.from('required_documents').select('id,program_id,sort_order,title_ko,body_ko,issuer,max_age_days,translation_required,apostille_required,source_id,verified_at,needs_review').limit(5000),
+  ]);
+  if (items.error) throw new Error(`checklist_items 읽기 실패: ${items.error.message}`);
+  if (docs.error) throw new Error(`required_documents 읽기 실패: ${docs.error.message}`);
+  return { items: (items.data ?? []) as ChecklistItemRow[], docs: (docs.data ?? []) as RequiredDocRow[] };
+}

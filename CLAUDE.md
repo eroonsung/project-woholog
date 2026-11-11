@@ -109,7 +109,7 @@ lib/
   site.ts      오픈 여부(NEXT_PUBLIC_SITE_LIVE)
   storage.ts   브라우저 저장소 (SPEC.md 0.2의 키만)
   quiz/     types.ts config.ts steps.ts state.ts submit.ts validate.ts   질문 순서·이동·저장 (화면 없이 테스트)
-  checklist.ts 항목 + 출국일 → 단계·날짜, 링크 상태 줄이기·풀기
+  checklist.ts 항목 + 출국일 → 단계·날짜, 링크 상태 줄이기·풀기(순수 계산)  checklistStore.ts 체크리스트 저장(woholog.checklist.v1)
   copy.ts  format.ts  age.ts(생년월일 → 만 나이)  analytics.ts  rateLimit.ts
 content/
   copy_ko.json  copy_en.json  features_ko.json  partners.json  nav_ko.json  landing_countries.json  landing_example.json
@@ -121,7 +121,7 @@ scripts/
   make_font_subset.py  Pretendard 서브셋(Core·Extra) 만들기, 글자가 늘면 다시 실행(D-112)
   check_font_chars.mjs  Core에 없는 글자 경고(precheck가 호출, D-113)
 tests/
-  engine.test.ts  adapter.test.ts  checklist.test.ts  storage.test.ts
+  engine.test.ts  adapter.test.ts  checklist.test.tsx  storage.test.ts
   fixtures/personas_expected.json  countries_v1.ts  personas.ts  db_rows_v1.json(DB 스냅샷)
   e2e/flow.spec.ts
 docs/

@@ -437,6 +437,20 @@
 - **필수 앱 데이터**: Yvonne가 따로 조사해 시드 파일로 준다. 받으면 형식(`country_apps`: country·name·category·url·note_ko·verified_at)을 확인한 뒤 **운영 적용 허락을 구한다**(규칙 17).
 - **8.5단계(실제 기기 점검) 추가**: 8단계 뒤, 9단계 앞. 실제 휴대폰·카카오톡·인스타 앱 안 브라우저 점검과 지인 테스트를 Yvonne가 하고, 나온 문제를 고친 뒤 9단계로 간다. CLAUDE.md 9장 표와 작업 순서에 반영했다.
 
+## D-118. 8단계: D-day 체크리스트 (2026-11-11)
+- **화면 구성**: `/checklist`는 서버가 나라·항목을 읽고(`force-dynamic`, 읽기만) 체크·날짜는 브라우저가 `woholog.checklist.v1`에서 읽는다(D-022). 시작 화면(S14) ↔ 목록(S15)은 "그 나라 기록이 있거나 주소에 올바른 `d`가 있으면 목록, 아니면 시작 화면". 기록이 아직 없는 첫 방문에는 저장소를 읽는 동안 회색 스켈레톤(높이를 화면만큼 잡아 레이아웃이 안 튀게)을 보여 준다.
+- **항목 키**: `checklist_items`와 `required_documents`의 id가 겹쳐서 저장·링크에는 `i12`(항목)·`d5`(서류)를 쓴다. 저장 형식 `{[나라]: {date: 'YYYY-MM-DD'|null, checked: ['i1','d2',…]}}`. 형식이 다른 기록은 버린다. 진행률은 지금 있는 항목만 센다(없어진 항목의 체크는 세지 않음).
+- **서류 위치**: `required_documents`에는 날짜(days_offset)가 없어서 **신청 단계 맨 뒤, 날짜 없이** 서류 뱃지(서류·발급 후 N일 유효·번역 필요·아포스티유 필요)와 함께 보여 준다(늦었어요 판정 없음). 단계 안은 날짜 순(날짜 없는 것은 뒤)·sort_order 순. 항목이 없는 단계(예: 일본의 "지내는 동안")는 숨긴다.
+- **링크로 옮기기**: `s` = 체크 키를 숫자(항목 2n, 서류 2n+1)로 바꿔 오름차순으로 정렬하고 앞 값과의 차이를 가변 길이 바이트로 쓴 뒤 base64url. 항목 id만 보므로 항목이 바뀌어도 안 깨지고, 없는 id는 조용히 무시한다. 일본 43개를 모두 체크해도 약 60자. 기록이 없으면 저장하고 `s`를 지우고, 같으면 `s`만 지우고, 다르면 확인 창(바꾸기 / 지금 것 유지), 깨진 값은 무시한다. 서버 저장 없음.
+- **날짜 규칙**: 출국일은 오늘 이후(오늘 포함) ~ 3년 안. 지난 항목(체크 안 됨)은 회색 "늦었어요"(빨간색 아님). 출국일을 바꾸면 체크는 유지하고 날짜만 다시 계산한다. 출국일이 지나면 "출국일이 지났어요", 당일이면 "오늘 출국이에요"(제안).
+- **저장소 막힘**: 이 탭 메모리로 동작하고 "이 브라우저에서는 저장이 꺼져 있어요…"(`checklist.storageOff`, SPEC의 문장보다 copy 파일 우선) 안내를 띄운다. 체크 초기화는 확인 창 뒤 그 나라만 지운다.
+- **측정**: `lib/analytics.ts`(`@vercel/analytics`의 `track`을 try/catch로 감싼 `trackEvent`·`trackOnce`). `checklist_start`는 첫 체크 때 브라우저당 1번(`woholog.events.v1`), 속성은 나라 코드만. **`<Analytics />`를 화면에 붙이는 것과 나머지 이벤트는 11단계**라서 지금은 이벤트가 실제로 전송되지는 않고 기록(`events.v1`)만 남는다.
+- **와이어프레임에서 뺀 것**: "D-Day Calculator Active"·"오프라인 자동저장" 라벨, "직접 할 일 추가하기"(MVP 밖), "일정 자동 재배열 기능" 박스(`checklist.setup.tip` 문구로 대체), 요약 카드 속 응원 문장·퍼센트, 단계 스티커. 날짜별 묶음 대신 SPEC의 단계별 묶음 + 항목마다 D-day·날짜.
+- **필수 앱·추천 준비물**은 7단계 부품(`Apps`·`Partners`)을 "출국" 단계 아래에 재사용한다. `country_apps`가 비어 있어 지금은 "정리하고 있어요" 카드, 준비물은 "고르는 중" 4칸이다(D-116).
+- **새 문구 키 29개**는 모두 "제안"(`docs/content/copy_ko.md` 14장 아래). 새 파일: `lib/checklist.ts`(순수 계산), `lib/checklistStore.ts`(저장), `lib/analytics.ts`, `components/checklist/*`, `tests/checklist.test.tsx`, `tests/fixtures/checklist_rows_v1.json`(운영 DB 읽기 스냅샷, `SNAPSHOT=1 npx vitest run tests/snapshot_checklist.test.ts`로 다시 만듦).
+- **알려진 데이터 사실**: 운영 서류 35개 모두 `translation_required`·`apostille_required`가 false라 번역·아포스티유 뱃지는 지금 어느 서류에도 안 뜬다(유효 기간 뱃지는 일본 1·캐나다 2·영국 1개). 서류 내용 확인은 오픈 전 `needs_review` 정리(D-036) 때 같이 본다.
+- **Lighthouse 모바일**: `/checklist`와 `/checklist?c=JP&d=…` 성능 95·접근성 96.
+
 ---
 
 ## 열린 질문 (정해지면 위로 옮긴다)

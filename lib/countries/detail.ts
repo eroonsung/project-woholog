@@ -32,6 +32,12 @@ export interface CountryDetail {
   stale: boolean;
 }
 
+/** 그 나라의 필수 앱(이름순). 나라 상세와 체크리스트가 함께 쓴다 */
+export function pickApps(all: CountryAppRow[], code: string): DetailApp[] {
+  return all.filter((x) => x.country === code).sort((x, y) => x.name.localeCompare(y.name, 'ko'))
+    .map((x) => ({ name: x.name, category: t(`apps.cat.${x.category}`), note: x.note_ko, url: x.url }));
+}
+
 const DAY_MS = 86_400_000;
 const APPLY_FACTS = ['apply_method', 'extension', 'insurance_required', 'medical_check', 'proof_note', 'special_note'] as const;
 
@@ -103,8 +109,7 @@ export function buildDetail(rows: DbRows, extras: { apps: CountryAppRow[]; sourc
   ];
 
   // 필수 앱
-  const apps: DetailApp[] = extras.apps.filter((x) => x.country === code).sort((x, y) => x.name.localeCompare(y.name, 'ko'))
-    .map((x) => ({ name: x.name, category: t(`apps.cat.${x.category}`), note: x.note_ko, url: x.url }));
+  const apps = pickApps(extras.apps, code);
 
   // 출처: 이 나라 프로그램 값과 통계 값에 쓰인 출처. 같은 출처는 가장 오래된 확인일로 합친다
   const used: { sourceId: number; verifiedAt: string }[] = [

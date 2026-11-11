@@ -424,6 +424,38 @@
 | result.startChecklist | 이 나라로 준비 시작 |
 | result.detailLink | {country} 상세 정보 보기 → |
 
+8단계 추가 문구 (출처: 제안 = 원본에 없어 임시로 쓴 문장, 승인 필요)
+| 키 | 문구 | 출처 |
+|---|---|---|
+| checklist.phase.decide | 결정 | 제안(8단계) |
+| checklist.phase.apply | 신청 | 제안(8단계) |
+| checklist.phase.prepare | 출국 준비 | 제안(8단계) |
+| checklist.phase.depart | 출국 | 제안(8단계) |
+| checklist.phase.arrive | 도착 후 | 제안(8단계) |
+| checklist.phase.during | 지내는 동안 | 제안(8단계) |
+| checklist.nav | 단계별 이동 | 제안(8단계) |
+| checklist.summary.today | {country} · 오늘 출국이에요 | 제안(8단계) |
+| checklist.summary.past | {country} · 출국일이 지났어요 | 제안(8단계) |
+| checklist.setup.change | 바꾸기 | 제안(8단계) |
+| checklist.setup.search | 나라 이름 검색 | 제안(8단계) |
+| checklist.setup.dateHint | 대략적인 출국 날짜를 골라도 괜찮아요. | 제안(8단계) |
+| checklist.setup.noMatch | 찾는 나라가 없어요 | 제안(8단계) |
+| checklist.err.date | 오늘 이후 3년 안의 날짜를 골라 주세요. | 제안(8단계) |
+| checklist.noDate.tip | 출국일을 정하면 할 일 날짜를 알려 드려요 | 제안(8단계) |
+| checklist.date.save | 저장 | 제안(8단계) |
+| checklist.date.cancel | 취소 | 제안(8단계) |
+| checklist.docs.empty | 이 나라 서류는 정리하는 중이에요 | 제안(8단계) |
+| checklist.doc.issuer | 발급처: {issuer} | 제안(8단계) |
+| checklist.reset | 체크 초기화 | 제안(8단계) |
+| checklist.reset.confirm | {country} 체크 기록을 지울까요? 되돌릴 수 없어요. | 제안(8단계) |
+| checklist.reset.yes | 지우기 | 제안(8단계) |
+| checklist.reset.no | 취소 | 제안(8단계) |
+| checklist.link.confirm | 이 링크의 체크 상태로 바꿀까요? | 제안(8단계) |
+| checklist.link.yes | 바꾸기 | 제안(8단계) |
+| checklist.link.no | 지금 것 유지 | 제안(8단계) |
+| checklist.link.fallback | 자동 복사가 안 돼요. 아래 링크를 직접 복사해 주세요. | 제안(8단계) |
+
+
 ## 15. To Korea 대기자 (English)
 | key | text |
 |---|---|
