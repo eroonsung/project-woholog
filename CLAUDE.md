@@ -56,6 +56,9 @@
 6. **엔진을 고치면 회귀 테스트(가상 사용자 6명)를 반드시 돌린다.** 기대값이 달라지면 나라별 변화표를 먼저 보여 주고 허락받는다.
 7. **DB 구조는 `supabase/migrations`의 새 파일로만 바꾼다.** 기존 파일을 고치지 않는다. RLS를 끄거나 정책을 넓히지 않는다.
 8. **비밀키는 `.env.local`에만.** `SUPABASE_SERVICE_ROLE_KEY`는 서버 코드에서만 쓰고 `NEXT_PUBLIC_`을 붙이지 않는다. 커밋 전에 비밀키가 없는지 확인한다.
+   - **`.env*` 파일 내용은 절대 출력하지 않는다.** `cat`, `Read`, `sed`, `echo` 모두 안 된다. 확인이 필요하면 변수 이름 목록만 본다(예: `grep -o '^[A-Z_]*=' .env.local`).
+   - `.gitignore`는 0단계 첫 작업으로 만든다(`.env*` 제외, `.env.example`만 허용).
+   - 환경변수 이름은 `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY` 셋이다.
 9. **개인정보는 이메일만.** 동의 체크박스는 처음에 비어 있고, 동의 시각과 `consent_version`을 같이 저장한다. 처리방침과 실제 동작이 같아야 한다. 이벤트에 답변 값을 넣지 않는다.
 10. **브라우저 저장소는 `SPEC.md` 0.2의 키만 쓰고, 읽기·쓰기는 모두 try/catch.** 저장소가 막혀도 화면이 깨지면 안 된다.
 11. **값이 없으면 "확인 중".** 값을 지어내지 않는다.
@@ -94,12 +97,12 @@ lib/
   checklist.ts 항목 + 출국일 → 단계·날짜, 링크 상태 줄이기·풀기
   copy.ts  format.ts  analytics.ts  rateLimit.ts
 content/
-  copy_ko.json  copy_en.json  features_ko.json  partners.json  nav_ko.json
+  copy_ko.json  copy_en.json  features_ko.json  partners.json  nav_ko.json  landing_countries.json
 supabase/
-  migrations/  001_schema_v2_1.sql  002_feature_votes.sql
+  migrations/  001_schema_v2_1.sql  002_feature_votes.sql  (003_rate_limit.sql은 4단계에서)
   seed/seed_v1_1.sql  seed/seed_checklist_v1.sql
 tests/
-  engine.test.ts  adapter.test.ts  checklist.test.ts
+  engine.test.ts  adapter.test.ts  checklist.test.ts  storage.test.ts
   fixtures/personas_expected.json
   e2e/flow.spec.ts
 docs/
@@ -123,6 +126,8 @@ docs/
 
 ## 6. DB → 엔진 입력 변환 (`lib/engine/adapter.ts`)
 이 규칙으로 28개 나라를 변환한 결과가 Python 엔진의 나라 표와 **완전히 같아야 한다**(`adapter.test.ts`). 기준값은 `scoring_config.tiers`에서 읽는다.
+
+**협정국은 29곳이지만 엔진·`adapter.test.ts`가 다루는 것은 `active` 프로그램 28개다.** 핀란드는 협정이 아직 발효되지 않아 계산에서 빼고, 화면에는 "곧 열려요" 표시만 한다(D-063).
 
 | 엔진 값 | DB에서 만드는 법 |
 |---|---|
@@ -165,8 +170,8 @@ docs/
 | 0 준비 | Next.js, Tailwind 토큰, Pretendard, lucide, Vitest, 폴더, `.env.example`, `lib/storage.ts` | 0장 | `npm run build` 성공, `/dev/tokens`(배포 제외)에서 색·버튼·칩 확인 |
 | 1 엔진 옮기기 | `fit_engine_v1.py` → `lib/engine` (후보 나라 계산 포함) | 3.2 마지막 줄 | `engine.test.ts`: 6명 × 모든 나라의 %, ✓△✗, 뱃지, 순서가 100% 같음 |
 | 2 질문 화면 | 12개 질문, 진행 막대, 주소 `?q=`, 이전·처음부터, 건너뛰기, 나이 안내, 저장 | 3장 | Figma 프레임(S01~S06)과 차이 목록 0개, 키보드만으로 끝까지, 17장 테스트 줄 통과 |
-| 3 Supabase | 마이그레이션·시드(로컬 → 운영), `queries.ts`, `adapter.ts` | 0.3 | `adapter.test.ts` 통과, `db_test_v2.sql` 통과, 익명 키로 쓰기·관리 표 읽기 막힘 |
-| 4 엔진 연결 | 답변 → `api/result` → 저장 → `/r/[id]`, 요청 제한 | 3.3, 0.8 | Yvonne 예시 답 결과가 기대값과 같음, 새 창에서도 같은 결과, 실패 후 다시 시도 |
+| 3 Supabase | 마이그레이션·시드를 지금 프로젝트 하나(서울 리전)에 바로 적용(로컬 Docker 안 씀. 오픈 후 개발용 프로젝트를 따로 만든다, D-066), `queries.ts`, `adapter.ts` | 0.3 | `adapter.test.ts` 통과, `db_test_v2.sql` 통과, 익명 키로 쓰기·관리 표 읽기 막힘 |
+| 4 엔진 연결 | 답변 → `api/result` → 저장 → `/r/[id]`, 요청 제한(마이그레이션 `003_rate_limit.sql`: Supabase 표 + 함수, IP 해시만 저장·24시간 뒤 삭제, D-065) | 3.3, 0.8 | Yvonne 예시 답 결과가 기대값과 같음, 새 창에서도 같은 결과, 실패 후 다시 시도 |
 | 5 결과 화면 | 카드 5가지 경우, 조건 줄, 이렇게 바꾸면, 현실 미리보기, TOP 3, 갈 수 없는 나라 | 4장 | 17장 결과 줄 통과, 문구가 모두 copy 파일에서 옴 |
 | 6 비교 | 비교 화면, 비교에 담기 | 6장 | 17장 비교 줄 통과 |
 | 7 비교표·상세 | 정렬·필터·주소, 상세 섹션·목차·여행경보 배너 | 7·8·9장 | 17장 비교표·나라 상세 줄 통과, 상세 숫자가 DB와 같음 |

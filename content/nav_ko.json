@@ -1,0 +1,120 @@
+{
+  "_source": "docs/product/scope_ia.md 2번. 단계 이름은 copy_ko.json nav.stage.*",
+  "stages": [
+    {
+      "id": "choose",
+      "labelKey": "nav.stage.choose",
+      "items": [
+        {
+          "label": "나라 추천 테스트",
+          "href": "/test"
+        },
+        {
+          "label": "29개국 비교",
+          "href": "/countries"
+        },
+        {
+          "label": "가이드",
+          "href": "/guides"
+        }
+      ]
+    },
+    {
+      "id": "prepare",
+      "labelKey": "nav.stage.prepare",
+      "items": [
+        {
+          "label": "D-day 체크리스트",
+          "href": "/checklist"
+        },
+        {
+          "label": "나라별 필수 앱",
+          "href": null,
+          "pickCountry": "/countries/[code]#apps"
+        },
+        {
+          "label": "초기 비용 계산기",
+          "href": "/soon/cost-calculator",
+          "soon": true
+        },
+        {
+          "label": "예산 저축 플래너",
+          "href": "/soon/savings-planner",
+          "soon": true
+        },
+        {
+          "label": "모집 오픈 알림",
+          "href": "/soon/intake-alerts",
+          "soon": true
+        },
+        {
+          "label": "나라별 정착 가이드북",
+          "href": "/soon/guidebook",
+          "soon": true
+        }
+      ]
+    },
+    {
+      "id": "local",
+      "labelKey": "nav.stage.local",
+      "items": [
+        {
+          "label": "일자리 찾기 가이드",
+          "href": "/soon/job-guide",
+          "soon": true
+        },
+        {
+          "label": "세컨비자 조건 트래커",
+          "href": "/soon/second-visa",
+          "soon": true
+        },
+        {
+          "label": "환율·송금 알림",
+          "href": "/soon/fx-alerts",
+          "soon": true
+        },
+        {
+          "label": "안전 체크인",
+          "href": "/soon/safety-checkin",
+          "soon": true
+        },
+        {
+          "label": "출국 동기 찾기",
+          "href": "/soon/departure-buddies",
+          "soon": true
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "labelKey": "nav.stage.return",
+      "items": [
+        {
+          "label": "세금·연금 환급 도우미",
+          "href": "/soon/tax-refund",
+          "soon": true
+        },
+        {
+          "label": "워홀 결산 리포트·뱃지",
+          "href": "/soon/year-report",
+          "soon": true
+        },
+        {
+          "label": "경험을 이력서로",
+          "href": "/soon/resume",
+          "soon": true
+        }
+      ]
+    }
+  ],
+  "community": {
+    "label": "커뮤니티",
+    "href": "/soon/community",
+    "soon": true
+  },
+  "footer": [
+    "/soon",
+    "/privacy",
+    "report-modal"
+  ]
+}

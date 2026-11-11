@@ -1,0 +1,17 @@
+{
+  "key": "text",
+  "tk.badge": "Working Holiday in Korea",
+  "tk.title": "Coming to Korea on a working holiday?",
+  "tk.sub": "We're building a step-by-step guide for your first 30 days: visa, alien registration, phone, bank and jobs.",
+  "tk.sticker": "Coming 2027",
+  "tk.card1": "H-1 visa in plain English",
+  "tk.card2": "First 30 days checklist",
+  "tk.card3": "Find jobs and housing",
+  "tk.email": "Email",
+  "tk.consent": "I agree to woholog collecting my email to send one launch notice. See privacy policy.",
+  "tk.cta": "Join the waitlist",
+  "tk.note": "One email when we launch. No spam.",
+  "tk.done": "You're on the list!",
+  "tk.err.format": "Please check your email address.",
+  "tk.err.dup": "You're already on the list."
+}
