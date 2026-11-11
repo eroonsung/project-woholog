@@ -499,6 +499,12 @@
 - **새 DB 읽기**: `feature_vote_counts()`, `guides`(published), `fact_keys`·`exchange_rates`·`program_facts`(가이드 값), `countries`(이름). 쓰기는 `feature_votes` 한 가지(원해요). 테스트는 운영 DB에 쓰지 않았다(원해요·신청 POST는 가짜 응답으로 가로챔).
 - **Lighthouse 모바일**: `/soon` 성능 96·접근성 96, `/soon/cost-calculator` 95·96, `/guides` 96·96.
 
+## D-126. 10단계 승인과 운영 확인 (2026-11-11)
+- **운영 확인(허락받음)**: push(`82c9e98`) 배포 성공 후 `/api/vote {slug:'resume'}` 1번 → `ok`, `feature_votes`에 **저장 확인**(id 1, `resume`, 시각만; 적용 전 0행), 모르는 slug는 400으로 거부. `/soon`에서 "원해요 1"로 보임(`feature_vote_counts()`와 같음). 행은 `test_data.md`에 기록하고 삭제 SQL도 적었다. 운영의 공유 이미지도 확인: `/r/[id]/story` 1080×1920 PNG, `/r/[id]/opengraph-image` 1200×630 PNG(배포에서 글꼴·국기 파일이 함께 묶여 정상).
+- **공유 이미지 색 테스트**: `tests/share_colors.test.ts`가 `lib/share/colors.ts`의 색을 `app/globals.css` 토큰과 비교해서 하나라도 다르면 실패한다(`white`는 Tailwind 기본값 `#ffffff`). 이미지 그리는 코드에 색 값을 직접 쓰지 못하게도 검사한다. 일부러 값을 바꿔 실패하는 것을 확인했다.
+- **가이드 글 넣는 방법**: `docs/content/guides_howto.md`(시드 SQL로 `guides`에 넣기, 필수 칸 = slug·title_ko·body_ko·status, `program_id`를 채워야 `{fact_key}`가 값으로 바뀜, 본문에서 읽는 마크다운, 쓸 수 있는 `fact_keys` 20개, 시드 예시·올리는 순서). 오픈 전에 1~2개 올릴 예정. "곧 올라올 글" 4개는 실제로 올릴 글만 남기는 것으로 정하고 제목을 고르는 중이다.
+- **승인**: 새 문구 26개와 "편집부에서 준비 중" 표현(오픈 전 전체 문구 검토 때 다시 봄).
+
 ---
 
 ## 열린 질문 (정해지면 위로 옮긴다)

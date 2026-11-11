@@ -19,7 +19,11 @@
 
 ## 그 밖의 표
 - `rate_limits`: 요청 제한 기록(IP 해시). 24시간이 지나면 다음 요청 때 자동으로 지워져서 따로 기록하지 않는다.
-- `feature_votes`: 테스트로 넣은 것이 있으면 여기에 적는다(지금은 없음).
+
+## feature_votes (원해요 확인, 10단계)
+| 날짜(KST) | id | 기능 | 내용 |
+|---|---|---|---|
+| 2026-11-11 | 1 | `resume` | 10단계 운영 확인(Yvonne 허락): 원해요 1표를 API로 보내 저장 확인. 모르는 slug(`hack`)는 400으로 거부돼 저장 안 됨 |
 
 ## launch_subscribers (이메일 신청 확인, 9단계)
 | 날짜(KST) | id | 이메일 | section(DB) | 언어 | 내용 |
@@ -51,4 +55,9 @@ delete from quiz_results where id in (
 -- 이메일 신청·제보 테스트 행 (id를 확인한 뒤)
 delete from launch_subscribers where id in (7, 9) and email like 'woholog-test+%@example.com';
 delete from user_reports where id = 3 and message = '테스트 제보입니다. 오픈 전 삭제';
+```
+
+```sql
+-- 원해요 테스트 행 (id를 확인한 뒤)
+delete from feature_votes where id = 1 and feature = 'resume';
 ```
