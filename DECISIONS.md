@@ -451,6 +451,12 @@
 - **알려진 데이터 사실**: 운영 서류 35개 모두 `translation_required`·`apostille_required`가 false라 번역·아포스티유 뱃지는 지금 어느 서류에도 안 뜬다(유효 기간 뱃지는 일본 1·캐나다 2·영국 1개). 서류 내용 확인은 오픈 전 `needs_review` 정리(D-036) 때 같이 본다.
 - **Lighthouse 모바일**: `/checklist`와 `/checklist?c=JP&d=…` 성능 95·접근성 96.
 
+## D-119. 8단계 승인, 8.5단계 점검 목록, 필수 앱 v1 시드 (2026-11-11)
+- **승인**: `checklist.test.tsx` 이름, 서류는 신청 단계 맨 뒤(날짜 없음), 빈 단계 숨김, 와이어프레임에서 뺀 것 전부, 새 문구 29개(오픈 전 전체 문구 검토 때 다시 봄).
+- 서류 35개가 모두 번역·아포스티유 false인 것은 오픈 전 `needs_review` 정리 때 같이 확인한다(`launch_checklist.md`의 해당 항목에 덧붙임). `checklist_start` 전송은 11단계에서 `<Analytics />`를 붙일 때 같이 확인한다.
+- **8.5단계 점검 목록**: `docs/ops/device_check.md`(기기·환경 4곳, 흐름 6단계, 볼 것, 지인 테스트 칸, 결과 표, 테스트 결과 id 칸).
+- **필수 앱 v1**: Yvonne가 `supabase/seed/seed_country_apps_v1.sql`(29개국 171행, `on conflict (country, name) do nothing`)과 `docs/content/country_apps_v1.md`를 넣었다. 형식 확인: 컬럼·분류 값(transport·housing·safety·job·life·bank·telecom)이 `country_apps` 스키마와 맞고, 나라 29곳 전부, 중복 없음. **운영 적용 전에 url을 모두 확인했다**: 고유 url 136개를 `curl` GET(리다이렉트 따라가기, 10초 제한)으로 확인 → 정상(200~399) 80개, **확실히 죽은 링크 0개**, 나머지 56개는 봇 차단·접속 막힘으로 보이는 응답(403 48·429 2·401 1·405 1·503 1·연결 실패 3)이라 이 환경에서는 확인할 수 없다. 봇 차단을 우회하는 방법(브라우저인 척하는 요청 등)은 쓰지 않았다. 확인할 수 없는 링크는 죽은 증거가 없어 그대로 두고 오픈 전에 브라우저로 직접 확인한다. 주소를 고친 곳 1개: 이탈리아 `IO`(`io.italia.it` → `ioapp.it`로 이동하는 것을 확인해 새 주소로 바꿈). 시드와 md를 같이 고쳤다.
+
 ---
 
 ## 열린 질문 (정해지면 위로 옮긴다)

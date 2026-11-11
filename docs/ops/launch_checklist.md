@@ -5,7 +5,7 @@
 ## 데이터 정리
 - [ ] **오픈 전 테스트 결과 일괄 삭제(허락 받고 실행)** — `docs/ops/test_data.md`에 적어 둔 id만 지운다. 지운 뒤 `quiz_results`에 남은 행이 0인지 확인
 - [ ] `launch_subscribers`·`user_reports`·`feature_votes`에 테스트 데이터가 있으면 같이 정리
-- [ ] 체크리스트·서류의 `needs_review = true` 항목 확인 후 false로 (D-036, `docs/content/checklist_v1.md` 4장)
+- [ ] 체크리스트·서류의 `needs_review = true` 항목 확인 후 false로 (D-036, `docs/content/checklist_v1.md` 4장). **번역·아포스티유 필요 여부도 같이 확인**(서류 35개가 모두 `translation_required`·`apostille_required` = false, D-119)
 - [ ] 빈 값 채우기 (DECISIONS.md Q-6): 잔고 증명 금액 — 1순위 아일랜드·스페인·포르투갈, 2순위 폴란드·오스트리아·이스라엘
 - [ ] **필수 앱 채우기**(`country_apps`가 비어 있음, D-116): 나라별 앱 이름·분류·링크·설명을 정해 시드로 넣기. 그 전에는 29개국 모두 "정리하는 중" 카드
 - [ ] **추천 준비물 제휴 링크**(`content/partners.json`이 비어 있음): 링크를 넣을 때 "광고" 표시·수수료 안내가 나오는지 확인
