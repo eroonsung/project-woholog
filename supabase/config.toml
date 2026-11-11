@@ -70,7 +70,7 @@ schema_paths = []
 enabled = true
 # Specifies an ordered list of seed files to load during db reset.
 # Supports glob patterns relative to supabase directory: "./seeds/*.sql"
-sql_paths = ["./seed/seed_v1_1.sql", "./seed/seed_checklist_v1.sql", "./seed/seed_engine_v1.sql", "./seed/seed_proof_ticket_v1.sql"]
+sql_paths = ["./seed/seed_v1_1.sql", "./seed/seed_checklist_v1.sql", "./seed/seed_engine_v1.sql", "./seed/seed_proof_ticket_v1.sql", "./seed/seed_nl_proof_v1.sql"]
 
 [db.network_restrictions]
 # Enable management of network restrictions.

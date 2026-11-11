@@ -159,7 +159,7 @@ describe('조건 줄 문구 키 (reasons)', () => {
   it('호주 + 농장 안 고름: 2년 칩은 farm 경우', () => {
     const p: Profile = { ...profile, visited: [], priorities: ['two_years'] };
     const row = scoreAll(COUNTRIES, p, DEFAULT_CONFIG).ranked.find((r) => r.code === 'AU')!;
-    const line = buildReasons(row, COUNTRIES[0]!, p, DEFAULT_CONFIG).find((l) => l.itemId === 'two_years')!;
+    const line = buildReasons(row, COUNTRIES.find((c) => c.code === 'AU')!, p, DEFAULT_CONFIG).find((l) => l.itemId === 'two_years')!;
     expect(line.key).toBe('reason.priority.two_years.partial.farm');
   });
 });

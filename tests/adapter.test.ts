@@ -36,6 +36,12 @@ describe('adapter: DB → 엔진 입력', () => {
     expect(diffs).toEqual([]);
   });
 
+  it('adapter 나라 순서는 가나다순(동점 순서를 정한다)', () => {
+    const names = result.active.map((x) => x.nameKo);
+    expect(names).toEqual([...names].sort((p, q) => p.localeCompare(q, 'ko')));
+    expect(COUNTRIES.map((c) => c.nameKo)).toEqual(names);
+  });
+
   it('나이 범위·설정값', () => {
     expect(result.minAge).toBe(18);
     expect(result.maxAge).toBe(Math.max(...COUNTRIES.map((c) => c.maxAge)));
@@ -86,7 +92,8 @@ describe('필요한 돈 규칙 (D-085)', () => {
 
   it('잔고 증명이 숫자 없이 메모뿐인 나라는 0이 아니라 null(확인 중)', () => {
     const unknown = result.active.filter((a) => a.engine.needMan === null).map((a) => a.code).sort();
-    expect(unknown).toEqual(['AT', 'ES', 'IE', 'IL', 'NL', 'PL', 'PT']);
+    expect(unknown).toEqual(['AT', 'ES', 'IE', 'IL', 'PL', 'PT']); // 네덜란드는 잔고 증명 0으로 계산 가능(D-088)
+    expect(need(result, 'NL')).toBe(163); // 비자 비용 + 항공권
   });
 
   it('잔고 증명이 0으로 입력된(필요 없음으로 확인된) 나라만 0으로 계산한다', () => {
@@ -113,9 +120,8 @@ describe('adapter 데이터로 돌린 가상 사용자 6명 = Python 나라 표�
       const key = (r: (typeof a)[number]) => JSON.stringify([r.code, r.pct, r.okCount, r.itemCount, r.badges, r.items]);
       // 나라별 결과는 완전히 같다
       expect(new Map(a.map((r) => [r.code, key(r)]))).toEqual(new Map(f.map((r) => [r.code, key(r)])));
-      // 순서는 % · ✓ 수 · 필수 점수가 모두 같은 나라끼리만 다를 수 있다(입력 순서 차이)
-      const tier = (r: (typeof a)[number]) => `${r.pct}/${r.okCount}/${r.essential}`;
-      expect(a.map(tier)).toEqual(f.map(tier));
+      // 동점 순서는 가나다순으로 확정(D-089): adapter와 Python 나라 표의 순서가 완전히 같다
+      expect(a.map((r) => r.code)).toEqual(f.map((r) => r.code));
     });
   }
 });

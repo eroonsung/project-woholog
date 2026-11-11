@@ -14,7 +14,8 @@
     "test": "vitest run",
     "test:e2e": "playwright test",
     "db:test": "supabase db query --remote -f docs/db/db_test_v2_live.sql",
-    "db:snapshot": "SNAPSHOT=1 vitest run tests/snapshot_db.test.ts"
+    "db:snapshot": "SNAPSHOT=1 vitest run tests/snapshot_db.test.ts",
+    "precheck": "bash scripts/precheck.sh"
   },
   "dependencies": {
     "@supabase/supabase-js": "2.119.0",

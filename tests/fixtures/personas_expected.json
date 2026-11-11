@@ -334,7 +334,7 @@
     ]
    },
    {
-    "country": "아르헨티나",
+    "country": "브라질",
     "pct": 39,
     "ok_count": 0,
     "item_count": 6,
@@ -373,7 +373,7 @@
     ]
    },
    {
-    "country": "브라질",
+    "country": "아르헨티나",
     "pct": 39,
     "ok_count": 0,
     "item_count": 6,
@@ -981,6 +981,45 @@
     ]
    },
    {
+    "country": "라트비아",
+    "pct": 33,
+    "ok_count": 2,
+    "item_count": 6,
+    "flag": "일하며 지내기 어려움",
+    "items": [
+     {
+      "item": "돈",
+      "weight": 3,
+      "mark": "ok"
+     },
+     {
+      "item": "언어",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "일",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "가까운",
+      "weight": 1.5,
+      "mark": "no"
+     },
+     {
+      "item": "생활비",
+      "weight": 1.5,
+      "mark": "ok"
+     },
+     {
+      "item": "일자리",
+      "weight": 1.5,
+      "mark": "no"
+     }
+    ]
+   },
+   {
     "country": "헝가리",
     "pct": 33,
     "ok_count": 2,
@@ -1020,9 +1059,9 @@
     ]
    },
    {
-    "country": "라트비아",
+    "country": "네덜란드",
     "pct": 33,
-    "ok_count": 2,
+    "ok_count": 1,
     "item_count": 6,
     "flag": "일하며 지내기 어려움",
     "items": [
@@ -1049,12 +1088,12 @@
      {
       "item": "생활비",
       "weight": 1.5,
-      "mark": "ok"
+      "mark": "partial"
      },
      {
       "item": "일자리",
       "weight": 1.5,
-      "mark": "no"
+      "mark": "partial"
      }
     ]
    },
@@ -1406,40 +1445,6 @@
       "item": "일자리",
       "weight": 1.5,
       "mark": "no"
-     }
-    ]
-   },
-   {
-    "country": "네덜란드",
-    "pct": 14,
-    "ok_count": 0,
-    "item_count": 5,
-    "flag": "일하며 지내기 어려움",
-    "items": [
-     {
-      "item": "언어",
-      "weight": 3,
-      "mark": "no"
-     },
-     {
-      "item": "일",
-      "weight": 3,
-      "mark": "no"
-     },
-     {
-      "item": "가까운",
-      "weight": 1.5,
-      "mark": "no"
-     },
-     {
-      "item": "생활비",
-      "weight": 1.5,
-      "mark": "partial"
-     },
-     {
-      "item": "일자리",
-      "weight": 1.5,
-      "mark": "partial"
      }
     ]
    },
@@ -1960,7 +1965,7 @@
     ]
    },
    {
-    "country": "벨기에",
+    "country": "덴마크",
     "pct": 35,
     "ok_count": 2,
     "item_count": 7,
@@ -2004,7 +2009,7 @@
     ]
    },
    {
-    "country": "덴마크",
+    "country": "벨기에",
     "pct": 35,
     "ok_count": 2,
     "item_count": 7,
@@ -2078,6 +2083,45 @@
       "item": "돈",
       "weight": 1.5,
       "mark": "partial"
+     },
+     {
+      "item": "영어",
+      "weight": 1.5,
+      "mark": "no"
+     },
+     {
+      "item": "2년",
+      "weight": 1.5,
+      "mark": "no"
+     }
+    ]
+   },
+   {
+    "country": "네덜란드",
+    "pct": 33,
+    "ok_count": 2,
+    "item_count": 6,
+    "flag": "일하며 지내기 어려움",
+    "items": [
+     {
+      "item": "돈",
+      "weight": 3,
+      "mark": "ok"
+     },
+     {
+      "item": "언어",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "일",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "돈",
+      "weight": 1.5,
+      "mark": "ok"
      },
      {
       "item": "영어",
@@ -2297,45 +2341,6 @@
     ]
    },
    {
-    "country": "헝가리",
-    "pct": 22,
-    "ok_count": 1,
-    "item_count": 6,
-    "flag": "일하며 지내기 어려움",
-    "items": [
-     {
-      "item": "돈",
-      "weight": 3,
-      "mark": "ok"
-     },
-     {
-      "item": "언어",
-      "weight": 3,
-      "mark": "no"
-     },
-     {
-      "item": "일",
-      "weight": 3,
-      "mark": "no"
-     },
-     {
-      "item": "돈",
-      "weight": 1.5,
-      "mark": "no"
-     },
-     {
-      "item": "영어",
-      "weight": 1.5,
-      "mark": "no"
-     },
-     {
-      "item": "2년",
-      "weight": 1.5,
-      "mark": "no"
-     }
-    ]
-   },
-   {
     "country": "라트비아",
     "pct": 22,
     "ok_count": 1,
@@ -2453,6 +2458,45 @@
     ]
    },
    {
+    "country": "헝가리",
+    "pct": 22,
+    "ok_count": 1,
+    "item_count": 6,
+    "flag": "일하며 지내기 어려움",
+    "items": [
+     {
+      "item": "돈",
+      "weight": 3,
+      "mark": "ok"
+     },
+     {
+      "item": "언어",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "일",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "돈",
+      "weight": 1.5,
+      "mark": "no"
+     },
+     {
+      "item": "영어",
+      "weight": 1.5,
+      "mark": "no"
+     },
+     {
+      "item": "2년",
+      "weight": 1.5,
+      "mark": "no"
+     }
+    ]
+   },
+   {
     "country": "이스라엘",
     "pct": 19,
     "ok_count": 1,
@@ -2478,40 +2522,6 @@
       "item": "돈",
       "weight": 1.5,
       "mark": "partial"
-     },
-     {
-      "item": "영어",
-      "weight": 1.5,
-      "mark": "no"
-     },
-     {
-      "item": "2년",
-      "weight": 1.5,
-      "mark": "no"
-     }
-    ]
-   },
-   {
-    "country": "네덜란드",
-    "pct": 14,
-    "ok_count": 1,
-    "item_count": 5,
-    "flag": "일하며 지내기 어려움",
-    "items": [
-     {
-      "item": "언어",
-      "weight": 3,
-      "mark": "no"
-     },
-     {
-      "item": "일",
-      "weight": 3,
-      "mark": "no"
-     },
-     {
-      "item": "돈",
-      "weight": 1.5,
-      "mark": "ok"
      },
      {
       "item": "영어",
@@ -2801,11 +2811,11 @@
     ]
    },
    {
-    "country": "호주",
+    "country": "캐나다",
     "pct": 88,
     "ok_count": 5,
     "item_count": 6,
-    "flag": "",
+    "flag": "추첨",
     "items": [
      {
       "item": "돈",
@@ -2840,11 +2850,11 @@
     ]
    },
    {
-    "country": "캐나다",
+    "country": "호주",
     "pct": 88,
     "ok_count": 5,
     "item_count": 6,
-    "flag": "추첨",
+    "flag": "",
     "items": [
      {
       "item": "돈",
@@ -2913,7 +2923,7 @@
     ]
    },
    {
-    "country": "프랑스",
+    "country": "덴마크",
     "pct": 56,
     "ok_count": 2,
     "item_count": 6,
@@ -2991,7 +3001,7 @@
     ]
    },
    {
-    "country": "덴마크",
+    "country": "라트비아",
     "pct": 56,
     "ok_count": 2,
     "item_count": 6,
@@ -3030,7 +3040,7 @@
     ]
    },
    {
-    "country": "라트비아",
+    "country": "프랑스",
     "pct": 56,
     "ok_count": 2,
     "item_count": 6,
@@ -3108,7 +3118,7 @@
     ]
    },
    {
-    "country": "아르헨티나",
+    "country": "브라질",
     "pct": 44,
     "ok_count": 1,
     "item_count": 6,
@@ -3147,7 +3157,7 @@
     ]
    },
    {
-    "country": "브라질",
+    "country": "아르헨티나",
     "pct": 44,
     "ok_count": 1,
     "item_count": 6,
@@ -3477,6 +3487,45 @@
     ]
    },
    {
+    "country": "네덜란드",
+    "pct": 39,
+    "ok_count": 1,
+    "item_count": 6,
+    "flag": "일하며 지내기 어려움",
+    "items": [
+     {
+      "item": "돈",
+      "weight": 3,
+      "mark": "ok"
+     },
+     {
+      "item": "언어",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "일",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "한국인많은",
+      "weight": 1.5,
+      "mark": "partial"
+     },
+     {
+      "item": "생활비",
+      "weight": 1.5,
+      "mark": "partial"
+     },
+     {
+      "item": "확실",
+      "weight": 1.5,
+      "mark": "partial"
+     }
+    ]
+   },
+   {
     "country": "뉴질랜드",
     "pct": 39,
     "ok_count": 1,
@@ -3628,45 +3677,6 @@
     ]
    },
    {
-    "country": "스웨덴",
-    "pct": 28,
-    "ok_count": 1,
-    "item_count": 6,
-    "flag": "일하며 지내기 어려움",
-    "items": [
-     {
-      "item": "돈",
-      "weight": 3,
-      "mark": "partial"
-     },
-     {
-      "item": "언어",
-      "weight": 3,
-      "mark": "no"
-     },
-     {
-      "item": "일",
-      "weight": 3,
-      "mark": "no"
-     },
-     {
-      "item": "한국인많은",
-      "weight": 1.5,
-      "mark": "partial"
-     },
-     {
-      "item": "생활비",
-      "weight": 1.5,
-      "mark": "no"
-     },
-     {
-      "item": "확실",
-      "weight": 1.5,
-      "mark": "ok"
-     }
-    ]
-   },
-   {
     "country": "라트비아",
     "pct": 28,
     "ok_count": 1,
@@ -3702,6 +3712,45 @@
       "item": "확실",
       "weight": 1.5,
       "mark": "partial"
+     }
+    ]
+   },
+   {
+    "country": "스웨덴",
+    "pct": 28,
+    "ok_count": 1,
+    "item_count": 6,
+    "flag": "일하며 지내기 어려움",
+    "items": [
+     {
+      "item": "돈",
+      "weight": 3,
+      "mark": "partial"
+     },
+     {
+      "item": "언어",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "일",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "한국인많은",
+      "weight": 1.5,
+      "mark": "partial"
+     },
+     {
+      "item": "생활비",
+      "weight": 1.5,
+      "mark": "no"
+     },
+     {
+      "item": "확실",
+      "weight": 1.5,
+      "mark": "ok"
      }
     ]
    },
@@ -3784,7 +3833,7 @@
     ]
    },
    {
-    "country": "헝가리",
+    "country": "아르헨티나",
     "pct": 22,
     "ok_count": 1,
     "item_count": 6,
@@ -3823,7 +3872,7 @@
     ]
    },
    {
-    "country": "아르헨티나",
+    "country": "헝가리",
     "pct": 22,
     "ok_count": 1,
     "item_count": 6,
@@ -3930,40 +3979,6 @@
     ]
    },
    {
-    "country": "네덜란드",
-    "pct": 21,
-    "ok_count": 0,
-    "item_count": 5,
-    "flag": "일하며 지내기 어려움",
-    "items": [
-     {
-      "item": "언어",
-      "weight": 3,
-      "mark": "no"
-     },
-     {
-      "item": "일",
-      "weight": 3,
-      "mark": "no"
-     },
-     {
-      "item": "한국인많은",
-      "weight": 1.5,
-      "mark": "partial"
-     },
-     {
-      "item": "생활비",
-      "weight": 1.5,
-      "mark": "partial"
-     },
-     {
-      "item": "확실",
-      "weight": 1.5,
-      "mark": "partial"
-     }
-    ]
-   },
-   {
     "country": "덴마크",
     "pct": 17,
     "ok_count": 1,
@@ -4042,7 +4057,7 @@
     ]
    },
    {
-    "country": "프랑스",
+    "country": "벨기에",
     "pct": 17,
     "ok_count": 0,
     "item_count": 6,
@@ -4081,7 +4096,7 @@
     ]
    },
    {
-    "country": "벨기에",
+    "country": "프랑스",
     "pct": 17,
     "ok_count": 0,
     "item_count": 6,
@@ -4606,6 +4621,45 @@
     ]
    },
    {
+    "country": "네덜란드",
+    "pct": 50,
+    "ok_count": 2,
+    "item_count": 6,
+    "flag": "",
+    "items": [
+     {
+      "item": "돈",
+      "weight": 3,
+      "mark": "ok"
+     },
+     {
+      "item": "언어",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "일",
+      "weight": 1.5,
+      "mark": "no"
+     },
+     {
+      "item": "유럽",
+      "weight": 1.5,
+      "mark": "ok"
+     },
+     {
+      "item": "생활비",
+      "weight": 1.5,
+      "mark": "partial"
+     },
+     {
+      "item": "한국인적은",
+      "weight": 1.5,
+      "mark": "partial"
+     }
+    ]
+   },
+   {
     "country": "대만",
     "pct": 44,
     "ok_count": 2,
@@ -4991,45 +5045,6 @@
     ]
    },
    {
-    "country": "프랑스",
-    "pct": 38,
-    "ok_count": 1,
-    "item_count": 6,
-    "flag": "",
-    "items": [
-     {
-      "item": "돈",
-      "weight": 3,
-      "mark": "partial"
-     },
-     {
-      "item": "언어",
-      "weight": 3,
-      "mark": "no"
-     },
-     {
-      "item": "일",
-      "weight": 1.5,
-      "mark": "no"
-     },
-     {
-      "item": "유럽",
-      "weight": 1.5,
-      "mark": "ok"
-     },
-     {
-      "item": "생활비",
-      "weight": 1.5,
-      "mark": "partial"
-     },
-     {
-      "item": "한국인적은",
-      "weight": 1.5,
-      "mark": "partial"
-     }
-    ]
-   },
-   {
     "country": "벨기에",
     "pct": 38,
     "ok_count": 1,
@@ -5069,12 +5084,17 @@
     ]
    },
    {
-    "country": "네덜란드",
-    "pct": 33,
+    "country": "프랑스",
+    "pct": 38,
     "ok_count": 1,
-    "item_count": 5,
+    "item_count": 6,
     "flag": "",
     "items": [
+     {
+      "item": "돈",
+      "weight": 3,
+      "mark": "partial"
+     },
      {
       "item": "언어",
       "weight": 3,
@@ -5142,45 +5162,6 @@
     ]
    },
    {
-    "country": "영국",
-    "pct": 31,
-    "ok_count": 1,
-    "item_count": 6,
-    "flag": "",
-    "items": [
-     {
-      "item": "돈",
-      "weight": 3,
-      "mark": "no"
-     },
-     {
-      "item": "언어",
-      "weight": 3,
-      "mark": "partial"
-     },
-     {
-      "item": "일",
-      "weight": 1.5,
-      "mark": "partial"
-     },
-     {
-      "item": "유럽",
-      "weight": 1.5,
-      "mark": "ok"
-     },
-     {
-      "item": "생활비",
-      "weight": 1.5,
-      "mark": "no"
-     },
-     {
-      "item": "한국인적은",
-      "weight": 1.5,
-      "mark": "no"
-     }
-    ]
-   },
-   {
     "country": "브라질",
     "pct": 31,
     "ok_count": 1,
@@ -5211,6 +5192,45 @@
       "item": "생활비",
       "weight": 1.5,
       "mark": "ok"
+     },
+     {
+      "item": "한국인적은",
+      "weight": 1.5,
+      "mark": "no"
+     }
+    ]
+   },
+   {
+    "country": "영국",
+    "pct": 31,
+    "ok_count": 1,
+    "item_count": 6,
+    "flag": "",
+    "items": [
+     {
+      "item": "돈",
+      "weight": 3,
+      "mark": "no"
+     },
+     {
+      "item": "언어",
+      "weight": 3,
+      "mark": "partial"
+     },
+     {
+      "item": "일",
+      "weight": 1.5,
+      "mark": "partial"
+     },
+     {
+      "item": "유럽",
+      "weight": 1.5,
+      "mark": "ok"
+     },
+     {
+      "item": "생활비",
+      "weight": 1.5,
+      "mark": "no"
      },
      {
       "item": "한국인적은",
@@ -5259,7 +5279,7 @@
     ]
    },
    {
-    "country": "호주",
+    "country": "뉴질랜드",
     "pct": 31,
     "ok_count": 0,
     "item_count": 6,
@@ -5298,7 +5318,7 @@
     ]
    },
    {
-    "country": "뉴질랜드",
+    "country": "호주",
     "pct": 31,
     "ok_count": 0,
     "item_count": 6,

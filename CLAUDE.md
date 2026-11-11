@@ -40,7 +40,7 @@
 자세한 목록과 이유: `docs/product/scope_ia.md`, `DECISIONS.md` D-001~D-005.
 
 ## 3. 기술 스택
-- Next.js(App Router) + TypeScript(strict) + Tailwind CSS
+- Next.js(App Router) + TypeScript(strict) + Tailwind CSS (환경변수는 `.env.example`: Supabase 3개 + `NEXT_PUBLIC_SITE_LIVE`)
 - Supabase(Postgres, RLS), `@supabase/supabase-js`
 - Vercel 배포, Vercel Web Analytics(쿠키 없음)
 - Vitest(엔진·변환·유틸), Playwright(핵심 흐름)
@@ -87,13 +87,14 @@ app/
   guides/page.tsx, guides/[slug]/page.tsx
   soon/page.tsx, soon/[slug]/page.tsx
   privacy/page.tsx            (?lang=en)
-  not-found.tsx, error.tsx
+  not-found.tsx, error.tsx, robots.ts(오픈 전 전체 Disallow, D-092)
   api/result/route.ts  api/subscribe/route.ts  api/report/route.ts  api/vote/route.ts
 components/
   ui/  layout/  quiz/  result/  countries/  checklist/  soon/  shared/
 lib/
   engine/   types.ts score.ts marks.ts adapter.ts reasons.ts whatIf.ts candidates.ts defaults.ts index.ts
   data/     supabase.ts queries.ts (화면에서 직접 쿼리 금지)
+  site.ts      오픈 여부(NEXT_PUBLIC_SITE_LIVE)
   storage.ts   브라우저 저장소 (SPEC.md 0.2의 키만)
   quiz/     types.ts config.ts steps.ts state.ts submit.ts   질문 순서·이동·저장 (화면 없이 테스트)
   checklist.ts 항목 + 출국일 → 단계·날짜, 링크 상태 줄이기·풀기
@@ -102,7 +103,9 @@ content/
   copy_ko.json  copy_en.json  features_ko.json  partners.json  nav_ko.json  landing_countries.json
 supabase/
   migrations/  001_schema_v2_1.sql  002_feature_votes.sql  003_extension_fact_key.sql  004_proof_amount_with_ticket.sql  (005_rate_limit.sql은 4단계에서)
-  seed/seed_v1_1.sql  seed/seed_checklist_v1.sql  seed/seed_engine_v1.sql  seed/seed_proof_ticket_v1.sql
+  seed/seed_v1_1.sql  seed/seed_checklist_v1.sql  seed/seed_engine_v1.sql  seed/seed_proof_ticket_v1.sql  seed/seed_nl_proof_v1.sql
+scripts/
+  precheck.sh  push 전 확인(build·tsc·eslint·vitest, .env*, 키 패턴) — npm run precheck
 tests/
   engine.test.ts  adapter.test.ts  checklist.test.ts  storage.test.ts
   fixtures/personas_expected.json  countries_v1.ts  personas.ts  db_rows_v1.json(DB 스냅샷)
@@ -156,16 +159,25 @@ docs/
 - 출처 이름, 확인일, 오래된 값 여부도 adapter가 같이 넘긴다.
 
 ## 7. Git
-- 커밋 메시지: `[단계번호] 한 줄 요약` (예: `[2] 질문 화면 Q1~Q6`).
-- 단계 하나가 끝나면 커밋하고 멈춘다. `main`에 바로 올리지 않고 단계별 브랜치(`step-2-quiz`)를 쓴다.
+- 커밋 메시지: `[단계번호] 한 줄 요약` (예: `[4] 결과 저장 API`).
+- **4단계부터는 `main`에서 바로 작업하고 push한다.** `main` push = Vercel 운영 배포다. 단계별 브랜치와 PR은 쓰지 않는다(3단계 `step-3-supabase`가 마지막).
+- **push 전 확인 — 하나라도 실패하면 push하지 않는다.**
+  1. `npm run build`, `tsc`(`npm run typecheck`), `eslint`(`npm run lint`), `vitest`(`npm test`) 통과
+  2. 스테이징에 `.env*` 파일이 없다(`.env.example`만 허용)
+  3. 바뀐 내용에 키 패턴이 0건: `sb_secret_`·`sb_publishable_` 뒤에 긴 값, `eyJ`로 시작하는 긴 문자열, 코드의 `service_role` (문서에서 패턴 이름만 적은 줄은 제외)
+  - 위 3가지는 `npm run precheck`(`scripts/precheck.sh`)가 한 번에 확인한다. 통과해야 push한다.
+- **실험성 큰 변경**(큰 구조·디자인 변경, 되돌리기 어려운 마이그레이션 등)만 브랜치로 하고, Vercel 미리보기 주소로 확인한 뒤 병합한다(merge commit).
+- 단계가 끝나면 커밋·push하고 8장 형식으로 보고한 뒤 멈춘다.
+- 되돌리기 어려운 git 명령과 운영 DB 쓰기는 4장 규칙 17을 따른다.
 
 ## 8. 완료 보고 형식
-각 단계 끝에 아래를 보여 준다.
+각 단계 끝에 아래를 보여 준다. (Vercel·운영과 관련된 확인이 필요한 단계는 맨 위에 체크리스트를 먼저 둔다.)
 1. 한 일 (파일 목록)
 2. 완료 기준 체크리스트 (✓ / ✗)
 3. `SPEC.md` 17장 상태 확인표에서 이 단계 화면의 확인 결과
 4. 새로 정한 것 → `DECISIONS.md`에 추가한 항목 번호
-5. 남은 문제·물어볼 것
+5. push 결과: 커밋 해시, push 전 확인 3가지의 결과(build·tsc·eslint·vitest / `.env*` / 키 패턴), 운영 배포 여부
+6. 남은 문제·물어볼 것
 
 ## 9. 작업 순서와 완료 기준
 | 단계 | 할 일 | 읽을 spec | 완료 기준 |

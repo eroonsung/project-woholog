@@ -2045,6 +2045,15 @@
    "currency": "DKK",
    "source_id": 4,
    "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 1,
+   "key": "proof_amount",
+   "value_num": 0,
+   "value_text": null,
+   "currency": "EUR",
+   "source_id": 1,
+   "verified_at": "2026-11-05"
   }
  ],
  "stats": [
