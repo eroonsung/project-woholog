@@ -94,6 +94,7 @@ lib/
   engine/   types.ts score.ts marks.ts adapter.ts reasons.ts whatIf.ts candidates.ts defaults.ts index.ts
   data/     supabase.ts queries.ts (화면에서 직접 쿼리 금지)
   storage.ts   브라우저 저장소 (SPEC.md 0.2의 키만)
+  quiz/     types.ts config.ts steps.ts state.ts submit.ts   질문 순서·이동·저장 (화면 없이 테스트)
   checklist.ts 항목 + 출국일 → 단계·날짜, 링크 상태 줄이기·풀기
   copy.ts  format.ts  analytics.ts  rateLimit.ts
 content/
@@ -145,6 +146,7 @@ docs/
 | long2 | `long_stay_months` ≥ 24 또는 `stay_months` ≥ 24 또는 `max_participations` ≥ 2 → Y, `long_stay_months` > `stay_months` → P, 나머지 N |
 | europe / near | `countries.in_europe` / `near_korea` |
 | select | `programs.selection` (unlimited / first_come / lottery) |
+| farmForExtension | `program_facts`의 `extension_by_regional_work` 값이 1이면 true (지정 지역 근무로 체류 연장 가능. 지금은 호주만. 3단계에서 `fact_keys`·시드에 추가) |
 | need (만 원) | 잔고 증명(없으면 0) + 비자 비용 + `flight_estimates` → 오늘 환율로 원화 → 만 원 반올림 |
 | 두 번 가능 | `max_participations` ≥ 2 |
 
