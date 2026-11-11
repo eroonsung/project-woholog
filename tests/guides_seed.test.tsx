@@ -90,9 +90,16 @@ describe('시드 seed_guides_v1.sql (draft md에서 만든 파일)', () => {
     expect(own.currency).toBe('CAD');
     expect(filled).toContain('**잔고 증명:** CAD 2,500 (약 250만 원)');
     expect(filled).toContain('**비자 비용:** CAD 279.75 (약 28만 원)');
+    expect(filled).toContain('- **비자 비용:** CAD 279.75 (약 28만 원)\n- **생체정보 등록비:** 비자 비용과 별도로 내요'); // 두 줄로 나눈 문장(괄호가 겹치지 않게)
+    expect(filled).not.toContain('(생체정보 등록비가 따로 있어요)');
     expect(filled).not.toContain('{');
     expect(filled).not.toContain('확인 중');
     expect(proof).toBeDefined();
+  });
+  it('신청 기한 숫자(10일·20일·30일)는 IRCC 공식 페이지로 확인한 값이다(D-129): 바뀌면 이 테스트와 근거 기록을 같이 고친다', () => {
+    expect(g2.body).toContain('초청장을 받으면 **10일 안에** 수락하고 신청을 시작해요.');
+    expect(g2.body).toContain('수락 후 **20일 안에** 서류를 올리고 비용을 내요.');
+    expect(g2.body).toContain('안내문을 받으면 **30일 안에** 비자신청센터에서 지문·사진을 등록해요.');
   });
   it('program_id가 없는 글에 {fact_key}를 쓰면 "확인 중"(방법 글에는 영향 없음)', () => {
     expect(fillFacts('{proof_amount}', { ...ctx, facts: [] }, '2026-11-11')).toBe('확인 중');

@@ -45,7 +45,8 @@ $guide$캐나다 워홀은 **IEC(International Experience Canada)**라는 프로
 ## 한눈에
 
 - **잔고 증명:** {proof_amount}
-- **비자 비용:** {visa_fee} (생체정보 등록비가 따로 있어요)
+- **비자 비용:** {visa_fee}
+- **생체정보 등록비:** 비자 비용과 별도로 내요
 - **선발 방식:** 추첨
 - 나이 조건과 체류 기간은 [캐나다 상세](/countries/CA)에서 확인하세요.
 

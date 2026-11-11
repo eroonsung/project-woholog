@@ -32,7 +32,7 @@
 - [ ] 운영 주소에서 첫 화면 → 테스트 → 결과 → 상세 → 체크리스트 끊김 없음
 - [ ] 카톡·인스타 미리보기에서 공유 이미지가 잘리지 않음
 
-- [ ] **가이드 글 2개 올리기**(`first-month-money`, `canada-iec-2027`): 시드 `supabase/seed/seed_guides_v1.sql` 준비됨(운영 적용·배포는 승인 대기, D-128). 적용 뒤 `/guides`에 두 글이 나오는지 확인. 글을 고칠 때는 `docs/content/guides_draft_v1.md`를 고치고 `python3 -I scripts/build_guides_seed.py`로 시드를 다시 만든다(`reviewed_at`도 바꾼다). 글 안 규칙·일정(IEC 2027 시즌 날짜 등)은 오픈 직전에 다시 확인
+- [x] **가이드 글 2개 올리기**(`first-month-money`, `canada-iec-2027`): 운영 DB 적용됨(2026-11-11, D-129). 글을 고칠 때는 `docs/content/guides_draft_v1.md`를 고치고 `python3 -I scripts/build_guides_seed.py`로 시드를 다시 만들어 적용한다(`reviewed_at`도 바꾼다). **오픈 직전에 다시 확인**: 캐나다 IEC 2027 시즌 날짜·기한(10일·20일·30일), 글 속 규칙·링크
 - [ ] **공유 이미지**: 결과 화면의 공유 → 카카오톡·인스타에서 미리보기·스토리 이미지가 잘리지 않는지 실제 확인(8.5 점검). 로고 확정 뒤 이미지의 글자 로고("워홀로그")를 로고로 교체, 이미지 안 주소 글자는 도메인 확정 뒤 결정
 - [ ] **원해요 테스트 표**: 8.5 점검 등으로 운영에서 누른 원해요(`feature_votes`)를 `test_data.md`에 적고 삭제 목록에 포함(지금 id 1 기록됨)
 

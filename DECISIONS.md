@@ -515,6 +515,15 @@
 - **"곧 올라올 글"**: 두 글을 올리므로 `guides.planned`를 비웠다. 비어 있으면 빈 상태에서도 그 상자를 숨긴다. 글이 0개가 되는 경우를 대비해 필요하면 ` / `로 구분해 다시 넣는다.
 - **미리보기**: `/dev/guides?slug=…`(개발 서버만, 운영 404)가 시드의 글을 DB에 넣지 않고 그린다. `{fact_key}`는 운영 DB의 현재 값을 읽어서(읽기만) 채운다. 확인 결과: 캐나다 글에서 잔고 증명 "CAD 2,500 (약 250만 원)", 비자 비용 "CAD 279.75 (약 28만 원)", "확인 중" 없음, 사이트 안 링크 5개가 같은 탭에서 열림(200), 외부 링크 2개는 새 탭, 번호 목록 7줄·소제목 정상.
 
+## D-129. 캐나다 IEC 글 기한 확인과 시드 운영 적용 (2026-11-11)
+- **초안 수정**: 캐나다 글 "한눈에"의 "비자 비용 … (생체정보 등록비가 따로 있어요)"를 두 줄("**비자 비용:** {visa_fee}" / "**생체정보 등록비:** 비자 비용과 별도로 내요")로 나눠 괄호가 겹치지 않게 했다. 원본 `guides_draft_v1.md` → 스크립트로 시드 다시 생성.
+- **기한 확인(IRCC 공식 페이지를 curl로 읽음, 2026-11-11)**: 세 숫자 모두 맞다.
+  - **초청 수락 10일**: "You have 10 days to accept the invitation before it expires." — https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec/become-candidate.html (Step 5: Respond to your ITA). 같은 뜻이 https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec/about.html 의 "If you get an invitation to apply, you will have 10 days to accept or decline."
+  - **수락 후 서류 제출 20일**: "You have exactly 20 days from the time you accept your ITA to submit your work permit application." — https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec/apply-work-permit.html (같은 뜻이 `become-candidate.html`의 "From the day and time you accept the invitation, you have 20 days to apply online for your work permit.")
+  - **생체정보 30일**: "You have up to 30 days to give your biometrics." (신청·결제 후 24시간 안에 생체정보 안내문(BIL)이 계정으로 옴) — `apply-work-permit.html`. `about.html`에도 "After receiving the letter, you will have 30 days to submit your biometrics at a visa application centre."
+  - 덧붙임(글에는 넣지 않음): 기한은 모두 UTC 시각 기준이고, 방문 센터 예약이 없는 등 이용자 잘못이 아닌 이유가 있으면 생체정보 기한 연장을 요청할 수 있다. 글에서 기한 숫자가 바뀌면 `tests/guides_seed.test.tsx`의 기한 문장 검사와 이 기록을 같이 고친다.
+- **시드 운영 적용(허락받음)**: `seed_guides_v1.sql`을 적용. 적용 전 `guides` 0행 → 적용 후 2행: `first-month-money`(id 3, published, `program_id` null), `canada-iec-2027`(id 4, published, `program_id` 22 = 캐나다 프로그램, `{proof_amount}` 포함, 두 줄로 나눈 문장 반영), 둘 다 `needs_review` false, `reviewed_at` 2026-11-11. (id 1·2는 적용 전 시도에서 건너뜀.)
+
 ---
 
 ## 열린 질문 (정해지면 위로 옮긴다)

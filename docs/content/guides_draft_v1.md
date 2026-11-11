@@ -69,7 +69,8 @@ Claude Code가 이 파일을 시드(`supabase/seed/seed_guides_v1.sql`)로 바�
 ## 한눈에
 
 - **잔고 증명:** {proof_amount}
-- **비자 비용:** {visa_fee} (생체정보 등록비가 따로 있어요)
+- **비자 비용:** {visa_fee}
+- **생체정보 등록비:** 비자 비용과 별도로 내요
 - **선발 방식:** 추첨
 - 나이 조건과 체류 기간은 [캐나다 상세](/countries/CA)에서 확인하세요.
 
