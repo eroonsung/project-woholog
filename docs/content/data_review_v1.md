@@ -131,10 +131,10 @@
 
 | 표 | 지금 행 수 | `test_data.md`에 기록된 id | 기록에 없는 행 |
 |---|---|---|---|
-| `quiz_results` | 12 | 9 | **3** (2026-11-11 18:59, 19:53, 19:55 KST에 생성: `5af305ba…`, `4e3d3420…`, `4cea69df…`) |
+| `quiz_results` | 12 | 12 (3건은 Yvonne 확인 후 추가) | 0 |
 | `launch_subscribers` | 3 | 2 (id 7·9) | **1** (id 10, 19:03 KST, 테스트 이메일 패턴(`woholog-test+…@example.com`)이 **아님** → 실제 신청자일 수 있어 함부로 지우면 안 됨) |
 | `user_reports` | 1 | 1 (id 3) | 0 |
 | `feature_votes` | 1 | 1 (id 1) | 0 |
 
-- 기록에 없는 `quiz_results` 3건은 누가 만든 테스트인지 확인한 뒤 `test_data.md`에 적어야 삭제 목록에 들어간다(내가 한 자동 확인은 모두 가짜 응답으로 해서 만들지 않았다).
+- `quiz_results` 기록에 없던 3건은 Yvonne가 운영 테스트 중 생긴 테스트 데이터라고 확인해서 `test_data.md`에 추가했다.
 - `launch_subscribers` id 10은 이메일을 이 문서에 쓰지 않았다. 본인이 넣은 테스트면 `test_data.md`에 적고, 아니면 실제 신청자이므로 오픈 전 삭제 목록에서 빼고 보관한다.
