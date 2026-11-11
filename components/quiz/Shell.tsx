@@ -30,17 +30,26 @@ export function QuizShell({ q, onBack, onRestart, children }: {
       >
         <div className="h-full bg-aqua transition-[width]" style={{ width: `${(q / QUESTION_COUNT) * 100}%` }} />
       </div>
-      <main className="mx-auto flex w-full max-w-quiz flex-1 flex-col px-5 pb-12 pt-8 lg:px-0">{children}</main>
+      <main className="mx-auto flex w-full max-w-quiz flex-1 flex-col px-5 pb-12 pt-8 lg:px-0">{children}
+        <p className="mt-4 text-center text-caption text-text3">{t('quiz.note')}</p>
+      </main>
     </div>
   );
 }
 
-/** 질문 제목. 질문이 바뀌면 여기로 포커스를 옮겨 스크린리더가 새 질문을 읽게 한다. */
-export function QuestionHeading({ title, help }: { title: string; help?: string }) {
+/** 질문 제목. 질문이 바뀌면 여기로 포커스를 옮겨 스크린리더가 새 질문을 읽게 한다. 위에 질문 이름표·선택 방식·갈 수 있는 나라 수를 보여 준다. */
+export function QuestionHeading({ q, title, help, mode, available }: {
+  q: number; title: string; help?: string; mode?: 'multi' | 'single'; available?: number;
+}) {
   const ref = useRef<HTMLHeadingElement>(null);
   useEffect(() => ref.current?.focus({ preventScroll: true }), [title]);
   return (
     <div className="mb-8">
+      <div className="mb-4 flex flex-wrap items-center gap-2 text-caption font-bold">
+        <span className="rounded-pill bg-aqua-100 px-3 py-1 text-aqua-dark">{t('quiz.tag', { n: q, name: t(`q${q}.tag`) })}</span>
+        {mode ? <span className="text-text2">{t(mode === 'multi' ? 'quiz.multi' : 'quiz.single')}</span> : null}
+        {available !== undefined ? <span className="rounded-pill bg-subtle px-3 py-1 text-navy">{t('quiz.available', { n: available })}</span> : null}
+      </div>
       <h1 ref={ref} tabIndex={-1} className="text-h1 text-navy outline-none">{title}</h1>
       {help ? <p className="mt-3 text-body-l text-text2">{help}</p> : null}
     </div>

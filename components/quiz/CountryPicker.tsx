@@ -2,11 +2,14 @@
 
 import { useMemo, useState } from 'react';
 import { Check, Search } from 'lucide-react';
+import { Flag } from '@/components/ui/Flag';
 import { t } from '@/lib/copy';
 import type { QuizCountry } from '@/lib/data/quizCountries';
 import { InlineNotice } from './Shell';
 
-const REGION_ORDER = ['north_america', 'asia', 'oceania', 'europe', 'south_america', 'middle_east'] as const;
+// 지역 순서(D-084): 아시아 → 오세아니아 → 북미 → 유럽 → 그 밖의 지역(남미·중동)
+const REGION_ORDER = ['asia', 'oceania', 'north_america', 'europe', 'other'] as const;
+const groupOf = (region: string) => (['asia', 'oceania', 'north_america', 'europe'].includes(region) ? region : 'other');
 
 /** 나라 칩 모음(Q1·Q4·동행자). 지역별로 묶고 이름으로 찾을 수 있다. max가 없으면 개수 제한 없음. */
 export function CountryPicker({ countries, selected, max, onToggle, onClear, notice, label }: {
@@ -17,7 +20,7 @@ export function CountryPicker({ countries, selected, max, onToggle, onClear, not
   const groups = useMemo(() => {
     const q = query.trim();
     const shown = q ? countries.filter((c) => c.nameKo.includes(q)) : countries;
-    return REGION_ORDER.map((region) => ({ region, items: shown.filter((c) => c.region === region) })).filter((g) => g.items.length > 0);
+    return REGION_ORDER.map((region) => ({ region, items: shown.filter((c) => groupOf(c.region) === region) })).filter((g) => g.items.length > 0);
   }, [countries, query]);
 
   return (
@@ -57,7 +60,7 @@ export function CountryPicker({ countries, selected, max, onToggle, onClear, not
                     className={`inline-flex min-h-11 items-center gap-2 rounded-button px-4 text-body font-bold transition-colors ${
                       on ? 'bg-aqua text-navy' : 'bg-subtle text-navy hover:bg-aqua-50'}`}
                   >
-                    <span aria-hidden="true">{c.flag}</span>
+                    <Flag code={c.code} />
                     {c.nameKo}
                     {c.safety ? <span className="rounded-pill bg-coral-50 px-2 text-caption font-extrabold text-coral-dark">{t('badge.safety')}</span> : null}
                     {on ? <Check aria-hidden="true" className="size-4" /> : null}

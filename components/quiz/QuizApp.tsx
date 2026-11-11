@@ -7,7 +7,7 @@ import type { QuizCountry } from '@/lib/data/quizCountries';
 import { MAX_HEART_COUNTRIES, QUESTION_COUNT } from '@/lib/quiz/config';
 import { clearQuiz, loadQuiz, saveQuiz } from '@/lib/quiz/state';
 import {
-  canEnter, firstUnanswered, isSkipped, nextQuestion, prevQuestion, pruneAnswers, type QuizContext,
+  candidatesOf, canEnter, firstUnanswered, isSkipped, nextQuestion, prevQuestion, pruneAnswers, type QuizContext,
 } from '@/lib/quiz/steps';
 import { submitQuiz } from '@/lib/quiz/submit';
 import { EMPTY_STATE, type Answers, type QuizState } from '@/lib/quiz/types';
@@ -24,7 +24,7 @@ const url = (q: number) => `/test?q=${q}`;
  * 질문 화면 전체: 주소(?q=, ?pre=, ?stop=age, ?loading=1) ↔ 답 ↔ sessionStorage를 이어 준다. (SPEC.md 3장)
  * 질문 순서·건너뛰기·답 정리 규칙은 lib/quiz/steps.ts에 있다.
  */
-export function QuizApp({ countries }: { countries: QuizCountry[] }) {
+export function QuizApp({ countries, minAge }: { countries: QuizCountry[]; minAge: number }) {
   const router = useRouter();
   const params = useSearchParams();
   const [state, setState] = useState<QuizState | null>(null);
@@ -115,7 +115,8 @@ export function QuizApp({ countries }: { countries: QuizCountry[] }) {
   const back = () => (q === 1 ? router.push('/') : router.push(url(prevQuestion(q, answers, ctx))));
   const restart = () => { clearQuiz(); setState(EMPTY_STATE); setConfirmOpen(false); router.push(url(1)); };
 
-  const props: QProps = { answers, countries, set, next };
+  const available = q >= 3 ? candidatesOf(answers, ctx).length : undefined;
+  const props: QProps = { answers, countries, set, next, minAge, available };
   return (
     <QuizShell q={q} onBack={back} onRestart={() => setConfirmOpen(true)}>
       {q === 1 || q === 4 ? <QuestionCountry key={q} {...props} q={q} /> : null}

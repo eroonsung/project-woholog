@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import type { EarnNeed, EnglishSkill, JobId, PriorityId } from '@/lib/engine';
+import quizOptions from '@/content/quiz_options.json';
 import { t, hasCopy } from '@/lib/copy';
 import { formatNumber } from '@/lib/format';
 import { BUDGET, MAX_PRIORITIES } from '@/lib/quiz/config';
@@ -16,7 +17,7 @@ const opts = <T extends string | number>(q: number, ids: readonly T[], withSub: 
   ids.map((id) => ({ id, title: t(`q${q}.opt.${id}`), sub: withSub ? t(`q${q}.opt.${id}.sub`) : undefined }));
 
 /** 하나만 고르는 질문 4개: Q5 출국 시기 · Q7 영어 · Q10 생활비 벌기 · Q11 어학원 */
-export function QuestionChoice({ q, answers, set, next }: QProps & { q: 5 | 7 | 10 | 11 }) {
+export function QuestionChoice({ q, answers, set, next, available }: QProps & { q: 5 | 7 | 10 | 11 }) {
   const common = { label: t(`q${q}`) };
   let body;
   if (q === 5) body = <ChoiceCards {...common} options={opts<WhenId>(5, ['m3', 'm6', 'y1', 'unknown'], false)} value={answers.q5} onChange={(id) => set({ q5: id })} />;
@@ -26,7 +27,7 @@ export function QuestionChoice({ q, answers, set, next }: QProps & { q: 5 | 7 | 
   const done = [answers.q5, answers.q7, answers.q10, answers.q11][[5, 7, 10, 11].indexOf(q)] !== undefined;
   return (
     <>
-      <QuestionHeading title={t(`q${q}`)} help={help(q)} />
+      <QuestionHeading q={q} title={t(`q${q}`)} help={help(q)} mode="single" available={available} />
       {body}
       <QuizActions nextDisabled={!done} onNext={next} />
     </>
@@ -34,12 +35,12 @@ export function QuestionChoice({ q, answers, set, next }: QProps & { q: 5 | 7 | 
 }
 
 /** Q6 예산 슬라이더. 기본값 그대로도 진행할 수 있다. 끝값은 "2,000만 원 이상". */
-export function QuestionBudget({ answers, set, next }: QProps) {
+export function QuestionBudget({ answers, set, next, available }: QProps) {
   const value = answers.q6 ?? BUDGET.default;
   const label = value >= BUDGET.max ? t('q6.valueMax', { budget: formatNumber(value) }) : t('q6.value', { budget: formatNumber(value) });
   return (
     <>
-      <QuestionHeading title={t('q6')} help={help(6)} />
+      <QuestionHeading q={6} title={t('q6')} help={help(6)} available={available} />
       <div className="rounded-card-lg border-thin border-line bg-white p-8 text-center shadow-card">
         <p className="text-display text-navy" aria-live="polite">{label}</p>
         <input
@@ -52,6 +53,11 @@ export function QuestionBudget({ answers, set, next }: QProps) {
           <span>{t('q6.valueMax', { budget: formatNumber(BUDGET.max) })}</span>
         </div>
       </div>
+      <div role="group" aria-label={t('q6.slider')} className="mt-4 flex flex-wrap justify-center gap-2">
+        {quizOptions.budgetPresets.map((n) => (
+          <ChipToggle key={n} selected={value === n} onClick={() => set({ q6: n })}>{t('q6.value', { budget: formatNumber(n) })}</ChipToggle>
+        ))}
+      </div>
       <p className="mt-6 rounded-card bg-aqua-50 p-5 text-body font-bold text-navy">{t('q6.hint')}</p>
       <QuizActions onNext={() => { if (answers.q6 === undefined) set({ q6: value }); next(); }} />
     </>
@@ -61,12 +67,12 @@ export function QuestionBudget({ answers, set, next }: QProps) {
 const toggle = <T,>(list: T[], item: T) => (list.includes(item) ? list.filter((x) => x !== item) : [...list, item]);
 
 /** Q8 다른 언어(후보 나라의 일자리 언어만) */
-export function QuestionLanguage({ answers, ctx, set, next }: QProps & { ctx: QuizContext }) {
+export function QuestionLanguage({ answers, ctx, set, next, available }: QProps & { ctx: QuizContext }) {
   const chips = languageChips(answers, ctx);
   const cur = answers.q8 ?? { none: false, languages: [] };
   return (
     <>
-      <QuestionHeading title={t('q8')} help={help(8)} />
+      <QuestionHeading q={8} title={t('q8')} help={help(8)} mode="multi" available={available} />
       <div role="group" aria-label={t('q8')} className="flex flex-wrap gap-2">
         {chips.map((lang) => (
           <ChipToggle key={lang} selected={cur.languages.includes(lang)} onClick={() => set({ q8: { none: false, languages: toggle(cur.languages, lang) } })}>
@@ -85,11 +91,11 @@ export function QuestionLanguage({ answers, ctx, set, next }: QProps & { ctx: Qu
 const JOBS: JobId[] = ['cafe', 'retail', 'hotel', 'farm', 'office', 'care'];
 
 /** Q9 희망 직군. "아직 몰라요"를 고르면 다른 선택이 지워진다. */
-export function QuestionJob({ answers, set, next }: QProps) {
+export function QuestionJob({ answers, set, next, available }: QProps) {
   const cur = answers.q9 ?? { unknown: false, jobs: [] };
   return (
     <>
-      <QuestionHeading title={t('q9')} help={help(9)} />
+      <QuestionHeading q={9} title={t('q9')} help={help(9)} mode="multi" available={available} />
       <div role="group" aria-label={t('q9')} className="flex flex-wrap gap-2">
         {JOBS.map((job) => (
           <ChipToggle key={job} selected={cur.jobs.includes(job)} onClick={() => set({ q9: { unknown: false, jobs: toggle(cur.jobs, job) } })}>
@@ -108,7 +114,7 @@ export function QuestionJob({ answers, set, next }: QProps) {
 const HEARTS: HeartReasonId[] = ['culture', 'learn_language', 'know_someone'];
 
 /** Q12 중요한 것(최대 3). 후보가 모두 같은 표시인 칩은 숨긴다. Q1에서 나라를 골랐을 때만 "마음 이유"를 보여 준다. */
-export function QuestionPriority({ answers, ctx, set, next }: QProps & { ctx: QuizContext }) {
+export function QuestionPriority({ answers, ctx, set, next, available }: QProps & { ctx: QuizContext }) {
   const chips = priorityChips(answers, ctx);
   const cur = answers.q12 ?? { unknown: false, priorities: [], hearts: [] };
   const full = cur.priorities.length >= MAX_PRIORITIES;
@@ -128,7 +134,7 @@ export function QuestionPriority({ answers, ctx, set, next }: QProps & { ctx: Qu
 
   return (
     <>
-      <QuestionHeading title={t('q12')} help={help(12)} />
+      <QuestionHeading q={12} title={t('q12')} help={help(12)} mode="multi" available={available} />
       <InlineNotice message={notice ?? (full ? t('q12.full') : null)} />
       <div role="group" aria-label={t('q12')} className="flex flex-wrap gap-2">
         {chips.map((id) => (

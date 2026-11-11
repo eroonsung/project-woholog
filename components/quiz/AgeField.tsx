@@ -2,24 +2,24 @@
 
 import { useState } from 'react';
 import { Minus, Plus } from 'lucide-react';
-import { AGE_MAX, AGE_MIN } from '@/lib/quiz/config';
+import { AGE_MAX } from '@/lib/quiz/config';
 import { t } from '@/lib/copy';
 
 /** 만 나이 입력(Q2·동행자). 숫자 입력 + −/+ 버튼. 범위 안의 숫자만 값으로 돌려주고, 아니면 undefined. */
-export function AgeField({ value, onChange, label, size = 'lg' }: {
-  value: number | undefined; onChange: (v: number | undefined) => void; label: string; size?: 'lg' | 'sm';
+export function AgeField({ value, onChange, label, minAge, size = 'lg' }: {
+  value: number | undefined; onChange: (v: number | undefined) => void; label: string; minAge: number; size?: 'lg' | 'sm';
 }) {
   const [text, setText] = useState(value === undefined ? '' : String(value));
   const num = text === '' ? undefined : Number(text);
-  const tooYoung = num !== undefined && Number.isInteger(num) && num < AGE_MIN;
+  const tooYoung = num !== undefined && Number.isInteger(num) && num < minAge;
 
   const commit = (raw: string) => {
     const cleaned = raw.replace(/\D/g, '').slice(0, 3);
     setText(cleaned);
     const n = cleaned === '' ? undefined : Number(cleaned);
-    onChange(n !== undefined && n >= AGE_MIN && n <= AGE_MAX ? n : undefined);
+    onChange(n !== undefined && n >= minAge && n <= AGE_MAX ? n : undefined);
   };
-  const step = (d: number) => commit(String(num === undefined ? AGE_MIN : Math.min(AGE_MAX, Math.max(AGE_MIN, num + d))));
+  const step = (d: number) => commit(String(num === undefined ? minAge : Math.min(AGE_MAX, Math.max(minAge, num + d))));
   const big = size === 'lg';
 
   return (
@@ -42,7 +42,7 @@ export function AgeField({ value, onChange, label, size = 'lg' }: {
           <Plus aria-hidden="true" className="size-5" />
         </button>
       </div>
-      {tooYoung ? <p role="alert" className="mt-3 text-body font-bold text-coral-dark">{t('q2.tooYoung')}</p> : null}
+      {tooYoung ? <p role="alert" className="mt-3 text-body font-bold text-coral-dark">{t('q2.tooYoung', { minAge })}</p> : null}
     </div>
   );
 }

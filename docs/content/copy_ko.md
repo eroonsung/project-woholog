@@ -412,26 +412,24 @@
 | btn.seeResult | 결과 보기 | 원본 |
 | quiz.progress | Q{n} of {total} | SPEC 3.1 |
 | quiz.restart.confirm | 지금까지 고른 답이 지워져요 | SPEC 3.1 |
-| quiz.restart.yes | 처음부터 다시 하기 | 제안 |
-| quiz.restart.no | 취소 | 제안 |
+| quiz.restart.yes | 처음부터 다시 하기 | 승인 |
+| quiz.restart.no | 취소 | 승인 |
 | q1.none | 아직 없어요 | SPEC 3.2 |
-| quiz.search | 나라 이름 검색 | Figma |
-| quiz.selected | {n}개 선택됨 | Figma |
-| quiz.selectedMax | (최대 {max}개) | Figma |
-| quiz.selectedMulti | (여러 개 가능) | Figma |
-| quiz.clear | 전체 해제 | Figma |
+| quiz.search | 나라 이름 검색 | 승인 |
+| quiz.selected | {n}개 선택됨 | 승인 |
+| quiz.selectedMax | (최대 {max}개) | 승인 |
+| quiz.selectedMulti | (여러 개 가능) | 승인 |
+| quiz.clear | 전체 해제 | 승인 |
 | quiz.maxCountries | {max}개까지 고를 수 있어요 | SPEC 3.2 |
 | quiz.noResult | 검색 결과가 없어요 | 제안 |
-| region.north_america | 북미 | Figma |
-| region.asia | 아시아 | Figma |
-| region.oceania | 오세아니아 | Figma |
-| region.europe | 유럽 | Figma |
-| region.south_america | 남미 | Figma |
-| region.middle_east | 중동 | Figma |
-| q2.unit | 세 | Figma |
-| q2.dec | 나이 줄이기 | 제안 |
-| q2.inc | 나이 늘리기 | 제안 |
-| q2.tooYoung | 지원할 수 있는 나이가 아니에요. 만 나이를 다시 확인해 주세요. | 제안 |
+| region.north_america | 북미 | 승인 |
+| region.asia | 아시아 | 승인 |
+| region.oceania | 오세아니아 | 승인 |
+| region.europe | 유럽 | 승인 |
+| q2.unit | 세 | 승인 |
+| q2.dec | 나이 줄이기 | 승인 |
+| q2.inc | 나이 늘리기 | 승인 |
+| q2.tooYoung | 워킹홀리데이는 만 {minAge}세부터 갈 수 있어요. 만 나이를 다시 확인해 주세요. | 답변(D-084) |
 | q3.opt.solo | 혼자 | 원본 |
 | q3.opt.solo.sub | 나에게 맞는 나라만 계산해요 | 원본 |
 | q3.opt.together | 친구·연인과 함께 | 원본 |
@@ -443,7 +441,7 @@
 | q6.value | {budget}만 원 | 원본 |
 | q6.valueMax | {budget}만 원 이상 | SPEC 3.2 |
 | q6.hint | 나라마다 비자에 필요한 잔고 증명 금액이 달라요. 결과에서 나라별로 알려 줄게요. | 원본 |
-| q6.slider | 준비한 돈 | 제안 |
+| q6.slider | 준비한 돈 | 승인 |
 | q7.opt.0 | 거의 못 해요 | 원본 |
 | q7.opt.0.sub | 인사, 숫자 정도 | 원본 |
 | q7.opt.1 | 주문·길 묻기 정도 | 원본 |
@@ -490,3 +488,21 @@
 | quiz.error.retry | 다시 시도 | SPEC 3.3 |
 | quiz.error.back | 질문으로 돌아가기 | SPEC 3.3 |
 | quiz.stop.compare | 29개국 비교 보기 | SPEC 3.4 |
+| region.other | 그 밖의 지역 | 답변(D-084) |
+| quiz.available | 지금 갈 수 있는 나라 {n}곳 | 답변(D-084) |
+| quiz.tag | Q{n} · {name} | 답변(D-084) |
+| q1.tag | 마음에 둔 나라 | 답변(D-084) |
+| q2.tag | 나이 | 답변(D-084) |
+| q3.tag | 누구랑 | 답변(D-084) |
+| q4.tag | 다녀온 나라 | 답변(D-084) |
+| q5.tag | 출국 시기 | 답변(D-084) |
+| q6.tag | 예산 | 답변(D-084) |
+| q7.tag | 영어 | 답변(D-084) |
+| q8.tag | 다른 언어 | 답변(D-084) |
+| q9.tag | 하고 싶은 일 | 답변(D-084) |
+| q10.tag | 생활비 | 답변(D-084) |
+| q11.tag | 어학원 | 답변(D-084) |
+| q12.tag | 중요한 것 | 답변(D-084) |
+| quiz.multi | 여러 개 골라도 돼요 | 답변(D-084) |
+| quiz.single | 하나만 골라요 | 답변(D-084) |
+| quiz.note | 답변은 이름 없이 결과 계산에만 써요. | 답변(D-084) |

@@ -2,7 +2,7 @@
 export const QUESTION_COUNT = 12;
 export const MAX_HEART_COUNTRIES = 3; // Q1 최대 선택 수
 export const MAX_PRIORITIES = 3; // Q12 최대 선택 수
-export const AGE_MIN = 18;
+export const AGE_MIN = 18; // 임시(3단계에서 DB age_min 최솟값으로 대체)
 export const AGE_MAX = 99;
 export const BUDGET = { min: 100, max: 2000, step: 50, default: 500 } as const; // 만 원
 export const MIN_LOADING_MS = 1200; // 계산 중 화면 최소 시간 (SPEC.md 3.3)
