@@ -159,7 +159,7 @@ describe('조건 줄 문구 키 (reasons)', () => {
   it('호주 + 농장 안 고름: 2년 칩은 farm 경우', () => {
     const p: Profile = { ...profile, visited: [], priorities: ['two_years'] };
     const row = scoreAll(COUNTRIES, p, DEFAULT_CONFIG).ranked.find((r) => r.code === 'AU')!;
-    const line = buildReasons(row, COUNTRIES[0]!, p, DEFAULT_CONFIG).find((l) => l.itemId === 'two_years')!;
+    const line = buildReasons(row, COUNTRIES.find((c) => c.code === 'AU')!, p, DEFAULT_CONFIG).find((l) => l.itemId === 'two_years')!;
     expect(line.key).toBe('reason.priority.two_years.partial.farm');
   });
 });
@@ -189,7 +189,7 @@ describe('이렇게 바꾸면 (whatIf)', () => {
     const changes = (p: Profile) => whatIf(COUNTRIES, p, cfg, lowCode).map((r) => r.change);
     // 영어 면접 가능, 현지어 가능, 돈 충분, 생활비 안 벌어도 됨 → 모두 이미 만족
     const satisfied: Profile = {
-      ...persona, english: 2, languages: target.languages, budgetMan: target.needMan, earn: 'partly',
+      ...persona, english: 2, languages: target.languages, budgetMan: target.needMan ?? 0, earn: 'partly',
     };
     const result = changes(satisfied);
     expect(result).not.toContain('english_interview');
@@ -199,7 +199,7 @@ describe('이렇게 바꾸면 (whatIf)', () => {
     // 하나씩 따로 봐도 같다
     expect(changes({ ...persona, english: 3 })).not.toContain('english_interview');
     expect(changes({ ...persona, languages: target.languages })).not.toContain('learn_local_language');
-    expect(changes({ ...persona, budgetMan: target.needMan })).not.toContain('save_gap');
+    expect(changes({ ...persona, budgetMan: target.needMan ?? 0 })).not.toContain('save_gap');
     expect(changes({ ...persona, earn: 'none' })).not.toContain('earn_partly');
   });
 

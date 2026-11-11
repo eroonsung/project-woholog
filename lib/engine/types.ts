@@ -32,7 +32,7 @@ export interface EngineCountry {
   europe: boolean;
   nearKorea: boolean;
   selection: Selection;
-  needMan: number; // 필요한 돈(만 원)
+  needMan: number | null; // 필요한 돈(만 원). null = 환율이 없어 확인 중(돈 조건을 계산에서 뺀다)
   twice: boolean; // max_participations ≥ 2
   farmForExtension: boolean; // 체류 연장에 농장 등 일이 필요한 나라(호주). 원본의 n=='호주' 자리
   /** 화면 문구에 들어갈 표시용 값. 점수에는 쓰지 않는다. */
@@ -78,6 +78,14 @@ export interface ScoringConfig {
   close_gap_pp: number; // 결과 카드: 1위와 이 %p 미만이면 "충분히 잘 맞아요" (SPEC 4.2)
   study_unlimited_months: number; // 이 값 이상이면 "기간 제한 없음"
   what_if_max_rows: number;
+  /** adapter가 DB 값을 엔진 값으로 바꿀 때 쓰는 구간 기준 (CLAUDE.md 6장). 엔진 점수 계산에는 쓰지 않는다. */
+  tiers: Tiers;
+}
+
+export interface Tiers {
+  wage_krw_per_hour: { high: number; mid: number; monthly_hours: number };
+  price_kr100: { low_below: number; mid_below: number };
+  korean_population: { many_from: number; mid_from: number };
 }
 
 export type CoreItemId = 'money' | 'language' | 'work' | 'study';

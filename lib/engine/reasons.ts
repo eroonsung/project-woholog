@@ -20,8 +20,8 @@ function coreReason(item: ScoreItem, row: ScoreRow, c: EngineCountry, p: Profile
   const mark = (id: string) => row.items.find((i) => i.id === id)?.mark;
   switch (item.id) {
     case 'money': {
-      const gap = Math.max(0, c.needMan - p.budgetMan);
-      return [base, { budget: p.budgetMan, need: c.needMan, gap }];
+      const need = c.needMan ?? 0; // 돈 줄은 needMan이 있을 때만 만들어진다
+      return [base, { budget: p.budgetMan, need, gap: Math.max(0, need - p.budgetMan) }];
     }
     case 'language': {
       const language = languageName(c);

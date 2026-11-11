@@ -5,3 +5,4 @@ export { splitCandidates, maxAgeOf, candidateLanguages, visiblePriorities } from
 export { buildReasons, scoreSummary } from './reasons';
 export { whatIf } from './whatIf';
 export type { WhatIfChange, WhatIfRow } from './whatIf';
+export * from './adapter';

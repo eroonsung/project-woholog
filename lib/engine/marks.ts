@@ -4,7 +4,8 @@ import type { EngineCountry, Level3, Mark, PriorityId, Profile, ScoringConfig } 
 
 const bool = (v: boolean): Mark => (v ? 'ok' : 'no');
 
-export function moneyMark(c: EngineCountry, p: Profile, cfg: ScoringConfig): Mark {
+export function moneyMark(c: EngineCountry, p: Profile, cfg: ScoringConfig): Mark | null {
+  if (c.needMan === null) return null; // 환율이 없어 확인 중이면 돈 조건을 계산에서 뺀다 (CLAUDE.md 6장)
   const gap = c.needMan - p.budgetMan;
   if (gap <= 0) return 'ok';
   return gap <= cfg.money_tolerance_krw / 10_000 ? 'partial' : 'no';

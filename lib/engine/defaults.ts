@@ -19,6 +19,11 @@ export const DEFAULT_CONFIG: ScoringConfig = {
   close_gap_pp: 10,
   study_unlimited_months: 99,
   what_if_max_rows: 3,
+  tiers: {
+    wage_krw_per_hour: { high: 15000, mid: 9500, monthly_hours: 173.8 },
+    price_kr100: { low_below: 100, mid_below: 135 },
+    korean_population: { many_from: 30000, mid_from: 5000 },
+  },
 };
 
 /** DB에서 읽은 일부 설정을 기본값 위에 얹는다. 없는 key는 기본값. */
@@ -33,5 +38,10 @@ export function resolveConfig(overrides: Partial<ScoringConfig> = {}): ScoringCo
     },
     mark_values: { ...DEFAULT_CONFIG.mark_values, ...overrides.mark_values },
     english_levels: { ...DEFAULT_CONFIG.english_levels, ...overrides.english_levels },
+    tiers: {
+      wage_krw_per_hour: { ...DEFAULT_CONFIG.tiers.wage_krw_per_hour, ...overrides.tiers?.wage_krw_per_hour },
+      price_kr100: { ...DEFAULT_CONFIG.tiers.price_kr100, ...overrides.tiers?.price_kr100 },
+      korean_population: { ...DEFAULT_CONFIG.tiers.korean_population, ...overrides.tiers?.korean_population },
+    },
   };
 }

@@ -1,0 +1,3188 @@
+{
+ "countries": [
+  {
+   "code": "KR",
+   "name_ko": "한국",
+   "region": "asia",
+   "english": "N",
+   "languages": [
+    "한국어"
+   ],
+   "in_europe": false,
+   "near_korea": false,
+   "safety_level": "normal",
+   "safety_note": null
+  },
+  {
+   "code": "NL",
+   "name_ko": "네덜란드",
+   "region": "europe",
+   "english": "N",
+   "languages": [
+    "네덜란드어"
+   ],
+   "in_europe": true,
+   "near_korea": false,
+   "safety_level": "normal",
+   "safety_note": null
+  },
+  {
+   "code": "NZ",
+   "name_ko": "뉴질랜드",
+   "region": "oceania",
+   "english": "Y",
+   "languages": [
+    "영어"
+   ],
+   "in_europe": false,
+   "near_korea": false,
+   "safety_level": "normal",
+   "safety_note": null
+  },
+  {
+   "code": "TW",
+   "name_ko": "대만",
+   "region": "asia",
+   "english": "N",
+   "languages": [
+    "중국어"
+   ],
+   "in_europe": false,
+   "near_korea": true,
+   "safety_level": "normal",
+   "safety_note": null
+  },
+  {
+   "code": "DK",
+   "name_ko": "덴마크",
+   "region": "europe",
+   "english": "N",
+   "languages": [
+    "덴마크어"
+   ],
+   "in_europe": true,
+   "near_korea": false,
+   "safety_level": "normal",
+   "safety_note": null
+  },
+  {
+   "code": "DE",
+   "name_ko": "독일",
+   "region": "europe",
+   "english": "N",
+   "languages": [
+    "독일어"
+   ],
+   "in_europe": true,
+   "near_korea": false,
+   "safety_level": "normal",
+   "safety_note": null
+  },
+  {
+   "code": "LV",
+   "name_ko": "라트비아",
+   "region": "europe",
+   "english": "N",
+   "languages": [
+    "라트비아어"
+   ],
+   "in_europe": true,
+   "near_korea": false,
+   "safety_level": "normal",
+   "safety_note": null
+  },
+  {
+   "code": "LU",
+   "name_ko": "룩셈부르크",
+   "region": "europe",
+   "english": "N",
+   "languages": [
+    "프랑스어",
+    "독일어"
+   ],
+   "in_europe": true,
+   "near_korea": false,
+   "safety_level": "normal",
+   "safety_note": null
+  },
+  {
+   "code": "BE",
+   "name_ko": "벨기에",
+   "region": "europe",
+   "english": "N",
+   "languages": [
+    "네덜란드어",
+    "프랑스어",
+    "독일어"
+   ],
+   "in_europe": true,
+   "near_korea": false,
+   "safety_level": "normal",
+   "safety_note": null
+  },
+  {
+   "code": "BR",
+   "name_ko": "브라질",
+   "region": "south_america",
+   "english": "N",
+   "languages": [
+    "포르투갈어"
+   ],
+   "in_europe": false,
+   "near_korea": false,
+   "safety_level": "normal",
+   "safety_note": null
+  },
+  {
+   "code": "SE",
+   "name_ko": "스웨덴",
+   "region": "europe",
+   "english": "N",
+   "languages": [
+    "스웨덴어"
+   ],
+   "in_europe": true,
+   "near_korea": false,
+   "safety_level": "normal",
+   "safety_note": null
+  },
+  {
+   "code": "ES",
+   "name_ko": "스페인",
+   "region": "europe",
+   "english": "N",
+   "languages": [
+    "스페인어"
+   ],
+   "in_europe": true,
+   "near_korea": false,
+   "safety_level": "normal",
+   "safety_note": null
+  },
+  {
+   "code": "AR",
+   "name_ko": "아르헨티나",
+   "region": "south_america",
+   "english": "N",
+   "languages": [
+    "스페인어"
+   ],
+   "in_europe": false,
+   "near_korea": false,
+   "safety_level": "normal",
+   "safety_note": null
+  },
+  {
+   "code": "IE",
+   "name_ko": "아일랜드",
+   "region": "europe",
+   "english": "Y",
+   "languages": [
+    "영어"
+   ],
+   "in_europe": true,
+   "near_korea": false,
+   "safety_level": "normal",
+   "safety_note": null
+  },
+  {
+   "code": "AD",
+   "name_ko": "안도라",
+   "region": "europe",
+   "english": "N",
+   "languages": [
+    "카탈루냐어"
+   ],
+   "in_europe": true,
+   "near_korea": false,
+   "safety_level": "normal",
+   "safety_note": null
+  },
+  {
+   "code": "GB",
+   "name_ko": "영국",
+   "region": "europe",
+   "english": "Y",
+   "languages": [
+    "영어"
+   ],
+   "in_europe": true,
+   "near_korea": false,
+   "safety_level": "normal",
+   "safety_note": null
+  },
+  {
+   "code": "AT",
+   "name_ko": "오스트리아",
+   "region": "europe",
+   "english": "N",
+   "languages": [
+    "독일어"
+   ],
+   "in_europe": true,
+   "near_korea": false,
+   "safety_level": "normal",
+   "safety_note": null
+  },
+  {
+   "code": "IL",
+   "name_ko": "이스라엘",
+   "region": "middle_east",
+   "english": "N",
+   "languages": [
+    "히브리어"
+   ],
+   "in_europe": false,
+   "near_korea": false,
+   "safety_level": "caution",
+   "safety_note": "외교부 여행경보 2단계(여행자제) 전역, 레바논 접경 4km·가자지구는 4단계(여행금지). 2026-11-10 확인. 2026-09 미국·이란 무력 충돌로 대사관 신변안전 공지"
+  },
+  {
+   "code": "IT",
+   "name_ko": "이탈리아",
+   "region": "europe",
+   "english": "N",
+   "languages": [
+    "이탈리아어"
+   ],
+   "in_europe": true,
+   "near_korea": false,
+   "safety_level": "normal",
+   "safety_note": null
+  },
+  {
+   "code": "JP",
+   "name_ko": "일본",
+   "region": "asia",
+   "english": "N",
+   "languages": [
+    "일본어"
+   ],
+   "in_europe": false,
+   "near_korea": true,
+   "safety_level": "normal",
+   "safety_note": null
+  },
+  {
+   "code": "CZ",
+   "name_ko": "체코",
+   "region": "europe",
+   "english": "N",
+   "languages": [
+    "체코어"
+   ],
+   "in_europe": true,
+   "near_korea": false,
+   "safety_level": "normal",
+   "safety_note": null
+  },
+  {
+   "code": "CL",
+   "name_ko": "칠레",
+   "region": "south_america",
+   "english": "N",
+   "languages": [
+    "스페인어"
+   ],
+   "in_europe": false,
+   "near_korea": false,
+   "safety_level": "normal",
+   "safety_note": null
+  },
+  {
+   "code": "CA",
+   "name_ko": "캐나다",
+   "region": "north_america",
+   "english": "Y",
+   "languages": [
+    "영어",
+    "프랑스어"
+   ],
+   "in_europe": false,
+   "near_korea": false,
+   "safety_level": "normal",
+   "safety_note": null
+  },
+  {
+   "code": "PT",
+   "name_ko": "포르투갈",
+   "region": "europe",
+   "english": "N",
+   "languages": [
+    "포르투갈어"
+   ],
+   "in_europe": true,
+   "near_korea": false,
+   "safety_level": "normal",
+   "safety_note": null
+  },
+  {
+   "code": "PL",
+   "name_ko": "폴란드",
+   "region": "europe",
+   "english": "N",
+   "languages": [
+    "폴란드어"
+   ],
+   "in_europe": true,
+   "near_korea": false,
+   "safety_level": "normal",
+   "safety_note": null
+  },
+  {
+   "code": "FR",
+   "name_ko": "프랑스",
+   "region": "europe",
+   "english": "N",
+   "languages": [
+    "프랑스어"
+   ],
+   "in_europe": true,
+   "near_korea": false,
+   "safety_level": "normal",
+   "safety_note": null
+  },
+  {
+   "code": "FI",
+   "name_ko": "핀란드",
+   "region": "europe",
+   "english": "N",
+   "languages": [
+    "핀란드어",
+    "스웨덴어"
+   ],
+   "in_europe": true,
+   "near_korea": false,
+   "safety_level": "normal",
+   "safety_note": null
+  },
+  {
+   "code": "HU",
+   "name_ko": "헝가리",
+   "region": "europe",
+   "english": "N",
+   "languages": [
+    "헝가리어"
+   ],
+   "in_europe": true,
+   "near_korea": false,
+   "safety_level": "normal",
+   "safety_note": null
+  },
+  {
+   "code": "AU",
+   "name_ko": "호주",
+   "region": "oceania",
+   "english": "Y",
+   "languages": [
+    "영어"
+   ],
+   "in_europe": false,
+   "near_korea": false,
+   "safety_level": "normal",
+   "safety_note": null
+  },
+  {
+   "code": "HK",
+   "name_ko": "홍콩",
+   "region": "asia",
+   "english": "H",
+   "languages": [
+    "광둥어",
+    "영어"
+   ],
+   "in_europe": false,
+   "near_korea": true,
+   "safety_level": "normal",
+   "safety_note": null
+  }
+ ],
+ "programs": [
+  {
+   "id": 1,
+   "origin": "KR",
+   "destination": "NL",
+   "kind": "working_holiday",
+   "status": "active",
+   "age_min": 18,
+   "age_max": 30,
+   "selection": "first_come",
+   "max_participations": 1,
+   "stay_months": 12,
+   "long_stay_months": null
+  },
+  {
+   "id": 2,
+   "origin": "KR",
+   "destination": "NZ",
+   "kind": "working_holiday",
+   "status": "active",
+   "age_min": 18,
+   "age_max": 30,
+   "selection": "first_come",
+   "max_participations": 1,
+   "stay_months": 12,
+   "long_stay_months": 15
+  },
+  {
+   "id": 3,
+   "origin": "KR",
+   "destination": "TW",
+   "kind": "working_holiday",
+   "status": "active",
+   "age_min": 18,
+   "age_max": 34,
+   "selection": "first_come",
+   "max_participations": 1,
+   "stay_months": 6,
+   "long_stay_months": 12
+  },
+  {
+   "id": 4,
+   "origin": "KR",
+   "destination": "DK",
+   "kind": "working_holiday",
+   "status": "active",
+   "age_min": 18,
+   "age_max": 34,
+   "selection": "unlimited",
+   "max_participations": 1,
+   "stay_months": 12,
+   "long_stay_months": null
+  },
+  {
+   "id": 5,
+   "origin": "KR",
+   "destination": "DE",
+   "kind": "working_holiday",
+   "status": "active",
+   "age_min": 18,
+   "age_max": 34,
+   "selection": "unlimited",
+   "max_participations": 1,
+   "stay_months": 12,
+   "long_stay_months": null
+  },
+  {
+   "id": 6,
+   "origin": "KR",
+   "destination": "LV",
+   "kind": "working_holiday",
+   "status": "active",
+   "age_min": 18,
+   "age_max": 34,
+   "selection": "first_come",
+   "max_participations": 1,
+   "stay_months": 12,
+   "long_stay_months": null
+  },
+  {
+   "id": 7,
+   "origin": "KR",
+   "destination": "LU",
+   "kind": "working_holiday",
+   "status": "active",
+   "age_min": 18,
+   "age_max": 35,
+   "selection": "first_come",
+   "max_participations": 1,
+   "stay_months": 12,
+   "long_stay_months": null
+  },
+  {
+   "id": 8,
+   "origin": "KR",
+   "destination": "BE",
+   "kind": "working_holiday",
+   "status": "active",
+   "age_min": 18,
+   "age_max": 30,
+   "selection": "first_come",
+   "max_participations": 1,
+   "stay_months": 12,
+   "long_stay_months": null
+  },
+  {
+   "id": 9,
+   "origin": "KR",
+   "destination": "BR",
+   "kind": "working_holiday",
+   "status": "active",
+   "age_min": 18,
+   "age_max": 34,
+   "selection": "first_come",
+   "max_participations": 1,
+   "stay_months": 12,
+   "long_stay_months": null
+  },
+  {
+   "id": 10,
+   "origin": "KR",
+   "destination": "SE",
+   "kind": "working_holiday",
+   "status": "active",
+   "age_min": 18,
+   "age_max": 30,
+   "selection": "unlimited",
+   "max_participations": 1,
+   "stay_months": 12,
+   "long_stay_months": null
+  },
+  {
+   "id": 11,
+   "origin": "KR",
+   "destination": "ES",
+   "kind": "working_holiday",
+   "status": "active",
+   "age_min": 18,
+   "age_max": 30,
+   "selection": "first_come",
+   "max_participations": 1,
+   "stay_months": 12,
+   "long_stay_months": null
+  },
+  {
+   "id": 12,
+   "origin": "KR",
+   "destination": "AR",
+   "kind": "working_holiday",
+   "status": "active",
+   "age_min": 18,
+   "age_max": 34,
+   "selection": "first_come",
+   "max_participations": 1,
+   "stay_months": 12,
+   "long_stay_months": null
+  },
+  {
+   "id": 13,
+   "origin": "KR",
+   "destination": "IE",
+   "kind": "working_holiday",
+   "status": "active",
+   "age_min": 18,
+   "age_max": 34,
+   "selection": "lottery",
+   "max_participations": 1,
+   "stay_months": 12,
+   "long_stay_months": null
+  },
+  {
+   "id": 14,
+   "origin": "KR",
+   "destination": "AD",
+   "kind": "working_holiday",
+   "status": "active",
+   "age_min": 18,
+   "age_max": 30,
+   "selection": "first_come",
+   "max_participations": 1,
+   "stay_months": 12,
+   "long_stay_months": null
+  },
+  {
+   "id": 15,
+   "origin": "KR",
+   "destination": "GB",
+   "kind": "working_holiday",
+   "status": "active",
+   "age_min": 18,
+   "age_max": 35,
+   "selection": "first_come",
+   "max_participations": 1,
+   "stay_months": 24,
+   "long_stay_months": null
+  },
+  {
+   "id": 16,
+   "origin": "KR",
+   "destination": "AT",
+   "kind": "working_holiday",
+   "status": "active",
+   "age_min": 18,
+   "age_max": 30,
+   "selection": "first_come",
+   "max_participations": 1,
+   "stay_months": 12,
+   "long_stay_months": null
+  },
+  {
+   "id": 17,
+   "origin": "KR",
+   "destination": "IL",
+   "kind": "working_holiday",
+   "status": "active",
+   "age_min": 18,
+   "age_max": 30,
+   "selection": "first_come",
+   "max_participations": 1,
+   "stay_months": 12,
+   "long_stay_months": null
+  },
+  {
+   "id": 18,
+   "origin": "KR",
+   "destination": "IT",
+   "kind": "working_holiday",
+   "status": "active",
+   "age_min": 18,
+   "age_max": 30,
+   "selection": "first_come",
+   "max_participations": 1,
+   "stay_months": 12,
+   "long_stay_months": null
+  },
+  {
+   "id": 19,
+   "origin": "KR",
+   "destination": "JP",
+   "kind": "working_holiday",
+   "status": "active",
+   "age_min": 18,
+   "age_max": 30,
+   "selection": "first_come",
+   "max_participations": 2,
+   "stay_months": 12,
+   "long_stay_months": 24
+  },
+  {
+   "id": 20,
+   "origin": "KR",
+   "destination": "CZ",
+   "kind": "working_holiday",
+   "status": "active",
+   "age_min": 18,
+   "age_max": 30,
+   "selection": "first_come",
+   "max_participations": 1,
+   "stay_months": 12,
+   "long_stay_months": null
+  },
+  {
+   "id": 21,
+   "origin": "KR",
+   "destination": "CL",
+   "kind": "working_holiday",
+   "status": "active",
+   "age_min": 18,
+   "age_max": 30,
+   "selection": "unlimited",
+   "max_participations": 1,
+   "stay_months": 12,
+   "long_stay_months": null
+  },
+  {
+   "id": 22,
+   "origin": "KR",
+   "destination": "CA",
+   "kind": "working_holiday",
+   "status": "active",
+   "age_min": 18,
+   "age_max": 35,
+   "selection": "lottery",
+   "max_participations": 2,
+   "stay_months": 24,
+   "long_stay_months": 48
+  },
+  {
+   "id": 23,
+   "origin": "KR",
+   "destination": "PT",
+   "kind": "working_holiday",
+   "status": "active",
+   "age_min": 18,
+   "age_max": 34,
+   "selection": "first_come",
+   "max_participations": 1,
+   "stay_months": 12,
+   "long_stay_months": null
+  },
+  {
+   "id": 24,
+   "origin": "KR",
+   "destination": "PL",
+   "kind": "working_holiday",
+   "status": "active",
+   "age_min": 18,
+   "age_max": 30,
+   "selection": "first_come",
+   "max_participations": 1,
+   "stay_months": 12,
+   "long_stay_months": null
+  },
+  {
+   "id": 25,
+   "origin": "KR",
+   "destination": "FR",
+   "kind": "working_holiday",
+   "status": "active",
+   "age_min": 18,
+   "age_max": 35,
+   "selection": "first_come",
+   "max_participations": 1,
+   "stay_months": 12,
+   "long_stay_months": null
+  },
+  {
+   "id": 26,
+   "origin": "KR",
+   "destination": "FI",
+   "kind": "working_holiday",
+   "status": "pending",
+   "age_min": 18,
+   "age_max": 35,
+   "selection": "first_come",
+   "max_participations": 1,
+   "stay_months": 12,
+   "long_stay_months": null
+  },
+  {
+   "id": 27,
+   "origin": "KR",
+   "destination": "HU",
+   "kind": "working_holiday",
+   "status": "active",
+   "age_min": 18,
+   "age_max": 30,
+   "selection": "first_come",
+   "max_participations": 1,
+   "stay_months": 12,
+   "long_stay_months": null
+  },
+  {
+   "id": 28,
+   "origin": "KR",
+   "destination": "AU",
+   "kind": "working_holiday",
+   "status": "active",
+   "age_min": 18,
+   "age_max": 35,
+   "selection": "unlimited",
+   "max_participations": 1,
+   "stay_months": 12,
+   "long_stay_months": 36
+  },
+  {
+   "id": 29,
+   "origin": "KR",
+   "destination": "HK",
+   "kind": "working_holiday",
+   "status": "active",
+   "age_min": 18,
+   "age_max": 30,
+   "selection": "first_come",
+   "max_participations": 1,
+   "stay_months": 12,
+   "long_stay_months": null
+  }
+ ],
+ "facts": [
+  {
+   "program_id": 1,
+   "key": "visa_fee",
+   "value_num": 85,
+   "value_text": null,
+   "currency": "EUR",
+   "source_id": 1,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 1,
+   "key": "proof_note",
+   "value_num": null,
+   "value_text": "왕복 항공권 또는 그 금액",
+   "currency": null,
+   "source_id": 1,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 1,
+   "key": "apply_method",
+   "value_num": null,
+   "value_text": "2026.4.1부터 이민청(IND) 온라인 신청, 입국 후 지문 등록",
+   "currency": null,
+   "source_id": 1,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 2,
+   "key": "visa_fee",
+   "value_num": 770,
+   "value_text": null,
+   "currency": "NZD",
+   "source_id": 2,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 2,
+   "key": "proof_amount",
+   "value_num": 4200,
+   "value_text": null,
+   "currency": "NZD",
+   "source_id": 2,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 2,
+   "key": "study_max_months",
+   "value_num": 6,
+   "value_text": null,
+   "currency": null,
+   "source_id": 2,
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 2,
+   "key": "medical_check",
+   "value_num": null,
+   "value_text": "지정 병원 신체검사",
+   "currency": null,
+   "source_id": 2,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 2,
+   "key": "extension",
+   "value_num": null,
+   "value_text": "원예·포도재배 3개월 근무 시 3개월 연장",
+   "currency": null,
+   "source_id": 2,
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 3,
+   "key": "visa_fee",
+   "value_num": 0,
+   "value_text": null,
+   "currency": "KRW",
+   "source_id": 3,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 3,
+   "key": "proof_amount",
+   "value_num": 3000000,
+   "value_text": null,
+   "currency": "KRW",
+   "source_id": 3,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 3,
+   "key": "apply_method",
+   "value_num": null,
+   "value_text": "대표부 본인 방문, 건강검진서·활동계획서",
+   "currency": null,
+   "source_id": 3,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 4,
+   "key": "visa_fee",
+   "value_num": 3060,
+   "value_text": null,
+   "currency": "DKK",
+   "source_id": 4,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 4,
+   "key": "proof_amount",
+   "value_num": 20000,
+   "value_text": null,
+   "currency": "DKK",
+   "source_id": 4,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 4,
+   "key": "study_max_months",
+   "value_num": 6,
+   "value_text": null,
+   "currency": null,
+   "source_id": 4,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 4,
+   "key": "work_limit_months",
+   "value_num": 9,
+   "value_text": null,
+   "currency": null,
+   "source_id": 4,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 4,
+   "key": "no_fulltime",
+   "value_num": 1,
+   "value_text": null,
+   "currency": null,
+   "source_id": 4,
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 4,
+   "key": "extension",
+   "value_num": null,
+   "value_text": "연장 불가",
+   "currency": null,
+   "source_id": 4,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 4,
+   "key": "apply_method",
+   "value_num": null,
+   "value_text": "노르웨이 비자센터 접수",
+   "currency": null,
+   "source_id": 4,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 5,
+   "key": "visa_fee",
+   "value_num": 75,
+   "value_text": null,
+   "currency": "EUR",
+   "source_id": 5,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 5,
+   "key": "proof_amount",
+   "value_num": 3500,
+   "value_text": null,
+   "currency": "EUR",
+   "source_id": 5,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 5,
+   "key": "insurance_required",
+   "value_num": null,
+   "value_text": "책임·의료·사고보험 각 €30,000",
+   "currency": null,
+   "source_id": 5,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 5,
+   "key": "apply_method",
+   "value_num": null,
+   "value_text": "대사관 본인 방문",
+   "currency": null,
+   "source_id": 5,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 6,
+   "key": "visa_fee",
+   "value_num": 90,
+   "value_text": null,
+   "currency": "EUR",
+   "source_id": 6,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 6,
+   "key": "proof_amount",
+   "value_num": 2220,
+   "value_text": null,
+   "currency": "EUR",
+   "source_id": 6,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 6,
+   "key": "no_fulltime",
+   "value_num": 1,
+   "value_text": null,
+   "currency": null,
+   "source_id": 6,
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 6,
+   "key": "apply_method",
+   "value_num": null,
+   "value_text": "주일본 대사관 방문 또는 현지 우편 접수",
+   "currency": null,
+   "source_id": 6,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 7,
+   "key": "visa_fee",
+   "value_num": 250,
+   "value_text": null,
+   "currency": "EUR",
+   "source_id": 7,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 7,
+   "key": "proof_amount",
+   "value_num": 2500,
+   "value_text": null,
+   "currency": "EUR",
+   "source_id": 7,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 7,
+   "key": "job_language_required",
+   "value_num": null,
+   "value_text": "서비스업은 프랑스어가 필수인 경우가 많음",
+   "currency": null,
+   "source_id": 7,
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 7,
+   "key": "job_hard_note",
+   "value_num": null,
+   "value_text": "경쟁이 치열함",
+   "currency": null,
+   "source_id": 7,
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 7,
+   "key": "apply_method",
+   "value_num": null,
+   "value_text": "주한 벨기에 대사관 접수, 범죄경력·건강진단서는 3개월 이내 발급분",
+   "currency": null,
+   "source_id": 7,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 8,
+   "key": "visa_fee",
+   "value_num": 320400,
+   "value_text": null,
+   "currency": "KRW",
+   "source_id": 8,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 8,
+   "key": "proof_amount",
+   "value_num": 2500,
+   "value_text": null,
+   "currency": "EUR",
+   "source_id": 8,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 8,
+   "key": "study_max_months",
+   "value_num": 6,
+   "value_text": null,
+   "currency": null,
+   "source_id": 8,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 8,
+   "key": "work_limit_months",
+   "value_num": 6,
+   "value_text": null,
+   "currency": null,
+   "source_id": 8,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 8,
+   "key": "no_fulltime",
+   "value_num": 1,
+   "value_text": null,
+   "currency": null,
+   "source_id": 8,
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 8,
+   "key": "apply_method",
+   "value_num": null,
+   "value_text": "도착 8일 내 구청 등록",
+   "currency": null,
+   "source_id": 8,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 9,
+   "key": "visa_fee",
+   "value_num": 0,
+   "value_text": null,
+   "currency": "KRW",
+   "source_id": 9,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 9,
+   "key": "proof_amount",
+   "value_num": 2100,
+   "value_text": null,
+   "currency": "USD",
+   "source_id": 9,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 9,
+   "key": "special_note",
+   "value_num": null,
+   "value_text": "범죄경력·가족관계·신체검사, 포르투갈어 시험 없음",
+   "currency": null,
+   "source_id": 9,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 10,
+   "key": "visa_fee",
+   "value_num": 1500,
+   "value_text": null,
+   "currency": "SEK",
+   "source_id": 10,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 10,
+   "key": "proof_amount",
+   "value_num": 15000,
+   "value_text": null,
+   "currency": "SEK",
+   "source_id": 10,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 10,
+   "key": "study_max_months",
+   "value_num": 99,
+   "value_text": null,
+   "currency": null,
+   "source_id": 10,
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 10,
+   "key": "job_language_required",
+   "value_num": null,
+   "value_text": "스웨덴어를 요구하는 경우가 많음",
+   "currency": null,
+   "source_id": 10,
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 10,
+   "key": "job_hard_note",
+   "value_num": null,
+   "value_text": "스톡홀름 외에는 영어 일자리가 적음",
+   "currency": null,
+   "source_id": 10,
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 11,
+   "key": "visa_fee",
+   "value_num": 14850,
+   "value_text": null,
+   "currency": "KRW",
+   "source_id": 11,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 11,
+   "key": "proof_note",
+   "value_num": null,
+   "value_text": "금액 명시 없음 (소득·잔고·3개월 거래내역)",
+   "currency": null,
+   "source_id": 11,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 11,
+   "key": "job_language_required",
+   "value_num": null,
+   "value_text": "스페인어",
+   "currency": null,
+   "source_id": 11,
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 11,
+   "key": "job_hard_note",
+   "value_num": null,
+   "value_text": "청년실업률 24.5%(2025)",
+   "currency": null,
+   "source_id": 11,
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 12,
+   "key": "visa_fee",
+   "value_num": 0,
+   "value_text": null,
+   "currency": "KRW",
+   "source_id": 12,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 12,
+   "key": "proof_amount",
+   "value_num": 2500,
+   "value_text": null,
+   "currency": "USD",
+   "source_id": 12,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 12,
+   "key": "extension",
+   "value_num": null,
+   "value_text": "연장·현지 비자 전환 불가",
+   "currency": null,
+   "source_id": 12,
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 13,
+   "key": "visa_fee",
+   "value_num": 105000,
+   "value_text": null,
+   "currency": "KRW",
+   "source_id": 13,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 13,
+   "key": "proof_note",
+   "value_num": null,
+   "value_text": "금액 명시 없음",
+   "currency": null,
+   "source_id": 13,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 13,
+   "key": "study_max_months",
+   "value_num": 6,
+   "value_text": null,
+   "currency": null,
+   "source_id": 13,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 13,
+   "key": "no_fulltime",
+   "value_num": 1,
+   "value_text": null,
+   "currency": null,
+   "source_id": 13,
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 13,
+   "key": "job_hard_note",
+   "value_num": null,
+   "value_text": "실업률 4%대 완전고용이라 구직이 쉽지 않음",
+   "currency": null,
+   "source_id": 13,
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 13,
+   "key": "extension",
+   "value_num": null,
+   "value_text": "연장·학생비자 전환 불가",
+   "currency": null,
+   "source_id": 13,
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 14,
+   "key": "visa_fee",
+   "value_num": 22.61,
+   "value_text": null,
+   "currency": "EUR",
+   "source_id": 14,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 14,
+   "key": "proof_amount",
+   "value_num": 4128.81,
+   "value_text": null,
+   "currency": "EUR",
+   "source_id": 14,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 14,
+   "key": "apply_method",
+   "value_num": null,
+   "value_text": "외교부 초청서한을 받고 현지에서 거주허가 신청",
+   "currency": null,
+   "source_id": 14,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 15,
+   "key": "visa_fee",
+   "value_num": 340,
+   "value_text": null,
+   "currency": "GBP",
+   "source_id": 15,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 15,
+   "key": "health_surcharge",
+   "value_num": 1552,
+   "value_text": null,
+   "currency": "GBP",
+   "source_id": 32,
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 15,
+   "key": "proof_amount",
+   "value_num": 2530,
+   "value_text": null,
+   "currency": "GBP",
+   "source_id": 15,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 15,
+   "key": "study_max_months",
+   "value_num": 99,
+   "value_text": null,
+   "currency": null,
+   "source_id": 32,
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 15,
+   "key": "prohibited_work",
+   "value_num": null,
+   "value_text": "프로 스포츠(코치 포함)",
+   "currency": null,
+   "source_id": 32,
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 15,
+   "key": "extension",
+   "value_num": null,
+   "value_text": "한국인은 연장 불가",
+   "currency": null,
+   "source_id": 32,
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 15,
+   "key": "special_note",
+   "value_num": null,
+   "value_text": "자영업·창업 가능(장비 £5,000 이하, 직원 없음)",
+   "currency": null,
+   "source_id": 32,
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 16,
+   "key": "visa_fee",
+   "value_num": 195,
+   "value_text": null,
+   "currency": "EUR",
+   "source_id": 16,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 16,
+   "key": "proof_note",
+   "value_num": null,
+   "value_text": "금액 명시 없음 (자금 출처 증명)",
+   "currency": null,
+   "source_id": 16,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 16,
+   "key": "insurance_required",
+   "value_num": null,
+   "value_text": "보험 €30,000",
+   "currency": null,
+   "source_id": 16,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 16,
+   "key": "special_note",
+   "value_num": null,
+   "value_text": "아르바이트하려면 외국인노동법 예외증명 신청 필요",
+   "currency": null,
+   "source_id": 16,
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 17,
+   "key": "visa_fee",
+   "value_num": 92000,
+   "value_text": null,
+   "currency": "KRW",
+   "source_id": 17,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 17,
+   "key": "proof_note",
+   "value_num": null,
+   "value_text": "금액 명시 없음",
+   "currency": null,
+   "source_id": 17,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 17,
+   "key": "study_max_months",
+   "value_num": 6,
+   "value_text": null,
+   "currency": null,
+   "source_id": 17,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 17,
+   "key": "employer_limit_months",
+   "value_num": 3,
+   "value_text": null,
+   "currency": null,
+   "source_id": 17,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 17,
+   "key": "apply_method",
+   "value_num": null,
+   "value_text": "입국 2주 내 복수비자 전환",
+   "currency": null,
+   "source_id": 17,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 18,
+   "key": "visa_fee",
+   "value_num": 0,
+   "value_text": null,
+   "currency": "KRW",
+   "source_id": 18,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 18,
+   "key": "proof_amount",
+   "value_num": 11000,
+   "value_text": null,
+   "currency": "EUR",
+   "source_id": 18,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 18,
+   "key": "employer_limit_months",
+   "value_num": 6,
+   "value_text": null,
+   "currency": null,
+   "source_id": 18,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 18,
+   "key": "extension",
+   "value_num": null,
+   "value_text": "연장·전환 불가",
+   "currency": null,
+   "source_id": 18,
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 19,
+   "key": "visa_fee",
+   "value_num": 0,
+   "value_text": null,
+   "currency": "KRW",
+   "source_id": 19,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 19,
+   "key": "proof_amount",
+   "value_num": 2800000,
+   "value_text": null,
+   "currency": "KRW",
+   "source_id": 30,
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 19,
+   "key": "study_max_months",
+   "value_num": 3,
+   "value_text": null,
+   "currency": null,
+   "source_id": 31,
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 19,
+   "key": "prohibited_work",
+   "value_num": null,
+   "value_text": "풍속영업(바·카바레·나이트클럽·파친코 등)",
+   "currency": null,
+   "source_id": 31,
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 19,
+   "key": "apply_method",
+   "value_num": null,
+   "value_text": "대리신청기관으로만 접수(제주는 총영사관 직접), 사유서·계획서 A4 각 1장 이상, 일본어 학습 이력 자료",
+   "currency": null,
+   "source_id": 30,
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 20,
+   "key": "visa_fee",
+   "value_num": 2500,
+   "value_text": null,
+   "currency": "CZK",
+   "source_id": 20,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 20,
+   "key": "proof_amount",
+   "value_num": 122070,
+   "value_text": null,
+   "currency": "CZK",
+   "source_id": 20,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 20,
+   "key": "apply_method",
+   "value_num": null,
+   "value_text": "잔고증명 체코어 번역, 처리 1~2개월",
+   "currency": null,
+   "source_id": 20,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 21,
+   "key": "visa_fee",
+   "value_num": 0,
+   "value_text": null,
+   "currency": "KRW",
+   "source_id": 21,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 21,
+   "key": "proof_amount",
+   "value_num": 3000,
+   "value_text": null,
+   "currency": "USD",
+   "source_id": 21,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 21,
+   "key": "insurance_required",
+   "value_num": null,
+   "value_text": "보험 US$30,000",
+   "currency": null,
+   "source_id": 21,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 21,
+   "key": "job_language_required",
+   "value_num": null,
+   "value_text": "스페인어 필수",
+   "currency": null,
+   "source_id": 21,
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 21,
+   "key": "job_hard_note",
+   "value_num": null,
+   "value_text": "한국 진출 기업 취업이 현실적",
+   "currency": null,
+   "source_id": 21,
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 22,
+   "key": "visa_fee",
+   "value_num": 279.75,
+   "value_text": null,
+   "currency": "CAD",
+   "source_id": 22,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 22,
+   "key": "proof_amount",
+   "value_num": 2500,
+   "value_text": null,
+   "currency": "CAD",
+   "source_id": 22,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 22,
+   "key": "study_max_months",
+   "value_num": 6,
+   "value_text": null,
+   "currency": null,
+   "source_id": 22,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 22,
+   "key": "special_note",
+   "value_num": null,
+   "value_text": "취업 기간 규정 없음, 주 40시간 풀타임 가능",
+   "currency": null,
+   "source_id": 22,
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 23,
+   "key": "visa_fee",
+   "value_num": 110,
+   "value_text": null,
+   "currency": "EUR",
+   "source_id": 23,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 23,
+   "key": "proof_note",
+   "value_num": null,
+   "value_text": "금액 명시 없음",
+   "currency": null,
+   "source_id": 23,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 23,
+   "key": "no_fulltime",
+   "value_num": 1,
+   "value_text": null,
+   "currency": null,
+   "source_id": 23,
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 23,
+   "key": "job_language_required",
+   "value_num": null,
+   "value_text": "대부분 포르투갈어 필요",
+   "currency": null,
+   "source_id": 23,
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 23,
+   "key": "insurance_required",
+   "value_num": null,
+   "value_text": "보험 €30,000",
+   "currency": null,
+   "source_id": 23,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 24,
+   "key": "visa_fee",
+   "value_num": 339390,
+   "value_text": null,
+   "currency": "KRW",
+   "source_id": 24,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 24,
+   "key": "proof_note",
+   "value_num": null,
+   "value_text": "월 PLN 701 + 귀국 항공권 PLN 2,500",
+   "currency": null,
+   "source_id": 24,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 24,
+   "key": "apply_method",
+   "value_num": null,
+   "value_text": "한국 계좌 잔고증명 불가, 영문 체류 계획서",
+   "currency": null,
+   "source_id": 24,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 25,
+   "key": "visa_fee",
+   "value_num": 0,
+   "value_text": null,
+   "currency": "KRW",
+   "source_id": 25,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 25,
+   "key": "proof_amount",
+   "value_num": 2500,
+   "value_text": null,
+   "currency": "EUR",
+   "source_id": 25,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 25,
+   "key": "study_max_months",
+   "value_num": 0,
+   "value_text": null,
+   "currency": null,
+   "source_id": 25,
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 25,
+   "key": "extension",
+   "value_num": null,
+   "value_text": "연장 불가",
+   "currency": null,
+   "source_id": 25,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 25,
+   "key": "special_note",
+   "value_num": null,
+   "value_text": "근무 시간 제한 없음, 고용주가 당국에 신고",
+   "currency": null,
+   "source_id": 25,
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 26,
+   "key": "special_note",
+   "value_num": null,
+   "value_text": "2026.5.13 서명, 양국 통보 후 60일째 발효. 18~35세, 최대 12개월 예정",
+   "currency": null,
+   "source_id": 29,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 27,
+   "key": "visa_fee",
+   "value_num": 26000,
+   "value_text": null,
+   "currency": "HUF",
+   "source_id": 26,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 27,
+   "key": "proof_amount",
+   "value_num": 3000,
+   "value_text": null,
+   "currency": "USD",
+   "source_id": 26,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 27,
+   "key": "extension",
+   "value_num": null,
+   "value_text": "연장 불가",
+   "currency": null,
+   "source_id": 26,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 27,
+   "key": "apply_method",
+   "value_num": null,
+   "value_text": "현지 이민국 온라인 접수, 약 21일",
+   "currency": null,
+   "source_id": 26,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 28,
+   "key": "visa_fee",
+   "value_num": 840,
+   "value_text": null,
+   "currency": "AUD",
+   "source_id": 27,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 28,
+   "key": "proof_amount",
+   "value_num": 5000,
+   "value_text": null,
+   "currency": "AUD",
+   "source_id": 27,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 28,
+   "key": "study_max_months",
+   "value_num": 4,
+   "value_text": null,
+   "currency": null,
+   "source_id": 27,
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 28,
+   "key": "employer_limit_months",
+   "value_num": 6,
+   "value_text": null,
+   "currency": null,
+   "source_id": 27,
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 29,
+   "key": "visa_fee",
+   "value_num": 0,
+   "value_text": null,
+   "currency": "KRW",
+   "source_id": 28,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 29,
+   "key": "proof_amount",
+   "value_num": 20000,
+   "value_text": null,
+   "currency": "HKD",
+   "source_id": 28,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 29,
+   "key": "study_max_months",
+   "value_num": 6,
+   "value_text": null,
+   "currency": null,
+   "source_id": 28,
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 29,
+   "key": "employer_limit_months",
+   "value_num": 6,
+   "value_text": null,
+   "currency": null,
+   "source_id": 28,
+   "verified_at": "2026-11-09"
+  },
+  {
+   "program_id": 3,
+   "key": "study_max_months",
+   "value_num": 3,
+   "value_text": null,
+   "currency": null,
+   "source_id": 46,
+   "verified_at": "2026-11-10"
+  },
+  {
+   "program_id": 3,
+   "key": "prohibited_work",
+   "value_num": null,
+   "value_text": "워홀 목적에 반하는 고용",
+   "currency": null,
+   "source_id": 46,
+   "verified_at": "2026-11-10"
+  },
+  {
+   "program_id": 5,
+   "key": "study_max_months",
+   "value_num": 99,
+   "value_text": null,
+   "currency": null,
+   "source_id": 5,
+   "verified_at": "2026-11-10"
+  },
+  {
+   "program_id": 5,
+   "key": "work_note",
+   "value_num": null,
+   "value_text": "지역 관청마다 취업 가능 기간을 다르게 정함. 체류 지역 관청 안내를 따를 것",
+   "currency": null,
+   "source_id": 5,
+   "verified_at": "2026-11-10"
+  },
+  {
+   "program_id": 16,
+   "key": "no_fulltime",
+   "value_num": 1,
+   "value_text": null,
+   "currency": null,
+   "source_id": 16,
+   "verified_at": "2026-11-10"
+  },
+  {
+   "program_id": 1,
+   "key": "work_note",
+   "value_num": null,
+   "value_text": "풀타임 가능, 1년 내내 같은 고용주는 불가, 자영업 불가",
+   "currency": null,
+   "source_id": 47,
+   "verified_at": "2026-11-10"
+  },
+  {
+   "program_id": 1,
+   "key": "study_note",
+   "value_num": null,
+   "value_text": "짧은 과정 수강 가능(기간 명시 없음)",
+   "currency": null,
+   "source_id": 47,
+   "verified_at": "2026-11-10"
+  },
+  {
+   "program_id": 27,
+   "key": "no_fulltime",
+   "value_num": 1,
+   "value_text": null,
+   "currency": null,
+   "source_id": 48,
+   "verified_at": "2026-11-10"
+  },
+  {
+   "program_id": 27,
+   "key": "work_limit_months",
+   "value_num": 12,
+   "value_text": null,
+   "currency": null,
+   "source_id": 48,
+   "verified_at": "2026-11-10"
+  },
+  {
+   "program_id": 7,
+   "key": "no_fulltime",
+   "value_num": 1,
+   "value_text": null,
+   "currency": null,
+   "source_id": 7,
+   "verified_at": "2026-11-10"
+  },
+  {
+   "program_id": 7,
+   "key": "study_note",
+   "value_num": null,
+   "value_text": "제한된 기간 학업·인턴 등록 가능(기간 명시 없음)",
+   "currency": null,
+   "source_id": 7,
+   "verified_at": "2026-11-10"
+  },
+  {
+   "program_id": 12,
+   "key": "study_note",
+   "value_num": null,
+   "value_text": "어학연수 가능(기간 명시 없음)",
+   "currency": null,
+   "source_id": 12,
+   "verified_at": "2026-11-10"
+  },
+  {
+   "program_id": 9,
+   "key": "study_note",
+   "value_num": null,
+   "value_text": "어학연수 가능, 단 학생비자(D-2)에 해당하는 과정은 제외",
+   "currency": null,
+   "source_id": 9,
+   "verified_at": "2026-11-10"
+  },
+  {
+   "program_id": 21,
+   "key": "work_note",
+   "value_num": null,
+   "value_text": "부수적인 단기 근로만, 생활비 전체를 버는 목적은 불가",
+   "currency": null,
+   "source_id": 49,
+   "verified_at": "2026-11-10"
+  },
+  {
+   "program_id": 28,
+   "key": "extension_by_regional_work",
+   "value_num": 1,
+   "value_text": null,
+   "currency": null,
+   "source_id": 27,
+   "verified_at": "2026-11-11"
+  },
+  {
+   "program_id": 5,
+   "key": "proof_amount_with_ticket",
+   "value_num": 2500,
+   "value_text": null,
+   "currency": "EUR",
+   "source_id": 5,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 4,
+   "key": "proof_amount_with_ticket",
+   "value_num": 15000,
+   "value_text": null,
+   "currency": "DKK",
+   "source_id": 4,
+   "verified_at": "2026-11-05"
+  },
+  {
+   "program_id": 1,
+   "key": "proof_amount",
+   "value_num": 0,
+   "value_text": null,
+   "currency": "EUR",
+   "source_id": 1,
+   "verified_at": "2026-11-05"
+  }
+ ],
+ "stats": [
+  {
+   "country": "LU",
+   "city": "",
+   "metric": "min_wage_monthly",
+   "value": 2704,
+   "currency": "EUR"
+  },
+  {
+   "country": "IE",
+   "city": "",
+   "metric": "min_wage_monthly",
+   "value": 2391,
+   "currency": "EUR"
+  },
+  {
+   "country": "DE",
+   "city": "",
+   "metric": "min_wage_monthly",
+   "value": 2343,
+   "currency": "EUR"
+  },
+  {
+   "country": "NL",
+   "city": "",
+   "metric": "min_wage_monthly",
+   "value": 2295,
+   "currency": "EUR"
+  },
+  {
+   "country": "BE",
+   "city": "",
+   "metric": "min_wage_monthly",
+   "value": 2112,
+   "currency": "EUR"
+  },
+  {
+   "country": "FR",
+   "city": "",
+   "metric": "min_wage_monthly",
+   "value": 1823,
+   "currency": "EUR"
+  },
+  {
+   "country": "ES",
+   "city": "",
+   "metric": "min_wage_monthly",
+   "value": 1381,
+   "currency": "EUR"
+  },
+  {
+   "country": "PL",
+   "city": "",
+   "metric": "min_wage_monthly",
+   "value": 1139,
+   "currency": "EUR"
+  },
+  {
+   "country": "PT",
+   "city": "",
+   "metric": "min_wage_monthly",
+   "value": 1073,
+   "currency": "EUR"
+  },
+  {
+   "country": "CZ",
+   "city": "",
+   "metric": "min_wage_monthly",
+   "value": 924,
+   "currency": "EUR"
+  },
+  {
+   "country": "HU",
+   "city": "",
+   "metric": "min_wage_monthly",
+   "value": 838,
+   "currency": "EUR"
+  },
+  {
+   "country": "LV",
+   "city": "",
+   "metric": "min_wage_monthly",
+   "value": 780,
+   "currency": "EUR"
+  },
+  {
+   "country": "AU",
+   "city": "",
+   "metric": "min_wage_hourly",
+   "value": 26.44,
+   "currency": "AUD"
+  },
+  {
+   "country": "NZ",
+   "city": "",
+   "metric": "min_wage_hourly",
+   "value": 23.95,
+   "currency": "NZD"
+  },
+  {
+   "country": "GB",
+   "city": "",
+   "metric": "min_wage_hourly",
+   "value": 12.71,
+   "currency": "GBP"
+  },
+  {
+   "country": "IE",
+   "city": "",
+   "metric": "min_wage_hourly",
+   "value": 14.15,
+   "currency": "EUR"
+  },
+  {
+   "country": "DE",
+   "city": "",
+   "metric": "min_wage_hourly",
+   "value": 13.9,
+   "currency": "EUR"
+  },
+  {
+   "country": "FR",
+   "city": "",
+   "metric": "min_wage_hourly",
+   "value": 12.31,
+   "currency": "EUR"
+  },
+  {
+   "country": "CA",
+   "city": "",
+   "metric": "min_wage_hourly",
+   "value": 18.15,
+   "currency": "CAD"
+  },
+  {
+   "country": "CA",
+   "city": "브리티시컬럼비아",
+   "metric": "min_wage_hourly",
+   "value": 18.25,
+   "currency": "CAD"
+  },
+  {
+   "country": "CA",
+   "city": "온타리오",
+   "metric": "min_wage_hourly",
+   "value": 17.6,
+   "currency": "CAD"
+  },
+  {
+   "country": "CA",
+   "city": "퀘벡",
+   "metric": "min_wage_hourly",
+   "value": 16.6,
+   "currency": "CAD"
+  },
+  {
+   "country": "CA",
+   "city": "앨버타",
+   "metric": "min_wage_hourly",
+   "value": 15,
+   "currency": "CAD"
+  },
+  {
+   "country": "JP",
+   "city": "도쿄",
+   "metric": "min_wage_hourly",
+   "value": 1226,
+   "currency": "JPY"
+  },
+  {
+   "country": "JP",
+   "city": "오사카",
+   "metric": "min_wage_hourly",
+   "value": 1114,
+   "currency": "JPY"
+  },
+  {
+   "country": "JP",
+   "city": "교토",
+   "metric": "min_wage_hourly",
+   "value": 1058,
+   "currency": "JPY"
+  },
+  {
+   "country": "IL",
+   "city": "",
+   "metric": "min_wage_hourly",
+   "value": 35.4,
+   "currency": "ILS"
+  },
+  {
+   "country": "AD",
+   "city": "",
+   "metric": "min_wage_hourly",
+   "value": 7.7,
+   "currency": "EUR"
+  },
+  {
+   "country": "HK",
+   "city": "",
+   "metric": "min_wage_hourly",
+   "value": 43.1,
+   "currency": "HKD"
+  },
+  {
+   "country": "TW",
+   "city": "",
+   "metric": "min_wage_hourly",
+   "value": 196,
+   "currency": "TWD"
+  },
+  {
+   "country": "CL",
+   "city": "",
+   "metric": "min_wage_monthly",
+   "value": 529000,
+   "currency": "CLP"
+  },
+  {
+   "country": "BR",
+   "city": "",
+   "metric": "min_wage_monthly",
+   "value": 1621,
+   "currency": "BRL"
+  },
+  {
+   "country": "AR",
+   "city": "",
+   "metric": "min_wage_monthly",
+   "value": 391200,
+   "currency": "ARS"
+  },
+  {
+   "country": "IL",
+   "city": "",
+   "metric": "price_level_kr100",
+   "value": 159,
+   "currency": null
+  },
+  {
+   "country": "AU",
+   "city": "",
+   "metric": "price_level_kr100",
+   "value": 152,
+   "currency": null
+  },
+  {
+   "country": "LU",
+   "city": "",
+   "metric": "price_level_kr100",
+   "value": 150,
+   "currency": null
+  },
+  {
+   "country": "NZ",
+   "city": "",
+   "metric": "price_level_kr100",
+   "value": 149,
+   "currency": null
+  },
+  {
+   "country": "DK",
+   "city": "",
+   "metric": "price_level_kr100",
+   "value": 148,
+   "currency": null
+  },
+  {
+   "country": "GB",
+   "city": "",
+   "metric": "price_level_kr100",
+   "value": 142,
+   "currency": null
+  },
+  {
+   "country": "CA",
+   "city": "",
+   "metric": "price_level_kr100",
+   "value": 141,
+   "currency": null
+  },
+  {
+   "country": "IE",
+   "city": "",
+   "metric": "price_level_kr100",
+   "value": 135,
+   "currency": null
+  },
+  {
+   "country": "SE",
+   "city": "",
+   "metric": "price_level_kr100",
+   "value": 135,
+   "currency": null
+  },
+  {
+   "country": "NL",
+   "city": "",
+   "metric": "price_level_kr100",
+   "value": 134,
+   "currency": null
+  },
+  {
+   "country": "AT",
+   "city": "",
+   "metric": "price_level_kr100",
+   "value": 130,
+   "currency": null
+  },
+  {
+   "country": "DE",
+   "city": "",
+   "metric": "price_level_kr100",
+   "value": 128,
+   "currency": null
+  },
+  {
+   "country": "BE",
+   "city": "",
+   "metric": "price_level_kr100",
+   "value": 128,
+   "currency": null
+  },
+  {
+   "country": "FR",
+   "city": "",
+   "metric": "price_level_kr100",
+   "value": 124,
+   "currency": null
+  },
+  {
+   "country": "HK",
+   "city": "",
+   "metric": "price_level_kr100",
+   "value": 121,
+   "currency": null
+  },
+  {
+   "country": "IT",
+   "city": "",
+   "metric": "price_level_kr100",
+   "value": 110,
+   "currency": null
+  },
+  {
+   "country": "JP",
+   "city": "",
+   "metric": "price_level_kr100",
+   "value": 105,
+   "currency": null
+  },
+  {
+   "country": "ES",
+   "city": "",
+   "metric": "price_level_kr100",
+   "value": 103,
+   "currency": null
+  },
+  {
+   "country": "PT",
+   "city": "",
+   "metric": "price_level_kr100",
+   "value": 95,
+   "currency": null
+  },
+  {
+   "country": "CZ",
+   "city": "",
+   "metric": "price_level_kr100",
+   "value": 93,
+   "currency": null
+  },
+  {
+   "country": "LV",
+   "city": "",
+   "metric": "price_level_kr100",
+   "value": 91,
+   "currency": null
+  },
+  {
+   "country": "PL",
+   "city": "",
+   "metric": "price_level_kr100",
+   "value": 82,
+   "currency": null
+  },
+  {
+   "country": "HU",
+   "city": "",
+   "metric": "price_level_kr100",
+   "value": 81,
+   "currency": null
+  },
+  {
+   "country": "CL",
+   "city": "",
+   "metric": "price_level_kr100",
+   "value": 78,
+   "currency": null
+  },
+  {
+   "country": "BR",
+   "city": "",
+   "metric": "price_level_kr100",
+   "value": 77,
+   "currency": null
+  },
+  {
+   "country": "AR",
+   "city": "",
+   "metric": "price_level_kr100",
+   "value": 77,
+   "currency": null
+  },
+  {
+   "country": "JP",
+   "city": "",
+   "metric": "korean_population",
+   "value": 960970,
+   "currency": null
+  },
+  {
+   "country": "CA",
+   "city": "",
+   "metric": "korean_population",
+   "value": 263153,
+   "currency": null
+  },
+  {
+   "country": "AU",
+   "city": "",
+   "metric": "korean_population",
+   "value": 170215,
+   "currency": null
+  },
+  {
+   "country": "DE",
+   "city": "",
+   "metric": "korean_population",
+   "value": 52588,
+   "currency": null
+  },
+  {
+   "country": "BR",
+   "city": "",
+   "metric": "korean_population",
+   "value": 51640,
+   "currency": null
+  },
+  {
+   "country": "NZ",
+   "city": "",
+   "metric": "korean_population",
+   "value": 39155,
+   "currency": null
+  },
+  {
+   "country": "AR",
+   "city": "",
+   "metric": "korean_population",
+   "value": 23208,
+   "currency": null
+  },
+  {
+   "country": "HK",
+   "city": "",
+   "metric": "korean_population",
+   "value": 18604,
+   "currency": null
+  },
+  {
+   "country": "SE",
+   "city": "",
+   "metric": "korean_population",
+   "value": 11767,
+   "currency": null
+  },
+  {
+   "country": "NL",
+   "city": "",
+   "metric": "korean_population",
+   "value": 10807,
+   "currency": null
+  },
+  {
+   "country": "DK",
+   "city": "",
+   "metric": "korean_population",
+   "value": 9008,
+   "currency": null
+  },
+  {
+   "country": "TW",
+   "city": "",
+   "metric": "korean_population",
+   "value": 5319,
+   "currency": null
+  },
+  {
+   "country": "BE",
+   "city": "",
+   "metric": "korean_population",
+   "value": 5283,
+   "currency": null
+  },
+  {
+   "country": "CL",
+   "city": "",
+   "metric": "korean_population",
+   "value": 2348,
+   "currency": null
+  },
+  {
+   "country": "LU",
+   "city": "",
+   "metric": "korean_population",
+   "value": 915,
+   "currency": null
+  },
+  {
+   "country": "LV",
+   "city": "",
+   "metric": "korean_population",
+   "value": 68,
+   "currency": null
+  },
+  {
+   "country": "GB",
+   "city": "",
+   "metric": "korean_population",
+   "value": 39097,
+   "currency": null
+  },
+  {
+   "country": "FR",
+   "city": "",
+   "metric": "korean_population",
+   "value": 27055,
+   "currency": null
+  },
+  {
+   "country": "HU",
+   "city": "",
+   "metric": "korean_population",
+   "value": 6352,
+   "currency": null
+  },
+  {
+   "country": "ES",
+   "city": "",
+   "metric": "korean_population",
+   "value": 4774,
+   "currency": null
+  },
+  {
+   "country": "IT",
+   "city": "",
+   "metric": "korean_population",
+   "value": 4499,
+   "currency": null
+  },
+  {
+   "country": "PL",
+   "city": "",
+   "metric": "korean_population",
+   "value": 4386,
+   "currency": null
+  },
+  {
+   "country": "CZ",
+   "city": "",
+   "metric": "korean_population",
+   "value": 2824,
+   "currency": null
+  },
+  {
+   "country": "AT",
+   "city": "",
+   "metric": "korean_population",
+   "value": 2681,
+   "currency": null
+  },
+  {
+   "country": "IE",
+   "city": "",
+   "metric": "korean_population",
+   "value": 1176,
+   "currency": null
+  },
+  {
+   "country": "PT",
+   "city": "",
+   "metric": "korean_population",
+   "value": 314,
+   "currency": null
+  },
+  {
+   "country": "AD",
+   "city": "",
+   "metric": "korean_population",
+   "value": 5,
+   "currency": null
+  },
+  {
+   "country": "AU",
+   "city": "",
+   "metric": "rent_week",
+   "value": 200,
+   "currency": "AUD"
+  },
+  {
+   "country": "JP",
+   "city": "도쿄",
+   "metric": "rent_month",
+   "value": 78090,
+   "currency": "JPY"
+  },
+  {
+   "country": "JP",
+   "city": "오사카",
+   "metric": "rent_month",
+   "value": 59660,
+   "currency": "JPY"
+  },
+  {
+   "country": "GB",
+   "city": "런던",
+   "metric": "rent_week",
+   "value": 180,
+   "currency": "GBP"
+  },
+  {
+   "country": "CA",
+   "city": "",
+   "metric": "rent_month",
+   "value": 400,
+   "currency": "CAD"
+  },
+  {
+   "country": "AR",
+   "city": "부에노스아이레스",
+   "metric": "rent_month",
+   "value": 500,
+   "currency": "USD"
+  },
+  {
+   "country": "NZ",
+   "city": "",
+   "metric": "rent_week",
+   "value": 620,
+   "currency": "NZD"
+  },
+  {
+   "country": "NZ",
+   "city": "오클랜드",
+   "metric": "rent_week",
+   "value": 660,
+   "currency": "NZD"
+  },
+  {
+   "country": "NZ",
+   "city": "웰링턴",
+   "metric": "rent_week",
+   "value": 600,
+   "currency": "NZD"
+  },
+  {
+   "country": "TW",
+   "city": "",
+   "metric": "price_level_kr100",
+   "value": 69,
+   "currency": null
+  }
+ ],
+ "rates": [
+  {
+   "currency": "KRW",
+   "krw_per_unit": 1,
+   "rate_date": "2026-11-09"
+  },
+  {
+   "currency": "USD",
+   "krw_per_unit": 1400,
+   "rate_date": "2026-11-09"
+  },
+  {
+   "currency": "EUR",
+   "krw_per_unit": 1500,
+   "rate_date": "2026-11-09"
+  },
+  {
+   "currency": "GBP",
+   "krw_per_unit": 1850,
+   "rate_date": "2026-11-09"
+  },
+  {
+   "currency": "AUD",
+   "krw_per_unit": 900,
+   "rate_date": "2026-11-09"
+  },
+  {
+   "currency": "NZD",
+   "krw_per_unit": 820,
+   "rate_date": "2026-11-09"
+  },
+  {
+   "currency": "CAD",
+   "krw_per_unit": 1000,
+   "rate_date": "2026-11-09"
+  },
+  {
+   "currency": "JPY",
+   "krw_per_unit": 9.3,
+   "rate_date": "2026-11-09"
+  },
+  {
+   "currency": "TWD",
+   "krw_per_unit": 43,
+   "rate_date": "2026-11-09"
+  },
+  {
+   "currency": "HKD",
+   "krw_per_unit": 180,
+   "rate_date": "2026-11-09"
+  },
+  {
+   "currency": "DKK",
+   "krw_per_unit": 200,
+   "rate_date": "2026-11-09"
+  },
+  {
+   "currency": "SEK",
+   "krw_per_unit": 135,
+   "rate_date": "2026-11-09"
+  },
+  {
+   "currency": "CZK",
+   "krw_per_unit": 60,
+   "rate_date": "2026-11-09"
+  },
+  {
+   "currency": "HUF",
+   "krw_per_unit": 3.9,
+   "rate_date": "2026-11-09"
+  },
+  {
+   "currency": "PLN",
+   "krw_per_unit": 350,
+   "rate_date": "2026-11-09"
+  },
+  {
+   "currency": "ILS",
+   "krw_per_unit": 380,
+   "rate_date": "2026-11-09"
+  },
+  {
+   "currency": "CLP",
+   "krw_per_unit": 1.5,
+   "rate_date": "2026-11-09"
+  },
+  {
+   "currency": "BRL",
+   "krw_per_unit": 260,
+   "rate_date": "2026-11-09"
+  },
+  {
+   "currency": "ARS",
+   "krw_per_unit": 1,
+   "rate_date": "2026-11-09"
+  }
+ ],
+ "flights": [
+  {
+   "region": "asia",
+   "krw": 400000
+  },
+  {
+   "region": "oceania",
+   "krw": 1500000
+  },
+  {
+   "region": "north_america",
+   "krw": 1500000
+  },
+  {
+   "region": "europe",
+   "krw": 1500000
+  },
+  {
+   "region": "south_america",
+   "krw": 2500000
+  },
+  {
+   "region": "middle_east",
+   "krw": 1500000
+  }
+ ],
+ "sources": [
+  {
+   "id": 1,
+   "publisher": "워킹홀리데이 인포센터"
+  },
+  {
+   "id": 2,
+   "publisher": "워킹홀리데이 인포센터"
+  },
+  {
+   "id": 3,
+   "publisher": "워킹홀리데이 인포센터"
+  },
+  {
+   "id": 4,
+   "publisher": "워킹홀리데이 인포센터"
+  },
+  {
+   "id": 5,
+   "publisher": "워킹홀리데이 인포센터"
+  },
+  {
+   "id": 6,
+   "publisher": "워킹홀리데이 인포센터"
+  },
+  {
+   "id": 7,
+   "publisher": "워킹홀리데이 인포센터"
+  },
+  {
+   "id": 8,
+   "publisher": "워킹홀리데이 인포센터"
+  },
+  {
+   "id": 9,
+   "publisher": "워킹홀리데이 인포센터"
+  },
+  {
+   "id": 10,
+   "publisher": "워킹홀리데이 인포센터"
+  },
+  {
+   "id": 11,
+   "publisher": "워킹홀리데이 인포센터"
+  },
+  {
+   "id": 12,
+   "publisher": "워킹홀리데이 인포센터"
+  },
+  {
+   "id": 13,
+   "publisher": "워킹홀리데이 인포센터"
+  },
+  {
+   "id": 14,
+   "publisher": "워킹홀리데이 인포센터"
+  },
+  {
+   "id": 15,
+   "publisher": "워킹홀리데이 인포센터"
+  },
+  {
+   "id": 16,
+   "publisher": "워킹홀리데이 인포센터"
+  },
+  {
+   "id": 17,
+   "publisher": "워킹홀리데이 인포센터"
+  },
+  {
+   "id": 18,
+   "publisher": "워킹홀리데이 인포센터"
+  },
+  {
+   "id": 19,
+   "publisher": "워킹홀리데이 인포센터"
+  },
+  {
+   "id": 20,
+   "publisher": "워킹홀리데이 인포센터"
+  },
+  {
+   "id": 21,
+   "publisher": "워킹홀리데이 인포센터"
+  },
+  {
+   "id": 22,
+   "publisher": "워킹홀리데이 인포센터"
+  },
+  {
+   "id": 23,
+   "publisher": "워킹홀리데이 인포센터"
+  },
+  {
+   "id": 24,
+   "publisher": "워킹홀리데이 인포센터"
+  },
+  {
+   "id": 25,
+   "publisher": "워킹홀리데이 인포센터"
+  },
+  {
+   "id": 26,
+   "publisher": "워킹홀리데이 인포센터"
+  },
+  {
+   "id": 27,
+   "publisher": "워킹홀리데이 인포센터"
+  },
+  {
+   "id": 28,
+   "publisher": "워킹홀리데이 인포센터"
+  },
+  {
+   "id": 29,
+   "publisher": "뉴시스"
+  },
+  {
+   "id": 30,
+   "publisher": "워킹홀리데이 인포센터"
+  },
+  {
+   "id": 31,
+   "publisher": "japan-visa.com"
+  },
+  {
+   "id": 32,
+   "publisher": "GOV.UK (웹 아카이브 2026-08)"
+  },
+  {
+   "id": 33,
+   "publisher": "워킹홀리데이 인포센터"
+  },
+  {
+   "id": 34,
+   "publisher": "Euronews (Eurostat 인용)"
+  },
+  {
+   "id": 35,
+   "publisher": "Brussels Times (Eurostat 인용)"
+  },
+  {
+   "id": 36,
+   "publisher": "Study Australia (호주 정부)"
+  },
+  {
+   "id": 37,
+   "publisher": "Employment New Zealand"
+  },
+  {
+   "id": 38,
+   "publisher": "GOV.UK"
+  },
+  {
+   "id": 39,
+   "publisher": "Arletti Partners"
+  },
+  {
+   "id": 40,
+   "publisher": "Government of Canada"
+  },
+  {
+   "id": 41,
+   "publisher": "El Cronista"
+  },
+  {
+   "id": 42,
+   "publisher": "Wikipedia"
+  },
+  {
+   "id": 43,
+   "publisher": "세계은행 WDI"
+  },
+  {
+   "id": 44,
+   "publisher": "재외동포청"
+  },
+  {
+   "id": 45,
+   "publisher": "재외동포청"
+  },
+  {
+   "id": 46,
+   "publisher": "대만 외교부 영사사무국"
+  },
+  {
+   "id": 47,
+   "publisher": "네덜란드 이민청(IND)"
+  },
+  {
+   "id": 48,
+   "publisher": "헝가리 법령정보(2013. évi LXIV)"
+  },
+  {
+   "id": 49,
+   "publisher": "칠레 이민청"
+  },
+  {
+   "id": 50,
+   "publisher": "외교부 해외안전여행"
+  },
+  {
+   "id": 51,
+   "publisher": "Trade Me Property"
+  },
+  {
+   "id": 52,
+   "publisher": "WhereNext"
+  },
+  {
+   "id": 53,
+   "publisher": "모인 블로그"
+  },
+  {
+   "id": 57,
+   "publisher": "Moving2Canada"
+  },
+  {
+   "id": 60,
+   "publisher": "Immigration New Zealand"
+  },
+  {
+   "id": 61,
+   "publisher": "OrbitRemit 블로그"
+  }
+ ],
+ "config": [
+  {
+   "key": "weights",
+   "value": {
+    "work": {
+     "must": 3,
+     "none": 0,
+     "partly": 1.5
+    },
+    "money": 3,
+    "study": 1.5,
+    "language": 3,
+    "priority_each": 1.5
+   }
+  },
+  {
+   "key": "money_tolerance_krw",
+   "value": 2000000
+  },
+  {
+   "key": "work_fail_cap_pct",
+   "value": 59
+  },
+  {
+   "key": "low_result_pct",
+   "value": 60
+  },
+  {
+   "key": "stale_days",
+   "value": {
+    "alert": 90,
+    "badge": 180
+   }
+  },
+  {
+   "key": "mark_values",
+   "value": {
+    "no": 0,
+    "ok": 1,
+    "partial": 0.5
+   }
+  },
+  {
+   "key": "priority_chips",
+   "value": [
+    "money",
+    "easy_job",
+    "english",
+    "career",
+    "two_years",
+    "europe",
+    "low_cost",
+    "sure_pick",
+    "few_koreans",
+    "many_koreans",
+    "near_korea"
+   ]
+  },
+  {
+   "key": "tiers",
+   "value": {
+    "price_kr100": {
+     "low_below": 100,
+     "mid_below": 135
+    },
+    "korean_population": {
+     "mid_from": 5000,
+     "many_from": 30000
+    },
+    "wage_krw_per_hour": {
+     "mid": 9500,
+     "high": 15000,
+     "none": "법정 최저임금 행이 없으면 없음",
+     "monthly_hours": 173.8
+    }
+   }
+  },
+  {
+   "key": "heart_reason_chips",
+   "value": [
+    "culture",
+    "learn_language",
+    "know_someone"
+   ]
+  },
+  {
+   "key": "english_levels",
+   "value": {
+    "work": 3,
+    "basic_max": 1,
+    "interview": 2
+   }
+  },
+  {
+   "key": "close_gap_pp",
+   "value": 10
+  },
+  {
+   "key": "study_unlimited_months",
+   "value": 99
+  },
+  {
+   "key": "what_if_max_rows",
+   "value": 3
+  }
+ ]
+}
