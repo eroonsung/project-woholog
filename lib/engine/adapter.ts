@@ -10,7 +10,7 @@ export interface DbRows {
   programs: { id: number; origin: string; destination: string; kind: string; status: string; age_min: number; age_max: number; selection: EngineCountry['selection']; max_participations: number; stay_months: number; long_stay_months: number | null; annual_quota: number | null }[];
   /** 현재 값만(valid_to 없음) */
   facts: { program_id: number; key: string; value_num: number | null; value_text: string | null; currency: string | null; source_id: number | null; verified_at: string }[];
-  stats: { country: string; city: string; metric: string; value: number; value_max: number | null; currency: string | null; as_of: string; verified_at: string }[];
+  stats: { country: string; city: string; metric: string; value: number; value_max: number | null; currency: string | null; as_of: string; verified_at: string; source_id?: number | null }[];
   rates: { currency: string; krw_per_unit: number; rate_date: string }[];
   flights: { region: string; krw: number }[];
   /** 접수 기간·대표 일자리: 결과의 "현실 미리보기"용(점수에는 쓰지 않음) */

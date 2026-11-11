@@ -311,7 +311,7 @@
 |---|---|
 | detail.title | {country} 워킹홀리데이 |
 | detail.fit.title | 내 적합도 확인하기 |
-| detail.fit.body | 질문 12개로 {country}가 나에게 맞는지 알려줘요 |
+| detail.fit.body | 질문 12개로 {country:이/가} 나에게 맞는지 알려줘요 |
 | detail.fit.cta | {country} 적합도 확인 |
 | detail.toc | 한눈에 / 필요한 돈 / 일·어학 / 신청 방법 / 생활 정보 / 출처 |
 | detail.money.proof | 잔고 증명 |
@@ -328,6 +328,71 @@
 | detail.addCompare | 비교에 담기 |
 | detail.checklist | 체크리스트 만들기 |
 | detail.safety.banner | 외교부 여행경보가 있어요: {text}. 출발 전 해외안전여행 사이트에서 최신 단계를 확인하세요. |
+
+7단계 추가 문구 (출처: 제안 = 원본에 없어 임시로 쓴 문장, 승인 필요)
+| 키 | 문구 | 출처 |
+|---|---|---|
+| countries.count | 총 {total}개국 중 {n}개국 | 제안(7단계) |
+| countries.sort.selection | 선발 방식순 | 제안(7단계) |
+| countries.filter.all | 전체 | 제안(7단계) |
+| countries.filter.ageApply | 적용 | 제안(7단계) |
+| countries.filter.ageLabel | 내 나이 | 제안(7단계) |
+| countries.sort.money | 필요한 돈 적은 순 | 제안(7단계, 정렬 id = money) |
+| countries.region.asia | 아시아 | 제안(7단계) |
+| countries.region.oceania | 오세아니아 | 제안(7단계) |
+| countries.region.europe | 유럽 | 제안(7단계) |
+| countries.region.america | 아메리카 | 제안(7단계) |
+| countries.region.middle_east | 중동 | 제안(7단계) |
+| countries.reset | 필터 초기화 | 제안(7단계) |
+| countries.col.country | 나라 | 제안(7단계) |
+| countries.col.age | 나이 | 제안(7단계) |
+| countries.col.stay | 체류 | 제안(7단계) |
+| countries.col.selection | 선발 | 제안(7단계) |
+| countries.col.money | 필요한 돈 | 제안(7단계) |
+| countries.col.wage | 최저 시급 | 제안(7단계) |
+| countries.col.study | 어학원 | 제안(7단계) |
+| countries.col.work | 일 제한 | 제안(7단계) |
+| detail.safety.bannerNoNote | 외교부 여행경보가 있어요. 출발 전 해외안전여행 사이트에서 최신 단계를 확인하세요. | 제안(7단계) |
+| detail.comingSoon | 협정이 아직 발효되지 않았어요. 발효되면 값을 채울게요. | 제안(7단계) |
+| detail.money.none | 없어요 | 제안(7단계) |
+| detail.money.health | 보건부담금 | 제안(7단계) |
+| detail.work.study.unknown | 어학원 기간은 확인 중이에요 | 제안(7단계) |
+| detail.work.job | 대표 일자리: {job} | 제안(7단계) |
+| detail.work.note | 참고: {text} | 제안(7단계) |
+| detail.apply.apply_method | 신청 방법 | 제안(7단계) |
+| detail.apply.extension | 체류 연장 | 제안(7단계) |
+| detail.apply.insurance_required | 보험 | 제안(7단계) |
+| detail.apply.medical_check | 건강검진 | 제안(7단계) |
+| detail.apply.proof_note | 잔고 증명 | 제안(7단계) |
+| detail.apply.special_note | 참고 | 제안(7단계) |
+| detail.life.price | 물가 | 제안(7단계) |
+| detail.life.price.n | 물가 지수 {n} (한국 = 100) | 제안(7단계) |
+| detail.toc.title | 목차 | 제안(7단계) |
+| detail.toc.summary | 한눈에 | 제안(7단계) |
+| detail.toc.money | 필요한 돈 | 제안(7단계) |
+| detail.toc.work | 일·어학 | 제안(7단계) |
+| detail.toc.apply | 신청 방법 | 제안(7단계) |
+| detail.toc.life | 생활 정보 | 제안(7단계) |
+| detail.toc.apps | 필수 앱 | 제안(7단계) |
+| detail.toc.partners | 추천 준비물 | 제안(7단계) |
+| detail.toc.sources | 출처 | 제안(7단계) |
+| detail.section.summary | 한눈에 보기 | 제안(7단계) |
+| detail.section.money | 필요한 돈 | 제안(7단계) |
+| detail.section.work | 일·어학 규정 | 제안(7단계) |
+| detail.section.apply | 신청 방법 | 제안(7단계) |
+| detail.section.life | 생활 정보 | 제안(7단계) |
+| detail.section.sources | 출처 | 제안(7단계) |
+| detail.back | 29개국 비교 | 제안(7단계) |
+| detail.verified | 정보 확인일 {date} | 제안(7단계) |
+| detail.sources.date | 확인일: {date} | 제안(7단계) |
+| apps.cat.transport | 교통 | 제안(7단계) |
+| apps.cat.bank | 은행·송금 | 제안(7단계) |
+| apps.cat.telecom | 통신 | 제안(7단계) |
+| apps.cat.job | 일자리 | 제안(7단계) |
+| apps.cat.housing | 집 | 제안(7단계) |
+| apps.cat.map | 지도 | 제안(7단계) |
+| apps.cat.life | 생활 | 제안(7단계) |
+| apps.cat.safety | 안전 | 제안(7단계) |
 
 ## 14. 체크리스트
 | 키 | 문구 |

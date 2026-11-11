@@ -27,12 +27,25 @@ export interface CompareCountry {
 
 export interface CompareOption { code: string; nameKo: string }
 
-const checkingCell = (): Cell => ({ text: t('status.checking'), extra: [], checking: true });
+export const checkingCell = (): Cell => ({ text: t('status.checking'), extra: [], checking: true });
 const cell = (text: string, extra: string[] = []): Cell => ({ text, extra, checking: false });
 
 /** 비교할 수 있는 나라(active 프로그램): 이름(가나다) 순 */
 export function compareOptions(rows: DbRows, today: string): CompareOption[] {
   return adaptRows(rows, { asOf: today }).active.map((a) => ({ code: a.code, nameKo: a.nameKo }));
+}
+
+/** 일 제한 줄(있는 것만): 한 고용주 기간 · 총 취업 기간 · 정규직 불가 · 금지 업종. 나라 상세도 같은 줄을 쓴다. */
+export function workLimitLines(fact: (key: string) => { value_num: number | null; value_text: string | null } | undefined): string[] {
+  const employer = fact('employer_limit_months')?.value_num;
+  const total = fact('work_limit_months')?.value_num;
+  const prohibited = fact('prohibited_work')?.value_text;
+  return [
+    employer != null ? t('detail.work.employer', { months: employer }) : null,
+    total != null ? t('compare.work.total', { months: total }) : null,
+    fact('no_fulltime')?.value_num === 1 ? t('detail.work.noFulltime') : null,
+    prohibited ? t('detail.work.prohibited', { text: prohibited }) : null,
+  ].filter((x): x is string => x !== null);
 }
 
 export function buildCompare(rows: DbRows, codes: readonly string[], today: string): CompareCountry[] {
@@ -80,15 +93,7 @@ export function buildCompare(rows: DbRows, codes: readonly string[], today: stri
     }
 
     // 일 제한: 한 고용주 기간 · 총 취업 기간 · 정규직 불가 · 금지 업종. 하나도 없으면 "알려진 제한 없음"
-    const employer = fact('employer_limit_months')?.value_num;
-    const total = fact('work_limit_months')?.value_num;
-    const prohibited = fact('prohibited_work')?.value_text;
-    const workLines = [
-      employer != null ? t('detail.work.employer', { months: employer }) : null,
-      total != null ? t('compare.work.total', { months: total }) : null,
-      fact('no_fulltime')?.value_num === 1 ? t('detail.work.noFulltime') : null,
-      prohibited ? t('detail.work.prohibited', { text: prohibited }) : null,
-    ].filter((x): x is string => x !== null);
+    const workLines = workLimitLines(fact);
     const work = workLines.length ? cell(workLines[0]!, workLines.slice(1)) : cell(t('compare.work.none'));
 
     // 어학원

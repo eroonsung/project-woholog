@@ -30,7 +30,7 @@ export async function fetchAdapterRows(): Promise<DbRows> {
     rows<DbRows['countries'][number]>('countries', 'code,name_ko,region,english,languages,in_europe,near_korea,safety_level,safety_note'),
     rows<DbRows['programs'][number]>('programs', 'id,origin,destination,kind,status,age_min,age_max,selection,max_participations,stay_months,long_stay_months,annual_quota'),
     current<DbRows['facts'][number]>('program_facts', 'program_id,key,value_num,value_text,currency,source_id,verified_at'),
-    current<DbRows['stats'][number]>('country_stats', 'country,city,metric,value,value_max,currency,as_of,verified_at'),
+    current<DbRows['stats'][number]>('country_stats', 'country,city,metric,value,value_max,currency,as_of,verified_at,source_id'),
     rows<DbRows['rates'][number]>('exchange_rates', 'currency,krw_per_unit,rate_date'),
     rows<DbRows['flights'][number]>('flight_estimates', 'region,krw'),
     rows<DbRows['windows'][number]>('application_windows', 'program_id,opens_on,closes_on,note,verified_at'),
@@ -39,4 +39,19 @@ export async function fetchAdapterRows(): Promise<DbRows> {
     rows<DbRows['config'][number]>('scoring_config', 'key,value'),
   ]);
   return { countries, programs, facts, stats, rates, flights, windows, jobTypes, sources, config };
+}
+
+/** 나라 상세(7단계)에만 쓰는 값: 필수 앱, 출처 링크 */
+export interface CountryAppRow { country: string; name: string; category: string; url: string | null; note_ko: string | null; verified_at: string }
+export interface SourceLinkRow { id: number; url: string; publisher: string }
+
+export async function fetchDetailExtras(): Promise<{ apps: CountryAppRow[]; sourceLinks: SourceLinkRow[] }> {
+  const db = getPublicClient();
+  const [apps, links] = await Promise.all([
+    db.from('country_apps').select('country,name,category,url,note_ko,verified_at').eq('active', true).limit(5000),
+    db.from('sources').select('id,url,publisher').limit(5000),
+  ]);
+  if (apps.error) throw new Error(`country_apps 읽기 실패: ${apps.error.message}`);
+  if (links.error) throw new Error(`sources 읽기 실패: ${links.error.message}`);
+  return { apps: (apps.data ?? []) as CountryAppRow[], sourceLinks: (links.data ?? []) as SourceLinkRow[] };
 }
