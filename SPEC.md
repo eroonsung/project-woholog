@@ -320,7 +320,7 @@
 | 형식 오류 | 칸 아래 빨간 글씨, 모달 유지 |
 | 너무 잦은 요청 / 서버 오류 | S09_soon-modal_error: 문구 + 다시 시도. 입력값은 남겨 둔다 |
 
-- section: 헤더·준비 중 화면은 `launch`, To Korea는 `to_korea`.
+- section: 헤더·준비 중 화면은 `launch`, To Korea는 `to_korea`. DB `launch_subscribers.section`에는 `launch`가 **`from_korea`**로 저장된다(`to_korea`는 그대로, D-123).
 - 어떤 버튼·기능을 보고 신청했는지는 저장하지 않는다.
 
 ---

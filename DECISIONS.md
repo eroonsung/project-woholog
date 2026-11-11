@@ -478,6 +478,12 @@
 - **새 문구**: 한국어 46개·영어 26개, 모두 "제안"(`docs/content/copy_ko.md`). `copy_en.json` 맨 앞의 의미 없던 `"key": "text"` 줄은 지웠다.
 - **테스트는 운영 DB에 쓰지 않았다**: API는 가짜 DB로, 화면은 `/api/*` 요청을 가로채는 가짜 응답으로 확인했다(POST 전부 가로챔).
 
+## D-123. 9단계 승인 (2026-11-11)
+- **section 연결 승인**: SPEC의 `launch`는 DB `launch_subscribers.section`에 `from_korea`로 저장한다(마이그레이션 없음). SPEC.md 11장에 한 줄 적었다.
+- **처리방침 문서 파일 승인(CLAUDE.md 규칙 4 예외)**: 본문은 `content/privacy_ko.json`·`privacy_en.json`이고 원본은 `docs/legal/privacy.md` 하나다. 고칠 때는 원본 md를 고치고 `python3 -I scripts/build_privacy_content.py`로 다시 변환한다. CLAUDE.md 규칙 4에 예외로 적었다.
+- **To Korea에서 근거 없는 숫자·주장(1,240+ travelers, officially partnering, 25+ partner nations)을 뺀 것 승인.** 새 문구(한국어 46개·영어 26개)는 오픈 전 전체 문구 검토 때 다시 본다.
+- **운영 확인 허락**: push 배포 성공 후 신청 1번(`woholog-test+1@example.com`, from_korea), To Korea 신청 1번(`woholog-test+2@example.com`), 제보 1번("테스트 제보입니다. 오픈 전 삭제")과 같은 이메일 재신청("이미 신청" 응답)을 확인하고, 만든 행은 `docs/ops/test_data.md`에 기록한다(결과는 아래 D-124).
+
 ---
 
 ## 열린 질문 (정해지면 위로 옮긴다)

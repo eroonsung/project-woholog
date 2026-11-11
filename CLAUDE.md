@@ -51,7 +51,7 @@
 1. **계산은 `lib/engine`에서만.** 화면에서 점수·%·✓△✗·후보 나라를 계산하지 않는다.
 2. **사실 값은 DB에서만.** 나라 규칙, 금액, 나이, 시급, 날짜를 코드에 쓰지 않는다. 테스트 데이터만 `tests/fixtures`에 둔다.
 3. **가중치·기준값은 `scoring_config`에서 읽는다.** 기본값이 꼭 필요하면 `lib/engine/defaults.ts` 한 곳에만 둔다.
-4. **문구는 `content/copy_ko.json`(영어 화면은 `copy_en.json`)의 키로만.** 컴포넌트에 문장을 쓰지 않는다. 문구가 없으면 키를 추가하고 알려 준다.
+4. **문구는 `content/copy_ko.json`(영어 화면은 `copy_en.json`)의 키로만.** 컴포넌트에 문장을 쓰지 않는다. 문구가 없으면 키를 추가하고 알려 준다. **예외: 처리방침 같은 긴 문서는 `content/privacy_ko.json`·`privacy_en.json`(원본 `docs/legal/privacy.md` 하나, 고칠 때는 `scripts/build_privacy_content.py`로 다시 변환, D-123).**
 5. **색·간격·글자 크기는 디자인 토큰만.** 임의의 hex 값이나 `mt-[13px]` 같은 값을 쓰지 않는다.
 6. **엔진을 고치면 회귀 테스트(가상 사용자 6명)를 반드시 돌린다.** 기대값이 달라지면 나라별 변화표를 먼저 보여 주고 허락받는다.
 7. **DB 구조는 `supabase/migrations`의 새 파일로만 바꾼다.** 기존 파일을 고치지 않는다. RLS를 끄거나 정책을 넓히지 않는다.
