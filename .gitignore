@@ -1,0 +1,32 @@
+# 비밀키: 절대 커밋하지 않는다 (CLAUDE.md 4장 규칙 8)
+.env
+.env.*
+!.env.example
+
+# 의존성·빌드
+node_modules/
+.next/
+out/
+build/
+coverage/
+*.tsbuildinfo
+next-env.d.ts
+
+# Vercel·Supabase 로컬
+.vercel/
+supabase/.temp/
+supabase/.branches/
+
+# Playwright
+test-results/
+playwright-report/
+
+# 로그·OS·에디터
+npm-debug.log*
+.DS_Store
+.idea/
+.vscode/
+
+# Python 캐시
+__pycache__/
+*.pyc
