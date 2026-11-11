@@ -95,11 +95,11 @@ app/
   dev/result/page.tsx         결과 카드 경우 확인용(개발 서버만, 운영 404)
   api/result/route.ts  api/subscribe/route.ts  api/report/route.ts  api/vote/route.ts
 components/
-  ui/  layout/  quiz/  result/  countries/  checklist/  soon/  shared/
+  ui/  layout/  home/  quiz/  result/  countries/  checklist/  soon/  shared/
 lib/
   engine/   types.ts score.ts marks.ts adapter.ts reasons.ts whatIf.ts candidates.ts defaults.ts index.ts
   data/     supabase.ts(읽기, 익명 키) admin.ts·mutations.ts(쓰기, 서비스 키, 서버 전용) queries.ts (화면에서 직접 쿼리 금지)
-  result/   types.ts compute.ts card.ts preview.ts previewText.ts text.ts   저장하는 결과(스냅샷)·서버 계산·맨 위 카드 고르기·현실 미리보기·문구 풀기
+  result/   types.ts compute.ts card.ts example.ts preview.ts previewText.ts text.ts   저장하는 결과(스냅샷)·서버 계산·맨 위 카드 고르기·현실 미리보기·문구 풀기
   josa.ts      조사 고르기(은/는·이/가…), 문구에서는 {이름:이/가}
   server/   ip.ts limits.ts       IP 해시·요청 제한 기준(SPEC 0.8)
   site.ts      오픈 여부(NEXT_PUBLIC_SITE_LIVE)
@@ -108,7 +108,7 @@ lib/
   checklist.ts 항목 + 출국일 → 단계·날짜, 링크 상태 줄이기·풀기
   copy.ts  format.ts  age.ts(생년월일 → 만 나이)  analytics.ts  rateLimit.ts
 content/
-  copy_ko.json  copy_en.json  features_ko.json  partners.json  nav_ko.json  landing_countries.json
+  copy_ko.json  copy_en.json  features_ko.json  partners.json  nav_ko.json  landing_countries.json  landing_example.json
 supabase/
   migrations/  001_schema_v2_1.sql  002_feature_votes.sql  003_extension_fact_key.sql  004_proof_amount_with_ticket.sql  005_rate_limit_security.sql
   seed/seed_v1_1.sql  seed/seed_checklist_v1.sql  seed/seed_engine_v1.sql  seed/seed_proof_ticket_v1.sql  seed/seed_nl_proof_v1.sql

@@ -636,3 +636,7 @@
 | result.rank | {n}위 | Figma |
 | money.man | {man}만 원 | SPEC 0.3 |
 | result.shareSlot | 공유 기능은 곧 열려요 | 승인(2026-11-11) |
+| landing.continue | 이어서 하기 (Q{n}부터) | SPEC 2장 |
+| landing.compare | 29개국 비교표 보기 | Figma |
+| landing.why.title | 워홀로그가 특별한 이유 | Figma |
+| landing.example.note | 실제 계산 결과 예시예요 | 제안 |

@@ -469,5 +469,9 @@
   "mark.no": "어려워요",
   "result.rank": "{n}위",
   "money.man": "{man}만 원",
-  "result.shareSlot": "공유 기능은 곧 열려요"
+  "result.shareSlot": "공유 기능은 곧 열려요",
+  "landing.continue": "이어서 하기 (Q{n}부터)",
+  "landing.compare": "29개국 비교표 보기",
+  "landing.why.title": "워홀로그가 특별한 이유",
+  "landing.example.note": "실제 계산 결과 예시예요"
 }

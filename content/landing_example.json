@@ -1,0 +1,48 @@
+{
+  "_note": "첫 화면 예시 카드용 답(가상 사용자 A Yvonne). 숫자는 지어내지 않고 빌드(재생성)할 때 엔진이 DB 값으로 계산한다. SPEC.md 2장, D-064·D-109",
+  "answers": {
+    "q1": {
+      "none": true,
+      "codes": []
+    },
+    "q2": 33,
+    "q3": {
+      "together": false
+    },
+    "q4": {
+      "none": false,
+      "codes": [
+        "AU",
+        "CA",
+        "DE"
+      ]
+    },
+    "q5": "y1",
+    "q6": 500,
+    "q7": 3,
+    "q8": {
+      "none": false,
+      "languages": [
+        "독일어"
+      ]
+    },
+    "q9": {
+      "unknown": false,
+      "jobs": [
+        "office",
+        "hotel"
+      ]
+    },
+    "q10": "must",
+    "q11": "none",
+    "q12": {
+      "unknown": false,
+      "priorities": [
+        "money",
+        "easy_job",
+        "two_years"
+      ],
+      "hearts": []
+    }
+  }
+}
