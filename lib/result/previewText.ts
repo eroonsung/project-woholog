@@ -1,6 +1,6 @@
 import { t } from '@/lib/copy';
 import { formatKoDate, formatKoRange, formatNumber } from '@/lib/format';
-import { isLate, nextApply } from './preview';
+import { isLate, nextApply, type NextApply } from './preview';
 import type { StoredMoney, StoredPreview } from './types';
 
 /** "현실 미리보기" 4줄 (SPEC 4.4): 필요한 돈 · 대표 일자리+시급 · 월세 · 다음 접수. 값이 없는 줄은 "확인 중". 문구는 copy 키만 쓴다. */
@@ -22,6 +22,20 @@ export function moneyText(m: StoredMoney): string {
 }
 
 const place = (city: string) => (city ? `(${city})` : '');
+
+/** 다음 접수 글자(앞에 "다음 접수"를 붙이지 않은 값). unknown이면 빈 글자 */
+export function nextApplyText(apply: NextApply): string {
+  switch (apply.kind) {
+    case 'window': {
+      const date = apply.closesOn ? formatKoRange(apply.opensOn, apply.closesOn) : formatKoDate(apply.opensOn);
+      return apply.note ? `${date} (${apply.note})` : date;
+    }
+    case 'always': return t('preview.next.always');
+    case 'first_come': return apply.quota ? t('preview.next.firstCome', { n: formatNumber(apply.quota) }) : t('preview.next.firstComeNoQuota');
+    case 'lottery': return apply.quota ? t('preview.next.lottery', { n: formatNumber(apply.quota) }) : t('preview.next.lotteryNoQuota');
+    default: return '';
+  }
+}
 
 export function previewRows(preview: StoredPreview | undefined, today: string, when: string | undefined): PreviewRow[] {
   const checking = t('status.checking');
@@ -61,14 +75,7 @@ export function previewRows(preview: StoredPreview | undefined, today: string, w
 
   // 다음 접수: 오늘 이후 가장 가까운 기간 → 상시 → 선착순(연 N명) → 추첨 → 아직 안 나왔어요
   const apply = nextApply(preview.next, today);
-  let nextValue: string;
-  if (apply.kind === 'window') {
-    const date = apply.closesOn ? formatKoRange(apply.opensOn, apply.closesOn) : formatKoDate(apply.opensOn);
-    nextValue = t('preview.next', { window: apply.note ? `${date} (${apply.note})` : date });
-  } else if (apply.kind === 'always') nextValue = t('preview.next', { window: t('preview.next.always') });
-  else if (apply.kind === 'first_come') nextValue = t('preview.next', { window: apply.quota ? t('preview.next.firstCome', { n: formatNumber(apply.quota) }) : t('preview.next.firstComeNoQuota') });
-  else if (apply.kind === 'lottery') nextValue = t('preview.next', { window: apply.quota ? t('preview.next.lottery', { n: formatNumber(apply.quota) }) : t('preview.next.lotteryNoQuota') });
-  else nextValue = t('preview.next.unknown');
+  const nextValue = apply.kind === 'unknown' ? t('preview.next.unknown') : t('preview.next', { window: nextApplyText(apply) });
   const nextRow: PreviewRow = { id: 'next', label: label('next'), value: nextValue, extra: isLate(apply, when, today) ? t('preview.next.late') : undefined };
 
   return [moneyRow, jobRow, rentRow, nextRow];

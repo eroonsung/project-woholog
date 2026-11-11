@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
+import { CompareBar } from '@/components/compare/CompareBar';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
 import { t } from '@/lib/copy';
@@ -39,6 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <div id="main" tabIndex={-1} className="flex flex-1 flex-col outline-none">{children}</div>
         <Footer />
+        <CompareBar />
       </body>
     </html>
   );

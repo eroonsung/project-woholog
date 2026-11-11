@@ -174,6 +174,57 @@
 | compare.rows | 적합도 / 돈 / 언어 / 일 / 어학원 / 체류 기간 / 선발 방식 / 최저 시급 / 월세 / 한국인 수 / 다음 접수 |
 | compare.summary | {a}는 {strengthA}에서 앞서고, {b}는 {strengthB}에서 앞서요. |
 
+6단계 추가 문구 (출처: 제안 = 원본에 없어 임시로 쓴 문장, 승인 필요)
+| 키 | 문구 | 출처 |
+|---|---|---|
+| compare.sub | 고른 나라의 핵심 조건을 한눈에 비교해요. | 제안(6단계) |
+| compare.back.result | 결과로 돌아가기 | 제안(6단계) |
+| compare.back.countries | 29개국 비교표로 | 제안(6단계) |
+| compare.corner | 비교 항목 | 제안(6단계) |
+| compare.best | 적합도 최고 | 제안(6단계) |
+| compare.fit | 적합도 {pct}% | 제안(6단계) |
+| compare.fit.none | 이 결과에 없는 나라예요 | 제안(6단계) |
+| compare.fit.title | 내 답으로 본 조건 | 제안(6단계) |
+| compare.facts.title | 나라 정보 | 제안(6단계) |
+| compare.remove | {country} 빼기 | 제안(6단계) |
+| compare.add.limit | (최대 3개) | 제안(6단계) |
+| compare.add.max | 3개까지 비교할 수 있어요 | 제안(6단계) |
+| compare.add.search | 나라 이름 검색 | 제안(6단계) |
+| compare.add.empty | 찾는 나라가 없어요 | 제안(6단계) |
+| compare.pick.title | 비교할 나라를 2개 이상 골라 주세요 | 제안(6단계) |
+| compare.row.age | 나이 | 제안(6단계) |
+| compare.row.stay | 기간·횟수 | 제안(6단계) |
+| compare.row.selection | 선발 방식 | 제안(6단계) |
+| compare.row.money | 필요한 돈 | 제안(6단계) |
+| compare.row.wage | 최저 시급 | 제안(6단계) |
+| compare.row.rent | 월세 | 제안(6단계) |
+| compare.row.work | 일 제한 | 제안(6단계) |
+| compare.row.study | 어학원 | 제안(6단계) |
+| compare.row.next | 다음 접수 | 제안(6단계) |
+| compare.row.korean | 한국인 | 제안(6단계) |
+| compare.row.distance | 거리 | 제안(6단계) |
+| compare.row.source | 출처 확인일 | 제안(6단계) |
+| compare.age | 만 {min}~{max}세 | 제안(6단계) |
+| compare.stay.long | 연장하면 최대 {long}개월 | 제안(6단계) |
+| compare.sel.unlimited | 인원 제한 없음 | 제안(6단계) |
+| compare.sel.first_come | 선착순 | 제안(6단계) |
+| compare.sel.lottery | 추첨 | 제안(6단계) |
+| compare.sel.quota | 연 {n}명 | 제안(6단계) |
+| compare.wage.krw | 약 {krw}원 | 제안(6단계) |
+| compare.wage.derived | 월급을 월 근무 시간으로 나눈 값이에요 | 제안(6단계) |
+| compare.work.total | 총 {months}개월까지 일할 수 있어요 | 제안(6단계) |
+| compare.work.none | 알려진 제한이 없어요 | 제안(6단계) |
+| compare.study | 최대 {months}개월 | 제안(6단계) |
+| compare.korean.high | 많아요 | 제안(6단계) |
+| compare.korean.mid | 보통이에요 | 제안(6단계) |
+| compare.korean.low | 적어요 | 제안(6단계) |
+| compare.korean.n | 약 {n}명 | 제안(6단계) |
+| compare.toggle.add | 비교에 담기 | SPEC 6장 |
+| compare.toggle.remove | 비교에서 빼기 | SPEC 6장 |
+| compare.full | 3개까지 담을 수 있어요 | SPEC 6장 |
+| compare.bar | 비교하기 ({n}) | 제안(6단계) |
+| compare.bar.hint | 담은 나라를 나란히 볼 수 있어요 | 제안(6단계) |
+
 ## 8. 공유
 | 키 | 문구 |
 |---|---|

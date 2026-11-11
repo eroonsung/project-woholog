@@ -94,13 +94,15 @@ app/
   not-found.tsx, error.tsx, robots.ts(오픈 전 전체 Disallow, D-092)
   report/page.tsx             정보 제보 임시 화면(9단계에 모달로 교체)
   dev/result/page.tsx         결과 카드 경우 확인용(개발 서버만, 운영 404)
+  dev/compare/page.tsx        비교에 담기 버튼·막대 확인용(개발 서버만, 운영 404)
   api/result/route.ts  api/subscribe/route.ts  api/report/route.ts  api/vote/route.ts
 components/
-  ui/  layout/  home/  quiz/  result/  countries/  checklist/  soon/  shared/
+  ui/  layout/  home/  compare/  quiz/  result/  countries/  checklist/  soon/  shared/
 lib/
   engine/   types.ts score.ts marks.ts adapter.ts reasons.ts whatIf.ts candidates.ts defaults.ts index.ts
   data/     supabase.ts(읽기, 익명 키) admin.ts·mutations.ts(쓰기, 서비스 키, 서버 전용) queries.ts (화면에서 직접 쿼리 금지)
   result/   types.ts compute.ts card.ts example.ts preview.ts previewText.ts text.ts   저장하는 결과(스냅샷)·서버 계산·맨 위 카드 고르기·현실 미리보기·문구 풀기
+  compare/  parse.ts build.ts fit.ts store.ts   비교 주소 읽기·표 값·내 결과 줄·비교에 담기 저장(6단계)
   josa.ts      조사 고르기(은/는·이/가…), 문구에서는 {이름:이/가}
   server/   ip.ts limits.ts       IP 해시·요청 제한 기준(SPEC 0.8)
   site.ts      오픈 여부(NEXT_PUBLIC_SITE_LIVE)

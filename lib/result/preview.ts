@@ -16,16 +16,22 @@ export function pickJob(rows: DbRows['jobTypes'], country: string, wanted: JobId
   return found ? { code: found.job_code, text: found.description_ko } : null;
 }
 
-export function buildPreview(rows: DbRows, code: string, asOf: string, config: ScoringConfig, wanted: JobId[], needMan: number | null): StoredPreview | null {
-  const program = rows.programs.find((p) => p.origin === 'KR' && p.destination === code && p.kind === 'working_holiday');
-  const country = rows.countries.find((c) => c.code === code);
-  if (!program || !country) return null;
-
+/** 기준일 이전의 가장 최근 환율(통화별)과 그 중 가장 늦은 기준일 */
+export function latestRates(rows: DbRows, asOf: string): { rate: Map<string, number>; fxDate: string | null } {
   const rate = new Map<string, number>();
   let fxDate: string | null = null;
   for (const r of [...rows.rates].sort((a, b) => a.rate_date.localeCompare(b.rate_date))) {
     if (r.rate_date <= asOf) { rate.set(r.currency, r.krw_per_unit); fxDate = r.rate_date; }
   }
+  return { rate, fxDate };
+}
+
+export function buildPreview(rows: DbRows, code: string, asOf: string, config: ScoringConfig, wanted: JobId[], needMan: number | null): StoredPreview | null {
+  const program = rows.programs.find((p) => p.origin === 'KR' && p.destination === code && p.kind === 'working_holiday');
+  const country = rows.countries.find((c) => c.code === code);
+  if (!program || !country) return null;
+
+  const { rate, fxDate } = latestRates(rows, asOf);
   const krwPer = (currency: string | null) => rate.get(currency ?? 'KRW');
   const fact = (key: string) => rows.facts.find((f) => f.program_id === program.id && f.key === key);
   const money = (key: string): StoredMoney | null => {
