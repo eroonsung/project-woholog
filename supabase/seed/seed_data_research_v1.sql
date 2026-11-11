@@ -1,5 +1,5 @@
 -- 오픈 전 데이터 조사 결과 반영 (D-136, docs/content/data_research_v1.md). 마이그레이션 007 다음에 실행. 확인일 2026-11-11.
--- 잔고 증명 5곳(IE·ES·PL·AT·IL 숫자 추가, PT는 숫자 없이 메모), 증빙 안내 메모 6곳, 비행 정보 15곳, 환율 19개(새 기준일로 추가, 옛 값은 기록으로 남김).
+-- 잔고 증명 4곳(IE·ES·PL·IL 숫자 추가, PT·AT는 숫자 없이 메모만), 증빙 안내 메모 6곳(AT는 needs_check), 비자 비용 6곳 needs_check, 비행 정보 15곳, 환율 19개(새 기준일로 추가, 옛 값은 기록으로 남김).
 -- 값은 모두 조사 파일의 값이다. 여러 번 실행해도 같은 결과(추가는 on conflict do nothing, 수정은 같은 값으로 덮어씀).
 begin;
 select set_config('app.change_reason', 'D-136: 오픈 전 데이터 조사 반영(잔고 증명·비행 정보·환율)', true);
@@ -25,7 +25,7 @@ insert into sources (url, publisher, grade, watch, note) values
   ('https://www.x-rates.com/table/?from=KRW&amount=1', 'x-rates.com 환율표', 'other', false, '데이터 조사 2026-11-11')
 on conflict (url) do nothing;
 
--- 2) 잔고 증명 금액 (proof_amount는 이 5곳에 아직 없다: 새로 넣는다)
+-- 2) 잔고 증명 금액 (proof_amount는 이 4곳에 아직 없다: 새로 넣는다. 오스트리아는 월 기준을 체류 개월로 곱할지 원문으로 확정할 수 없어서 숫자 없이 메모만, D-136)
 insert into program_facts (program_id, key, value_num, currency, source_id, verified_at, note, needs_check)
 select p.id, 'proof_amount', 1500, 'EUR', (select id from sources where url = 'https://whic.mofa.go.kr/whic/nation/info.jsp?boardNo=100014'), '2026-11-11', '페이지가 2024 모집 기준. 2027 모집 공고 나오면 재확인', true
 from programs p where p.origin = 'KR' and p.destination = 'IE' and p.kind = 'working_holiday'
@@ -37,10 +37,6 @@ on conflict (program_id, key) where valid_to is null do nothing;
 insert into program_facts (program_id, key, value_num, currency, source_id, verified_at, note, needs_check)
 select p.id, 'proof_amount', 8412, 'PLN', (select id from sources where url = 'https://whic.mofa.go.kr/whic/nation/info.jsp?boardNo=10952'), '2026-11-11', '월 701PLN × 12개월. 편도 항공권이면 2,500PLN 더 필요해요', false
 from programs p where p.origin = 'KR' and p.destination = 'PL' and p.kind = 'working_holiday'
-on conflict (program_id, key) where valid_to is null do nothing;
-insert into program_facts (program_id, key, value_num, currency, source_id, verified_at, note, needs_check)
-select p.id, 'proof_amount', 1031 * p.stay_months, 'EUR', (select id from sources where url = 'https://whic.mofa.go.kr/whic/nation/info.jsp?boardNo=100016'), '2026-11-11', '월 약 1,031유로 × 체류 개월(만 24세 이상 기준). 2026년 오스트리아 기준은 더 높아서 재확인', true
-from programs p where p.origin = 'KR' and p.destination = 'AT' and p.kind = 'working_holiday'
 on conflict (program_id, key) where valid_to is null do nothing;
 insert into program_facts (program_id, key, value_num, currency, source_id, verified_at, note, needs_check)
 select p.id, 'proof_amount', 3000, 'USD', (select id from sources where url = 'https://whic.mofa.go.kr/whic/nation/info.jsp?boardNo=100021'), '2026-11-11', '본인 명의 잔고증명서', false
@@ -60,12 +56,17 @@ from programs p where f.program_id = p.id and f.key = 'proof_note' and f.valid_t
 update program_facts f set value_text = '월 701PLN 기준 12개월치예요. 편도 항공권이면 2,500PLN 더 필요해요', source_id = (select id from sources where url = 'https://whic.mofa.go.kr/whic/nation/info.jsp?boardNo=10952'), verified_at = '2026-11-11'
 from programs p where f.program_id = p.id and f.key = 'proof_note' and f.valid_to is null
   and p.origin = 'KR' and p.destination = 'PL' and p.kind = 'working_holiday';
-update program_facts f set value_text = '공식 최소액은 없고, 만 24세 미만은 월 약 570유로 기준이에요', source_id = (select id from sources where url = 'https://whic.mofa.go.kr/whic/nation/info.jsp?boardNo=100016'), verified_at = '2026-11-11'
+update program_facts f set value_text = '공식 최소액은 없어요. 대사관 안내로는 만 24세 미만 월 약 570유로, 만 24세 이상 월 약 1,031유로가 잔고에 있으면 무난해요', source_id = (select id from sources where url = 'https://whic.mofa.go.kr/whic/nation/info.jsp?boardNo=100016'), verified_at = '2026-11-11', needs_check = true
 from programs p where f.program_id = p.id and f.key = 'proof_note' and f.valid_to is null
   and p.origin = 'KR' and p.destination = 'AT' and p.kind = 'working_holiday';
 update program_facts f set value_text = '본인 명의 잔고증명서와 왕복 항공권이 필요해요', source_id = (select id from sources where url = 'https://whic.mofa.go.kr/whic/nation/info.jsp?boardNo=100021'), verified_at = '2026-11-11'
 from programs p where f.program_id = p.id and f.key = 'proof_note' and f.valid_to is null
   and p.origin = 'KR' and p.destination = 'IL' and p.kind = 'working_holiday';
+
+-- 3-2) 비자 비용 6곳: 값은 바꾸지 않고 오픈 전 재확인 표시만(DB 값과 조사값이 달라서, docs/content/data_review_v1.md 표 참고)
+update program_facts f set needs_check = true
+from programs p where f.program_id = p.id and f.key = 'visa_fee' and f.valid_to is null
+  and p.origin = 'KR' and p.kind = 'working_holiday' and p.destination in ('IE', 'IL', 'PL', 'ES', 'PT', 'AT');
 
 -- 4) 비행 정보 (FI는 값·출처 그대로, flight_needs_check = true 유지)
 update countries set flight_direct = true, flight_hours = 14, flight_note = '대한항공·KLM 직항', flight_source_id = (select id from sources where url = 'https://kr.directflightsfrom.com/icn-ams'), flight_verified_at = '2026-11-11', flight_needs_check = false where code = 'NL';
