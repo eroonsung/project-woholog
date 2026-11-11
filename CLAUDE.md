@@ -71,7 +71,7 @@
 
 ## 5. 폴더 구조
 ```
-CLAUDE.md  SPEC.md  DECISIONS.md   (기준 문서 3개만 대문자, 나머지 규칙은 아래)
+CLAUDE.md  SPEC.md  DECISIONS.md  README.md  (기준 문서 3개와 README만 대문자, 나머지 규칙은 아래)
 app/
   page.tsx                    첫 화면
   test/page.tsx               질문 12개 (?q=1..12, ?pre=JP)
@@ -119,6 +119,7 @@ docs/
   content/copy_ko.md  content/checklist_v1.md (체크리스트 내용 검토본)
   legal/privacy.md
   product/scope_ia.md  product/prd.md
+  ops/test_data.md  ops/launch_checklist.md (운영 테스트 데이터 기록·오픈 전 체크리스트)
 ```
 
 ### 파일 이름 규칙

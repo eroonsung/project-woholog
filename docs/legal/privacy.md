@@ -16,6 +16,7 @@
 - 알림 메일은 **1회만**, 제목에 서비스 이름을 넣는다. 다른 홍보 메일을 보내려면 광고성 정보 수신 동의를 따로 받아야 한다(정보통신망법 50조).
 - 알림을 보낸 뒤 30일 안에 `launch_subscribers` 표를 비운다. 회원으로 옮길 때는 새로 동의를 받는다.
 - 테스트 답변은 이름 없이 저장하고, 결과 링크를 아는 사람만 볼 수 있게 한다(이미 DB 함수로 구현됨).
+- 요청 횟수 제한(`rate_limits`): IP는 `HMAC-SHA256(서버에만 있는 비밀 키, IP)` 해시로만 저장한다(원래 IP는 저장하지 않음, 4단계 구현). 24시간이 지난 기록은 다음 요청을 처리할 때 지운다(`pg_cron`은 쓰지 않음). 그래서 처리방침 문구는 "24시간이 지나면 삭제"로 쓴다. 비밀 키(`SUPABASE_SERVICE_ROLE_KEY`)를 바꾸면 해시 값이 달라진다(기존 기록과 이어지지 않을 뿐 문제 없음).
 
 ---
 
@@ -49,6 +50,7 @@
 | To Korea 대기자 신청 | 이메일 주소 | To Korea 오픈 알림 1회 발송 | 이용자 동의 |
 | 정보 제보 | 제보 내용(어느 나라·어느 화면인지 포함) | 틀린 정보 수정 | 이용자가 직접 입력 (이메일 등 연락처는 받지 않음) |
 | 나라 적합도 테스트 | 테스트 답변(나이, 예산 범위, 언어 수준 등), 결과 | 결과 계산, 결과 링크 공유 | 이름·연락처와 연결하지 않으며, 개인을 알아볼 수 없는 형태로 저장 |
+| 서비스 이용 중 요청 횟수 제한 | IP 주소를 서버에만 있는 비밀 값을 섞어 복원할 수 없게 바꾼 해시 값(원래 IP 주소는 저장하지 않음) | 과도한 요청·오용 방지 | 서비스 보호 |
 
 워홀로그는 회원가입이 없으며, 위 항목 외의 개인정보를 받지 않아요.
 
@@ -58,6 +60,7 @@
 | 오픈 알림 이메일 | 알림 발송 후 30일 이내 파기 (오픈이 미뤄져도 최대 2027년 12월 31일), 동의 철회 시 즉시 파기 |
 | 제보 내용 | 처리 완료 후 1년 이내 삭제 |
 | 테스트 답변·결과 | 저장 후 1년이 지나면 삭제 |
+| 요청 횟수 제한 기록(IP 해시) | 저장 후 24시간이 지나면 삭제 |
 | 접속 기록 | 호스팅 업체 기본 보관 기간(최대 [ ]일) |
 
 전자 파일은 복구할 수 없는 방법으로 삭제해요. 종이로 받는 개인정보는 없어요.
@@ -78,6 +81,7 @@
 
 ### 5. 자동으로 수집되는 정보
 - 웹사이트 운영 중 접속 IP, 브라우저 종류, 접속 시각이 서버 기록으로 남아요.
+- 결과 저장·정보 제보·오픈 알림 신청처럼 서버로 보내는 요청에는 이용 횟수를 제한하기 위해 IP 주소를 서버에만 있는 비밀 값을 섞어 복원할 수 없는 해시 값으로 바꿔요. 이 해시 값은 24시간이 지나면 삭제하고, 원래 IP 주소는 저장하지 않아요.
 - 방문 통계는 [Vercel Web Analytics]로 확인하며, 개인을 알아볼 수 있는 쿠키를 쓰지 않아요.
 - 테스트 진행 중 답변은 이용자의 브라우저(세션 저장소)에만 임시로 저장되고, 결과를 볼 때 서버로 보내요.
 - 준비 중 기능의 "원해요"는 어떤 기능을 눌렀는지와 시각만 저장하고, 누가 눌렀는지는 저장하지 않아요. 같은 브라우저에서 중복으로 누르지 않도록 브라우저(로컬 저장소)에 표시만 남겨요.
@@ -116,6 +120,7 @@ woholog is run by [Operator]. We collect as little as possible.
 - **Report message**: to fix wrong information. We do not ask for contact details. Deleted within 1 year after we resolve it.
 - **Quiz answers and results**: to calculate your result and let you share a link. Not linked to your name or contact details. Deleted after 1 year.
 - **Server logs** (IP address, browser, time): kept by our hosting provider for security.
+- **Request-rate limiting**: to prevent abuse we store only a one-way hash of your IP address, made with a secret value kept on our server (we do not store the IP address itself). Deleted after 24 hours.
 
 **Who processes it**: Supabase Inc. (database, stored in [Seoul, Korea]), Vercel Inc. (hosting, USA), [Email provider] (sending the launch email, [country]). We do not sell or share your data with anyone else.
 
