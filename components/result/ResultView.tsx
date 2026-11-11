@@ -1,10 +1,10 @@
-import Link from 'next/link';
 import { BlockedList } from './BlockedList';
 import { PreviewPanel } from './PreviewPanel';
 import { RecalcBanner } from './RecalcBanner';
 import { CompareButton, ResultButtons, ResultTopBar, StickyActions } from './ResultActions';
 import { ResultCard } from './ResultCard';
 import { Top3 } from './Top3';
+import { ReportLink } from '@/components/report/ReportLink';
 import { t } from '@/lib/copy';
 import { formatKoDate } from '@/lib/format';
 import type { Answers } from '@/lib/quiz/types';
@@ -51,7 +51,7 @@ export function ResultView({ id, answers, result, dataChanged, today }: {
       <div className="mt-8 flex flex-col gap-2 text-caption text-text3">
         <p className="flex flex-wrap items-center gap-x-3">
           <span>{t('source.line', { date: verified ? formatKoDate(verified) : t('status.checking'), publisher: publishers.length > 0 ? `${publishers[0]}${publishers.length > 1 ? ' 외' : ''}` : t('status.checking') })}</span>
-          <Link href="/report" className="inline-flex min-h-11 items-center underline underline-offset-4">{t('source.report')}</Link>
+          <ReportLink screen="result" country={plan.card.code} countryName={country?.nameKo ?? null} className="inline-flex min-h-11 items-center underline underline-offset-4">{t('source.report')}</ReportLink>
         </p>
         <p>{t('disclaimer.result')}</p>
       </div>

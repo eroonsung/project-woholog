@@ -3,11 +3,12 @@
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { Check, Loader } from 'lucide-react';
+import { SoonLink } from '@/components/soon/SoonLink';
 import { Button } from '@/components/ui/Button';
 import { t } from '@/lib/copy';
 import { MIN_LOADING_MS } from '@/lib/quiz/config';
 
-/** 나이 초과 (S06_stop-age). 결과를 저장하지 않는다. TODO(9단계): "오픈 알림 받기" 버튼은 Coming soon 모달이 생긴 뒤에 넣는다. */
+/** 나이 초과 (S06_stop-age). 결과를 저장하지 않는다. "오픈 알림 받기"는 Coming soon 모달을 연다(9단계). */
 export function StopAge({ maxAge, onRetry }: { maxAge: number; onRetry: () => void }) {
   const ref = useRef<HTMLHeadingElement>(null);
   useEffect(() => ref.current?.focus({ preventScroll: true }), []);
@@ -20,6 +21,9 @@ export function StopAge({ maxAge, onRetry }: { maxAge: number; onRetry: () => vo
         <Link href="/countries" className="inline-flex min-h-11 items-center px-2 text-body font-bold text-navy underline underline-offset-4">
           {t('quiz.stop.compare')}
         </Link>
+        <SoonLink variant="community" href="/soon/community" className="inline-flex min-h-11 items-center px-2 text-body font-bold text-navy underline underline-offset-4">
+          {t('stop.notify')}
+        </SoonLink>
       </div>
     </main>
   );

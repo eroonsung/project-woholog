@@ -5,6 +5,8 @@ import { type KeyboardEvent, useEffect, useRef, useState } from 'react';
 import { ChevronDown, ChevronRight, Compass, LogIn, Megaphone, Rocket, ShieldQuestion, X } from 'lucide-react';
 import { Logo, RegionSwitch } from './HeaderParts';
 import { SoonBadge } from './SoonBadge';
+import { ReportLink } from '@/components/report/ReportLink';
+import { SoonLink } from '@/components/soon/SoonLink';
 import { iconFor } from './navIcons';
 import { t } from '@/lib/copy';
 import { COMMUNITY, hrefOf, isCommunity, isCurrentItem, SOON_COUNT, STAGES, stageIndexFor } from '@/lib/nav';
@@ -89,20 +91,20 @@ export function MobileMenu({ pathname, onClose }: { pathname: string; onClose: (
               </div>
             );
           })}
-          <Link href={COMMUNITY.href} onClick={onClose} aria-current={isCommunity(pathname) ? 'page' : undefined} className="flex min-h-12 items-center justify-between px-2">
+          <SoonLink variant="community" href={COMMUNITY.href} onOpen={onClose} aria-current={isCommunity(pathname) ? 'page' : undefined} className="flex min-h-12 items-center justify-between px-2">
             <span className={`flex items-center gap-2 text-h3 text-navy ${isCommunity(pathname) ? 'font-black' : 'font-bold'}`}>
               {t('nav.community')}
               <SoonBadge />
             </span>
             <ChevronRight aria-hidden="true" className="size-5 text-text3" />
-          </Link>
+          </SoonLink>
         </nav>
 
         <ul className="mt-4 border-t border-line pt-3">
-          <li><Link href={COMMUNITY.href} onClick={onClose} className={small}><span className="flex items-center gap-2">{t('nav.login')}<SoonBadge /></span><LogIn aria-hidden="true" className="size-4 text-text3" /></Link></li>
+          <li><SoonLink variant="login" href={COMMUNITY.href} onOpen={onClose} className={small}><span className="flex items-center gap-2">{t('nav.login')}<SoonBadge /></span><LogIn aria-hidden="true" className="size-4 text-text3" /></SoonLink></li>
           <li><Link href="/soon" onClick={onClose} className={small}>{t('nav.soonAll', { n: SOON_COUNT })}<Rocket aria-hidden="true" className="size-4 text-text3" /></Link></li>
           <li><Link href="/privacy" onClick={onClose} className={small}>{t('footer.privacy')}<ShieldQuestion aria-hidden="true" className="size-4 text-text3" /></Link></li>
-          <li><Link href="/report" onClick={onClose} className={small}>{t('footer.report')}<Megaphone aria-hidden="true" className="size-4 text-text3" /></Link></li>
+          <li><ReportLink fallback="footer" onOpen={onClose} className={small}>{t('footer.report')}<Megaphone aria-hidden="true" className="size-4 text-text3" /></ReportLink></li>
         </ul>
       </div>
 

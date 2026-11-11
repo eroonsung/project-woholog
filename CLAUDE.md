@@ -110,14 +110,16 @@ lib/
   storage.ts   브라우저 저장소 (SPEC.md 0.2의 키만)
   quiz/     types.ts config.ts steps.ts state.ts submit.ts validate.ts   질문 순서·이동·저장 (화면 없이 테스트)
   checklist.ts 항목 + 출국일 → 단계·날짜, 링크 상태 줄이기·풀기(순수 계산)  checklistStore.ts 체크리스트 저장(woholog.checklist.v1)
-  copy.ts  format.ts  age.ts(생년월일 → 만 나이)  analytics.ts  rateLimit.ts
+  copy.ts(t · tEn)  format.ts  age.ts(생년월일 → 만 나이)  analytics.ts  rateLimit.ts  subscribe.ts(이메일 신청 검사)  report.ts(제보 검사)
 content/
   copy_ko.json  copy_en.json  features_ko.json  partners.json  nav_ko.json  landing_countries.json  landing_example.json
+  privacy_ko.json  privacy_en.json  (처리방침 문서, docs/legal/privacy.md → scripts/build_privacy_content.py, D-122)
 supabase/
   migrations/  001_schema_v2_1.sql  002_feature_votes.sql  003_extension_fact_key.sql  004_proof_amount_with_ticket.sql  005_rate_limit_security.sql
   seed/seed_v1_1.sql  seed/seed_checklist_v1.sql  seed/seed_engine_v1.sql  seed/seed_proof_ticket_v1.sql  seed/seed_nl_proof_v1.sql
 scripts/
   precheck.sh  push 전 확인(build·tsc·eslint·vitest, .env*, 키 패턴) — npm run precheck
+  build_privacy_content.py  privacy.md → content/privacy_*.json (D-122)
   make_font_subset.py  Pretendard 서브셋(Core·Extra) 만들기, 글자가 늘면 다시 실행(D-112)
   check_font_chars.mjs  Core에 없는 글자 경고(precheck가 호출, D-113)
 tests/

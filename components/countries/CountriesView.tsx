@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { CountryList } from '@/components/countries/CountryList';
 import { FilterBar } from '@/components/countries/FilterBar';
+import { ReportLink } from '@/components/report/ReportLink';
 import { listHref, DEFAULT_QUERY, type ListQuery, type ListRow } from '@/lib/countries/list';
 import { t } from '@/lib/copy';
 import { formatKoDate } from '@/lib/format';
@@ -24,7 +25,10 @@ export function CountriesView({ rows, total, q, verifiedAt }: { rows: ListRow[];
           </div>
         ) : <CountryList rows={rows} />}
       </div>
-      <p className="mt-6 text-caption text-text3">{t('disclaimer.short')}</p>
+      <p className="mt-6 flex flex-wrap items-center gap-x-3 text-caption text-text3">
+        <ReportLink screen="countries" className="inline-flex min-h-11 items-center underline underline-offset-4">{t('source.report')}</ReportLink>
+      </p>
+      <p className="text-caption text-text3">{t('disclaimer.short')}</p>
     </main>
   );
 }

@@ -242,7 +242,7 @@
 | soon.body | 워홀 준비하는 사람들끼리 묻고 답하는 공간을 만들고 있어요. 열리면 메일로 한 번 알려 드릴게요. |
 | soon.email | 이메일 |
 | soon.consent | [필수] 오픈 알림을 위한 개인정보 수집·이용에 동의해요 |
-| soon.consent.detail | 수집 항목: 이메일 / 목적: 커뮤니티 오픈 알림 1회 발송 / 보관: 알림 발송 후 30일 이내 파기 / 동의하지 않아도 서비스 이용에는 제한이 없어요. 만 14세 미만은 신청할 수 없어요. |
+| (삭제) soon.consent.detail | 9단계에서 `consent.*` 키로 바뀜(모달 "보기"와 처리방침이 같은 키를 씀) |
 | soon.submit | 알림 받기 |
 | soon.done.title | 신청 완료! |
 | soon.done.body | 커뮤니티가 열리면 입력한 메일로 알려 드릴게요. 그 전에는 메일을 보내지 않아요. |
@@ -456,6 +456,56 @@
 | checklist.link.fallback | 자동 복사가 안 돼요. 아래 링크를 직접 복사해 주세요. | 제안(8단계) |
 
 
+9단계 추가 문구 (출처: 제안 = 원본에 없어 임시로 쓴 문장, 승인 필요. 처리방침 본문은 `docs/legal/privacy.md`가 원본이고 `content/privacy_ko.json`·`privacy_en.json`으로 만든다)
+| 키 | 문구 | 출처 |
+|---|---|---|
+| soon.modal.note | 스팸 없이 오픈할 때 딱 한 번만 보낼게요. | 제안(9단계) |
+| soon.placeholder | you@example.com | 제안(9단계) |
+| soon.consent.view | 보기 | 제안(9단계) |
+| soon.consent.hide | 접기 | 제안(9단계) |
+| soon.done.exists | 이미 신청했어요 | 제안(9단계) |
+| soon.done.close | 닫기 | 제안(9단계) |
+| soon.retry | 다시 시도 | 제안(9단계) |
+| soon.err.limit | 너무 자주 시도했어요. 조금 뒤에 다시 해 주세요. | 제안(9단계) |
+| soon.close | 창 닫기 | 제안(9단계) |
+| soon.notify | 오픈 알림 받기 | 제안(9단계) |
+| consent.title | [필수] 오픈 알림을 위한 개인정보 수집·이용 동의 | 제안(9단계) |
+| consent.col.item | 수집 항목 | 제안(9단계) |
+| consent.col.purpose | 이용 목적 | 제안(9단계) |
+| consent.col.keep | 보관 기간 | 제안(9단계) |
+| consent.item | 이메일 주소 | 제안(9단계) |
+| consent.purpose | 커뮤니티 오픈 알림 1회 발송 | 제안(9단계) |
+| consent.keep | 알림 발송 후 30일 이내 파기 (오픈이 미뤄져도 최대 2027년 12월 31일까지) | 제안(9단계) |
+| consent.decline | 동의하지 않을 수 있으며, 동의하지 않아도 워홀로그의 다른 기능을 이용하는 데 제한이 없어요. 다만 오픈 알림은 받을 수 없어요. 만 14세 미만은 신청할 수 없어요. | 제안(9단계) |
+| report.label | 어떤 정보가 다른가요? | 제안(9단계) |
+| report.required | 필수 | 제안(9단계) |
+| report.placeholder | 예: 어학원 기간이 6개월로 바뀌었어요 (출처 링크가 있으면 같이 적어 주세요) | 제안(9단계) |
+| report.noContact | 연락처는 받지 않아요. | 제안(9단계) |
+| report.contactWarn | 연락처는 적지 않아도 돼요. 제보 내용만 보내 주세요. | 제안(9단계) |
+| report.count | {n} / 2000 | 제안(9단계) |
+| report.submit | 제보 보내기 | 제안(9단계) |
+| report.retry | 다시 시도 | 제안(9단계) |
+| report.err.short | 5자 이상 적어 주세요. | 제안(9단계) |
+| report.err.server | 제보를 보내지 못했어요. 입력한 내용은 그대로 있어요. 다시 시도해 주세요. | 제안(9단계) |
+| report.err.limit | 너무 자주 보냈어요. 조금 뒤에 다시 해 주세요. | 제안(9단계) |
+| report.close | 창 닫기 | 제안(9단계) |
+| report.done.close | 닫기 | 제안(9단계) |
+| report.screen.result | 결과 | 제안(9단계) |
+| report.screen.country | 나라 상세 | 제안(9단계) |
+| report.screen.compare | 나란히 비교 | 제안(9단계) |
+| report.screen.countries | 29개국 비교표 | 제안(9단계) |
+| report.screen.checklist | 체크리스트 | 제안(9단계) |
+| report.screen.footer | 워홀로그 | 제안(9단계) |
+| report.screen.other | 워홀로그 | 제안(9단계) |
+| stop.notify | 오픈 알림 받기 | 제안(9단계) |
+| privacy.title | 개인정보 처리방침 | 제안(9단계) |
+| privacy.lang.en | English | 제안(9단계) |
+| privacy.lang.ko | 한국어 | 제안(9단계) |
+| privacy.draft | "공개 전 채움" 표시가 있는 칸은 오픈 전에 채워요. | 제안(9단계) |
+| privacy.fill | 공개 전 채움 | 제안(9단계) |
+| privacy.consent.heading | 수집 동의문 | 제안(9단계) |
+| privacy.back | 홈으로 | 제안(9단계) |
+
 ## 15. To Korea 대기자 (English)
 | key | text |
 |---|---|
@@ -473,6 +523,37 @@
 | tk.done | You're on the list! |
 | tk.err.format | Please check your email address. |
 | tk.err.dup | You're already on the list. |
+
+9단계 추가 영어 문구(`content/copy_en.json`)
+| 키 | 문구 | 출처 |
+|---|---|---|
+| tk.placeholder | you@example.com | 제안(9단계) |
+| tk.consent.view | View details | 제안(9단계) |
+| tk.consent.hide | Hide details | 제안(9단계) |
+| tk.consent.title | Consent to collect and use personal information (required) | 제안(9단계) |
+| tk.consent.col.item | What we collect | 제안(9단계) |
+| tk.consent.col.purpose | Why | 제안(9단계) |
+| tk.consent.col.keep | How long we keep it | 제안(9단계) |
+| tk.consent.item | Email address | 제안(9단계) |
+| tk.consent.purpose | To send one email when woholog launches | 제안(9단계) |
+| tk.consent.keep | Deleted within 30 days after that email, and no later than December 31, 2027 | 제안(9단계) |
+| tk.consent.decline | You can decline, and woholog works the same without it. You just will not get the launch email. Do not sign up if you are under 14. | 제안(9단계) |
+| tk.err.consent | Please agree to continue. | 제안(9단계) |
+| tk.err.server | Something went wrong. Please try again in a moment. | 제안(9단계) |
+| tk.err.limit | Too many tries. Please wait a moment and try again. | 제안(9단계) |
+| tk.retry | Try again | 제안(9단계) |
+| tk.done.body | We will send one email when we launch, and nothing before that. | 제안(9단계) |
+| tk.done.exists | You are already on the list | 제안(9단계) |
+| tk.close | Close | 제안(9단계) |
+| tk.section | What we are building | 제안(9단계) |
+| tk.privacy | Privacy Policy | 제안(9단계) |
+| tk.disclaimer | For information only. Please check the official Korean embassy and immigration pages for visa rules. | 제안(9단계) |
+
+| pp.fill | to fill before launch | 제안(9단계) |
+| pp.draft | Items marked "to fill before launch" will be filled in before we open. | 제안(9단계) |
+| pp.consent | What you agree to when you sign up (email) | 제안(9단계) |
+| pp.lang.ko | 한국어 | 제안(9단계) |
+| pp.lang.en | English | 제안(9단계) |
 
 ## 16. 단계 메뉴
 | 키 | 문구 |

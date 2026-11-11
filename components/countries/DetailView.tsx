@@ -12,7 +12,7 @@ import { formatKoDate } from '@/lib/format';
 /** 나라 상세 (SPEC 8장, S13). 위: 이름·태그·여행경보·적합도 확인 / 왼쪽 목차 / 섹션 8개 / 아래: 비교에 담기·체크리스트 */
 export function DetailView({ d, partners }: { d: CountryDetail; partners: Partner[] }) {
   const sec = (id: string, titleKey: string, body: React.ReactNode, report = true) => (
-    <Section id={id} code={d.code} title={t(titleKey, { country: d.nameKo })} report={report}>{body}</Section>
+    <Section id={id} code={d.code} countryName={d.nameKo} title={t(titleKey, { country: d.nameKo })} report={report}>{body}</Section>
   );
   const anyPartnerLink = partners.some((p) => p.url);
 
@@ -59,7 +59,7 @@ export function DetailView({ d, partners }: { d: CountryDetail; partners: Partne
             {sec('apply', 'detail.section.apply', <Apply d={d} />)}
             {sec('life', 'detail.section.life', <Life d={d} />)}
             {sec('apps', 'apps.title', <Apps apps={d.apps} />)}
-            <Section id="partners" code={d.code} title={t('partners.title')} report={false}>
+            <Section id="partners" code={d.code} countryName={d.nameKo} title={t('partners.title')} report={false}>
               {anyPartnerLink ? <p className="-mt-3 mb-3"><span className="rounded-pill bg-subtle px-2 py-0.5 text-caption font-extrabold text-text2">{t('partners.badge')}</span></p> : null}
               <Partners items={partners} />
             </Section>

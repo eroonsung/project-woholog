@@ -24,3 +24,27 @@ export async function saveQuizResult(answers: unknown, result: unknown): Promise
   if (error || !data) throw new Error(`결과 저장 실패: ${error?.message ?? '응답 없음'}`);
   return data.id as string;
 }
+
+/** 이메일 신청 저장. 같은 이메일(대소문자 무시)·같은 구분이 이미 있으면 'exists' (D-024) */
+export async function addSubscriber(input: { email: string; section: 'from_korea' | 'to_korea'; locale: 'ko' | 'en'; consentVersion: string }): Promise<'created' | 'exists'> {
+  const { error } = await getAdminClient().from('launch_subscribers').insert({
+    email: input.email, section: input.section, locale: input.locale, consent_version: input.consentVersion, consented_at: new Date().toISOString(),
+  });
+  if (!error) return 'created';
+  if (error.code === '23505') return 'exists'; // 중복(lower(email), section) 유니크
+  throw new Error(`신청 저장 실패: ${error.code ?? error.message}`);
+}
+
+/** 정보 제보 저장. 나라 코드가 DB에 없으면(외래 키 오류) 나라 없이 저장한다 */
+export async function addReport(input: { country: string | null; page: string; message: string }): Promise<void> {
+  const db = getAdminClient();
+  const row = { country: input.country, page: input.page, message: input.message };
+  const first = await db.from('user_reports').insert(row);
+  if (!first.error) return;
+  if (first.error.code === '23503' && input.country) {
+    const retry = await db.from('user_reports').insert({ ...row, country: null });
+    if (!retry.error) return;
+    throw new Error(`제보 저장 실패: ${retry.error.code ?? retry.error.message}`);
+  }
+  throw new Error(`제보 저장 실패: ${first.error.code ?? first.error.message}`);
+}

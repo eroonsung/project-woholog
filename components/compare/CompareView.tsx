@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { AddCountry } from '@/components/compare/AddCountry';
 import { CompareTable } from '@/components/compare/CompareTable';
+import { ReportLink } from '@/components/report/ReportLink';
 import { Flag } from '@/components/ui/Flag';
 import type { CompareCountry, CompareOption } from '@/lib/compare/build';
 import type { FitView } from '@/lib/compare/fit';
@@ -52,7 +53,7 @@ export function CompareView({ base, countries, options, fit, back, fxDate }: {
         <div className="mt-6 flex flex-col gap-2 text-caption text-text3">
           {fxDate ? <p>{t('fx.line', { date: formatKoDate(fxDate) })}</p> : null}
           <p className="flex flex-wrap items-center gap-x-3">
-            <Link href="/report" className="inline-flex min-h-11 items-center underline underline-offset-4">{t('source.report')}</Link>
+            <ReportLink screen="compare" className="inline-flex min-h-11 items-center underline underline-offset-4">{t('source.report')}</ReportLink>
           </p>
           <p>{t('disclaimer.result')}</p>
         </div>

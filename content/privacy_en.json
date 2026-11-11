@@ -1,0 +1,58 @@
+{
+  "_source": "docs/legal/privacy.md (scripts/build_privacy_content.py로 만든 파일, 직접 고치지 않는다)",
+  "title": "woholog Privacy Policy",
+  "meta": "Effective: December 31, 2026 · Version 1.0",
+  "blocks": [
+    {
+      "t": "p",
+      "text": "woholog is run by [Operator]. We collect as little as possible."
+    },
+    {
+      "t": "p",
+      "text": "**What we collect and why**"
+    },
+    {
+      "t": "ul",
+      "items": [
+        "**Email address** (launch notice or To Korea waitlist sign-up): to send one email when the community opens. Deleted within 30 days after that email, and no later than December 31, 2027. Deleted immediately if you withdraw consent.",
+        "**Report message**: to fix wrong information. We do not ask for contact details. Deleted within 1 year after we resolve it.",
+        "**Quiz answers and results**: to calculate your result and let you share a link. Not linked to your name or contact details. Deleted after 1 year.",
+        "**Server logs** (IP address, browser, time): kept by our hosting provider for security.",
+        "**Birth date** (age calculator in the quiz): used only inside your browser to work out your age. It is never stored or sent to us; only the resulting age is used as a quiz answer.",
+        "**Request-rate limiting**: to prevent abuse we store only a one-way hash of your IP address, made with a secret value kept on our server (we do not store the IP address itself). Deleted after 24 hours."
+      ]
+    },
+    {
+      "t": "p",
+      "text": "**Who processes it**: Supabase Inc. (database, stored in [Seoul, Korea]), Vercel Inc. (hosting, USA), [Email provider] (sending the launch email, [country]). We do not sell or share your data with anyone else."
+    },
+    {
+      "t": "p",
+      "text": "**Checklist**: Your checklist (country, departure date, checked items) is stored only in your browser and never sent to us."
+    },
+    {
+      "t": "p",
+      "text": "**Feature votes**: When you tap \"원해요\" (I want this), we store only which feature and when, not who."
+    },
+    {
+      "t": "p",
+      "text": "**Cookies**: We use [Vercel Web Analytics], which does not use tracking cookies."
+    },
+    {
+      "t": "p",
+      "text": "**Your rights**: You can ask us to access, correct or delete your data at any time. Email [contact email] and we will respond within 10 days."
+    },
+    {
+      "t": "p",
+      "text": "**Age**: Do not sign up if you are under 14."
+    },
+    {
+      "t": "p",
+      "text": "**Contact**: [Operator name], [contact email]"
+    },
+    {
+      "t": "p",
+      "text": "**Changes**: We will post changes on this page at least 7 days before they take effect."
+    }
+  ]
+}

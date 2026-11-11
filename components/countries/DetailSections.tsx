@@ -1,6 +1,6 @@
 import { AlertTriangle, Check, Triangle } from 'lucide-react';
 import type { ReactNode } from 'react';
-import Link from 'next/link';
+import { ReportLink } from '@/components/report/ReportLink';
 import type { Cell } from '@/lib/compare/build';
 import type { CountryDetail, DetailLine } from '@/lib/countries/detail';
 import { t } from '@/lib/copy';
@@ -10,13 +10,13 @@ const pill = 'inline-flex rounded-pill bg-subtle px-2 py-0.5 text-caption font-e
 const box = 'rounded-card-lg bg-subtle p-5';
 
 /** 섹션 틀: 제목 + 내용 + 아래 "정보가 틀렸나요? 제보하기"(나라·섹션이 주소에 붙음, 모달은 9단계) */
-export function Section({ id, code, title, children, report = true }: { id: string; code: string; title: string; children: ReactNode; report?: boolean }) {
+export function Section({ id, code, countryName, title, children, report = true }: { id: string; code: string; countryName: string; title: string; children: ReactNode; report?: boolean }) {
   return (
     <section id={id} aria-labelledby={`${id}-title`} className="scroll-mt-16 lg:scroll-mt-6">
       <h2 id={`${id}-title`} className="text-h2 text-navy">{title}</h2>
       <div className="mt-4">{children}</div>
       {report ? (
-        <p className="mt-3"><Link href={`/report?c=${code}&s=${id}`} className="inline-flex min-h-11 items-center text-caption font-extrabold text-text2 underline underline-offset-4">{t('source.report')}</Link></p>
+        <p className="mt-3"><ReportLink screen="country" country={code} countryName={countryName} section={id} className="inline-flex min-h-11 items-center text-caption font-extrabold text-text2 underline underline-offset-4">{t('source.report')}</ReportLink></p>
       ) : null}
     </section>
   );

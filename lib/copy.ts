@@ -1,3 +1,4 @@
+import copyEn from '@/content/copy_en.json';
 import copyKo from '@/content/copy_ko.json';
 import { josa, type JosaPair } from './josa';
 
@@ -27,4 +28,16 @@ export function t(key: string, vars?: Vars): string {
 /** 문구 키가 있는지(없으면 그 줄을 숨길 때 쓴다). */
 export function hasCopy(key: string): boolean {
   return messages[key] !== undefined;
+}
+
+const messagesEn = copyEn as Record<string, string>;
+
+/** 영어 화면(To Korea 대기자 페이지) 문구. content/copy_en.json의 키로만 쓴다. `{name}`만 채우고 한국어 조사는 쓰지 않는다. */
+export function tEn(key: string, vars?: Vars): string {
+  const template = messagesEn[key];
+  if (template === undefined) {
+    if (process.env.NODE_ENV !== 'production') console.warn(`[copy-en] 없는 문구 키: ${key}`);
+    return key;
+  }
+  return vars ? template.replace(/\{(\w+)\}/g, (m, name: string) => (vars[name] === undefined ? m : String(vars[name]))) : template;
 }

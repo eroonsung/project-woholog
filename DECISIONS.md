@@ -466,6 +466,18 @@
 ## D-121. 8.5단계 일정 변경 (2026-11-11)
 - 8.5(실제 기기 점검·지인 테스트)는 아직 하지 않았고, 쓰면서 고칠 것은 못 찾았다. **11단계 전까지 9·10단계와 병행**한다(D-117의 "9단계 앞"을 바꿈). `docs/ops/device_check.md`는 빈 양식 그대로 두고 Yvonne가 점검해서 채운다. 문제가 나오면 11단계 전에 고친다. CLAUDE.md 9장 표와 작업 순서를 고쳤다.
 
+## D-122. 9단계: 이메일 신청·제보·처리방침·To Korea (2026-11-11)
+- **API**: `POST /api/subscribe {email, section: 'launch'|'to_korea', consent: true}`, `POST /api/report {message, country?, screen, section?, path?}`. 둘 다 요청 제한(IP 해시, 1분에 5번·3번, 005 표·함수) → 본문 크기·JSON 확인 → 서버 검증 → 저장 → `{status}`. 429는 `rate_limited`, 검증 실패는 400(`invalid_email`·`consent_required`·`invalid_section`·`invalid_message`·`invalid_context`), 서버 오류는 500이고 이메일·제보 내용은 로그에 남기지 않는다. 쓰기는 `lib/data/mutations.ts`(서비스 키)에서만.
+- **이메일 신청**: 이메일은 앞뒤 공백을 지우고 소문자로 저장하고(`lib/subscribe.ts`, DB check와 같은 형식), 동의는 `true`일 때만 받는다(문자열 "true"·1은 거부). `consented_at`과 `consent_version = 'launch-v1'`을 같이 저장(To Korea도 같은 문구 버전). **구분 값 연결**: SPEC·이벤트의 `launch`는 DB check 값 `from_korea`에 저장한다(`DB_SECTION`; 마이그레이션 없이 연결, 규칙 7). To Korea는 `to_korea`·언어 `en`. 이미 신청한 이메일(`lower(email), section` 유니크 위반)은 `{status:'exists'}` 200으로 "이미 신청했어요" 완료 화면(성공과 같은 모양, D-024).
+- **Coming soon 모달**: 헤더 로그인·시작하기·커뮤니티 Soon(웹·모바일 메뉴), 나이 초과 화면의 "오픈 알림 받기"가 연다. 링크라서 스크립트가 없거나 새 탭이면 `/soon/community`로 이동한다. 동의 체크는 처음에 비어 있고 이메일 형식 + 동의 둘 다 돼야 버튼이 켜진다. 실패(서버·잦은 요청·네트워크)는 문구 + 다시 시도, 입력값 유지. 문구는 `copy_ko.json`(영어는 `copy_en.json`의 `tk.*`).
+- **모달 공통(SPEC 0.5)**: `components/modal/Modal.tsx`(네이티브 `<dialog>`): 열리면 첫 입력칸 포커스, Tab은 창 안, Esc·닫기로 닫힘, 입력이 있으면 바깥 클릭으로는 안 닫힘, 닫히면 연 버튼으로 포커스 복귀, 모바일은 아래 시트·웹은 가운데 창. `ModalHost`(앱 전체에서 한 번에 하나)가 두 모달을 연다.
+- **제보 모달**: 결과·나라 상세(섹션마다)·비교·비교표·푸터에서 연다. 나라·화면·섹션이 자동으로 붙고(푸터는 지금 주소에서 알아냄) 위에 "일본 · 나라 상세"로 보인다. 5~2,000자(앞뒤 공백 제외, 이모지도 1글자), 연락처 칸 없음, 이메일·전화번호처럼 보이면 안내만(서버는 막지 않음). `user_reports`에는 `country`와 `page`(`country /countries/JP#work`, 300자 이하)로 저장해서 **마이그레이션은 없다**. 나라 코드가 DB에 없으면 나라 없이 저장. `/report?c=&s=&screen=&from=` 링크로 직접 들어와도 같은 모달이 열리고 닫으면 `from`(없으면 나라 상세·홈)으로 돌아간다.
+- **To Korea `/to-korea`**: 화면 전체 영어(`copy_en.json`), 신청 칸은 같은 폼(section=to_korea), 성공하면 "You're on the list!", 새로 고치면 다시 신청 칸. **와이어프레임에서 뺀 것**: "1,240+ future travelers waiting"·"officially partnering"·"25+ partner nations" 같은 근거 없는 숫자·제휴 주장, 사진 카드 2장, 카드 설명 문장(영어 문구가 제목뿐이라 만들지 않음).
+- **처리방침 `/privacy`**: 본문은 `docs/legal/privacy.md`가 원본이고 `scripts/build_privacy_content.py`가 `content/privacy_ko.json`·`privacy_en.json`(구조화한 문서)으로 만든다. **처리방침 같은 긴 문서는 UI 문구가 아니라 문서라서 copy 키 대신 이 파일을 쓴다**(규칙 4의 예외, 승인 필요). 대괄호 [ ] 칸은 화면에서 "[공개 전 채움: 운영자]"처럼 강조 표시(`<mark>`)하고, 위에 안내 문장을 둔다. **수집 동의문은 이메일 신청 모달의 "보기"와 같은 문구 키**(`consent.*`, 영어 `tk.consent.*`)를 쓴다(옛 `soon.consent.detail`은 삭제). 한국어 기본, `?lang=en`이면 영어 요약판, 위에 언어 전환 링크.
+- **측정**: `subscribe`(성공 때만, 속성 `section`)·`report`(속성 `page` = 화면 종류) 이벤트를 `trackEvent`로 보낸다. 이메일·제보 내용은 속성에 넣지 않는다. 실제 전송은 11단계에서 `<Analytics />`를 붙일 때 확인한다.
+- **새 문구**: 한국어 46개·영어 26개, 모두 "제안"(`docs/content/copy_ko.md`). `copy_en.json` 맨 앞의 의미 없던 `"key": "text"` 줄은 지웠다.
+- **테스트는 운영 DB에 쓰지 않았다**: API는 가짜 DB로, 화면은 `/api/*` 요청을 가로채는 가짜 응답으로 확인했다(POST 전부 가로챔).
+
 ---
 
 ## 열린 질문 (정해지면 위로 옮긴다)

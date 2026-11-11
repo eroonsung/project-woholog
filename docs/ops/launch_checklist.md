@@ -21,7 +21,8 @@
 - [ ] `/dev/tokens`가 운영에서 404인지 확인
 
 ## 문서·법적
-- [ ] `docs/legal/privacy.md`의 `[ ]` 빈칸 채우기(운영자, 연락처, 접속 기록 보관일 등), 시행일 확정
+- [ ] `docs/legal/privacy.md`의 `[ ]` 빈칸 채우기(운영자, 연락처, 접속 기록 보관일 등), 시행일 확정. **`/privacy`와 `/privacy?lang=en` 화면에서 "[공개 전 채움…]" 강조 표시가 하나도 안 남았는지 확인**한 뒤 `python3 -I scripts/build_privacy_content.py`로 `content/privacy_*.json`을 다시 만들고, 위쪽 "공개 전 채움" 안내 문장(`privacy.draft`·`pp.draft`)을 뺀다(D-122)
+- [ ] 이메일 신청 문구 최종 확인: 모달 "보기"(`consent.*`)와 처리방침의 수집 동의문이 같은 문구인지, 영어 동의문(`tk.consent.*`)이 영어 처리방침과 맞는지
 - [ ] 알림 메일 발송 서비스 결정 (Q-2)
 - [ ] 면책 문구, 출처·확인일 표시 확인
 - [ ] **오픈 전 전체 문구 검토** — `docs/content/copy_ko.md`에서 출처가 "제안"인 문구 전부(승인한 것 포함)를 한꺼번에 다시 읽고, 확정되면 "제안" 표시를 뺀다 (D-115). 영어 화면(`copy_en.json`)도 같이

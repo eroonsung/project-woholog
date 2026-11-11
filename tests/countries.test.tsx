@@ -219,7 +219,8 @@ describe('나라 상세 화면', () => {
     expect(text(html)).not.toContain('비교에 담기');
   });
   it('"정보가 틀렸나요?"는 나라·섹션이 붙은 /report 링크', () => {
-    expect(view('JP')).toContain('href="/report?c=JP&amp;s=money"');
+    const html = view('JP');
+    expect(html).toMatch(/href="\/report\?screen=country&amp;c=JP&amp;s=money"/); // 모달을 못 여는 경우(새 탭·스크립트 없음)의 주소
   });
   it('출처 줄: 이름 + 확인일, 링크는 새 탭', () => {
     const p = rows.programs.find((x) => x.destination === 'JP')!;

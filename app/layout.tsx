@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import { CompareBar } from '@/components/compare/CompareBar';
+import { ModalHost } from '@/components/modal/ModalHost';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
 import { t } from '@/lib/copy';
@@ -37,10 +38,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-button focus:bg-navy focus:px-4 focus:py-3 focus:text-white">
           {t('a11y.skip')}
         </a>
-        <Header />
-        <div id="main" tabIndex={-1} className="flex flex-1 flex-col outline-none">{children}</div>
-        <Footer />
-        <CompareBar />
+        <ModalHost>
+          <Header />
+          <div id="main" tabIndex={-1} className="flex flex-1 flex-col outline-none">{children}</div>
+          <Footer />
+          <CompareBar />
+        </ModalHost>
       </body>
     </html>
   );

@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { ChevronDown, Menu } from 'lucide-react';
@@ -8,6 +7,7 @@ import { Logo, RegionSwitch } from './HeaderParts';
 import { MegaMenu } from './MegaMenu';
 import { MobileMenu } from './MobileMenu';
 import { SoonBadge } from './SoonBadge';
+import { SoonLink } from '@/components/soon/SoonLink';
 import { t } from '@/lib/copy';
 import { COMMUNITY, isCommunity, STAGES, stageIndexFor } from '@/lib/nav';
 
@@ -91,16 +91,16 @@ export function Header() {
               <ChevronDown aria-hidden="true" className={`hidden size-4 text-text3 transition-transform xl:block ${open === i ? 'rotate-180' : ''}`} />
             </button>
           ))}
-          <Link href={COMMUNITY.href} aria-current={isCommunity(pathname) ? 'page' : undefined} className={`inline-flex min-h-11 shrink-0 items-center gap-2 whitespace-nowrap rounded-button px-2 text-body text-navy hover:bg-subtle ${bold(isCommunity(pathname))}`}>
+          <SoonLink variant="community" href={COMMUNITY.href} aria-current={isCommunity(pathname) ? 'page' : undefined} className={`inline-flex min-h-11 shrink-0 items-center gap-2 whitespace-nowrap rounded-button px-2 text-body text-navy hover:bg-subtle ${bold(isCommunity(pathname))}`}>
             {t('nav.community')}
             <SoonBadge />
-          </Link>
+          </SoonLink>
         </nav>
 
         <div className="ml-auto hidden shrink-0 items-center gap-1 lg:flex">
-          {/* Coming soon 모달은 9단계라서 지금은 /soon/community로 연결만 */}
-          <Link href={COMMUNITY.href} className="inline-flex min-h-11 items-center whitespace-nowrap px-2 text-body font-bold text-text2 hover:text-navy">{t('nav.login')}</Link>
-          <Link href={COMMUNITY.href} className="inline-flex h-11 items-center whitespace-nowrap rounded-pill bg-navy px-4 text-body font-extrabold text-white hover:opacity-90">{t('nav.signup')}</Link>
+          {/* 로그인·시작하기는 Coming soon 모달을 연다(스크립트가 없으면 /soon/community로 이동) */}
+          <SoonLink variant="login" href={COMMUNITY.href} className="inline-flex min-h-11 items-center whitespace-nowrap px-2 text-body font-bold text-text2 hover:text-navy">{t('nav.login')}</SoonLink>
+          <SoonLink variant="login" href={COMMUNITY.href} className="inline-flex h-11 items-center whitespace-nowrap rounded-pill bg-navy px-4 text-body font-extrabold text-white hover:opacity-90">{t('nav.signup')}</SoonLink>
         </div>
 
         <button
