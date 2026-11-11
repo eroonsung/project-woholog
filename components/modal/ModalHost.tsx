@@ -10,7 +10,15 @@ import { t } from '@/lib/copy';
  * 모달 두 개(Coming soon 이메일 신청, 정보 제보)를 앱 전체에서 하나씩만 열어 주는 곳 (SPEC 0.5·11·13장).
  * 헤더·푸터·나이 초과 화면·각 화면의 "제보하기"가 `useModals()`로 연다. 화면 이동 없이 열리고, 닫으면 있던 화면 그대로다.
  */
-export type SoonVariant = 'community' | 'login';
+export type SoonVariant = 'community' | 'login' | 'hub' | 'feature' | 'guides';
+/** 모달 제목·설명 문구 키. 어디서 열었는지는 저장하지 않는다(SPEC 11장) */
+const SOON_COPY: Record<SoonVariant, { title: string; body: string }> = {
+  community: { title: 'soon.title', body: 'soon.body' },
+  login: { title: 'soon.login.title', body: 'soon.login.body' },
+  hub: { title: 'soon.hub.notify.title', body: 'soon.notify.body' },
+  feature: { title: 'soon.notify.title', body: 'soon.notify.body' },
+  guides: { title: 'guides.notify.title', body: 'guides.notify.body' },
+};
 type Open = { kind: 'soon'; variant: SoonVariant } | { kind: 'report'; ctx: ReportContext } | null;
 interface Api { openSoon: (variant?: SoonVariant) => void; openReport: (ctx: Omit<ReportContext, 'path'> & { path?: string }) => void }
 
@@ -36,8 +44,8 @@ export function ModalHost({ children }: { children: ReactNode }) {
             titleSlot={(
               <div className="pr-10">
                 <p className="inline-flex -rotate-3 rounded-pill bg-lime px-3 py-1 text-caption font-extrabold text-navy">{t('soon.badge')}</p>
-                <h2 className="mt-3 text-h2 text-navy">{t(open.variant === 'login' ? 'soon.login.title' : 'soon.title')}</h2>
-                <p className="mt-1 text-body text-text2">{t(open.variant === 'login' ? 'soon.login.body' : 'soon.body')}</p>
+                <h2 className="mt-3 text-h2 text-navy">{t(SOON_COPY[open.variant].title)}</h2>
+                <p className="mt-1 text-body text-text2">{t(SOON_COPY[open.variant].body)}</p>
               </div>
             )}
           />

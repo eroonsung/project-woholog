@@ -1,15 +1,24 @@
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { ComingSoonPage } from '@/components/shared/ComingSoonPage';
-import features from '@/content/features_ko.json';
+import { FeatureDetail } from '@/components/soon/FeatureDetail';
+import { fetchVoteCounts } from '@/lib/data/queries';
+import { FEATURES, featureBySlug } from '@/lib/features';
 
-// 임시 화면: 10단계에서 준비 중 기능 상세로 교체한다(D-103). 없는 slug는 404 (SPEC 0.4, 14장)
+// 준비 중 기능 상세 (SPEC 14장): 템플릿 하나로 15개 slug. 없는 slug는 404. 원해요 숫자는 요청마다 읽는다(읽기만 함).
+export const dynamic = 'force-dynamic';
 export const dynamicParams = false;
 export function generateStaticParams() {
-  return features.features.map((f) => ({ slug: f.slug }));
+  return FEATURES.map((f) => ({ slug: f.slug }));
 }
 
-export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  if (!features.features.some((f) => f.slug === slug)) notFound();
-  return <ComingSoonPage />;
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const f = featureBySlug((await params).slug);
+  return f ? { title: `${f.name} | 워홀로그`, description: f.summary } : {};
+}
+
+export default async function SoonDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const feature = featureBySlug((await params).slug);
+  if (!feature) notFound();
+  const counts = await fetchVoteCounts().catch(() => null);
+  return <FeatureDetail feature={feature} counts={counts} />;
 }

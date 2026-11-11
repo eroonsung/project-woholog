@@ -27,7 +27,8 @@ describe('결과 화면 그리기(서버 렌더)', () => {
       const text = out.replace(/<[^>]+>/g, ' ');
       expect(text).not.toMatch(/\{\w+\}|reason\.|result\.|preview\.|undefined|NaN|\bnull\b/);
       expect(out).toContain('현실 미리보기');
-      expect(out).toContain('data-share-slot'); // 공유 버튼은 자리만
+      expect(out).toContain('data-share'); // 공유 버튼(10단계): 누를 수 있는 진짜 버튼
+      expect(out).not.toContain('data-share-slot');
     });
   }
 

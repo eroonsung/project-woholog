@@ -76,7 +76,7 @@
 ```
 CLAUDE.md  SPEC.md  DECISIONS.md  README.md  proxy.ts(소문자 나라 코드 → 대문자 주소)  (기준 문서 3개와 README만 대문자, 나머지 규칙은 아래)
 app/
-  fonts/  PretendardCore.woff2  PretendardExtra.woff2  PretendardCore.chars.txt  (원본 2MB는 fonts_src/)
+  fonts/  PretendardCore.woff2  PretendardExtra.woff2  PretendardCore.chars.txt  share/PretendardShare-500·800.ttf(공유 이미지용)  (원본 2MB는 fonts_src/)
   page.tsx                    첫 화면
   test/page.tsx               질문 12개 (?q=1..12, ?pre=JP)
   r/[id]/page.tsx             결과
@@ -106,6 +106,8 @@ lib/
   countries/  list.ts detail.ts   29개국 비교표 정렬·필터·주소, 나라 상세 값(7단계)
   josa.ts      조사 고르기(은/는·이/가…), 문구에서는 {이름:이/가}
   server/   ip.ts limits.ts       IP 해시·요청 제한 기준(SPEC 0.8)
+  features.ts  준비 중 기능 15개(features_ko.json)·단계·다른 기능 3개   votes.ts  원해요(woholog.votes.v1)·보내기·되돌리기
+  guides.ts    가이드 마크다운·{fact_key} 채우기   share/  data.ts image.tsx colors.ts  공유 이미지 값·그리기(OG·스토리, D-125)
   site.ts      오픈 여부(NEXT_PUBLIC_SITE_LIVE)
   storage.ts   브라우저 저장소 (SPEC.md 0.2의 키만)
   quiz/     types.ts config.ts steps.ts state.ts submit.ts validate.ts   질문 순서·이동·저장 (화면 없이 테스트)
@@ -119,6 +121,7 @@ supabase/
   seed/seed_v1_1.sql  seed/seed_checklist_v1.sql  seed/seed_engine_v1.sql  seed/seed_proof_ticket_v1.sql  seed/seed_nl_proof_v1.sql
 scripts/
   precheck.sh  push 전 확인(build·tsc·eslint·vitest, .env*, 키 패턴) — npm run precheck
+  make_share_fonts.py  공유 이미지용 정적 글꼴(app/fonts/share/*.ttf) 만들기(D-125)
   build_privacy_content.py  privacy.md → content/privacy_*.json (D-122)
   make_font_subset.py  Pretendard 서브셋(Core·Extra) 만들기, 글자가 늘면 다시 실행(D-112)
   check_font_chars.mjs  Core에 없는 글자 경고(precheck가 호출, D-113)

@@ -23,6 +23,7 @@ export function ResultView({ id, answers, result, dataChanged, today }: {
   const plan = pickCard(answers, result);
   if (!plan) return null;
   const country = result.countries[plan.card.code];
+  const shareTitle = t('share.ogTitle', { country: country?.nameKo ?? plan.card.code, pct: plan.card.pct });
   const rows = previewRows(country?.preview, today, answers.q5);
   const hasForeign = !!country?.preview && [country.preview.money.proof, country.preview.money.fee, country.preview.money.health].some((m) => m && m.currency !== 'KRW');
   const verified = country?.provenance.verifiedAt;
@@ -31,7 +32,7 @@ export function ResultView({ id, answers, result, dataChanged, today }: {
   return (
     <main className="mx-auto w-full max-w-content px-5 pb-6 pt-4 lg:px-10 lg:pb-12">
       {dataChanged ? <RecalcBanner answers={answers} /> : null}
-      <ResultTopBar />
+      <ResultTopBar id={id} shareTitle={shareTitle} />
 
       <div className="mt-4 grid gap-6 lg:grid-cols-3">
         <div className="flex flex-col gap-6 lg:col-span-2 lg:row-start-1">
@@ -42,7 +43,7 @@ export function ResultView({ id, answers, result, dataChanged, today }: {
 
         <div className="lg:col-start-3 lg:row-span-2 lg:row-start-1">
           <Top3 rows={plan.top3} countries={result.countries} titleKey={plan.topTitleKey} />
-          <ResultButtons plan={plan} />
+          <ResultButtons plan={plan} id={id} shareTitle={shareTitle} />
         </div>
 
         <div className="lg:col-span-2 lg:row-start-2"><BlockedList result={result} /></div>
@@ -55,7 +56,7 @@ export function ResultView({ id, answers, result, dataChanged, today }: {
         </p>
         <p>{t('disclaimer.result')}</p>
       </div>
-      <StickyActions plan={plan} />
+      <StickyActions plan={plan} id={id} shareTitle={shareTitle} />
     </main>
   );
 }

@@ -48,3 +48,9 @@ export async function addReport(input: { country: string | null; page: string; m
   }
   throw new Error(`제보 저장 실패: ${first.error.code ?? first.error.message}`);
 }
+
+/** 원해요 1표 저장: 기능 이름과 시각만(누가 눌렀는지는 저장하지 않는다, D-023) */
+export async function addVote(slug: string): Promise<void> {
+  const { error } = await getAdminClient().from('feature_votes').insert({ feature: slug });
+  if (error) throw new Error(`원해요 저장 실패: ${error.code ?? error.message}`);
+}

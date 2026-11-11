@@ -17,7 +17,7 @@ export function pickJob(rows: DbRows['jobTypes'], country: string, wanted: JobId
 }
 
 /** 기준일 이전의 가장 최근 환율(통화별)과 그 중 가장 늦은 기준일 */
-export function latestRates(rows: DbRows, asOf: string): { rate: Map<string, number>; fxDate: string | null } {
+export function latestRates(rows: Pick<DbRows, 'rates'>, asOf: string): { rate: Map<string, number>; fxDate: string | null } {
   const rate = new Map<string, number>();
   let fxDate: string | null = null;
   for (const r of [...rows.rates].sort((a, b) => a.rate_date.localeCompare(b.rate_date))) {

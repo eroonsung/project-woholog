@@ -506,6 +506,32 @@
 | privacy.consent.heading | 수집 동의문 | 제안(9단계) |
 | privacy.back | 홈으로 | 제안(9단계) |
 
+10단계 추가 문구 (출처: 제안 = 원본에 없어 임시로 쓴 문장, 승인 필요)
+| 키 | 문구 | 출처 |
+|---|---|---|
+| share.img.brand | 워홀로그 | 제안(10단계) |
+| share.img.tag | 국가 적합도 테스트 | 제안(10단계) |
+| share.img.sticker | 내 워홀 나라 | 제안(10단계) |
+| share.img.og | 나는 {country} {pct}% 적합! | 제안(10단계) |
+| share.img.score | 조건 {total}개 중 {ok}개 일치 | 제안(10단계) |
+| share.img.cta | 나도 해 보기 | 제안(10단계) |
+| share.err | 공유하지 못했어요. 링크를 복사해 보세요. | 제안(10단계) |
+| soon.err.vote | 잠시 후 다시 눌러 주세요. | 제안(10단계) |
+| soon.notify.body | 열리면 이메일로 딱 한 번만 알려 드릴게요. | 제안(10단계) |
+| soon.tab.label | 단계별 보기 | 제안(10단계) |
+| soon.voted | 원해요를 눌렀어요 | 제안(10단계) |
+| guides.notify.title | 새 글이 올라오면 알려 드릴게요. | 제안(10단계) |
+| guides.notify.body | 이메일로 딱 한 번만 알려 드릴게요. | 제안(10단계) |
+| guides.review | 일부 정보가 바뀌어 다시 확인하는 중이에요 | 제안(10단계) |
+| guides.back | 가이드 목록 | 제안(10단계) |
+| guides.meta.date | 확인일 {date} | 제안(10단계) |
+| guides.planned.note | 편집부에서 준비 중 | 제안(10단계, 와이어프레임의 "발행 예정"은 "예정" 금지 규칙에 따라 바꿈) |
+| guides.planned.badge | 준비 중 | 제안(10단계) |
+| guides.empty.sub | 곧 신뢰할 수 있는 실전 가이드가 올라와요 | 제안(10단계) |
+| guides.fact.months | {n}개월 | 제안(10단계) |
+| guides.fact.yes | 예 | 제안(10단계) |
+| guides.fact.no | 아니요 | 제안(10단계) |
+
 ## 15. To Korea 대기자 (English)
 | key | text |
 |---|---|
