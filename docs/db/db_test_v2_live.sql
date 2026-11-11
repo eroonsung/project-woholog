@@ -87,5 +87,40 @@ select pg_temp.expect('T11 데이터가 바뀌면 data_changed', (select data_ch
 select pg_temp.expect('임시 초안 가이드는 익명에게 안 보임', (select count(*) from guides where status='draft') = 0);
 reset role;
 
+
+-- T13 트리거 전용 함수는 외부에서 호출할 수 없고, 트리거(변경 기록·검토 필요 표시)는 그대로 동작한다 (마이그레이션 005)
+select pg_temp.expect('T13 anon은 log_change 실행 권한이 없다', not has_function_privilege('anon', 'log_change()', 'execute'));
+select pg_temp.expect('T13 anon은 flag_dependent_content 실행 권한이 없다', not has_function_privilege('anon', 'flag_dependent_content()', 'execute'));
+select pg_temp.expect('T13 로그인 사용자도 실행 권한이 없다', not has_function_privilege('authenticated', 'log_change()', 'execute') and not has_function_privilege('authenticated', 'flag_dependent_content()', 'execute'));
+select pg_temp.expect('T13 공개 함수는 그대로 공개', has_function_privilege('anon', 'get_quiz_result(uuid)', 'execute') and has_function_privilege('anon', 'current_data_version()', 'execute'));
+create temp table cl as select count(*) as c from change_log;
+grant select on t to service_role;
+update checklist_items set needs_review = false where program_id = (select pid from t);
+set local role service_role;
+update program_facts set value_num = 5600 where program_id = (select pid from t) and key = 'proof_amount' and valid_to is null;
+reset role;
+select pg_temp.expect('T13 서비스 키로 고쳐도 변경 기록 트리거가 동작', (select count(*) from change_log) > (select c from cl));
+select pg_temp.expect('T13 서비스 키로 고쳐도 검토 필요 표시 트리거가 동작', (select needs_review from checklist_items where program_id = (select pid from t)));
+
+-- T14 요청 제한 함수·표 (마이그레이션 005)
+set local role service_role;
+select pg_temp.expect('T14 한도 안(1)', check_rate_limit('test', 'aaaaaaaaaaaaaaaa1111', 2, 60));
+select pg_temp.expect('T14 한도 안(2)', check_rate_limit('test', 'aaaaaaaaaaaaaaaa1111', 2, 60));
+select pg_temp.expect('T14 한도 초과(3번째)', not check_rate_limit('test', 'aaaaaaaaaaaaaaaa1111', 2, 60));
+select pg_temp.expect('T14 다른 IP는 따로 센다', check_rate_limit('test', 'bbbbbbbbbbbbbbbb2222', 2, 60));
+select pg_temp.expect('T14 다른 종류는 따로 센다', check_rate_limit('test2', 'aaaaaaaaaaaaaaaa1111', 2, 60));
+reset role;
+insert into rate_limits (bucket, ip_hash, window_start, hits) values ('test', 'cccccccccccccccc3333', now() - interval '25 hours', 5);
+set local role service_role;
+select check_rate_limit('test', 'dddddddddddddddd4444', 2, 60);
+reset role;
+select pg_temp.expect('T14 24시간 지난 행은 지워진다', (select count(*) from rate_limits where ip_hash = 'cccccccccccccccc3333') = 0);
+select pg_temp.expect_fail('T14 짧은 값(원래 IP처럼) 저장 거부', $q$insert into rate_limits (bucket, ip_hash, window_start, hits) values ('test', '1.2.3.4', now(), 1)$q$);
+set local role anon;
+select pg_temp.expect('T14 anon은 요청 제한 함수를 못 쓴다', not has_function_privilege('anon', 'check_rate_limit(text,text,int,int)', 'execute') and not has_function_privilege('anon', 'purge_rate_limits()', 'execute'));
+select pg_temp.expect('T14 anon은 rate_limits를 못 읽는다', (select count(*) from rate_limits) = 0);
+select pg_temp.expect_fail('T14 anon이 rate_limits에 쓰기', $q$insert into rate_limits (bucket, ip_hash, window_start, hits) values ('x', 'eeeeeeeeeeeeeeee5555', now(), 1)$q$);
+reset role;
+
 select 'db_test_v2_live: 통과' as result;
 rollback;

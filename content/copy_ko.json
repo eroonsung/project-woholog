@@ -324,5 +324,8 @@
   "q12.tag": "중요한 것",
   "quiz.multi": "여러 개 골라도 돼요",
   "quiz.single": "하나만 골라요",
-  "quiz.note": "답변은 이름 없이 결과 계산에만 써요."
+  "quiz.note": "답변은 이름 없이 결과 계산에만 써요.",
+  "quiz.error.rateLimited": "잠시 후 다시 시도해 주세요",
+  "result.notFound": "결과가 없거나 1년이 지나 지워졌어요",
+  "result.again": "다시 하기"
 }

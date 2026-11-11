@@ -1,7 +1,7 @@
 # 워홀로그 v6 적합도 계산 검증용 엔진
 # 환율 가정(만원 환산): USD 0.14, EUR 0.15, GBP 0.185, AUD 0.09, NZD 0.082, CAD 0.10,
 # DKK 0.02, SEK 0.0135, CZK 0.006, HUF 0.00039, PLN 0.035, HKD 0.018, KRW 1
-# 항공권 가정: 아시아 40, 유럽·오세아니아·북미 150, 남미 250 (만원)
+# 항공권 가정(왕복 기준, D-094): 아시아 40, 유럽·오세아니아·북미 150, 남미 250 (만원)
 # need = 재정증명 + 비자비용 + 보건부담금(영국) + 항공권 (만원). 3단계: DB 계산값으로 맞춤(D-085). None = 확인 중(잔고 증명 숫자 없음) → '돈' 항목을 점수에서 뺌
 C = {
  # name: age, eng, langs, local_req, no_fulltime, emp_limit, job_hard, wage, price, kor, study, long2, europe, near, select, need

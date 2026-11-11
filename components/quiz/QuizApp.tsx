@@ -1,15 +1,15 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useState, useSyncExternalStore } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { maxAgeOf, type ScoringConfig } from '@/lib/engine';
 import type { QuizCountry } from '@/lib/data/quizCountries';
-import { MAX_HEART_COUNTRIES, QUESTION_COUNT } from '@/lib/quiz/config';
+import { MAX_HEART_COUNTRIES, MIN_LOADING_MS, QUESTION_COUNT } from '@/lib/quiz/config';
 import { clearQuiz, loadQuiz, saveQuiz } from '@/lib/quiz/state';
 import {
   candidatesOf, canEnter, firstUnanswered, isSkipped, nextQuestion, prevQuestion, pruneAnswers, type QuizContext,
 } from '@/lib/quiz/steps';
-import { submitQuiz } from '@/lib/quiz/submit';
+import { submitQuiz, SubmitError } from '@/lib/quiz/submit';
 import { EMPTY_STATE, type Answers, type QuizState } from '@/lib/quiz/types';
 import { t } from '@/lib/copy';
 import { ConfirmDialog } from './ConfirmDialog';
@@ -29,9 +29,10 @@ export function QuizApp({ countries, minAge, config }: { countries: QuizCountry[
   const params = useSearchParams();
   const [state, setState] = useState<QuizState | null>(null);
   const [confirmOpen, setConfirmOpen] = useState(false);
-  const [failedAt, setFailedAt] = useState(-1); // 이 번호의 시도가 실패했다
+  const [failure, setFailure] = useState<{ attempt: number; rate: boolean } | null>(null); // 실패한 시도 번호와 이유
   const [attempt, setAttempt] = useState(0);
-  const failed = failedAt === attempt;
+  const failed = failure?.attempt === attempt;
+  const request = useRef<{ attempt: number; started: number; promise: ReturnType<typeof submitQuiz> } | null>(null);
   // 서버에서는 false, 브라우저에서는 true (저장소를 읽어도 되는 때)
   const mounted = useSyncExternalStore(() => () => {}, () => true, () => false);
 
@@ -80,11 +81,28 @@ export function QuizApp({ countries, minAge, config }: { countries: QuizCountry[
   // 답과 현재 질문 번호를 저장 (저장소가 막혀 있어도 화면은 그대로)
   useEffect(() => { if (state && q) saveQuiz({ answers: state.answers, q }); }, [state, q]);
 
-  // 계산 중 화면: 결과 저장 요청 (TODO(4단계): 지금은 끝나지 않는다)
+  // 계산 중 화면: 결과 저장 요청 (SPEC 3.3). 최소 1.2초는 보여 주고, 성공하면 답을 지우고 /r/[id]로 replace 이동한다.
+  // 시도마다 요청을 한 번만 보낸다(개발 모드에서 효과가 두 번 실행돼도 같은 요청을 이어받는다).
   useEffect(() => {
     if (view !== 'loading' || !state) return;
+    if (request.current?.attempt !== attempt) {
+      request.current = { attempt, started: Date.now(), promise: submitQuiz(state.answers) };
+    }
+    const { started, promise } = request.current;
     let live = true;
-    submitQuiz(state.answers).catch(() => live && setFailedAt(attempt));
+    promise
+      .then(async ({ id }) => {
+        const wait = Math.max(0, MIN_LOADING_MS - (Date.now() - started));
+        if (wait > 0) await new Promise((resolve) => setTimeout(resolve, wait));
+        if (!live) return;
+        clearQuiz();
+        router.replace(`/r/${id}`);
+      })
+      .catch((error: unknown) => {
+        if (!live) return;
+        if (error instanceof SubmitError && error.kind === 'invalid' && error.question) return router.replace(url(error.question)); // 잘못된 답: 그 질문으로
+        setFailure({ attempt, rate: error instanceof SubmitError && error.kind === 'rate' });
+      });
     return () => { live = false; };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [view, attempt]);
@@ -101,7 +119,7 @@ export function QuizApp({ countries, minAge, config }: { countries: QuizCountry[
   }
   if (view === 'loading') {
     if (firstUnanswered(answers, ctx) !== null) return <QuizSkeleton />;
-    return <Loading failed={failed} onRetry={() => setAttempt((n) => n + 1)} onBack={() => router.push(url(QUESTION_COUNT))} />;
+    return <Loading failed={failed} rateLimited={failed && failure?.rate === true} onRetry={() => setAttempt((n) => n + 1)} onBack={() => router.push(url(QUESTION_COUNT))} />;
   }
   if (q === null || !canEnter(q, answers, ctx) || isSkipped(q, answers, ctx)) return <QuizSkeleton />;
 

@@ -9,6 +9,15 @@ async function rows<T>(table: string, columns: string): Promise<T[]> {
   return (data ?? []) as unknown as T[];
 }
 
+/** 공유 링크로 결과 하나 읽기 (get_quiz_result 함수만 쓴다: 전체 목록 조회는 막혀 있음). 없거나 지워졌으면 null */
+export async function fetchQuizResult(id: string) {
+  const { data, error } = await getPublicClient().rpc('get_quiz_result', { result_id: id });
+  if (error) throw new Error(`결과 읽기 실패: ${error.message}`);
+  const row = Array.isArray(data) ? data[0] : data;
+  if (!row) return null;
+  return { answers: row.answers as unknown, result: row.result as unknown, createdAt: row.created_at as string, dataChanged: row.data_changed === true };
+}
+
 /** adapter에 넘길 행 전체. 현재 값(valid_to 없음)만 읽는다. */
 export async function fetchAdapterRows(): Promise<DbRows> {
   const db = getPublicClient();

@@ -26,7 +26,9 @@ export function StopAge({ maxAge, onRetry }: { maxAge: number; onRetry: () => vo
 }
 
 /** 계산 중 (S06_loading). 최소 1.2초 보여 준다(SPEC 3.3). 오류면 다시 시도·질문으로 돌아가기. */
-export function Loading({ failed, onRetry, onBack }: { failed: boolean; onRetry: () => void; onBack: () => void }) {
+export function Loading({ failed, rateLimited = false, onRetry, onBack }: {
+  failed: boolean; rateLimited?: boolean; onRetry: () => void; onBack: () => void;
+}) {
   const steps = ['loading.step1', 'loading.step2', 'loading.step3'];
   const [done, setDone] = useState(0);
   useEffect(() => {
@@ -40,7 +42,7 @@ export function Loading({ failed, onRetry, onBack }: { failed: boolean; onRetry:
     <main className="mx-auto flex min-h-dvh max-w-quiz flex-col items-center justify-center gap-8 px-5 text-center">
       {failed ? (
         <>
-          <h1 className="text-h2 text-navy">{t('error.generic')}</h1>
+          <h1 className="text-h2 text-navy">{t(rateLimited ? 'quiz.error.rateLimited' : 'error.generic')}</h1>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Button onClick={onRetry}>{t('quiz.error.retry')}</Button>
             <Button variant="ghost" onClick={onBack}>{t('quiz.error.back')}</Button>

@@ -1,12 +1,42 @@
 import type { Answers } from './types';
 
-/**
- * 결과 저장 요청.
- * TODO(4단계): `POST /api/result`로 보내고, 성공하면 sessionStorage를 지운 뒤 `/r/[id]`로 replace 이동한다.
- * 10초 안에 응답이 없거나 오류면 reject한다(SPEC.md 3.3). 2단계에서는 계산 중 화면까지만 가므로
- * 이 함수는 끝나지 않는 Promise를 돌려준다.
- */
-export function submitQuiz(answers: Answers): Promise<{ id: string }> {
-  void answers;
-  return new Promise(() => {});
+/** 결과 저장 요청 (POST /api/result, SPEC.md 3.3). 10초 안에 응답이 없으면 실패. */
+export type SubmitErrorKind = 'invalid' | 'rate' | 'timeout' | 'server' | 'network';
+
+export class SubmitError extends Error {
+  constructor(public kind: SubmitErrorKind, public question?: number) {
+    super(kind);
+  }
+}
+
+export const SUBMIT_TIMEOUT_MS = 10_000;
+
+export async function submitQuiz(
+  answers: Answers,
+  opts: { timeoutMs?: number; fetchImpl?: typeof fetch } = {},
+): Promise<{ id: string }> {
+  const { timeoutMs = SUBMIT_TIMEOUT_MS, fetchImpl = fetch } = opts;
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    const res = await fetchImpl('/api/result', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ answers }), signal: controller.signal,
+    });
+    if (res.ok) {
+      const body = (await res.json()) as { id?: unknown };
+      if (typeof body.id === 'string') return { id: body.id };
+      throw new SubmitError('server');
+    }
+    if (res.status === 429) throw new SubmitError('rate');
+    if (res.status === 400) {
+      const body = (await res.json().catch(() => ({}))) as { question?: unknown };
+      if (typeof body.question === 'number') throw new SubmitError('invalid', body.question);
+    }
+    throw new SubmitError('server');
+  } catch (error) {
+    if (error instanceof SubmitError) throw error;
+    throw new SubmitError(controller.signal.aborted ? 'timeout' : 'network');
+  } finally {
+    clearTimeout(timer);
+  }
 }

@@ -151,7 +151,7 @@
 - 영향: SPEC.md 2장에 반영.
 
 ### D-065 요청 제한은 Supabase 표 + 함수 (확정)
-- 결정: 새 라이브러리 없이 구현. IP는 해시만 저장하고 24시간 뒤 삭제. 마이그레이션 `005_rate_limit.sql`을 4단계에서 만든다.
+- 결정: 새 라이브러리 없이 구현. IP는 해시만 저장하고 24시간 뒤 삭제. 마이그레이션 `005_rate_limit_security.sql`을 4단계에서 만든다.
 - 영향: 4단계에서 `docs/legal/privacy.md`에 추가할 한 줄 문구를 제안한다(처리방침과 실제 동작이 같아야 함, 규칙 9).
 
 ### D-066 Supabase는 프로젝트 하나, 로컬 Docker 없음 (확정)
@@ -262,6 +262,32 @@
 
 ### D-092 오픈 전 검색 차단 (확정)
 - 결정: `NEXT_PUBLIC_SITE_LIVE=true`일 때만 색인을 허용한다. 그 전에는 `app/robots.ts`가 전체 Disallow, 레이아웃 메타에 robots noindex·nofollow. 기본값 false(`.env.example`). 오픈 날 Vercel 환경변수만 바꾸고 다시 배포하면 된다(빌드 때 값이 들어간다).
+
+## 배포와 4단계 준비 (2026-11-11)
+
+### D-093 Vercel 배포: Production Branch = main, Framework는 vercel.json으로 고정 (확정)
+- 증상: Vercel에서 Redeploy를 해도 `/test`가 404.
+- 원인: ① Vercel 프로젝트를 저장소에 README만 있을 때 만들어서 **Framework Preset이 `Other`**로 남았다. `Other`는 `public/`이 있으면 그 폴더만 서빙해서 `/flags/*.svg`만 열리고 나머지는 전부 404. ② 기본 브랜치가 `master`였던 때의 배포를 Redeploy하면 예전 커밋이 다시 배포된다. ③ `…-eroonsungs-projects.vercel.app` 주소들은 Deployment Protection(Vercel Authentication) 때문에 로그인 없이는 302.
+- 해결: `vercel.json`에 `{"framework":"nextjs"}`. 새 커밋을 `main`에 push해서 새 배포를 만들었다. 운영 주소 https://project-woholog.vercel.app (로그인 없이 `/test` 200, `/robots.txt` Disallow, `/dev/tokens` 404).
+- 확인 방법: `gh api repos/{owner}/{repo}/commits/{sha}/status`의 `Vercel` 컨텍스트(이 저장소는 deployments가 아니라 status로 기록됨), `npx vercel ls`, 보호된 주소는 `npx vercel curl <경로> --deployment <주소>`.
+- 참고: `vercel link`가 `.env.local`에 `VERCEL_OIDC_TOKEN`을 추가했다(코드는 쓰지 않음, git 무시됨). `.gitignore`에는 `.vercel`을 더했다.
+
+### D-094 항공권 추정(flight_estimates)은 왕복 기준 (확정)
+- 결정: `flight_estimates`는 왕복 항공권 가격이다. 마이그레이션 005의 `comment on`, `fit_engine_v1.py` 주석, CLAUDE.md 6장에 명시(적용된 시드 파일은 해시로 추적되므로 고치지 않는다).
+- 확인: 브라질("왕복 항공권이 없으면 US$4,200")의 DB 값은 이미 항공권이 있을 때의 금액 US$2,100이라 변화 없음. 라트비아·스웨덴·아르헨티나("+ 왕복 항공권")와 일본·대만·홍콩·뉴질랜드("+ 귀국 항공권")는 공식의 항공권 항이 이미 왕복이라 그대로. 왕복 기준 때문에 바뀌는 나라는 없다.
+
+### D-095 요청 제한·보안 정리 마이그레이션 005 (확정)
+- 결정: `005_rate_limit_security.sql` — 요청 제한 표 `rate_limits`(IP 해시만, 24시간 뒤 삭제)와 함수 `check_rate_limit`·`purge_rate_limits`(서비스 키만 실행), `log_change`·`flag_dependent_content`의 EXECUTE를 public·anon·authenticated에서 회수(트리거는 그대로 동작), 트리거 함수 3개 `search_path` 고정. `get_quiz_result`·`current_data_version`·`feature_vote_counts`는 공개 유지.
+- IP 해시: 서버에서 `HMAC-SHA256(키 = SUPABASE_SERVICE_ROLE_KEY, 값 = IP)`. 새 환경변수 없이 키를 모르면 되돌릴 수 없다.
+
+## 4단계: 엔진 연결 (2026-11-11)
+
+### D-096 결과 저장 구조 (확정)
+- 흐름: 화면 → `POST /api/result` → ① IP 해시로 요청 제한(1분 10번, `check_rate_limit`) ② 서버가 답을 다시 검증(`lib/quiz/validate.ts`: 형식·범위·나이, 알려진 칸만 복사) ③ DB 값으로 엔진 다시 계산(`lib/result/compute.ts`) ④ `quiz_results`에 저장(서비스 키, `data_version` 포함) → `{ id }` → 화면이 `/r/[id]`로 replace 이동.
+- 저장하는 결과는 계산 당시의 스냅샷이다(나라별 %·조건 표시·조건 줄 문구 키와 값·갈 수 없는 나라·곧 열려요·이렇게 바꾸면·"돈 확인 중" 표시). 결과 화면(5단계)은 다시 계산하지 않고 이 값을 보여 준다. `data_changed`는 `get_quiz_result`가 알려 준다.
+- 오류: 잘못된 답 400 + `question`(+`reason`), 나이 초과는 `age_over`(저장하지 않음), 요청 제한 429, 큰 본문 413, 그 밖의 서버 오류 500(로그에 답변 값을 남기지 않음). 화면은 400이면 그 질문으로, 그 밖에는 오류 + 다시 시도(답은 지우지 않음). 응답이 10초 넘게 없으면 실패로 본다.
+- `/r/[id]`는 아는 사람만 보는 주소라서 오픈 후에도 `noindex`. 지금 화면은 5단계 전 임시(저장된 결과를 JSON으로 보여 줌).
+- 서비스 키는 `lib/data/admin.ts`(서버 전용)에서만 읽는다.
 
 ---
 

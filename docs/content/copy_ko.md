@@ -506,3 +506,6 @@
 | quiz.multi | 여러 개 골라도 돼요 | 답변(D-084) |
 | quiz.single | 하나만 골라요 | 답변(D-084) |
 | quiz.note | 답변은 이름 없이 결과 계산에만 써요. | 답변(D-084) |
+| quiz.error.rateLimited | 잠시 후 다시 시도해 주세요 | SPEC 0.8 |
+| result.notFound | 결과가 없거나 1년이 지나 지워졌어요 | SPEC 4.1 |
+| result.again | 다시 하기 | SPEC 4.6 |
