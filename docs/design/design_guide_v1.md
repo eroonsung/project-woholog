@@ -12,7 +12,7 @@
 - 배민 민트(#2AC1BC)와 겹치지 않게 민트 대신 아쿠아 채택. 누런 오프화이트는 사용자 비선호
 
 ## 로고 (logo-v4 확정, D-134)
-- 파일: `public/brand/` — `woholog-logo.svg`(헤더·메뉴), `woholog-logo-white.svg`(어두운 배경용, 지금 쓰는 곳 없음), `woholog-badge.svg`(좁은 화면·공유 이미지), `woholog-badge-small.svg`(24px 미만), `woholog-mark(-white).svg`, `woholog-app-icon.svg`, `woholog-stamp.*`, `icon-192/512.png`. 탭 아이콘은 `app/favicon.ico`·`icon.png`·`apple-icon.png`.
+- 파일: `public/brand/` — `woholog-logo-ko.svg`(한국어 화면 헤더·메뉴·공유 이미지), `woholog-logo.svg`(영어 화면, "woholog"), `woholog-logo-ko-white.svg`·`woholog-logo-white.svg`(어두운 배경용, 지금 쓰는 곳 없음), `woholog-badge.svg`(좁은 화면·공유 이미지), `woholog-badge-small.svg`(24px 미만), `woholog-mark(-white).svg`, `woholog-app-icon.svg`, `woholog-stamp.*`, `icon-192/512.png`. 탭 아이콘은 `app/favicon.ico`·`icon.png`·`apple-icon.png`.
 - 색은 남색 #1D3366, 하늘색 #9FE6F3, 흰색 #FFFFFF로 기존 토큰(navy·aqua·white)과 같다. 파일 안의 색은 그림 자산이라 따로 토큰을 만들지 않았다.
 
 ## 폰트

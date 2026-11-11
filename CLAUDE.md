@@ -112,7 +112,7 @@ lib/
   server/   ip.ts limits.ts       IP 해시·요청 제한 기준(SPEC 0.8)
   features.ts  준비 중 기능 15개(features_ko.json)·단계·다른 기능 3개   votes.ts  원해요(woholog.votes.v1)·보내기·되돌리기
   guides.ts    가이드 마크다운·{fact_key} 채우기   share/  data.ts image.tsx colors.ts  공유 이미지 값·그리기(OG·스토리, D-125)
-  meta.ts  화면별 제목·설명(D-133)  popular.ts   많이 찾는 나라 먼저 정렬(체크리스트·/apps, D-130)  flight.ts  비행시간 문구(D-130)
+  locale.ts  화면 언어 판단·언어별 로고(D-135)  meta.ts  화면별 제목·설명(D-133)  popular.ts   많이 찾는 나라 먼저 정렬(체크리스트·/apps, D-130)  flight.ts  비행시간 문구(D-130)
   share/web.ts 공유 창에 넘길 값·iOS 판별(D-131)  mine.ts  내 결과 표시(woholog.mine.v1, D-132)
   site.ts      오픈 여부(NEXT_PUBLIC_SITE_LIVE)
   storage.ts   브라우저 저장소 (SPEC.md 0.2의 키만)

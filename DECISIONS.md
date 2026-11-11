@@ -580,6 +580,14 @@
 - 색: 로고 색(남색 #1D3366·하늘색 #9FE6F3·흰색)이 기존 토큰과 같아 brand 토큰은 추가하지 않았다.
 - 예전 로고 파일: 코드 안에서 만든 "W" 상자와 글자뿐이라 지울 파일이 없다. `woholog-logo-white.svg` 등 지금 쓰는 곳이 없는 파일은 (푸터가 흰 배경이라) 보관만 한다.
 
+## D-135. 언어별 워드마크와 body 하이드레이션 경고 (2026-11-11)
+- **언어별 로고(logo-ko)**: 한국어 화면의 헤더·모바일 메뉴는 `woholog-logo-ko.svg`("워홀로그"), 영어 화면(`/to-korea`, `/privacy?lang=en`)은 기존 `woholog-logo.svg`("woholog"). 360px 미만 배지 전환, 높이(모바일 32px·웹 36px)는 그대로. 한국어 로고가 더 좁아(132×36) 헤더 여유가 늘었다.
+- **언어 판단은 `lib/locale.ts` 한 곳**(`localeOf(pathname, lang)`, 영어는 `/to-korea`·`/privacy?lang=en`만). 헤더 로고만 쓰지만 다른 곳에서 필요하면 여기를 쓴다. `/privacy?lang=en`은 `?lang=`을 읽어야 해서 로고는 Suspense 안에서 `useSearchParams`로 읽고, 읽기 전에는 주소만으로 고른 로고를 보여 준다.
+- 대체 글: 한국어 `brand.logoAlt`("워홀로그 홈", 확정), 영어 `copy_en.json`의 `brand.logoAlt`("woholog home", 제안).
+- OG·스토리 이미지는 한국어 사용자용이라 `woholog-logo-ko.svg`로 바꿈(잘리지 않는 것을 이미지로 확인).
+- **`<body suppressHydrationWarning>`**: ColorZilla 같은 확장이 body에 붙이는 `cz-shortcut-listen` 속성 때문에 나는 하이드레이션 경고를 막는다(body 속성 하나에만 적용, 자식 화면에는 영향 없음).
+- `launch_subscribers` id 10은 지금처럼 삭제 대상에서 빼고 그대로 둔다. 오픈 직전에 테스트 데이터를 지울 때 Yvonne가 다시 확인한다.
+
 ---
 
 ## 열린 질문 (정해지면 위로 옮긴다)
