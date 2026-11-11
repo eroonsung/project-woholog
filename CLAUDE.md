@@ -68,6 +68,7 @@
 15. **제휴 링크에는 "광고" 표시와 수수료 안내 문구를 반드시 붙인다.** 링크가 없으면 준비 중 카드만 보여 준다.
 16. **준비 중 기능은 템플릿 1개 + `features_ko.json`으로만.** "예정"은 항상 "목표"로 쓴다.
 17. **작업을 지우거나 되돌리는 명령은 실행 전에 이유와 영향을 말하고 허락을 받는다.** `git checkout -- .`, `git reset --hard`, `git clean -f`, `git push --force`, 브랜치 강제 삭제(`git branch -D`, 원격 삭제 포함)가 해당한다. **운영 DB에 쓰는 명령**(`db push`, 쓰기가 들어간 `db query` 등)도 같다. 사용자가 그 작업을 이미 직접 요청한 경우에는 무엇을 적용하는지 먼저 말한 뒤 실행한다.
+    - **`main`에 push하기 전에는 반드시 멈추고 사용자 허락을 받는다**(`main` push = 운영 배포, D-101). 허락은 사용자가 "push해"라고 답했을 때만 유효하다. 다른 대답이나 무응답이면 push하지 않는다. 커밋은 로컬 저장이라 자유롭게 한다. 자세한 절차는 7장.
 
 ## 5. 폴더 구조
 ```
@@ -163,15 +164,21 @@ docs/
 
 ## 7. Git
 - 커밋 메시지: `[단계번호] 한 줄 요약` (예: `[4] 결과 저장 API`).
-- **4단계부터는 `main`에서 바로 작업하고 push한다.** `main` push = Vercel 운영 배포다. 단계별 브랜치와 PR은 쓰지 않는다(3단계 `step-3-supabase`가 마지막).
-- **push 전 확인 — 하나라도 실패하면 push하지 않는다.**
+- **4단계부터는 `main`에서 바로 작업하고 커밋한다.** 단계별 브랜치와 PR은 쓰지 않는다(3단계 `step-3-supabase`가 마지막). 커밋은 로컬 저장이라 자유롭게 한다.
+- **`main` push = Vercel 운영 배포라서, push 전에 반드시 멈추고 아래를 보여 준 뒤 사용자 허락을 받는다**(D-101).
+  - a) 이번에 push할 커밋 목록: `git log origin/main..HEAD --oneline`
+  - b) 바뀐 파일 목록: `git diff --stat origin/main..HEAD`
+  - c) `npm run precheck` 결과(build·tsc·eslint·vitest, `.env*` 없음, 키 패턴 0건)
+  - d) 운영 DB에 적용할 마이그레이션·시드가 있으면 그 목록
+  - 사용자가 **"push해"**라고 답했을 때만 push한다. 다른 대답이나 대답이 없으면 push하지 않는다.
+- **push 전 확인 — 하나라도 실패하면 허락을 구하지 않고 먼저 고친다(통과해야 허락을 요청할 수 있다).**
   1. `npm run build`, `tsc`(`npm run typecheck`), `eslint`(`npm run lint`), `vitest`(`npm test`) 통과
   2. 스테이징에 `.env*` 파일이 없다(`.env.example`만 허용)
   3. 바뀐 내용에 키 패턴이 0건: `sb_secret_`·`sb_publishable_` 뒤에 긴 값, `eyJ`로 시작하는 긴 문자열, 코드의 `service_role` (문서에서 패턴 이름만 적은 줄은 제외)
-  - 위 3가지는 `npm run precheck`(`scripts/precheck.sh`)가 한 번에 확인한다. 통과해야 push한다.
+  - 위 3가지는 `npm run precheck`(`scripts/precheck.sh`)가 한 번에 확인한다. 통과해야 push 허락을 요청할 수 있다.
 - **실험성 큰 변경**(큰 구조·디자인 변경, 되돌리기 어려운 마이그레이션 등)만 브랜치로 하고, Vercel 미리보기 주소로 확인한 뒤 병합한다(merge commit).
 - **Vercel Production Branch = `main`**(`vercel.json`으로 `framework: nextjs` 고정). 배포 상태는 `gh api repos/{owner}/{repo}/commits/{sha}/status`의 `Vercel` 항목과 `npx vercel ls`로 확인한다(D-093). 운영 주소: https://project-woholog.vercel.app
-- 단계가 끝나면 커밋·push하고 8장 형식으로 보고한 뒤 멈춘다.
+- 단계가 끝나면 커밋하고 8장 형식으로 보고한 뒤 멈춘다. push는 위 허락 절차를 거친다.
 - 되돌리기 어려운 git 명령과 운영 DB 쓰기는 4장 규칙 17을 따른다.
 
 ## 8. 완료 보고 형식
@@ -180,7 +187,9 @@ docs/
 2. 완료 기준 체크리스트 (✓ / ✗)
 3. `SPEC.md` 17장 상태 확인표에서 이 단계 화면의 확인 결과
 4. 새로 정한 것 → `DECISIONS.md`에 추가한 항목 번호
-5. push 결과: 커밋 해시, push 전 확인 3가지의 결과(build·tsc·eslint·vitest / `.env*` / 키 패턴), 운영 배포 여부
+5. push 결과 — **"push 대기(허락 필요)"와 "push 완료"를 구분해서 쓴다.**
+   - push 대기: 커밋 목록, 바뀐 파일 목록, `npm run precheck` 결과, 운영 DB에 적용할 마이그레이션·시드(없으면 "없음")를 보여 주고 허락을 요청한다.
+   - push 완료: 커밋 해시, 운영 배포 결과(Vercel 상태, 운영 주소 확인)
 6. 남은 문제·물어볼 것
 
 ## 9. 작업 순서와 완료 기준
