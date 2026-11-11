@@ -222,12 +222,14 @@ describe('가이드 마크다운과 화면', () => {
     expect(on).toContain('확인일 2026년 11월 5일');
     expect(text(renderToStaticMarkup(<GuideArticle title="글" country={null} date={null} needsReview={false} blocks={[]} />))).not.toContain('일부 정보가');
   });
-  it('0개면 빈 상태: "곧 올라올 글" 4개(제목만, 링크 아님) + 알림 신청', () => {
+  it('0개면 빈 상태: "곧 올라올 글" 2개(제목만, 링크 아님) + 알림 신청', () => {
     const html = renderToStaticMarkup(<GuidesView guides={[]} />);
     const s = text(html);
     expect(s).toContain('첫 글을 준비하고 있어요');
     expect(s).toContain('곧 올라올 글');
-    for (const title of ['35세에도 갈 수 있는 워홀 나라', '캐나다 IEC 2027 준비법', '일본 워홀 분기 접수 완벽 정리', '워홀 첫 달 필요한 돈 계산법']) expect(s).toContain(title);
+    for (const title of ['캐나다 IEC 2027 준비법', '워홀 첫 달 필요한 돈 계산법']) expect(s).toContain(title);
+    expect(s).not.toContain('35세에도 갈 수 있는 워홀 나라'); // 올리지 않기로 한 글은 약속처럼 보이지 않게 뺐다
+    expect(s).not.toContain('일본 워홀 분기 접수 완벽 정리');
     expect(html).not.toMatch(/href="\/guides\//);
     expect(s).toContain('새 글이 올라오면 알려 드릴게요');
   });
