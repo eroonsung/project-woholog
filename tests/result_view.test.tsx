@@ -151,6 +151,20 @@ describe('마음에 둔 다른 나라: 이유 보기', () => {
     expect(section(html('blocked_age'))).toBe(''); // 갈 수 없는 나라는 기존대로 카드 위 한 줄
   });
 
+  it('마음에 둔 나라가 하나뿐이고 점수가 낮아도(1위가 다른 나라) 그 나라가 카드라서 이유가 전부 보인다', () => {
+    const out = html('far_low'); // 대만 하나, 1위는 다른 나라
+    const { plan, result } = planOf('far_low');
+    expect(plan.card.code).toBe('TW');
+    expect(plan.cardIsFirst).toBe(false);
+    expect(plan.otherHearts).toEqual([]);
+    expect(section(out)).toBe(''); // "다른 나라" 영역에 또 나오지 않는다
+    const text = plain(out);
+    const name = result.countries.TW!.nameKo;
+    expect(plan.card.lines.some((l) => l.mark === 'no' || l.mark === 'partial')).toBe(true); // 안 맞는 점이 있고
+    for (const line of plan.card.lines) expect(text).toContain(reasonText(line, { country: name })); // 줄마다 카드에 보인다(접힘 없음)
+    expect(text).toContain(`${name} 상세 정보 보기`);
+  });
+
   it('기존 동작: 카드 나라는 그대로 위에, 다른 나라(multi: 영국)는 아래 영역에', () => {
     const out = html('multi');
     expect(plain(section(out))).toContain('영국');
