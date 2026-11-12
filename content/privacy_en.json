@@ -1,11 +1,11 @@
 {
   "_source": "docs/legal/privacy.md (scripts/build_privacy_content.py로 만든 파일, 직접 고치지 않는다)",
   "title": "woholog Privacy Policy",
-  "meta": "Effective: December 31, 2026 · Version 1.0",
+  "meta": "Effective: December 1, 2026 · Version 1.0",
   "blocks": [
     {
       "t": "p",
-      "text": "woholog is run by [Operator]. We collect as little as possible."
+      "text": "woholog is run by Yvonne Sung (an individual operator). We collect as little as possible."
     },
     {
       "t": "p",
@@ -18,14 +18,14 @@
         "**Report message**: to fix wrong information. We do not ask for contact details. Deleted within 1 year after we resolve it.",
         "**Quiz answers and results**: to calculate your result and let you share a link. Not linked to your name or contact details. Deleted after 1 year.",
         "**Usage events** (which feature was used, e.g. quiz started or finished, share, checklist start; a few fixed labels such as share method or country code; the page path without your result's unique ID; time): to see which features are used and improve the service. No name, email, quiz answers or IP address is stored with them, and they cannot be linked to you. Deleted after 13 months.",
-        "**Server logs** (IP address, browser, time): kept by our hosting provider for security.",
+        "**Server logs** (IP address, browser, time): kept by our hosting provider (Vercel runtime logs) for about 1 hour, for security.",
         "**Birth date** (age calculator in the quiz): used only inside your browser to work out your age. It is never stored or sent to us; only the resulting age is used as a quiz answer.",
         "**Request-rate limiting**: to prevent abuse we store only a one-way hash of your IP address, made with a secret value kept on our server (we do not store the IP address itself). Deleted after 24 hours."
       ]
     },
     {
       "t": "p",
-      "text": "**Who processes it**: Supabase Inc. (database, stored in [Seoul, Korea]), Vercel Inc. (hosting, USA), [Email provider] (sending the launch email, [country]). We do not sell or share your data with anyone else."
+      "text": "**Who processes it**: Supabase Inc. (database, stored in Seoul, Korea, region ap-northeast-2), Vercel Inc. (hosting and visit statistics, USA), Google LLC (Gmail, USA: sends the launch email once, with recipients in BCC; the email address is deleted from the Sent folder within 30 days after sending). We do not sell or share your data with anyone else."
     },
     {
       "t": "p",
@@ -37,11 +37,11 @@
     },
     {
       "t": "p",
-      "text": "**Cookies**: We use [Vercel Web Analytics], which does not use tracking cookies."
+      "text": "**Cookies**: We use Vercel Web Analytics, which does not use tracking cookies. Statistics are kept for 1 month."
     },
     {
       "t": "p",
-      "text": "**Your rights**: You can ask us to access, correct or delete your data at any time. Email [contact email] and we will respond within 10 days."
+      "text": "**Your rights**: You can ask us to access, correct or delete your data at any time. Email yvonnesung.work@gmail.com and we will respond within 10 days."
     },
     {
       "t": "p",
@@ -49,7 +49,7 @@
     },
     {
       "t": "p",
-      "text": "**Contact**: [Operator name], [contact email]"
+      "text": "**Contact**: Yvonne Sung, yvonnesung.work@gmail.com"
     },
     {
       "t": "p",

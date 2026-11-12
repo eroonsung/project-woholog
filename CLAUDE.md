@@ -30,7 +30,7 @@
 ## 1. 무엇을 만드나
 - 워킹홀리데이를 고민하는 한국 청년이 "마음에 둔 나라가 나한테 맞는지" 확인하는 웹 서비스.
 - 핵심 흐름: 첫 화면 → 질문 12개(약 2분) → 결과(적합도 % + ✓△✗ 이유) → 나란히 비교 → 나라 상세 → D-day 체크리스트.
-- 오픈 **2026-12-31**, 로그인 없음. 운영자 1명, 주 10~15시간. **유지보수가 쉬운 코드가 최우선**이다.
+- 오픈 **2026-12-01**, 로그인 없음. 운영자 1명, 주 10~15시간. **유지보수가 쉬운 코드가 최우선**이다.
 
 ## 2. MVP 범위
 **만든다**: 헤더·메가 메뉴·모바일 메뉴 / 첫 화면 / 질문 12개 / 적합도 계산 / 결과·공유 링크·공유 이미지 / 나란히 비교 / 29개국 비교표 / 나라 상세 / D-day 체크리스트(브라우저 저장) / To Korea 대기자(영어 1장) / Coming soon 모달·오픈 알림 이메일 / 정보 제보 / 처리방침(한·영) / 필수 앱·추천 준비물 칸 / 가이드 목록·글 / 준비 중 기능 모음·상세 + 원해요 / 이벤트 측정.
@@ -124,7 +124,7 @@ content/
   privacy_ko.json  privacy_en.json  (처리방침 문서, docs/legal/privacy.md → scripts/build_privacy_content.py, D-122)
 supabase/
   migrations/  001_schema_v2_1.sql  002_feature_votes.sql  003_extension_fact_key.sql  004_proof_amount_with_ticket.sql  005_rate_limit_security.sql  006_flight_time.sql  007_facts_needs_check.sql  008_events.sql
-  seed/seed_v1_1.sql  seed/seed_checklist_v1.sql  seed/seed_engine_v1.sql  seed/seed_proof_ticket_v1.sql  seed/seed_nl_proof_v1.sql  seed/seed_country_apps_v1.sql  seed/seed_country_apps_reading_v1.sql  seed/seed_flight_v1.sql  seed/seed_data_research_v1.sql  seed/seed_local_language_v1.sql  seed/seed_guides_v1.sql
+  seed/seed_v1_1.sql  seed/seed_checklist_v1.sql  seed/seed_engine_v1.sql  seed/seed_proof_ticket_v1.sql  seed/seed_nl_proof_v1.sql  seed/seed_country_apps_v1.sql  seed/seed_country_apps_reading_v1.sql  seed/seed_flight_v1.sql  seed/seed_data_research_v1.sql  seed/seed_local_language_v1.sql  seed/seed_guides_v1.sql  seed/seed_visa_fee_v1.sql
 scripts/
   precheck.sh  push 전 확인(build·tsc·eslint·vitest, .env*, 키 패턴) — npm run precheck
   build_guides_seed.py  docs/content/guides_draft_v1.md → supabase/seed/seed_guides_v1.sql (D-128)
@@ -145,7 +145,8 @@ docs/
   content/copy_ko.md  content/checklist_v1.md (체크리스트 내용 검토본)
   legal/privacy.md
   product/scope_ia.md  product/prd.md
-  ops/test_data.md  ops/launch_checklist.md (운영 테스트 데이터 기록·오픈 전 체크리스트)
+  ops/test_data.md  ops/launch_checklist.md (운영 테스트 데이터 기록·오픈 전 체크리스트)  ops/app_links_manual_check.md  ops/cleanup_before_launch.sql (앱 링크 직접 확인표·오픈 전 테스트 데이터 삭제 SQL, 준비만)
+  metrics_queries.sql  이벤트 조회 SQL(D-138)
 ```
 
 ### 파일 이름 규칙

@@ -272,7 +272,7 @@ Same modal, error states shown together for design reference: email input with r
 ```
 [공통 스타일]
 Screen: simple legal text page, readable.
-Header same as landing. Page title "개인정보 처리방침", gray "시행일 2026년 12월 31일 · 버전 1.0", language toggle "한국어 | English".
+Header same as landing. Page title "개인정보 처리방침", gray "시행일 2026년 12월 1일 · 버전 1.0", language toggle "한국어 | English".
 Left (web) or top (mobile) table of contents with 9 anchor links: "1. 수집하는 항목과 목적", "2. 보관 기간과 파기", "3. 처리 위탁과 국외 이전", "4. 제3자 제공", "5. 자동으로 수집되는 정보", "6. 이용자의 권리", "7. 안전 조치", "8. 개인정보 보호책임자", "9. 변경 안내".
 Body: H2 headings, short paragraphs and one simple table with columns "항목 | 목적 | 보관 기간". Max text width 720. Lots of white space.
 ```

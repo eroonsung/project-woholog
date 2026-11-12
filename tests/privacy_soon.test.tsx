@@ -83,8 +83,8 @@ describe('처리방침(/privacy)', () => {
   const koHtml = renderToStaticMarkup(<PrivacyDoc lang="ko" />);
   const enHtml = renderToStaticMarkup(<PrivacyDoc lang="en" />);
   it('버전·시행일이 맨 위에 있고 언어 전환 링크가 있다', () => {
-    expect(text(koHtml)).toContain('시행일: 2026년 12월 31일 · 버전 1.0');
-    expect(text(enHtml)).toContain('Effective: December 31, 2026 · Version 1.0');
+    expect(text(koHtml)).toContain('시행일: 2026년 12월 1일 · 버전 1.0');
+    expect(text(enHtml)).toContain('Effective: December 1, 2026 · Version 1.0');
     expect(koHtml).toContain('href="/privacy?lang=en"');
     expect(enHtml).toContain('href="/privacy"');
   });
@@ -99,13 +99,17 @@ describe('처리방침(/privacy)', () => {
     }
     expect(doc.blocks.filter((b) => b.t === 'h')).toHaveLength(9);
   });
-  it('빈칸([ ])은 "[공개 전 채움…]"으로 눈에 띄게 남는다', () => {
-    const marks = koHtml.match(/<mark data-fill/g) ?? [];
-    expect(marks.length).toBeGreaterThanOrEqual(8);
-    expect(text(koHtml)).toContain('[공개 전 채움: 운영자]');
-    expect(text(koHtml)).toContain('[공개 전 채움]'); // "[ ]" (접속 기록 보관일)
-    expect(text(koHtml)).not.toMatch(/\[ \]/);
-    expect(text(enHtml)).toContain('[to fill before launch: Operator]');
+  it('빈칸이 모두 채워져 있다(오픈일 12/1 기준): 남은 [ ] 칸과 "공개 전 채움" 표시가 0개', () => {
+    expect(koHtml.match(/<mark data-fill/g) ?? []).toHaveLength(0);
+    expect(enHtml.match(/<mark data-fill/g) ?? []).toHaveLength(0);
+    expect(text(koHtml).replace(ko['privacy.draft']!, '')).not.toContain('공개 전 채움'); // 위쪽 안내 문장(privacy.draft)은 11/20 확정 때 뺀다(launch_checklist B)
+    expect(text(enHtml).replace(en['pp.draft']!, '')).not.toContain('to fill before launch');
+    const strings = (v: unknown): string[] => (typeof v === 'string' ? [v] : Array.isArray(v) ? v.flatMap(strings) : v && typeof v === 'object' ? Object.values(v).flatMap(strings) : []);
+    for (const doc of [privacyKo, privacyEn]) expect(strings(doc).flatMap((s) => s.match(/\[[^\]]*\](?!\()/g) ?? [])).toEqual([]); // 마크다운 링크 [글](주소)는 제외
+    expect(text(koHtml)).toContain('yvonnesung.work@gmail.com');
+    expect(text(koHtml)).toContain('Google LLC');
+    expect(text(koHtml)).toContain('ap-northeast-2');
+    expect(text(enHtml)).toContain('yvonnesung.work@gmail.com');
     expect(text(koHtml)).toContain(ko['privacy.draft']!);
   });
   it('수집 동의문은 이메일 신청 모달과 같은 문구 키를 쓴다(한국어·영어)', () => {

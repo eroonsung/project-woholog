@@ -2,15 +2,18 @@
 
 > **초안이에요.** 개인정보보호위원회 「개인정보 처리방침 작성지침」(2025.4)의 필수 항목을 기준으로 썼지만, 법률 자문은 아니에요. 공개 전에 [개인정보보호 포털 처리방침 만들기](https://www.privacy.go.kr) 도구와 한 번 대조하고, 아래 `[ ]` 칸을 채워야 해요.
 
-## 0. 공개 전에 채울 것
-| 칸 | 할 일 |
+## 0. 공개 전에 채운 값 (2026-11, 오픈일 12/1 기준)
+| 칸 | 채운 값 |
 |---|---|
-| [운영자] | 사업자등록 전이면 개인 이름(예: 성OO). 등록하면 상호로 바꾼다. |
-| [연락 메일] | 지금은 사업용 Gmail, 도메인을 사면 hello@woholog.com |
-| [DB 지역] | Supabase 프로젝트를 만들 때 **서울(ap-northeast-2)** 을 고른다. 데이터가 한국에 저장되면 국외 이전 설명이 간단해진다. |
-| [메일 발송 서비스] | 오픈 알림을 보낼 서비스(예: Resend, Stibee). 한국 서비스(Stibee 등)를 쓰면 국외 이전 항목에서 빠진다. |
-| [이용 이벤트 문구] | **제안 문구(D-137)**: 처리방침의 "서비스 이용 이벤트" 줄, 보관 13개월, 5번 항목, 영문판 "Usage events". 오픈 전 문구 검토 때 확인한다. |
-| [분석 도구] | 쿠키를 안 쓰는 Vercel Web Analytics를 추천. Google Analytics를 쓰면 쿠키 안내와 국외 이전 항목을 추가해야 한다. |
+| 운영자 | 성이현 (사업자등록 전, 등록하면 상호로 바꾼다) |
+| 연락 메일 | yvonnesung.work@gmail.com (도메인을 사면 hello@woholog.com으로) |
+| DB 지역 | 대한민국(서울) 리전, ap-northeast-2 (Supabase) |
+| 메일 발송 | Gmail로 숨은 참조 1회 발송. 위탁·국외 이전 표에 Google LLC(미국), 이메일, 발송 후 30일 안에 보낸편지함에서 삭제 |
+| 방문 통계 | Vercel Web Analytics(쿠키 없음, 1개월 보관) |
+| 이용 기록 | Supabase `events` 표(익명, 개인 식별 정보 없음), 13개월(`purge_events()` 설정값 그대로) |
+| 접속 기록 | Vercel 런타임 로그, Hobby 요금제 기준 약 1시간 |
+| 시행일 | 2026년 12월 1일 |
+| 이용 이벤트 문구 | **제안 문구(D-137)**: 처리방침의 "서비스 이용 이벤트" 줄, 보관 13개월, 5번 항목, 영문판 "Usage events". 오픈 전 문구 검토 때 확인한다. |
 
 운영 원칙 (처리방침과 실제가 같아야 해요)
 - 이메일 외에는 아무것도 받지 않는다. 이름·전화번호·나이 입력 칸을 만들지 않는다.
@@ -41,9 +44,9 @@
 ## 2. 개인정보 처리방침 (한국어)
 
 **워홀로그 개인정보 처리방침**
-시행일: 2026년 12월 31일 · 버전 1.0
+시행일: 2026년 12월 1일 · 버전 1.0
 
-[운영자](이하 "워홀로그")는 「개인정보 보호법」에 따라 이용자의 개인정보를 보호하고 관련 고충을 빠르게 처리하기 위해 다음과 같이 처리방침을 둡니다.
+성이현(이하 "워홀로그")는 「개인정보 보호법」에 따라 이용자의 개인정보를 보호하고 관련 고충을 빠르게 처리하기 위해 다음과 같이 처리방침을 둡니다.
 
 ### 1. 처리하는 개인정보와 목적
 | 구분 | 항목 | 목적 | 근거 |
@@ -65,7 +68,8 @@
 | 테스트 답변·결과 | 저장 후 1년이 지나면 삭제 |
 | 요청 횟수 제한 기록(IP 해시) | 저장 후 24시간이 지나면 삭제 |
 | 서비스 이용 이벤트 | 저장 후 13개월이 지나면 삭제 |
-| 접속 기록 | 호스팅 업체 기본 보관 기간(최대 [ ]일) |
+| 접속 기록 | 호스팅 업체(Vercel) 런타임 로그, 요금제 기준 약 1시간 |
+| 방문 통계(Vercel Web Analytics) | 1개월 |
 
 전자 파일은 복구할 수 없는 방법으로 삭제해요. 종이로 받는 개인정보는 없어요.
 
@@ -74,9 +78,9 @@
 
 | 받는 자 | 맡기는 일 | 이전 국가·방법 | 이전 항목 | 보관 기간 |
 |---|---|---|---|---|
-| Supabase Inc. | 데이터베이스 보관 | 저장 위치 [대한민국(서울) 리전], 회사 소재지 미국, 네트워크 전송 | 이메일, 제보 내용, 테스트 답변, 이용 이벤트(개인을 알아볼 수 없음) | 위 2번과 같음 |
-| Vercel Inc. | 웹사이트 호스팅·접속 기록 | 미국 등, 네트워크 전송 | 접속 IP, 브라우저 정보 | 업체 기본 기간 |
-| [메일 발송 서비스] | 오픈 알림 메일 발송 | [국가], 발송 시점에 네트워크 전송 | 이메일 | 발송 후 [ ]일 |
+| Supabase Inc. | 데이터베이스 보관 | 저장 위치 대한민국(서울) 리전(ap-northeast-2), 회사 소재지 미국, 네트워크 전송 | 이메일, 제보 내용, 테스트 답변, 이용 이벤트(개인을 알아볼 수 없음) | 위 2번과 같음 |
+| Vercel Inc. | 웹사이트 호스팅·접속 기록·방문 통계 | 미국 등, 네트워크 전송 | 접속 IP, 브라우저 정보 | 접속 기록 약 1시간, 방문 통계 1개월 |
+| Google LLC (Gmail) | 오픈 알림 메일 발송(숨은 참조 1회) | 미국, 발송 시점에 네트워크 전송 | 이메일 | 발송 후 30일 안에 보낸편지함에서 삭제 |
 
 국외 이전을 원하지 않으면 오픈 알림을 신청하지 않거나, 신청 후 아래 연락처로 삭제를 요청할 수 있어요. 이 경우 알림을 받을 수 없어요.
 
@@ -87,7 +91,7 @@
 - 웹사이트 운영 중 접속 IP, 브라우저 종류, 접속 시각이 서버 기록으로 남아요.
 - 결과 저장·정보 제보·오픈 알림 신청처럼 서버로 보내는 요청에는 이용 횟수를 제한하기 위해 IP 주소를 서버에만 있는 비밀 값을 섞어 복원할 수 없는 해시 값으로 바꿔요. 이 해시 값은 24시간이 지나면 삭제하고, 원래 IP 주소는 저장하지 않아요.
 - 위 "서비스 이용 이벤트"는 방문자를 구별하는 번호나 쿠키 없이 저장해서 같은 사람의 이벤트를 서로 이어 볼 수 없어요. 이벤트를 보낼 때 쓰는 요청 횟수 제한 해시 값은 이벤트와 함께 저장하지 않아요.
-- 방문 통계는 [Vercel Web Analytics]로 확인하며, 개인을 알아볼 수 있는 쿠키를 쓰지 않아요.
+- 방문 통계는 Vercel Web Analytics로 확인하며, 개인을 알아볼 수 있는 쿠키를 쓰지 않아요. 통계는 1개월 보관해요.
 - 테스트 진행 중 답변은 이용자의 브라우저(세션 저장소)에만 임시로 저장되고, 결과를 볼 때 서버로 보내요.
 - 질문 2의 "만 나이 계산기"에 넣는 생년월일은 이용자의 브라우저 화면 안에서만 계산하고, 저장하거나 서버로 보내지 않아요. 계산한 만 나이만 테스트 답변으로 쓰여요.
 - 준비 중 기능의 "원해요"는 어떤 기능을 눌렀는지와 시각만 저장하고, 누가 눌렀는지는 저장하지 않아요. 같은 브라우저에서 중복으로 누르지 않도록 브라우저(로컬 저장소)에 표시만 남겨요.
@@ -102,46 +106,46 @@
 - 관리 계정에는 2단계 인증을 사용해요.
 
 ### 8. 개인정보 보호책임자
-- 책임자: [운영자 이름]
-- 연락처: [연락 메일]
+- 책임자: 성이현
+- 연락처: yvonnesung.work@gmail.com
 
 개인정보 침해 신고·상담은 아래 기관에도 할 수 있어요.
 개인정보침해신고센터 (privacy.kisa.or.kr / 국번 없이 118), 개인정보분쟁조정위원회 (kopico.go.kr / 1833-6972), 대검찰청 (spo.go.kr / 국번 없이 1301), 경찰청 (ecrm.police.go.kr / 국번 없이 182)
 
 ### 9. 변경 안내
 이 처리방침이 바뀌면 시행 7일 전에 웹사이트에 알려요. 이용자 권리에 중요한 변경은 30일 전에 알려요.
-- v1.0 2026-12-31 최초 시행
+- v1.0 2026-12-01 최초 시행
 
 ---
 
 ## 3. Privacy Policy (English, short version)
 
 **woholog Privacy Policy**
-Effective: December 31, 2026 · Version 1.0
+Effective: December 1, 2026 · Version 1.0
 
-woholog is run by [Operator]. We collect as little as possible.
+woholog is run by Yvonne Sung (an individual operator). We collect as little as possible.
 
 **What we collect and why**
 - **Email address** (launch notice or To Korea waitlist sign-up): to send one email when the community opens. Deleted within 30 days after that email, and no later than December 31, 2027. Deleted immediately if you withdraw consent.
 - **Report message**: to fix wrong information. We do not ask for contact details. Deleted within 1 year after we resolve it.
 - **Quiz answers and results**: to calculate your result and let you share a link. Not linked to your name or contact details. Deleted after 1 year.
 - **Usage events** (which feature was used, e.g. quiz started or finished, share, checklist start; a few fixed labels such as share method or country code; the page path without your result's unique ID; time): to see which features are used and improve the service. No name, email, quiz answers or IP address is stored with them, and they cannot be linked to you. Deleted after 13 months.
-- **Server logs** (IP address, browser, time): kept by our hosting provider for security.
+- **Server logs** (IP address, browser, time): kept by our hosting provider (Vercel runtime logs) for about 1 hour, for security.
 - **Birth date** (age calculator in the quiz): used only inside your browser to work out your age. It is never stored or sent to us; only the resulting age is used as a quiz answer.
 - **Request-rate limiting**: to prevent abuse we store only a one-way hash of your IP address, made with a secret value kept on our server (we do not store the IP address itself). Deleted after 24 hours.
 
-**Who processes it**: Supabase Inc. (database, stored in [Seoul, Korea]), Vercel Inc. (hosting, USA), [Email provider] (sending the launch email, [country]). We do not sell or share your data with anyone else.
+**Who processes it**: Supabase Inc. (database, stored in Seoul, Korea, region ap-northeast-2), Vercel Inc. (hosting and visit statistics, USA), Google LLC (Gmail, USA: sends the launch email once, with recipients in BCC; the email address is deleted from the Sent folder within 30 days after sending). We do not sell or share your data with anyone else.
 
 **Checklist**: Your checklist (country, departure date, checked items) is stored only in your browser and never sent to us.
 
 **Feature votes**: When you tap "원해요" (I want this), we store only which feature and when, not who.
 
-**Cookies**: We use [Vercel Web Analytics], which does not use tracking cookies.
+**Cookies**: We use Vercel Web Analytics, which does not use tracking cookies. Statistics are kept for 1 month.
 
-**Your rights**: You can ask us to access, correct or delete your data at any time. Email [contact email] and we will respond within 10 days.
+**Your rights**: You can ask us to access, correct or delete your data at any time. Email yvonnesung.work@gmail.com and we will respond within 10 days.
 
 **Age**: Do not sign up if you are under 14.
 
-**Contact**: [Operator name], [contact email]
+**Contact**: Yvonne Sung, yvonnesung.work@gmail.com
 
 **Changes**: We will post changes on this page at least 7 days before they take effect.
