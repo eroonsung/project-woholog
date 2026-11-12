@@ -12,7 +12,7 @@ insert into sources (url, publisher, grade, watch, note) values
 on conflict (url) do nothing;
 
 -- 2) 스페인: 비자 수수료 면제 → 0원, needs_check 해제
-update program_facts f set value_num = 0, currency = 'KRW', note = '비자 수수료 면제(외국인번호(NIE) 신청 비용은 별도)', needs_check = false, verified_at = '2026-11-12',
+update program_facts f set value_num = 0, currency = 'KRW', note = '비자 수수료 면제(외국인번호(NIE) 신청 비용 14,850원은 별도, 현금)', needs_check = false, verified_at = '2026-11-12',
   source_id = (select id from sources where url = 'https://www.exteriores.gob.es/Embajadas/seul/ko/ServiciosConsulares/Documents/AML_%ec%9b%8c%ed%82%b9%ed%99%80%eb%a6%ac%eb%8d%b0%ec%9d%b4%20%eb%b9%84%ec%9e%90.pdf')
 from programs p where f.program_id = p.id and f.key = 'visa_fee' and f.valid_to is null
   and p.origin = 'KR' and p.destination = 'ES' and p.kind = 'working_holiday';
