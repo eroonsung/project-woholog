@@ -18,7 +18,7 @@
 |---|---|
 | landing.badge | 2분 · 질문 12개 |
 | landing.title | 마음에 둔 워홀 나라, 나한테 맞을까? |
-| landing.sub | 돈·언어·일·나이로 29개 나라의 적합도를 %로 알려줘요. 이유까지요. |
+| landing.sub | 돈·언어·일·나이로 29개 나라의 적합도를 이유와 함께 %로 알려줘요. |
 | landing.cta | 내 나라 확인하기 |
 | landing.noLogin | 로그인 없이 바로 시작해요 |
 | landing.feature1 | 29개 나라 공식 정보 |
