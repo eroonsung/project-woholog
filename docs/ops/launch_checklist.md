@@ -14,7 +14,7 @@
 
 ## A. 데이터 수정 (11/20까지, 환율은 11/30)
 - [ ] **(Y→C) 앱 링크 13개 확인(11/20)** — 확인 목록은 `docs/ops/app_links_manual_check.md`: Yvonne가 휴대폰으로 열어 본다 — SEEK 호주·뉴질랜드, Revolut, RATP, ameli, Indeed Italia, Idealista Portugal, SNCB, BKK, Pracuj.pl, Jobsdb HK, HSL + Profession.hu(`docs/content/country_apps_v1.md`). 안 열리는 것만 `url`을 비운다(시드와 DB 같이)
-- [ ] **(Y→C) 비자 비용 6곳 반영(11/20)**(IE·IL·PL·ES·PT·AT, 마이그레이션 009·시드는 D-139, 운영 적용은 허락 후): DB 값과 조사값이 달라 `needs_check = true`로 표시만 해 둠(`docs/content/data_review_v1.md` 6장). 확인하면 값을 고치고(규칙 6: 나라별 % 변화표를 먼저 보여 줌) `needs_check`를 false로
+- [ ] **(Y→C) 비자 비용 반영(11/20)**(ES·PL·IL 값 수정, IE 메모, AT·PT 확인 중 유지, 시드는 D-139, 운영 적용은 허락 후): DB 값과 조사값이 달라 `needs_check = true`로 표시만 해 둠(`docs/content/data_review_v1.md` 6장). 확인하면 값을 고치고(규칙 6: 나라별 % 변화표를 먼저 보여 줌) `needs_check`를 false로
 - [ ] **(Y→C) 아일랜드 잔고 증명 1,500유로 재확인**(2024 모집 기준 값, `needs_check = true`). **오스트리아**는 "월 기준"을 체류 개월로 곱할지 원문으로 확정되면 숫자를 넣을지 결정(지금은 메모만, D-136)
 - [ ] **(Y→C) 비행 정보 ⚠ 2곳 재확인**: 헝가리(시간 약 13시간은 추정), 핀란드(핀에어 서울 노선 운항 여부). 이스라엘은 2027-03 엘알 직항 시작 뒤 재확인(`docs/content/flight_v1.md`). 확인하면 시드와 표를 같이 고치고 `flight_needs_check`를 false로
 - [ ] **(Y→C) 12월 말 일본 2027 접수 공지 확인(오픈 후)** → `application_windows`에 4행 추가(허락 후). 그 전에는 "다음 접수"가 선착순 안내로만 보인다(D-130). **캐나다 IEC 2027 시즌 날짜·기한**(10일·20일·30일)도 같이 다시 확인(`docs/content/guides_draft_v1.md`)
