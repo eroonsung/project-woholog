@@ -28,5 +28,6 @@ export const RESULT_CASES: ResultCase[] = [
   { id: 'blocked_age', label: '마음에 둔 나라를 나이 때문에 갈 수 없음(33세·일본)', answers: withHearts(A, ['JP']), expect: { kind: 'blocked', whatIf: false } },
   { id: 'blocked_visited', label: '마음에 둔 나라를 이미 다녀와서 갈 수 없음(호주)', answers: withHearts(A, ['AU']), expect: { kind: 'blocked', whatIf: false } },
   { id: 'multi', label: '마음에 둔 나라 3개: 카드 + 다른 나라 + 갈 수 없는 나라', answers: withHearts(A, ['GB', 'CA', 'JP']), expect: { kind: 'top1', whatIf: false } },
+  { id: 'multi_low', label: '마음에 둔 나라 2개: 카드(캐나다) + 다른 나라(대만, 낮은 %)에 이유가 보여야 함', answers: withHearts(A, ['CA', 'TW']), expect: { kind: 'top1', whatIf: false } },
   { id: 'checking', label: '돈이 확인 중인 나라가 1위(스페인어 가능·스페인)', answers: withHearts(F, []), expect: { kind: 'noheart', whatIf: false, checking: true } },
 ];

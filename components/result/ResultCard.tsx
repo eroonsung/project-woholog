@@ -3,6 +3,7 @@ import { Heart } from 'lucide-react';
 import { Flag } from '@/components/ui/Flag';
 import { CountryBadges } from './Badges';
 import { ConditionList } from './ConditionList';
+import { OtherHearts } from './OtherHearts';
 import { WhatIfBox } from './WhatIfBox';
 import { t } from '@/lib/copy';
 import { blockReasonText } from '@/lib/result/text';
@@ -76,22 +77,13 @@ export function ResultCard({ plan, result, answers, example = false }: { plan: C
 
       {!example && plan.showWhatIf ? <WhatIfBox rows={result.whatIf[card.code] ?? []} countries={result.countries} allLow={plan.allLow} /> : null}
 
-      {!example && plan.otherHearts.length > 0 ? (
-        <div className="mt-4 flex flex-wrap items-center gap-2 text-caption text-text2">
-          <span className="font-bold">{t('result.otherHearts')}</span>
-          {plan.otherHearts.map((r) => (
-            <Link key={r.code} href={`/countries/${r.code}`} className="inline-flex min-h-8 items-center gap-1 rounded-pill bg-subtle px-3 font-bold text-navy hover:underline">
-              <Flag code={r.code} />{result.countries[r.code]?.nameKo ?? r.code} {r.pct}%
-            </Link>
-          ))}
-        </div>
-      ) : null}
-
       {example ? null : <p className="mt-5">
         <Link href={`/countries/${card.code}`} className="inline-flex min-h-11 items-center text-body font-extrabold text-navy underline underline-offset-4">
           {t('result.detailLink', { country: name })}
         </Link>
       </p>}
+
+      {example ? null : <OtherHearts rows={plan.otherHearts} countries={result.countries} />}
     </section>
   );
 }

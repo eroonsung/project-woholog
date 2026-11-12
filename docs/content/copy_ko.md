@@ -828,6 +828,8 @@
 | result.chip.heart | 마음에 둔 나라 | Figma |
 | result.noHeart.headline | {country:이/가} 가장 잘 맞아요 | Figma(조사 처리) |
 | result.otherHearts | 마음에 둔 다른 나라 | SPEC 4.2 |
+| result.otherHearts.show | 이유 보기 | 제안(D-140) |
+| result.otherHearts.hide | 이유 접기 | 제안(D-140) |
 | result.confirming | 확인 중: 잔고 증명 금액을 확인하고 있어요 | 승인(2026-11-11) |
 | result.partialChecking | 일부 조건 확인 중 | 승인(2026-11-11) |
 | result.next | 다음으로 잘 맞는 나라 | Figma |
