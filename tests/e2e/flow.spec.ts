@@ -1,4 +1,5 @@
 import { expect, test, type Page } from '@playwright/test';
+import { parseEvent } from '../../lib/events';
 
 /**
  * 핵심 흐름: 첫 화면 → 질문 12개 → 결과 → 비교 → 나라 상세 → 체크리스트 (CLAUDE.md 9장 11단계).
@@ -7,12 +8,26 @@ import { expect, test, type Page } from '@playwright/test';
  */
 const RESULT_ID = 'b9aa04c8-c038-4b38-a244-50f596690080';
 
+/** /api/event로 나간 이벤트(가짜 응답으로 받아 운영 DB에는 저장하지 않는다, D-137) */
+const sentEvents = new WeakMap<Page, { name: string; props: Record<string, unknown>; path: string | null }[]>();
+
+const blockedWrites = new WeakMap<Page, string[]>();
+
+/** 모든 테스트가 시작할 때 한 번 건다(아래 beforeEach): 어떤 테스트도 이벤트·저장 요청을 운영 DB로 보내지 못한다. 여러 번 불러도 같은 목록을 돌려준다 */
 async function blockWrites(page: Page) {
+  const existing = blockedWrites.get(page);
+  if (existing) return existing;
   const blocked: string[] = [];
+  blockedWrites.set(page, blocked);
+  const events: { name: string; props: Record<string, unknown>; path: string | null }[] = [];
+  sentEvents.set(page, events);
+  await page.route('**/api/event', (route) => { events.push(route.request().postDataJSON()); return route.fulfill({ status: 200, contentType: 'application/json', body: '{"status":"ok"}' }); });
   await page.route('**/api/result', (route) => route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ id: RESULT_ID }) }));
   await page.route('**/api/{subscribe,report,vote}', (route) => { blocked.push(route.request().url()); return route.abort(); });
   return blocked;
 }
+
+test.beforeEach(async ({ page }) => { await blockWrites(page); });
 
 async function answerCurrentQuestion(page: Page, q: number) {
   const number = page.locator('main input[type=number], main input[inputmode=numeric]').first();
@@ -75,6 +90,13 @@ test('첫 화면 → 질문 12개 → 결과 → 비교 → 상세 → 체크리
 
   expect(errors).toEqual([]);
   expect(blocked).toEqual([]); // 결과 저장 말고는 어떤 저장 요청도 나가지 않았다
+
+  // 이용 이벤트가 api/event로 나갔다: 이름·속성이 서버 검사를 통과하고, 결과 id는 주소에 남지 않는다(서버가 지움)
+  const events = sentEvents.get(page)!;
+  expect(events.map((e) => e.name)).toEqual(expect.arrayContaining(['quiz_start', 'quiz_complete', 'checklist_start']));
+  expect(events.filter((e) => e.name === 'quiz_start')).toHaveLength(1);
+  for (const e of events) expect(parseEvent(e).ok, JSON.stringify(e)).toBe(true);
+  expect(JSON.stringify(events)).not.toMatch(/@|27/); // 이메일·나이 같은 값은 없다
 });
 
 test('없는 주소·없는 결과·없는 나라는 404 화면', async ({ page }) => {

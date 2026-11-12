@@ -54,3 +54,15 @@ export async function addVote(slug: string): Promise<void> {
   const { error } = await getAdminClient().from('feature_votes').insert({ feature: slug });
   if (error) throw new Error(`원해요 저장 실패: ${error.code ?? error.message}`);
 }
+
+/** 이용 이벤트 1건 저장(이름·정해진 속성·화면 주소·시각만, 누가 보냈는지는 저장하지 않는다, D-137) */
+export async function addEvent(input: { name: string; props: Record<string, string>; path: string | null }): Promise<void> {
+  const { error } = await getAdminClient().from('events').insert({ name: input.name, props: input.props, path: input.path });
+  if (error) throw new Error(`이벤트 저장 실패: ${error.code ?? error.message}`);
+}
+
+/** 13개월 지난 이벤트 지우기(마이그레이션 008 purge_events). 실패해도 이벤트 저장에는 영향이 없다 */
+export async function purgeEvents(): Promise<void> {
+  const { error } = await getAdminClient().rpc('purge_events');
+  if (error) throw new Error(`이벤트 정리 실패: ${error.message}`);
+}

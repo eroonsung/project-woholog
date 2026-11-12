@@ -42,7 +42,7 @@
 ## 3. 기술 스택
 - Next.js(App Router) + TypeScript(strict) + Tailwind CSS (환경변수는 `.env.example`: Supabase 3개 + `NEXT_PUBLIC_SITE_LIVE`)
 - Supabase(Postgres, RLS), `@supabase/supabase-js`
-- Vercel 배포, Vercel Web Analytics(쿠키 없음)
+- Vercel 배포, Vercel Web Analytics(쿠키 없음) + 이용 이벤트는 Supabase `events` 표에도 저장(D-137, Hobby는 커스텀 이벤트를 안 모음)
 - Vitest(엔진·변환·유틸), Playwright(핵심 흐름)
 - 폰트 Pretendard(자체 호스팅, 서브셋 Core·Extra, D-112), 아이콘 lucide-react
 - **새 라이브러리는 이유를 말하고 허락받는다.** 상태 관리 라이브러리, UI 키트, ORM은 쓰지 않는다.
@@ -99,7 +99,7 @@ app/
   dev/result/page.tsx         결과 카드 경우 확인용(개발 서버만, 운영 404)
   dev/compare/page.tsx        비교에 담기 버튼·막대 확인용(개발 서버만, 운영 404)
   dev/guides/page.tsx         가이드 시드 글 미리보기(DB에 안 넣고 그려 봄, 개발 서버만, 운영 404)
-  api/result/route.ts  api/subscribe/route.ts  api/report/route.ts  api/vote/route.ts
+  api/result/route.ts  api/subscribe/route.ts  api/report/route.ts  api/vote/route.ts  api/event/route.ts
 components/
   ui/  layout/  home/  compare/  countries/  quiz/  result/  countries/  checklist/  soon/  shared/
 lib/
@@ -112,7 +112,7 @@ lib/
   server/   ip.ts limits.ts       IP 해시·요청 제한 기준(SPEC 0.8)
   features.ts  준비 중 기능 15개(features_ko.json)·단계·다른 기능 3개   votes.ts  원해요(woholog.votes.v1)·보내기·되돌리기
   guides.ts    가이드 마크다운·{fact_key} 채우기   share/  data.ts image.tsx colors.ts  공유 이미지 값·그리기(OG·스토리, D-125)
-  locale.ts  화면 언어 판단·언어별 로고(D-135)  meta.ts  화면별 제목·설명(D-133)  popular.ts   많이 찾는 나라 먼저 정렬(체크리스트·/apps, D-130)  flight.ts  비행시간 문구(D-130)
+  events.ts  이용 이벤트 7종·속성 검사(D-137)  locale.ts  화면 언어 판단·언어별 로고(D-135)  meta.ts  화면별 제목·설명(D-133)  popular.ts   많이 찾는 나라 먼저 정렬(체크리스트·/apps, D-130)  flight.ts  비행시간 문구(D-130)
   share/web.ts 공유 창에 넘길 값·iOS 판별(D-131)  mine.ts  내 결과 표시(woholog.mine.v1, D-132)
   site.ts      오픈 여부(NEXT_PUBLIC_SITE_LIVE)
   storage.ts   브라우저 저장소 (SPEC.md 0.2의 키만)
@@ -123,7 +123,7 @@ content/
   copy_ko.json  copy_en.json  features_ko.json  partners.json  nav_ko.json  landing_countries.json  landing_example.json
   privacy_ko.json  privacy_en.json  (처리방침 문서, docs/legal/privacy.md → scripts/build_privacy_content.py, D-122)
 supabase/
-  migrations/  001_schema_v2_1.sql  002_feature_votes.sql  003_extension_fact_key.sql  004_proof_amount_with_ticket.sql  005_rate_limit_security.sql  006_flight_time.sql  007_facts_needs_check.sql
+  migrations/  001_schema_v2_1.sql  002_feature_votes.sql  003_extension_fact_key.sql  004_proof_amount_with_ticket.sql  005_rate_limit_security.sql  006_flight_time.sql  007_facts_needs_check.sql  008_events.sql
   seed/seed_v1_1.sql  seed/seed_checklist_v1.sql  seed/seed_engine_v1.sql  seed/seed_proof_ticket_v1.sql  seed/seed_nl_proof_v1.sql  seed/seed_country_apps_v1.sql  seed/seed_country_apps_reading_v1.sql  seed/seed_flight_v1.sql  seed/seed_data_research_v1.sql  seed/seed_local_language_v1.sql  seed/seed_guides_v1.sql
 scripts/
   precheck.sh  push 전 확인(build·tsc·eslint·vitest, .env*, 키 패턴) — npm run precheck
@@ -238,6 +238,7 @@ docs/
 | 9 신청·제보·처리방침·To Korea | 모달, `api/subscribe`, `api/report`, `/privacy`, `/to-korea` | 11·12·13·16장 | 17장 이메일·제보 줄 통과, To Korea 신청은 section = to_korea |
 | 10 준비 중·가이드·공유 | `/soon`, 원해요, `/guides`, OG·스토리 이미지, 공유 버튼 | 5·14·15장 | 15개 slug 열림, 원해요 숫자가 `feature_vote_counts()`와 같음, 카톡·인스타 미리보기에서 이미지 안 잘림 |
 | 11 마무리 | 404·오류 화면(0.4), Playwright, Lighthouse, 메타 태그, 이벤트, 임시 "준비 중이에요" 화면이 남아 있지 않은지 확인 | 0.4, 0.7 | Lighthouse 모바일 성능·접근성 90 이상, 운영 주소에서 첫 화면 → 테스트 → 결과 → 상세 → 체크리스트 끊김 없음 |
+| 12 이벤트 저장 | 이용 이벤트 7종을 Supabase `events` 표에 저장(마이그레이션 008, `api/event`, 보관 13개월, 처리방침 항목) | 0.7, 0.8 | 7종이 저장되고(가짜 응답 테스트) 허용 안 된 이름·속성은 400, 익명 키 읽기·쓰기 막힘 |
 
 **작업 순서(D-103)**: 0 → 1 → 2 → 3 → 4 → **4.5 → 5 → 5.5 → 5.1 → 5.2** → 6 → 7 → 8 → 9 → 10 → 11. **8.5(실제 기기 점검)는 11단계 전까지 9·10단계와 병행**한다(D-121). 모든 화면이 헤더·푸터 안에 들어가므로 틀(4.5)을 먼저 만들고, 홈(5.5)은 결과 카드 부품을 재사용하려고 결과(5) 다음에 한다.
 

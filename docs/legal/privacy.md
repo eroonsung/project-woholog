@@ -9,6 +9,7 @@
 | [연락 메일] | 지금은 사업용 Gmail, 도메인을 사면 hello@woholog.com |
 | [DB 지역] | Supabase 프로젝트를 만들 때 **서울(ap-northeast-2)** 을 고른다. 데이터가 한국에 저장되면 국외 이전 설명이 간단해진다. |
 | [메일 발송 서비스] | 오픈 알림을 보낼 서비스(예: Resend, Stibee). 한국 서비스(Stibee 등)를 쓰면 국외 이전 항목에서 빠진다. |
+| [이용 이벤트 문구] | **제안 문구(D-137)**: 처리방침의 "서비스 이용 이벤트" 줄, 보관 13개월, 5번 항목, 영문판 "Usage events". 오픈 전 문구 검토 때 확인한다. |
 | [분석 도구] | 쿠키를 안 쓰는 Vercel Web Analytics를 추천. Google Analytics를 쓰면 쿠키 안내와 국외 이전 항목을 추가해야 한다. |
 
 운영 원칙 (처리방침과 실제가 같아야 해요)
@@ -16,6 +17,7 @@
 - 알림 메일은 **1회만**, 제목에 서비스 이름을 넣는다. 다른 홍보 메일을 보내려면 광고성 정보 수신 동의를 따로 받아야 한다(정보통신망법 50조).
 - 알림을 보낸 뒤 30일 안에 `launch_subscribers` 표를 비운다. 회원으로 옮길 때는 새로 동의를 받는다.
 - 테스트 답변은 이름 없이 저장하고, 결과 링크를 아는 사람만 볼 수 있게 한다(이미 DB 함수로 구현됨).
+- 이용 이벤트(`events`, D-137): 이름 7종과 정해진 속성만 서버가 받는다(이메일·나이·예산·답변 값을 담을 칸이 없음). IP·브라우저 정보·방문자 번호는 저장하지 않고, 결과 id는 주소에서 지운다. 13개월이 지난 행은 `purge_events()`가 지운다.
 - 요청 횟수 제한(`rate_limits`): IP는 `HMAC-SHA256(서버에만 있는 비밀 키, IP)` 해시로만 저장한다(원래 IP는 저장하지 않음, 4단계 구현). 24시간이 지난 기록은 다음 요청을 처리할 때 지운다(`pg_cron`은 쓰지 않음). 그래서 처리방침 문구는 "24시간이 지나면 삭제"로 쓴다. 비밀 키(`SUPABASE_SERVICE_ROLE_KEY`)를 바꾸면 해시 값이 달라진다(기존 기록과 이어지지 않을 뿐 문제 없음).
 
 ---
@@ -51,6 +53,7 @@
 | 정보 제보 | 제보 내용(어느 나라·어느 화면인지 포함) | 틀린 정보 수정 | 이용자가 직접 입력 (이메일 등 연락처는 받지 않음) |
 | 나라 적합도 테스트 | 테스트 답변(나이, 예산 범위, 언어 수준 등), 결과 | 결과 계산, 결과 링크 공유 | 이름·연락처와 연결하지 않으며, 개인을 알아볼 수 없는 형태로 저장 |
 | 서비스 이용 중 요청 횟수 제한 | IP 주소를 서버에만 있는 비밀 값을 섞어 복원할 수 없게 바꾼 해시 값(원래 IP 주소는 저장하지 않음) | 과도한 요청·오용 방지 | 서비스 보호 |
+| 서비스 이용 이벤트 | 이용한 기능의 이름(예: 테스트 시작·완료, 공유, 체크리스트 시작)과 정해진 분류 값(예: 공유 방법, 나라 코드), 보고 있던 화면 주소(결과 링크의 고유 번호는 지움), 시각 | 어떤 기능이 얼마나 쓰이는지 파악해 서비스 개선 | 개인을 알아볼 수 없는 통계 (이름·이메일·테스트 답변·IP 주소는 함께 저장하지 않음) |
 
 워홀로그는 회원가입이 없으며, 위 항목 외의 개인정보를 받지 않아요.
 
@@ -61,6 +64,7 @@
 | 제보 내용 | 처리 완료 후 1년 이내 삭제 |
 | 테스트 답변·결과 | 저장 후 1년이 지나면 삭제 |
 | 요청 횟수 제한 기록(IP 해시) | 저장 후 24시간이 지나면 삭제 |
+| 서비스 이용 이벤트 | 저장 후 13개월이 지나면 삭제 |
 | 접속 기록 | 호스팅 업체 기본 보관 기간(최대 [ ]일) |
 
 전자 파일은 복구할 수 없는 방법으로 삭제해요. 종이로 받는 개인정보는 없어요.
@@ -70,7 +74,7 @@
 
 | 받는 자 | 맡기는 일 | 이전 국가·방법 | 이전 항목 | 보관 기간 |
 |---|---|---|---|---|
-| Supabase Inc. | 데이터베이스 보관 | 저장 위치 [대한민국(서울) 리전], 회사 소재지 미국, 네트워크 전송 | 이메일, 제보 내용, 테스트 답변 | 위 2번과 같음 |
+| Supabase Inc. | 데이터베이스 보관 | 저장 위치 [대한민국(서울) 리전], 회사 소재지 미국, 네트워크 전송 | 이메일, 제보 내용, 테스트 답변, 이용 이벤트(개인을 알아볼 수 없음) | 위 2번과 같음 |
 | Vercel Inc. | 웹사이트 호스팅·접속 기록 | 미국 등, 네트워크 전송 | 접속 IP, 브라우저 정보 | 업체 기본 기간 |
 | [메일 발송 서비스] | 오픈 알림 메일 발송 | [국가], 발송 시점에 네트워크 전송 | 이메일 | 발송 후 [ ]일 |
 
@@ -82,6 +86,7 @@
 ### 5. 자동으로 수집되는 정보
 - 웹사이트 운영 중 접속 IP, 브라우저 종류, 접속 시각이 서버 기록으로 남아요.
 - 결과 저장·정보 제보·오픈 알림 신청처럼 서버로 보내는 요청에는 이용 횟수를 제한하기 위해 IP 주소를 서버에만 있는 비밀 값을 섞어 복원할 수 없는 해시 값으로 바꿔요. 이 해시 값은 24시간이 지나면 삭제하고, 원래 IP 주소는 저장하지 않아요.
+- 위 "서비스 이용 이벤트"는 방문자를 구별하는 번호나 쿠키 없이 저장해서 같은 사람의 이벤트를 서로 이어 볼 수 없어요. 이벤트를 보낼 때 쓰는 요청 횟수 제한 해시 값은 이벤트와 함께 저장하지 않아요.
 - 방문 통계는 [Vercel Web Analytics]로 확인하며, 개인을 알아볼 수 있는 쿠키를 쓰지 않아요.
 - 테스트 진행 중 답변은 이용자의 브라우저(세션 저장소)에만 임시로 저장되고, 결과를 볼 때 서버로 보내요.
 - 질문 2의 "만 나이 계산기"에 넣는 생년월일은 이용자의 브라우저 화면 안에서만 계산하고, 저장하거나 서버로 보내지 않아요. 계산한 만 나이만 테스트 답변으로 쓰여요.
@@ -120,6 +125,7 @@ woholog is run by [Operator]. We collect as little as possible.
 - **Email address** (launch notice or To Korea waitlist sign-up): to send one email when the community opens. Deleted within 30 days after that email, and no later than December 31, 2027. Deleted immediately if you withdraw consent.
 - **Report message**: to fix wrong information. We do not ask for contact details. Deleted within 1 year after we resolve it.
 - **Quiz answers and results**: to calculate your result and let you share a link. Not linked to your name or contact details. Deleted after 1 year.
+- **Usage events** (which feature was used, e.g. quiz started or finished, share, checklist start; a few fixed labels such as share method or country code; the page path without your result's unique ID; time): to see which features are used and improve the service. No name, email, quiz answers or IP address is stored with them, and they cannot be linked to you. Deleted after 13 months.
 - **Server logs** (IP address, browser, time): kept by our hosting provider for security.
 - **Birth date** (age calculator in the quiz): used only inside your browser to work out your age. It is never stored or sent to us; only the resulting age is used as a quiz answer.
 - **Request-rate limiting**: to prevent abuse we store only a one-way hash of your IP address, made with a secret value kept on our server (we do not store the IP address itself). Deleted after 24 hours.

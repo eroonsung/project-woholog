@@ -17,6 +17,7 @@
         "**Email address** (launch notice or To Korea waitlist sign-up): to send one email when the community opens. Deleted within 30 days after that email, and no later than December 31, 2027. Deleted immediately if you withdraw consent.",
         "**Report message**: to fix wrong information. We do not ask for contact details. Deleted within 1 year after we resolve it.",
         "**Quiz answers and results**: to calculate your result and let you share a link. Not linked to your name or contact details. Deleted after 1 year.",
+        "**Usage events** (which feature was used, e.g. quiz started or finished, share, checklist start; a few fixed labels such as share method or country code; the page path without your result's unique ID; time): to see which features are used and improve the service. No name, email, quiz answers or IP address is stored with them, and they cannot be linked to you. Deleted after 13 months.",
         "**Server logs** (IP address, browser, time): kept by our hosting provider for security.",
         "**Birth date** (age calculator in the quiz): used only inside your browser to work out your age. It is never stored or sent to us; only the resulting age is used as a quiz answer.",
         "**Request-rate limiting**: to prevent abuse we store only a one-way hash of your IP address, made with a secret value kept on our server (we do not store the IP address itself). Deleted after 24 hours."
